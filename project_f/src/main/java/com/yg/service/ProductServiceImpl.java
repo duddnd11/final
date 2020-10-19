@@ -23,11 +23,6 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductVo> selectAll() {
-		return dao.selectAuction();
-	}
-
-	@Override
 	public List<ProductVo> selectPop() {
 		return dao.selectPop();
 	}
@@ -35,6 +30,16 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductVo> selectHurry() {
 		return dao.selectHurry();
+	}
+
+	@Override
+	public List<ProductVo> selectAuction() {
+		return dao.selectAuction();
+	}
+
+	@Override
+	public List<ProductVo> selectAuctionBlind() {
+		return dao.selectAuctionBlind();
 	}
 
 }

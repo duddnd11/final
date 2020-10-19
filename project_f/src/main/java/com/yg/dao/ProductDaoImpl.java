@@ -38,6 +38,11 @@ public class ProductDaoImpl implements ProductDao {
 	public List<ProductVo> selectHurry() {
 		return sqlSession.selectList("com.yg.mapper.ProductMapper.selectHurry");
 	}
+
+	@Override
+	public List<ProductVo> selectAuctionBlind() {
+		return sqlSession.selectList("com.yg.mapper.ProductMapper.selectAuctionBlind");
+	}
 	
 	
 	
