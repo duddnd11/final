@@ -54,12 +54,18 @@ public class ServiceCenterController {
 		}
 		List<QnaBoardVo> list =qnaBoardService.selectBoard(offset);
 		List<QnaBoardVo> listAll = qnaBoardService.selectBoardAll();
-		int pageSize=listAll.size()/10;
-		int offset2 =offset/10+1 ; // 0 ,1, 2, 3, ,4 , ~~, 9
-		System.out.println("nowPage:"+offset2);
-		int startPage = offset2/10;
+		int pageSize=0;
+		if(listAll.size()%10==0) {
+			pageSize=listAll.size()/10;
+		}else {
+			pageSize=listAll.size()/10+1;
+		}
+		int nowPage =offset/10+1 ;
+		int startPage = nowPage/10*10;
 		int endPage = startPage+9;
-		System.out.println(startPage+","+endPage);
+		if(nowPage/10 == pageSize/10) {
+			endPage=pageSize-1;
+		}
 		model.addAttribute("offset", offset);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
