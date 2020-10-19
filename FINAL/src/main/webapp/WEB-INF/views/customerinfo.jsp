@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-dwjddwwd
+	사용자 상세정보
 </body>
 </html>

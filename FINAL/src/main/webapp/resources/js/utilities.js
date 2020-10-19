@@ -8,16 +8,11 @@ function checkUserId(ID) {
   return true;
 }
 
-function checkPassword(password1, password2) {
+function checkPassword(pw) {
 
 var password1RegExp = /^[a-zA-z0-9]{4,20}$/; //비밀번호 유효성 검사
-if (!password1RegExp.test(password1)) {
+if (!password1RegExp.test(pw)) {
     alert("비밀번호는 영문 대소문자와 숫자 4~20자리로 입력해야합니다!");
-    return false;
-}
-//비밀번호와 비밀번호 확인이 맞지 않다면..
-if (password1 != password2) {
-    alert("두 비밀번호가 맞지 않습니다.");
     return false;
 }
 
