@@ -18,6 +18,7 @@
           success: function(authObj) {
             //alert(JSON.stringify(authObj))
             alert("로그인 성공")
+            console.log(authObj);
           },
           fail: function(err) {
             // alert(JSON.stringify(err))
@@ -27,6 +28,21 @@
       }
         // SDK 초기화 여부를 판단합니다.
         console.log(Kakao.isInitialized());
+        
+        Kakao.API.request({
+            url: '/v2/user/me',
+            success: function(res) {
+                console.log(res);
+                var id = res.id;
+                var email = res.kakao_account.email;
+
+                console.log(id);
+                console.log(email);
+            },
+            fail: function(error) {
+                console.log(error);
+            }
+        });
     </script> 
     <script>
     

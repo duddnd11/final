@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.kk.fianl">
+	<logger name="com.yg.pro_f">
 		<level value="info" />
 	</logger>
 	
