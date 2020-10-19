@@ -91,10 +91,8 @@ public class ServiceCenterController {
 	@RequestMapping(value="/qnaWriteAction")
 	public String qnaWriteAction(QnaBoardVo vo) {
 		vo.setID("qq");
-		System.out.println("vo확인"+vo);
 		qnaBoardService.wirteBoardService(vo);
-		System.out.println("제발");
-		return "qnaBoard";
+		return "qnaBoard?";
 	}
 }
 
