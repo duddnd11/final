@@ -33,15 +33,21 @@
           <td><input type="text" name="name" placeholder="이름"/></td>
         </tr>
         <tr>
+          <th>주소</th>
+          <td>
+            <input type="text" name="address" placeholder="주소"/>
+          </td>
+        </tr>
+        <tr>
           <th>전화번호</th>
           <td>
             <input type="text" name="phonenum" placeholder="휴대전화 번호"/>
           </td>
         </tr>
         <tr>
-          <th>주소</th>
+          <th>이메일</th>
           <td>
-            <input type="text" name="address" placeholder="주소"/>
+            <input title="정확한 메일 주소를 작성해주세요" type="email" name="email">
           </td>
         </tr>
         <tr>
@@ -51,22 +57,7 @@
           </td>
         </tr>
         <tr>
-          <th>성별</th>
-          <td>
-            <label>
-              <input type="radio" name="gender" value="male" checked="checked" >남자
-            </label>
-            <label>
-              <input type="radio" name="gender" value="female">여자
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <th>이메일</th>
-          <td>
-            <input title="정확한 메일 주소를 작성해주세요" type="email" name="email">
-          </td>
-        </tr>
+        
     </table>
     <div id="buttons">
       <input title="가입하기" type="submit" id="btn_join" class="btn ui-button ui-corner-all ui-widget" 
