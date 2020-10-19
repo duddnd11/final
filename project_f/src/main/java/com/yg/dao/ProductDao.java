@@ -8,6 +8,7 @@ public interface ProductDao {
 	int insertProduct(ProductVo vo);
 	ProductVo selectOne(int pno);
 	List<ProductVo> selectAuction();
+	List<ProductVo> selectAuctionBlind();
 	List<ProductVo> selectPop();
 	List<ProductVo> selectHurry();
 	
