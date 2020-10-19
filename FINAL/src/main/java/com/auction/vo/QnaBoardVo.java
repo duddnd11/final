@@ -71,4 +71,10 @@ public class QnaBoardVo {
 	public void setStep(int step) {
 		this.step = step;
 	}
+	@Override
+	public String toString() {
+		return "QnaBoardVo [qbno=" + qbno + ", title=" + title + ", content=" + content + ", ID=" + ID + ", writedate="
+				+ writedate + ", hitcount=" + hitcount + ", ref=" + ref + ", level=" + level + ", step=" + step + "]";
+	}
+	
 }

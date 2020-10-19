@@ -47,9 +47,23 @@ public class ServiceCenterController {
 //		return mv;
 //	}
 	
-	@RequestMapping(value="/qna")
-	public String qna(Model model) {
-		List<QnaBoardVo> list =qnaBoardService.selectBoard();
+	@RequestMapping(value="/qnaBoard")
+	public String qnaBoard(Model model,int offset) {
+		if(offset<0) {
+			offset=0;
+		}
+		List<QnaBoardVo> list =qnaBoardService.selectBoard(offset);
+		List<QnaBoardVo> listAll = qnaBoardService.selectBoardAll();
+		int pageSize=listAll.size()/10;
+		int offset2 =offset/10+1 ; // 0 ,1, 2, 3, ,4 , ~~, 9
+		System.out.println("nowPage:"+offset2);
+		int startPage = offset2/10;
+		int endPage = startPage+9;
+		System.out.println(startPage+","+endPage);
+		model.addAttribute("offset", offset);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("qnaBoard", list);
 		return "qnaBoard";
 	}
@@ -62,4 +76,39 @@ public class ServiceCenterController {
 		model.addAttribute("detail", vo);
 		return "detail";
 	}
+	
+	@RequestMapping(value="/qnaWrite")
+	public String qnaWrite() {
+		return "qnaWrite";
+	}
+	
+	@RequestMapping(value="/qnaWriteAction")
+	public String qnaWriteAction(QnaBoardVo vo) {
+		vo.setID("qq");
+		System.out.println("vo확인"+vo);
+		qnaBoardService.wirteBoardService(vo);
+		System.out.println("제발");
+		return "qnaBoard";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -25,4 +25,9 @@ public class QnaBoardDaoImpl implements QnaBoardDao {
 	public QnaBoardVo selectContent(int qbno) {
 		return sqlSession.selectOne("com.auction.mapper.QnaBoardMapper.selectContent", qbno);
 	}
+
+	@Override
+	public List<QnaBoardVo> selectBoardAll() {
+		return sqlSession.selectList("com.auction.mapper.QnaBoardMapper.selectBoardAll");
+	}
 }
