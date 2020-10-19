@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>문의게시판</title>
 </head>
 <body>
 	<table>
@@ -18,6 +18,12 @@
 		</tr>
 	</c:forEach>
 	</table>
+	<a href="qnaBoard?offset=${offset-100}"><<</a>
+	<c:forEach var="i" begin="${startPage}" end="${endPage}">
+		<a href="qnaBoard?offset=${i*10}">${i+1}</a>
+	</c:forEach>
+	<a href="qnaBoard?offset=${offset+100}">>></a>
+	<br/>
 	<input type="button" value="문의글쓰기" onclick="location.href='qnaWrite'"/>
 </body>
 </html>

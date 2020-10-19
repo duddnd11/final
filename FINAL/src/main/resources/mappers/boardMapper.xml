@@ -9,9 +9,11 @@
  	</insert>
  	
  	<select id="selectBoard" resultType="com.auction.vo.QnaBoardVo">
- 		SELECT * FROM qnaboard LIMIT 10 OFFSET #{offset}
+ 		SELECT * FROM qnaboard ORDER BY qbno DESC LIMIT 10 OFFSET #{offset}
  	</select>
- 	
+ 	<select id="selectBoardAll" resultType="com.auction.vo.QnaBoardVo">
+ 		SELECT * FROM qnaboard
+ 	</select>
  	<select id="selectContent" resultType="com.auction.vo.QnaBoardVo">
  		SELECT * FROM qnaboard WHERE qbno=#{qbno}
  	</select>

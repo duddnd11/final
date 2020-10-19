@@ -19,12 +19,17 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 	}
 
 	@Override
-	public List<QnaBoardVo> selectBoard() {
-		return dao.selectBoard(0);
+	public List<QnaBoardVo> selectBoard(int offset) {
+		return dao.selectBoard(offset);
 	}
 
 	@Override
 	public QnaBoardVo selectContent(int qbno) {
 		return dao.selectContent(qbno);
+	}
+
+	@Override
+	public List<QnaBoardVo> selectBoardAll() {
+		return dao.selectBoardAll();
 	}
 }
