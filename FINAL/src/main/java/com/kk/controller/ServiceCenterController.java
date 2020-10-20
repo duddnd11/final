@@ -78,6 +78,13 @@ public class ServiceCenterController {
 	public String content(Model model,int qbno) {
 		QnaBoardVo vo =qnaBoardService.selectContent(qbno);
 		List<CommentVo> commentList = commentService.selectCommentService(qbno);
+		List<CommentVo> reCommentList = null;
+		for(CommentVo comment : commentList) {
+			if(comment.getLevel()==1) {
+				reCommentList = commentList;
+			}
+		}
+		model.addAttribute("reComment",reCommentList);
 		model.addAttribute("comment", commentList);
 		model.addAttribute("detail", vo);
 		return "qnaDetail";
