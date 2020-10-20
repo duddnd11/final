@@ -11,14 +11,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-	function ajax_write(){
+	function ajax_write(ref,level,step,comment){
 		var commentData={
 				qbno : $("#qbno").val(),
-				comment : $("#comment").val()
+				comment : comment,
+				/*ref : $("#ref").val(),*/
+				ref : ref,
+				level :level,
+				step: step
 		};
 		
 		$.ajax({
-			url:'http://localhost:8066/chat/rest/writecomment',
+			url:'http://localhost:8066/final/rest/writecomment',
 			type:'post',
 			data :JSON.stringify(commentData),
 			//dataType:'json', 200에러일때 빼야함.. 400에러 url 405에러 post/get 415에러 contentType 필수속성
@@ -40,14 +44,27 @@
 	}
 
 	$(document).ready(function(){
-		
-		$('#commentBtn').click(function(){
+		$('.commentBtn').click(function(){
 			//alert(commentData["qbno"]);
 			//alert($("#qbno").val()+","+$("#comment").val());//잘뜬다....
-			ajax_write();
+			//alert($(this).parent().find("input#ref").val());
+			var ref= $(this).parent().find("input#ref").val();
+			var	level =$(this).parent().find("input#level").val();
+			var	step= $(this).parent().find("input#step").val();
+			var comment = $(this).parent().find("textarea#comment").val();
+			ajax_write(ref,level,step,comment);
 		})
+
 	});
 </script>
+
+<style>
+	#submenu{
+		/*visibility: hidden;*/
+	}
+	#opensubmenu >td{
+	}
+</style>
 </head>
 <body>
 	<table>
@@ -66,11 +83,29 @@
 		<c:forEach items="${comment}" var="comment">
 		<tr>
 		<td>${comment.comment}</td>
+		<td id="opensubmenu"><a href="#">답글작성</a>
+			<table id="reCommentTable">
+				<tr><td>ddd</td></tr>
+				<tr>
+				<td id="submenu">
+					<textarea rows="5" cols="50" id="comment"></textarea>
+					<input type="button" value="등록" id="commentBtn" class="commentBtn"/>
+					<input type="hidden" value="${comment.ref}" id="ref"/>
+					<input type="hidden" value="${comment.level+1}" id="level"/>
+					<input type="hidden" value="1" id="step"/>
+				</td></tr>
+			</table>
+		</td>
 		</tr>
 		</c:forEach>
 	</table>
-	<textarea rows="5" cols="50" id="comment"></textarea>
-	<input type="button" value="등록" id="commentBtn"/>
-	<input type="hidden" value="${detail.qbno}" id="qbno"/>
+	<div id='dd'>
+		<textarea rows="5" cols="50" id="comment"></textarea>
+		<input type="button" value="등록" id="commentBtn" class="commentBtn"/>	<!-- level=0 -->
+		<input type="hidden" value="0" id="ref"/>
+		<input type="hidden" value="0" id="level"/>
+		<input type="hidden" value="0" id="step"/>
+	</div>
+		<input type="hidden" value="${detail.qbno}" id="qbno"/>
 </body>
 </html>
