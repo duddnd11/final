@@ -3,48 +3,28 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<<<<<<< HEAD
 <mapper namespace="com.yg.mapper.ProductMapper">
 	<insert id="insertProduct">
-		INSERT INTO product(pname, image, price, uploaddate, deadlinedate, hitcount, ID, bestmoney, admin, category, auctionmenu, deal, moneyup) VALUES(#{pname},#{image},#{price},#{uploaddate},#{deadlinedate},#{hitcount},#{ID},#{bestmoney},#{admin},#{category},#{auctionmenu},#{deal},#{moneyup})
-	</insert>
-	
-	<select id="selectAuction" resultType="com.yg.dto.ProductVo">
-		select * from product where auctionmenu='일반' order by uploaddate desc;
-	</select>
-
-	<select id="selectAuctionBlind" resultType="com.yg.dto.ProductVo">
-		select * from product where auctionmenu='블라인드' order by uploaddate desc;
-	</select>
-		
-	<select id="selectPop" resultType="com.yg.dto.ProductVo">
-		SELECT * FROM product order by hitcount desc;
-	</select>
-	<select id="selectHurry" resultType="com.yg.dto.ProductVo">
-		SELECT *  from product order by (TIMESTAMPDIFF(day, NOW(), deadlinedate)+1) asc;
-	</select>
-	
-	<select id="selectOne" resultType="com.yg.dto.ProductVo">
-		SELECT * FROM product where pno=#{pno}
-=======
-<mapper namespace="com.auction.mapper.ProductMapper">
-	<insert id="insertProduct">
-		INSERT INTO product(pname, image, price, uploaddate, deadlinedate, hitcount, ID, bestmoney, admin, category, auctionmenu, deal) VALUES(#{pname},#{image},#{price},#{uploaddate},#{deadlinedate},#{hitcount},#{ID},#{bestmoney},#{admin},#{category},#{auctionmenu},#{deal})
+		INSERT INTO product(pname, image, filenames, price, uploaddate, deadlinedate, hitcount, ID, bestmoney, admin, category, auctionmenu, deal, moneyup) VALUES(#{pname},#{image},#{filenames},#{price},#{uploaddate},#{deadlinedate},#{hitcount},#{ID},#{bestmoney},#{admin},#{category},#{auctionmenu},#{deal},#{moneyup})
 	</insert>
 	
 	<select id="selectAuction" resultType="com.auction.vo.ProductVo">
+		select * from product where auctionmenu='일반' order by uploaddate desc;
 	</select>
 
 	<select id="selectAuctionBlind" resultType="com.auction.vo.ProductVo">
+		select * from product where auctionmenu='블라인드' order by uploaddate desc;
 	</select>
 		
 	<select id="selectPop" resultType="com.auction.vo.ProductVo">
+		SELECT * FROM product order by hitcount desc;
 	</select>
 	<select id="selectHurry" resultType="com.auction.vo.ProductVo">
+		SELECT *  from product order by (TIMESTAMPDIFF(day, NOW(), deadlinedate)+1) asc;
 	</select>
 	
 	<select id="selectOne" resultType="com.auction.vo.ProductVo">
->>>>>>> refs/remotes/origin/main
+		SELECT * FROM product where pno=#{pno}
 	</select>
 	<update id="hitcountUp">
 	</update>

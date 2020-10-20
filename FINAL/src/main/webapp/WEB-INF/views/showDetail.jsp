@@ -12,10 +12,9 @@
 	상품: ${vo.pname }
 	<img src="${vo.image }"/>
 	상품 가격: ${vo.price }
-	${vo.timeout }
-	${vo.ID }
-	${vo.uploaddate }
-	${vo.deadlinedate }
+	D-day: ${vo.timeout }
+	판매자: ${vo.ID }
+	날짜: ${vo.uploaddate } ~ ${vo.deadlinedate }
 	시작가: ${vo.startmoney }
 	가능한 최고 입찰가?응찰가?: ${vo.lastmoney }
 	입찰 단위: ${vo.moneyup }
