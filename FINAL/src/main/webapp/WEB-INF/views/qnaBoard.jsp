@@ -13,7 +13,7 @@
 	<c:forEach var="qnaBoard" items="${qnaBoard}">
 		<tr>
 			<td>${qnaBoard.qbno}</td>
-			<td><a href="detail?qbno=${qnaBoard.qbno}">${qnaBoard.title}</a></td>
+			<td><a href="qnaDetail?qbno=${qnaBoard.qbno}">${qnaBoard.title}</a></td>
 			<td>${qnaBoard.ID}</td>
 		</tr>
 	</c:forEach>

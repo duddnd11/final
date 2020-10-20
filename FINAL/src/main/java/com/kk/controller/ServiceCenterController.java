@@ -74,13 +74,13 @@ public class ServiceCenterController {
 		return "qnaBoard";
 	}
 	
-	@RequestMapping(value="/detail")
+	@RequestMapping(value="/qnaDetail")
 	public String content(Model model,int qbno) {
 		QnaBoardVo vo =qnaBoardService.selectContent(qbno);
 		List<CommentVo> commentList = commentService.selectCommentService(qbno);
 		model.addAttribute("comment", commentList);
 		model.addAttribute("detail", vo);
-		return "detail";
+		return "qnaDetail";
 	}
 	
 	@RequestMapping(value="/qnaWrite")
@@ -89,10 +89,15 @@ public class ServiceCenterController {
 	}
 	
 	@RequestMapping(value="/qnaWriteAction")
-	public String qnaWriteAction(QnaBoardVo vo) {
+	public String qnaWriteAction(QnaBoardVo vo,Model model) {
 		vo.setID("qq");
 		qnaBoardService.wirteBoardService(vo);
-		return "qnaBoard?";
+		List<QnaBoardVo> list =qnaBoardService.selectBoard(0);
+		model.addAttribute("offset", 0);
+		model.addAttribute("startPage", 0);
+		model.addAttribute("endPage", 9);
+		model.addAttribute("qnaBoard", list);
+		return "qnaBoard";
 	}
 }
 

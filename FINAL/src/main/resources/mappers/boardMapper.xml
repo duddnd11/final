@@ -7,7 +7,6 @@
  	<insert id="writeBoard">
  		INSERT INTO qnaboard(title,content,ID) VALUES (#{title},#{content},#{ID})
  	</insert>
- 	
  	<select id="selectBoard" resultType="com.auction.vo.QnaBoardVo">
  		SELECT * FROM qnaboard ORDER BY qbno DESC LIMIT 10 OFFSET #{offset}
  	</select>
