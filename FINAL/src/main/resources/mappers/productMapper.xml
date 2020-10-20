@@ -8,43 +8,24 @@
 		INSERT INTO product(pname, image, price, uploaddate, deadlinedate, hitcount, ID, bestmoney, admin, category, auctionmenu, deal, moneyup) VALUES(#{pname},#{image},#{price},#{uploaddate},#{deadlinedate},#{hitcount},#{ID},#{bestmoney},#{admin},#{category},#{auctionmenu},#{deal},#{moneyup})
 	</insert>
 	
-<<<<<<< HEAD
-	<select id="selectAuction" resultType="com.yg.dto.ProductVo">
-		select * from product where auctionmenu='일반' order by uploaddate desc;
-=======
 	<select id="selectAuction" resultType="com.auction.vo.ProductVo">
->>>>>>> refs/remotes/origin/main
+		select * from product where auctionmenu='일반' order by uploaddate desc;
 	</select>
 
-<<<<<<< HEAD
-	<select id="selectAuctionBlind" resultType="com.yg.dto.ProductVo">
-		select * from product where auctionmenu='블라인드' order by uploaddate desc;
-=======
 	<select id="selectAuctionBlind" resultType="com.auction.vo.ProductVo">
->>>>>>> refs/remotes/origin/main
+		select * from product where auctionmenu='블라인드' order by uploaddate desc;
 	</select>
 		
-<<<<<<< HEAD
-	<select id="selectPop" resultType="com.yg.dto.ProductVo">
-		SELECT * FROM product order by hitcount desc;
-=======
 	<select id="selectPop" resultType="com.auction.vo.ProductVo">
->>>>>>> refs/remotes/origin/main
+		SELECT * FROM product order by hitcount desc;
 	</select>
-<<<<<<< HEAD
-	<select id="selectHurry" resultType="com.yg.dto.ProductVo">
-		SELECT *  from product order by (TIMESTAMPDIFF(day, NOW(), deadlinedate)+1) asc;
-=======
+
 	<select id="selectHurry" resultType="com.auction.vo.ProductVo">
->>>>>>> refs/remotes/origin/main
+		SELECT *  from product order by (TIMESTAMPDIFF(day, NOW(), deadlinedate)+1) asc;
 	</select>
 	
-<<<<<<< HEAD
-	<select id="selectOne" resultType="com.yg.dto.ProductVo">
-		SELECT * FROM product where pno=#{pno}
-=======
 	<select id="selectOne" resultType="com.auction.vo.ProductVo">
->>>>>>> refs/remotes/origin/main
+		SELECT * FROM product where pno=#{pno}
 	</select>
 	<update id="hitcountUp">
 	</update>
