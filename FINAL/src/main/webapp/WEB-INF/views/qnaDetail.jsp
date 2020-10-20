@@ -22,7 +22,7 @@
 		};
 		
 		$.ajax({
-			url:'http://localhost:8066/final/rest/writecomment',
+			url:'http://localhost:9091/final/rest/writecomment',
 			type:'post',
 			data :JSON.stringify(commentData),
 			//dataType:'json', 200에러일때 빼야함.. 400에러 url 405에러 post/get 415에러 contentType 필수속성
@@ -42,7 +42,7 @@
             }
 		});
 	}
-
+	
 	$(document).ready(function(){
 		$('.commentBtn').click(function(){
 			//alert(commentData["qbno"]);
@@ -54,16 +54,37 @@
 			var comment = $(this).parent().find("textarea#comment").val();
 			ajax_write(ref,level,step,comment);
 		})
-
+		$(".more").click(function(){
+			//$("#reCommentTable").toggle();
+			alert($(this).parent().attr('class'));
+			//$(this).parent().parent().find("table#reCommentTable").toggle();
+		});
+	    $("#comment").keydown(function(key) {
+	        //키의 코드가 13번일 경우 (13번은 엔터키)
+	        if (key.keyCode == 13) {
+	                //경고창을 출력한다.
+	          alert("엔터키를 눌렀습니다.");
+	        }
+	    });
 	});
-</script>
+		
 
+</script>
 <style>
 	#submenu{
 		/*visibility: hidden;*/
 	}
 	#opensubmenu >td{
 	}
+	#reComment{
+		display: none;
+	}
+	#more > a{
+		text-decoration: none;
+		
+	}
+	
+	
 </style>
 </head>
 <body>
@@ -79,26 +100,21 @@
 		</tr>
 	</table>
 	<br/>
+	
 	<table id="commentTable">
 		<c:forEach items="${comment}" var="comment">
-		<tr>
-		<td>${comment.comment}</td>
-		<td id="opensubmenu"><a href="#">답글작성</a>
-			<table id="reCommentTable">
-				<tr><td>ddd</td></tr>
-				<tr>
-				<td id="submenu">
-					<textarea rows="5" cols="50" id="comment"></textarea>
-					<input type="button" value="등록" id="commentBtn" class="commentBtn"/>
-					<input type="hidden" value="${comment.ref}" id="ref"/>
-					<input type="hidden" value="${comment.level+1}" id="level"/>
-					<input type="hidden" value="1" id="step"/>
-				</td></tr>
-			</table>
-		</td>
-		</tr>
+			<tr>
+				<c:if test="${comment.level eq 0}">
+				<td>${comment.comment}</td>	<!-- 댓글 -->
+				<td id="opensubmenu" class="sss">
+				<span id="more" class="more"><a>답글작성</a></span>
+				</td>
+				</c:if>
+			</tr>
 		</c:forEach>
 	</table>
+			
+			
 	<div id='dd'>
 		<textarea rows="5" cols="50" id="comment"></textarea>
 		<input type="button" value="등록" id="commentBtn" class="commentBtn"/>	<!-- level=0 -->
