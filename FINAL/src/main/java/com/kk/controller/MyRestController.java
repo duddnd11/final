@@ -24,12 +24,10 @@ public class MyRestController {
 		String ID = "아이디";
 		String comment  = param.get("comment");
 		String qbno =param.get("qbno");
-		System.out.println("comment:"+comment);
 		
-		int ref=Integer.parseInt(param.get("ref"));
+		int ref=Integer.parseInt(param.get("ref").trim());
 		int level=Integer.parseInt(param.get("level"));
 		int step=Integer.parseInt(param.get("step"));
-		System.out.println("ref:"+ref+", level:"+level+",step:"+step);
 		CommentVo vo = new CommentVo(Integer.parseInt(qbno),comment, ID,ref,level,step);
 		commentService.writeCommentService(vo);
 		int maxCno =commentService.selectMaxCnoService();

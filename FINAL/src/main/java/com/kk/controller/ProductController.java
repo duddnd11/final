@@ -2,6 +2,7 @@ package com.kk.controller;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -32,7 +33,8 @@ public class ProductController {
 		String filePath = session.getServletContext().getRealPath("/resources/images/");
 		MultipartFile[] arrMultipart = vo.getMultiparts();		
 		String[] arrFilename = new String[arrMultipart.length];		
-
+		String str ="";
+		
 		for(int i=0; i<=arrMultipart.length-1; i++) {
 			MultipartFile multipart = arrMultipart[i];
 			String filename = "(이름 없음)";
@@ -45,8 +47,8 @@ public class ProductController {
 			multipart.transferTo(file);
 		}
 		arrFilename[i] = filename;
-		
-		vo.setFilenames(arrFilename[i] += "_(!_");
+		str += arrFilename[i] += "_!_";
+		vo.setFilenames(str);
 		}
 		
 		SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
@@ -59,8 +61,14 @@ public class ProductController {
 			System.out.println("경매 등록!!!!");
 		}
 		model.addAttribute("result", result);
-		model.addAttribute("vo", vo);
 //		return "mypage";
+		
+		vo.setImg1(vo.getFilenames().split("_!_")[0]);
+		vo.setImg2(vo.getFilenames().split("_!_")[1]);
+				
+		List<ProductVo> list = service.selectAuctionBlind();
+		list.add(vo);
+		model.addAttribute("vo", list);
 		return "showAuctionBlind";
 	}
 	
@@ -76,21 +84,50 @@ public class ProductController {
 	
 	@RequestMapping(value="/showAuctionNormal")
 	public String showAuctionNormal(Model model) {
-		List<ProductVo> showNormal = service.selectAuction();
-		model.addAttribute("showNormal", showNormal);
+		List<ProductVo> list = service.selectAuction();
+		for(ProductVo vo : list) {
+			if(vo.getFilenames()!=null) {
+				vo.setImg1(vo.getFilenames().split("_!_")[0]);
+				vo.setImg2(vo.getFilenames().split("_!_")[1]);
+				vo.setImage(null);
+			} else {
+				vo.setImg1(null);
+				vo.setImg2(null);
+			}
+		}
+		model.addAttribute("list", list);
 		return "showAuctionNormal";
 	}
 	
 	@RequestMapping(value="/showAuctionBlind")
 	public String showAuctionBlind(Model model) {
-		List<ProductVo> showBlind = service.selectAuctionBlind();
-		model.addAttribute("showBlind", showBlind);
+		List<ProductVo> listShowBlind = service.selectAuctionBlind();
+	
+		for(ProductVo vo : listShowBlind) {
+			if(vo.getFilenames()!=null) {
+				vo.setImg1(vo.getFilenames().split("_!_")[0]);
+				vo.setImg2(vo.getFilenames().split("_!_")[1]);
+				vo.setImage(null);
+			} else {
+				vo.setImg1(null);
+				vo.setImg2(null);
+			}
+		}
+		model.addAttribute("voListShowBlind", listShowBlind);
 		return "showAuctionBlind";
 	}
 	
 	@RequestMapping(value="/showDetail")
 	public String showDetail(Model model, int pno) {
 		ProductVo vo = service.selectOne(pno);
+		if(vo.getFilenames()!=null) {
+			vo.setImg1(vo.getFilenames().split("_!_")[0]);
+			vo.setImg2(vo.getFilenames().split("_!_")[1]);
+			vo.setImage(null);
+		} else {
+			vo.setImg1(null);
+			vo.setImg2(null);
+		}
 		model.addAttribute("vo", vo);
 		return "showDetail";
 	}

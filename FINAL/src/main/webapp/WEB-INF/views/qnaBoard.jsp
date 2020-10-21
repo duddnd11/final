@@ -7,6 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>문의게시판</title>
+<style>
+	form{
+		display: contents;
+	}
+</style>
 </head>
 <body>
 	<table>
@@ -18,19 +23,38 @@
 		</tr>
 	</c:forEach>
 	</table>
-	<a href="qnaBoard?offset=${offset-100}&keyword=${keyword}"><<</a>
-	
+		<c:if test="${sp ne 0 }">
+			<!-- <a href="qnaBoard?offset=${offset-100}&keyword=${keyword}&searchMenu=${searchMenu}"><<</a> -->
+			<form action="qnaBoard">
+				<input type="submit" value="<<"/>
+				<input type="hidden" value="${offset-100}" name="offset"/>
+				<input type="hidden" value="${keyword}" name="keyword"/>
+				<input type="hidden" value="${searchMenu}" name="searchMenu"/>
+			</form>
+		</c:if>	
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
-		<a href="qnaBoard?offset=${i*10}">${i+1}</a>
+		<!-- <a href="qnaBoard?offset=${i*10}">${i+1}</a> -->
+		<form action="qnaBoard">
+			<input type="submit" value="${i+1}"/>
+			<input type="hidden" value="${i*10}" name="offset"/>
+			<input type="hidden" value="${keyword}" name="keyword"/>
+			<input type="hidden" value="${searchMenu}" name="searchMenu"/>
+		</form>
 	</c:forEach>
-		<c:if test="${(pageSize/10-pageSize%10) ne (startPage/10-startPage%10) }">
-			<a href="qnaBoard?offset=${offset+100}&keyword=${keyword}">>></a>
+		<c:if test="${ps ne sp }">
+			<form action="qnaBoard">
+				<!-- <a href="qnaBoard?offset=${offset+100}&keyword=${keyword}&searchMenu=${searchMenu}">>></a> -->
+				<input type="submit" value=">>"/>
+				<input type="hidden" value="${offset+100}" name="offset"/>
+				<input type="hidden" value="${keyword}" name="keyword"/>
+				<input type="hidden" value="${searchMenu}" name="searchMenu"/>
+			</form>
 		</c:if>
 	<br/>
 	
 	<form action="qnaBoard">
-		<select>
-			<option value="title">제목</option>		
+		<select name="searchMenu">
+			<option value="title" >제목</option>		
 			<option value="content">내용</option>		
 			<option value="writer">작성자</option>		
 		</select>
