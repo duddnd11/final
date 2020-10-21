@@ -56,7 +56,7 @@
 		})
 		$(".more").click(function(){
 			//$("#reCommentTable").toggle();
-			alert($(this).parent().attr('class'));
+			alert($(this).parent().parent().parent().attr('id'));
 			//$(this).parent().parent().find("table#reCommentTable").toggle();
 		});
 	    $("#comment").keydown(function(key) {
@@ -103,7 +103,7 @@
 	
 	<table id="commentTable">
 		<c:forEach items="${comment}" var="comment">
-			<tr>
+			<tr id="rrr">
 				<c:if test="${comment.level eq 0}">
 				<td>${comment.comment}</td>	<!-- 댓글 -->
 				<td id="opensubmenu" class="sss">
