@@ -7,4 +7,6 @@ import com.auction.vo.CommentVo;
 public interface CommentService {
 	public void writeCommentService(CommentVo vo);
 	public List<CommentVo> selectCommentService(int qbno);
+	public int selectMaxCnoService();
+	public void updateRefService(int cno);
 }

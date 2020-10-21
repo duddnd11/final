@@ -16,4 +16,22 @@
  	<select id="selectContent" resultType="com.auction.vo.QnaBoardVo">
  		SELECT * FROM qnaboard WHERE qbno=#{qbno}
  	</select>
+ 	<select id="searchTitle" resultType="com.auction.vo.QnaBoardVo">
+ 		SELECT * FROM qnaboard WHERE title LIKE CONCAT('%', #{keyword},'%') ORDER BY qbno DESC LIMIT 10 OFFSET #{offset}
+ 	</select>
+ 	<select id="searchContent" resultType="com.auction.vo.QnaBoardVo">
+ 		SELECT * FROM qnaboard WHERE content LIKE CONCAT('%', #{keyword},'%') ORDER BY qbno DESC LIMIT 10 OFFSET #{offset}
+ 	</select>
+ 	<select id="searchWriter" resultType="com.auction.vo.QnaBoardVo">
+ 		SELECT * FROM qnaboard WHERE ID LIKE CONCAT('%', #{keyword},'%') ORDER BY qbno DESC LIMIT 10 OFFSET #{offset}
+ 	</select>
+ 	<select id="searchTitleSize" resultType="com.auction.vo.QnaBoardVo">
+ 		SELECT * FROM qnaboard WHERE title LIKE CONCAT('%', #{keyword},'%')
+ 	</select>
+ 	<select id="searchContentSize" resultType="com.auction.vo.QnaBoardVo">
+ 		SELECT * FROM qnaboard WHERE content LIKE CONCAT('%', #{keyword},'%')
+ 	</select>
+ 	<select id="searchWriterSize" resultType="com.auction.vo.QnaBoardVo">
+ 		SELECT * FROM qnaboard WHERE ID LIKE CONCAT('%', #{keyword},'%')
+ 	</select>
  </mapper>

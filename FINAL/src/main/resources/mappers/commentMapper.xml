@@ -9,4 +9,10 @@
   	<select id="selectComment" resultType="com.auction.vo.CommentVo">
   		SELECT * FROM comment WHERE qbno=#{qbno}
   	</select>
+  	<select id="selectMaxCno" resultType="int">
+		SELECT MAX(cno) FROM comment;
+  	</select>
+  	<update id="updateRef">
+  		UPDATE comment SET ref=#{cno} WHERE cno=#{cno}
+  	</update>
   </mapper>

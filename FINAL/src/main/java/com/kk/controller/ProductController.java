@@ -1,11 +1,18 @@
 package com.kk.controller;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.auction.service.ProductService;
 import com.auction.vo.ProductVo;
@@ -20,14 +27,41 @@ public class ProductController {
 		return "applyProduct";
 	}
 	
-	@RequestMapping(value="/applyProductAction")
-	public String applyProductAction(ProductVo vo, Model model) {
+	@RequestMapping(value="/applyProductAction", method = RequestMethod.POST)
+	public String applyProductAction(ProductVo vo, Model model, HttpSession session) throws Exception{
+		String filePath = session.getServletContext().getRealPath("/resources/images/");
+		MultipartFile[] arrMultipart = vo.getMultiparts();		
+		String[] arrFilename = new String[arrMultipart.length];		
+
+		for(int i=0; i<=arrMultipart.length-1; i++) {
+			MultipartFile multipart = arrMultipart[i];
+			String filename = "(이름 없음)";
+			
+		if(!multipart.isEmpty()) {
+			filename = multipart.getOriginalFilename();
+			File file = new File(filePath, filename);
+			if(!file.exists())
+				file.mkdirs();
+			multipart.transferTo(file);
+		}
+		arrFilename[i] = filename;
+		
+		vo.setFilenames(arrFilename[i] += "_(!_");
+		}
+		
+		SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+		Date time = new Date();
+		String time1 = format1.format(time);
+		vo.setUploaddate(time1);
+		
 		int result = service.insertProduct(vo);
 		if(result == 1) {
 			System.out.println("경매 등록!!!!");
 		}
 		model.addAttribute("result", result);
-		return "mypage";
+		model.addAttribute("vo", vo);
+//		return "mypage";
+		return "showAuctionBlind";
 	}
 	
 	@RequestMapping(value="/main")

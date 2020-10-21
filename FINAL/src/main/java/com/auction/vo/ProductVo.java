@@ -2,9 +2,13 @@ package com.auction.vo;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProductVo {
 	private int pno;
 	private String pname;
+	private MultipartFile[] multiparts;
+	private String filenames;
 	private String image;
 	private int price; 
 	private String uploaddate; 
@@ -16,10 +20,14 @@ public class ProductVo {
 	private String category;
 	private String auctionmenu;
 	private int deal;
+	private int count;
+	private int timeout;
+	private int startmoney;
+	private int lastmoney;
+	private int moneyup;
 	
 	public ProductVo() {}
 
-	
 	
 	public ProductVo(String pname, String image, int price, String uploaddate, String deadlinedate, int hitcount,
 			String iD, int bestmoney, int admin, String category, String auctionmenu) {
@@ -68,7 +76,78 @@ public class ProductVo {
 	}
 
 	
-	
+
+
+	public String getFilenames() {
+		return filenames;
+	}
+
+
+	public void setFilenames(String filenames) {
+		this.filenames = filenames;
+	}
+
+
+	public MultipartFile[] getMultiparts() {
+		return multiparts;
+	}
+
+
+	public void setMultiparts(MultipartFile[] multiparts) {
+		this.multiparts = multiparts;
+	}
+
+
+	public int getCount() {
+		return count;
+	}
+
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+
+	public int getMoneyup() {
+		return moneyup;
+	}
+
+
+	public void setMoneyup(int moneyup) {
+		this.moneyup = moneyup;
+	}
+
+
+	public int getStartmoney() {
+		return startmoney;
+	}
+
+
+	public void setStartmoney(int startmoney) {
+		this.startmoney = startmoney;
+	}
+
+
+	public int getLastmoney() {
+		return lastmoney;
+	}
+
+
+	public void setLastmoney(int lastmoney) {
+		this.lastmoney = lastmoney;
+	}
+
+
+	public int getTimeout() {
+		return timeout;
+	}
+
+
+	public void setTimeout(int timeout) {
+		this.timeout = timeout;
+	}
+
+
 	public int getPno() {
 		return pno;
 	}

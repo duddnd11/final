@@ -1,9 +1,7 @@
 package com.kk.controller;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.auction.service.CommentService;
 import com.auction.service.QnaBoardService;
@@ -48,12 +45,30 @@ public class ServiceCenterController {
 //	}
 	
 	@RequestMapping(value="/qnaBoard")
-	public String qnaBoard(Model model,int offset) {
+	public String qnaBoard(Model model,int offset,String keyword,String searchMenu) {
+		//List<QnaBoardVo> list1 = qnaBoardService.searchKeyword(keyword);
 		if(offset<0) {
 			offset=0;
 		}
-		List<QnaBoardVo> list =qnaBoardService.selectBoard(offset);
-		List<QnaBoardVo> listAll = qnaBoardService.selectBoardAll();
+		System.out.println("써치:"+searchMenu);
+		System.out.println("키워드:"+keyword);
+		List<QnaBoardVo> list= null;
+		List<QnaBoardVo> listAll = null;
+		if((keyword == null && searchMenu ==null) || (keyword.equals("") && searchMenu.equals("")) ) {
+			list =qnaBoardService.selectBoard(offset);
+			listAll = qnaBoardService.selectBoardAll();
+		}else {
+			if(searchMenu.equals("title")) {
+				list = qnaBoardService.searchTitle(keyword,offset);	
+				listAll = qnaBoardService.searchTitleSize(keyword);
+			}else if(searchMenu.equals("content")) {
+				list = qnaBoardService.searchContent(keyword, offset);
+				listAll = qnaBoardService.searchContentSize(keyword);
+			}else if(searchMenu.equals("writer")) {
+				list = qnaBoardService.searchWriter(keyword, offset);
+				listAll = qnaBoardService.searchWriterSize(keyword);
+			}
+		}
 		int pageSize=0;
 		if(listAll.size()%10==0) {
 			pageSize=listAll.size()/10;
@@ -66,6 +81,10 @@ public class ServiceCenterController {
 		if(nowPage/10 == pageSize/10) {
 			endPage=pageSize-1;
 		}
+		model.addAttribute("searchMenu", searchMenu);
+		model.addAttribute("ps",pageSize/10);
+		model.addAttribute("sp",startPage/10);
+		model.addAttribute("keyword", keyword);
 		model.addAttribute("offset", offset);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
@@ -78,10 +97,10 @@ public class ServiceCenterController {
 	public String content(Model model,int qbno) {
 		QnaBoardVo vo =qnaBoardService.selectContent(qbno);
 		List<CommentVo> commentList = commentService.selectCommentService(qbno);
-		List<CommentVo> reCommentList = null;
+		List<CommentVo> reCommentList = new ArrayList<CommentVo>();
 		for(CommentVo comment : commentList) {
 			if(comment.getLevel()==1) {
-				reCommentList = commentList;
+				reCommentList.add(comment);
 			}
 		}
 		model.addAttribute("reComment",reCommentList);
