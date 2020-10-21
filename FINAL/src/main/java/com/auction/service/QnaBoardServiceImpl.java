@@ -32,4 +32,14 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 	public List<QnaBoardVo> selectBoardAll() {
 		return dao.selectBoardAll();
 	}
+
+	@Override
+	public List<QnaBoardVo> searchKeyword(String keyword,int offset) {
+		return dao.searchKeyword(keyword,offset);
+	}
+
+	@Override
+	public List<QnaBoardVo> keywordSize(String keyword) {
+		return dao.keywordSize(keyword);
+	}
 }

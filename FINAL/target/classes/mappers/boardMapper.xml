@@ -16,4 +16,10 @@
  	<select id="selectContent" resultType="com.auction.vo.QnaBoardVo">
  		SELECT * FROM qnaboard WHERE qbno=#{qbno}
  	</select>
+ 	<select id="searchKeyword" resultType="com.auction.vo.QnaBoardVo">
+ 		SELECT * FROM qnaboard WHERE title LIKE CONCAT('%', #{keyword},'%') ORDER BY qbno DESC LIMIT 10 OFFSET #{offset}
+ 	</select>
+ 	<select id="keywordSize" resultType="com.auction.vo.QnaBoardVo">
+ 		SELECT * FROM qnaboard WHERE title LIKE CONCAT('%', #{keyword},'%')
+ 	</select>
  </mapper>

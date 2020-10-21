@@ -32,7 +32,9 @@ public class MyRestController {
 		System.out.println("ref:"+ref+", level:"+level+",step:"+step);
 		CommentVo vo = new CommentVo(Integer.parseInt(qbno),comment, ID,ref,level,step);
 		commentService.writeCommentService(vo);
-//		List<CommentVo> list =commentService.selectCommentService(2);
+		int maxCno =commentService.selectMaxCnoService();
+		commentService.updateRefService(maxCno);
+		vo = new CommentVo(Integer.parseInt(qbno),comment, ID,maxCno,level,step);
 		return vo;
 	}
 }

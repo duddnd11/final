@@ -9,4 +9,6 @@ public interface QnaBoardService {
 	public List<QnaBoardVo> selectBoard(int offset);
 	public QnaBoardVo selectContent(int qbno);
 	public List<QnaBoardVo> selectBoardAll();
+	public List<QnaBoardVo> searchKeyword(String keyword,int offset);
+	public List<QnaBoardVo> keywordSize(String keyword);
 }

@@ -9,11 +9,7 @@
 	</insert>
 	
 	<select id="selectAuction" resultType="com.auction.vo.ProductVo">
-<<<<<<< HEAD
 		select * from product where auctionmenu='일반' order by uploaddate desc;
-=======
-		select * from product where auctionmenu='일반' order by uploaddate desc;
->>>>>>> refs/remotes/origin/main
 	</select>
 
 	<select id="selectAuctionBlind" resultType="com.auction.vo.ProductVo">
@@ -23,12 +19,8 @@
 	<select id="selectPop" resultType="com.auction.vo.ProductVo">
 		SELECT * FROM product order by hitcount desc;
 	</select>
-<<<<<<< HEAD
-	<select id="selectHurry" resultType="com.auction.vo.ProductVo">
-=======
 
 	<select id="selectHurry" resultType="com.auction.vo.ProductVo">
->>>>>>> refs/remotes/origin/main
 		SELECT *  from product order by (TIMESTAMPDIFF(day, NOW(), deadlinedate)+1) asc;
 	</select>
 	

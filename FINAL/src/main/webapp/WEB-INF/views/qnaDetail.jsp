@@ -22,7 +22,7 @@
 		};
 		
 		$.ajax({
-			url:'http://localhost:9091/final/rest/writecomment',
+			url:'http://localhost:8066/final/rest/writecomment',
 			type:'post',
 			data :JSON.stringify(commentData),
 			//dataType:'json', 200에러일때 빼야함.. 400에러 url 405에러 post/get 415에러 contentType 필수속성
@@ -30,11 +30,24 @@
 			success : function(response){
 				//alert("성공");
 				//comment = response;
-				var str="";
-				str+="<tr>";
-				str+="<td>"+response.comment+"</td>";
-				str+="</tr>";
-				$("#commentTable").append(str);
+				if(response.level==0){
+					var str="<li class='topLi>'";
+					str+="<div class='commentDiv'>"+response.comment+"</div>";
+					str+="<div class='reCommentWrite'><span id='more' class='more'>답글작성</span></div>";
+
+					str+="<div class='openReComment'>";
+					str+="<textarea rows='5' cols='50' id='comment' class='comment'></textarea>";
+					str+="<input type='button' value='등록' id='commentBtn' class='commentBtn'/>";
+					str+="<input type='hidden' value='1' id='level'/>";
+					str+="<input type='hidden' value='1' id='step'/>";
+					str+="</div>";
+					
+					str+="</li>";
+					$(".topUl").append(str);
+				}else if(response.level==1){
+					var str="<div class='reComment'>→"+response.comment+"</div>"
+					$(".reCommentMenu").append(str);
+				}
 			},
 			error :function(xhr, status, error) {
                 alert("에러!");
@@ -47,7 +60,6 @@
 		$('.commentBtn').click(function(){
 			//alert(commentData["qbno"]);
 			//alert($("#qbno").val()+","+$("#comment").val());//잘뜬다....
-			//alert($(this).parent().find("input#ref").val());
 			var ref= $(this).parent().find("input#ref").val();
 			var	level =$(this).parent().find("input#level").val();
 			var	step= $(this).parent().find("input#step").val();
@@ -56,14 +68,18 @@
 		})
 		$(".more").click(function(){
 			//$("#reCommentTable").toggle();
-			alert($(this).parent().attr('class'));
-			//$(this).parent().parent().find("table#reCommentTable").toggle();
+			//alert($(this).parent().parent().attr("class"));
+			$(this).parent().parent().find("div.openReComment").toggle();
 		});
-	    $("#comment").keydown(function(key) {
+	    $(".comment").keydown(function(key) {
 	        //키의 코드가 13번일 경우 (13번은 엔터키)
 	        if (key.keyCode == 13) {
-	                //경고창을 출력한다.
-	          alert("엔터키를 눌렀습니다.");
+	          var ref= $(this).parent().find("input#ref").val();
+				var ref= $(this).parent().find("input#ref").val();
+				var	level =$(this).parent().find("input#level").val();
+				var	step= $(this).parent().find("input#step").val();
+				var comment = $(this).parent().find("textarea#comment").val();
+				ajax_write(ref,level,step,comment);
 	        }
 	    });
 	});
@@ -83,6 +99,12 @@
 		text-decoration: none;
 		
 	}
+	ul{
+		list-style: none;
+	}
+	.openReComment{
+		display : none;
+	}
 	
 	
 </style>
@@ -90,33 +112,50 @@
 <body>
 	<table>
 		<tr>
+		<td>글번호</td>
 		<td>${detail.qbno}</td>		
 		</tr>
 		<tr>
+		<td>제목</td>
 		<td>${detail.title}</td>
 		</tr>
 		<tr>
+		<td>내용</td>
 		<td>${detail.content}</td>
 		</tr>
 	</table>
 	<br/>
 	
-	<table id="commentTable">
+	
+	<ul class="topUl">
 		<c:forEach items="${comment}" var="comment">
-			<tr>
-				<c:if test="${comment.level eq 0}">
-				<td>${comment.comment}</td>	<!-- 댓글 -->
-				<td id="opensubmenu" class="sss">
-				<span id="more" class="more"><a>답글작성</a></span>
-				</td>
+			<li class="topLi">
+				<c:if test="${comment.level eq 0 }">
+					<div class="commentDiv">${comment.comment}</div>
+					<div class="reCommentWrite"><span id="more" class="more">답글작성</span></div>
+					
+				
+					<div class="openReComment">
+					<div class="reCommentMenu">
+						<c:forEach items="${reComment}" var="reComment">
+							<c:if test="${comment.cno eq reComment.ref}">
+								<div class="reComment">→${reComment.comment}</div>
+							</c:if>
+						</c:forEach>
+					</div>
+						<textarea rows="5" cols="50" id="comment" class="comment"></textarea>
+						<input type="button" value="등록" id="commentBtn" class="commentBtn"/>
+						<input type="hidden" value="${comment.cno}" id="ref"/>
+						<input type="hidden" value="${comment.level+1}" id="level"/>
+						<input type="hidden" value="1" id="step"/>
+					</div>
 				</c:if>
-			</tr>
+			</li>
 		</c:forEach>
-	</table>
-			
-			
-	<div id='dd'>
-		<textarea rows="5" cols="50" id="comment"></textarea>
+	</ul>
+	
+	<div class='dd'>
+		<textarea rows="5" cols="50" id="comment" class="comment"></textarea>
 		<input type="button" value="등록" id="commentBtn" class="commentBtn"/>	<!-- level=0 -->
 		<input type="hidden" value="0" id="ref"/>
 		<input type="hidden" value="0" id="level"/>
