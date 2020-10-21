@@ -3,13 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.yg.mapper.ProductMapper">
+<mapper namespace="com.auction.mapper.ProductMapper">
 	<insert id="insertProduct">
 		INSERT INTO product(pname, image, filenames, price, uploaddate, deadlinedate, hitcount, ID, bestmoney, admin, category, auctionmenu, deal, moneyup) VALUES(#{pname},#{image},#{filenames},#{price},#{uploaddate},#{deadlinedate},#{hitcount},#{ID},#{bestmoney},#{admin},#{category},#{auctionmenu},#{deal},#{moneyup})
 	</insert>
 	
 	<select id="selectAuction" resultType="com.auction.vo.ProductVo">
+<<<<<<< HEAD
 		select * from product where auctionmenu='일반' order by uploaddate desc;
+=======
+		select * from product where auctionmenu='일반' order by uploaddate desc;
+>>>>>>> refs/remotes/origin/main
 	</select>
 
 	<select id="selectAuctionBlind" resultType="com.auction.vo.ProductVo">
@@ -21,13 +25,18 @@
 	</select>
 
 	<select id="selectHurry" resultType="com.auction.vo.ProductVo">
+<<<<<<< HEAD
+		SELECT * from product order by (TIMESTAMPDIFF(day, NOW(), deadlinedate)+1) asc;
+=======
 		SELECT *  from product order by (TIMESTAMPDIFF(day, NOW(), deadlinedate)+1) asc;
+>>>>>>> refs/remotes/origin/main
 	</select>
 	
 	<select id="selectOne" resultType="com.auction.vo.ProductVo">
 		SELECT * FROM product where pno=#{pno}
 	</select>
 	<update id="hitcountUp">
+		update product set hitcount= hitcount+1 where pno=#{pno}
 	</update>
 	
 	<update id="timeout">
