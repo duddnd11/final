@@ -77,14 +77,14 @@ public class ProductController {
 	@RequestMapping(value="/showAuctionNormal")
 	public String showAuctionNormal(Model model) {
 		List<ProductVo> showNormal = service.selectAuction();
-		model.addAttribute("showNormal", showNormal);
+		model.addAttribute("vo", showNormal);
 		return "showAuctionNormal";
 	}
 	
 	@RequestMapping(value="/showAuctionBlind")
 	public String showAuctionBlind(Model model) {
 		List<ProductVo> showBlind = service.selectAuctionBlind();
-		model.addAttribute("showBlind", showBlind);
+		model.addAttribute("vo", showBlind);
 		return "showAuctionBlind";
 	}
 	

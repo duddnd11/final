@@ -51,5 +51,6 @@
 	<bean id="qnaBoardDao" class="com.auction.dao.QnaBoardDaoImpl"></bean>
 	<bean id="commentDao" class="com.auction.dao.CommentDaoImpl"></bean>
 	<bean id="productDao" class="com.auction.dao.ProductDaoImpl"/>
+	<bean id="adminDao" class="com.auction.dao.AdminDaoImpl"/>
 	<context:component-scan base-package="com.auction.service" />
 </beans>
