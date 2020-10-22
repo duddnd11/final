@@ -46,12 +46,9 @@ public class ServiceCenterController {
 	
 	@RequestMapping(value="/qnaBoard")
 	public String qnaBoard(Model model,int offset,String keyword,String searchMenu) {
-		//List<QnaBoardVo> list1 = qnaBoardService.searchKeyword(keyword);
 		if(offset<0) {
 			offset=0;
 		}
-		System.out.println("써치:"+searchMenu);
-		System.out.println("키워드:"+keyword);
 		List<QnaBoardVo> list= null;
 		List<QnaBoardVo> listAll = null;
 		if((keyword == null && searchMenu ==null) || (keyword.equals("") && searchMenu.equals("")) ) {
@@ -67,6 +64,9 @@ public class ServiceCenterController {
 			}else if(searchMenu.equals("writer")) {
 				list = qnaBoardService.searchWriter(keyword, offset);
 				listAll = qnaBoardService.searchWriterSize(keyword);
+			}else if(searchMenu.equals("titleAndContent")) {
+				list = qnaBoardService.searchTitleAndContent(keyword, offset);
+				listAll = qnaBoardService.searchTitleAndContentSize(keyword);
 			}
 		}
 		int pageSize=0;
@@ -96,6 +96,7 @@ public class ServiceCenterController {
 	@RequestMapping(value="/qnaDetail")
 	public String content(Model model,int qbno) {
 		QnaBoardVo vo =qnaBoardService.selectContent(qbno);
+		qnaBoardService.updateHitcount(qbno);
 		List<CommentVo> commentList = commentService.selectCommentService(qbno);
 		List<CommentVo> reCommentList = new ArrayList<CommentVo>();
 		for(CommentVo comment : commentList) {
@@ -118,12 +119,26 @@ public class ServiceCenterController {
 	public String qnaWriteAction(QnaBoardVo vo,Model model) {
 		vo.setID("qq");
 		qnaBoardService.wirteBoardService(vo);
-		List<QnaBoardVo> list =qnaBoardService.selectBoard(0);
-		model.addAttribute("offset", 0);
-		model.addAttribute("startPage", 0);
-		model.addAttribute("endPage", 9);
-		model.addAttribute("qnaBoard", list);
-		return "qnaBoard";
+		List<QnaBoardVo> list =qnaBoardService.selectBoardAll();
+		int qbno = list.get(0).getQbno();
+		QnaBoardVo detail = qnaBoardService.selectContent(qbno);
+		List<CommentVo> commentList = commentService.selectCommentService(qbno);
+		List<CommentVo> reCommentList = new ArrayList<CommentVo>();
+		for(CommentVo comment : commentList) {
+			if(comment.getLevel()==1) {
+				reCommentList.add(comment);
+			}
+		}
+		model.addAttribute("reComment",reCommentList);
+		model.addAttribute("comment", commentList);
+		model.addAttribute("detail", detail);
+		
+//		List<QnaBoardVo> list =qnaBoardService.selectBoard(0);
+//		model.addAttribute("offset", 0);
+//		model.addAttribute("startPage", 0);
+//		model.addAttribute("endPage", 9);
+//		model.addAttribute("qnaBoard", list);
+		return "qnaDetail";
 	}
 }
 

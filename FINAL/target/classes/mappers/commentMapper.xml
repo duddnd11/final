@@ -15,4 +15,7 @@
   	<update id="updateRef">
   		UPDATE comment SET ref=#{cno} WHERE cno=#{cno}
   	</update>
+  	<select id="topComment" resultType="com.auction.vo.CommentVo">
+  		SELECT * FROM comment WHERE cno=#{cno}
+  	</select>
   </mapper>

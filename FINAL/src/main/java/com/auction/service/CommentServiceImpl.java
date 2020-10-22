@@ -32,4 +32,9 @@ public class CommentServiceImpl implements CommentService {
 	public void updateRefService(int cno) {
 		dao.updateRef(cno);
 	}
+
+	@Override
+	public CommentVo topComment(int maxCno) {
+		return dao.topComment(maxCno);
+	}
 }

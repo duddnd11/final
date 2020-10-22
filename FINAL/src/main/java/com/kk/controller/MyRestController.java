@@ -25,14 +25,18 @@ public class MyRestController {
 		String comment  = param.get("comment");
 		String qbno =param.get("qbno");
 		
-		int ref=Integer.parseInt(param.get("ref").trim());
+		int ref=Integer.parseInt(param.get("ref"));
 		int level=Integer.parseInt(param.get("level"));
 		int step=Integer.parseInt(param.get("step"));
+		
 		CommentVo vo = new CommentVo(Integer.parseInt(qbno),comment, ID,ref,level,step);
 		commentService.writeCommentService(vo);
 		int maxCno =commentService.selectMaxCnoService();
-		commentService.updateRefService(maxCno);
-		vo = new CommentVo(Integer.parseInt(qbno),comment, ID,maxCno,level,step);
+		if(ref==0) {
+			commentService.updateRefService(maxCno);
+			vo.setRef(maxCno);
+		}
+		vo = commentService.topComment(maxCno);
 		return vo;
 	}
 }

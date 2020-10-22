@@ -32,7 +32,7 @@
 				//comment = response;
 				if(response.level==0){
 					var str="<li class='topLi>'";
-					str+="<div class='commentDiv'>"+response.comment+"</div>";
+					str+="<div class='commentDiv'>"+response.comment+" "+response.date+"</div>";
 					str+="<div class='reCommentWrite'><span id='more' class='more'>답글작성</span></div>";
 					str+="<div class='openReComment'>";
 					str+="<div class='reCommentMenu'></div>";
@@ -42,11 +42,10 @@
 					str+="<input type='hidden' value='"+(response.level+1)+"' id='level'/>";
 					str+="<input type='hidden' value='1' id='step'/>";
 					str+="</div>";
-					
 					str+="</li>";
 					$(".topUl").append(str);
 				}else if(response.level==1){
-					var	str="<div class='reComment'>→"+response.comment+"</div>";
+					var	str="<div class='reComment'>→"+response.comment+" "+response.date+"</div>";
 					$(".reCommentMenu").append(str);
 				}
 			},
@@ -140,12 +139,20 @@
 		<td>${detail.qbno}</td>		
 		</tr>
 		<tr>
+		<td>날짜</td>
+		<td>${detail.date}</td>
+		</tr>
+		<tr>
 		<td>제목</td>
 		<td>${detail.title}</td>
 		</tr>
 		<tr>
 		<td>내용</td>
 		<td>${detail.content}</td>
+		</tr>
+		<tr>
+		<td>조회수</td>
+		<td>${detail.hitcount}</td>
 		</tr>
 	</table>
 	<br/>
@@ -155,7 +162,8 @@
 		<c:forEach items="${comment}" var="comment">
 			<li class="topLi">
 				<c:if test="${comment.level eq 0 }">
-					<div class="commentDiv">${comment.comment}</div>
+					<div class="commentDiv">${comment.comment}
+					${comment.date }</div>
 					<div class="reCommentWrite"><span id="more" class="more">답글작성</span></div>
 					
 				
@@ -163,7 +171,9 @@
 					<div class="reCommentMenu">
 						<c:forEach items="${reComment}" var="reComment">
 							<c:if test="${comment.cno eq reComment.ref}">
-								<div class="reComment">→${reComment.comment}</div>
+								<div class="reComment">→${reComment.comment}
+								${reComment.date}
+								</div>
 							</c:if>
 						</c:forEach>
 					</div>
@@ -185,6 +195,7 @@
 		<input type="hidden" value="0" id="level"/>
 		<input type="hidden" value="0" id="step"/>
 	</div>
+		<input type="button" value="목록" id="board" onclick="location.href='qnaBoard?offset=0'"/>
 		<input type="hidden" value="${detail.qbno}" id="qbno"/>
 </body>
 </html>

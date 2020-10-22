@@ -9,17 +9,28 @@
 <title>문의게시판</title>
 <style>
 	form{
-		display: contents;
+		display: inline;
 	}
 </style>
 </head>
 <body>
+	<c:choose>
+	<c:when test="${endPage >0 }">
 	<table>
+		<tr>
+			<td>글번호</td>
+			<td>글제목</td>
+			<td>작성자</td>
+			<td>날짜</td>
+			<td>조회수</td>
+		</tr>
 	<c:forEach var="qnaBoard" items="${qnaBoard}">
 		<tr>
 			<td>${qnaBoard.qbno}</td>
 			<td><a href="qnaDetail?qbno=${qnaBoard.qbno}">${qnaBoard.title}</a></td>
 			<td>${qnaBoard.ID}</td>
+			<td>${qnaBoard.date}</td>
+			<td>${qnaBoard.hitcount}</td>
 		</tr>
 	</c:forEach>
 	</table>
@@ -43,19 +54,24 @@
 	</c:forEach>
 		<c:if test="${ps ne sp }">
 			<form action="qnaBoard">
-				<!-- <a href="qnaBoard?offset=${offset+100}&keyword=${keyword}&searchMenu=${searchMenu}">>></a> -->
+				<!--  <a href="qnaBoard?offset=${offset+100}&keyword=${keyword}&searchMenu=${searchMenu}">>></a>-->
 				<input type="submit" value=">>"/>
 				<input type="hidden" value="${offset+100}" name="offset"/>
 				<input type="hidden" value="${keyword}" name="keyword"/>
 				<input type="hidden" value="${searchMenu}" name="searchMenu"/>
 			</form>
 		</c:if>
+	</c:when>
+	<c:otherwise>
+		찾으시는 게시글이 없습니다.
+	</c:otherwise>
+	</c:choose>
 	<br/>
-	
 	<form action="qnaBoard">
 		<select name="searchMenu">
+			<option value="titleAndContent">제목+내용</option>	
 			<option value="title" >제목</option>		
-			<option value="content">내용</option>		
+			<option value="content">내용</option>	
 			<option value="writer">작성자</option>		
 		</select>
 		<input type="hidden" name="offset" value="0"/>

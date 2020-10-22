@@ -11,11 +11,14 @@
  		SELECT * FROM qnaboard ORDER BY qbno DESC LIMIT 10 OFFSET #{offset}
  	</select>
  	<select id="selectBoardAll" resultType="com.auction.vo.QnaBoardVo">
- 		SELECT * FROM qnaboard
+ 		SELECT * FROM qnaboard ORDER BY qbno DESC
  	</select>
  	<select id="selectContent" resultType="com.auction.vo.QnaBoardVo">
  		SELECT * FROM qnaboard WHERE qbno=#{qbno}
  	</select>
+ 	<update id="updateHitcount">
+ 		UPDATE qnaboard SET hitcount=hitcount+1 WHERE qbno=#{qbno}
+ 	</update>
  	<select id="searchTitle" resultType="com.auction.vo.QnaBoardVo">
  		SELECT * FROM qnaboard WHERE title LIKE CONCAT('%', #{keyword},'%') ORDER BY qbno DESC LIMIT 10 OFFSET #{offset}
  	</select>
@@ -25,6 +28,9 @@
  	<select id="searchWriter" resultType="com.auction.vo.QnaBoardVo">
  		SELECT * FROM qnaboard WHERE ID LIKE CONCAT('%', #{keyword},'%') ORDER BY qbno DESC LIMIT 10 OFFSET #{offset}
  	</select>
+ 	<select id="searchTitleAndContent" resultType="com.auction.vo.QnaBoardVo">
+ 		SELECT * FROM qnaboard WHERE title LIKE CONCAT('%', #{keyword},'%') OR content LIKE CONCAT('%', #{keyword},'%') ORDER BY qbno DESC LIMIT 10 OFFSET #{offset}
+ 	</select>
  	<select id="searchTitleSize" resultType="com.auction.vo.QnaBoardVo">
  		SELECT * FROM qnaboard WHERE title LIKE CONCAT('%', #{keyword},'%')
  	</select>
@@ -33,5 +39,8 @@
  	</select>
  	<select id="searchWriterSize" resultType="com.auction.vo.QnaBoardVo">
  		SELECT * FROM qnaboard WHERE ID LIKE CONCAT('%', #{keyword},'%')
+ 	</select>
+ 	<select id="searchTitleAndContentSize" resultType="com.auction.vo.QnaBoardVo">
+ 		SELECT * FROM qnaboard WHERE title LIKE CONCAT('%', #{keyword},'%') OR content LIKE CONCAT('%', #{keyword},'%')
  	</select>
  </mapper>

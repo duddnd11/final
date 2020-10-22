@@ -47,6 +47,11 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 	public List<QnaBoardVo> searchWriterSize(String keyword) {
 		return dao.searchWriterSize(keyword);
 	}
+	
+	@Override
+	public List<QnaBoardVo> searchTitleAndContentSize(String keyword) {
+		return dao.searchTitleAndContentSize(keyword);
+	}
 
 	@Override
 	public List<QnaBoardVo> searchTitle(String keyword,int offset) {
@@ -62,5 +67,16 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 	@Override
 	public List<QnaBoardVo> searchWriter(String keyword, int offset) {
 		return dao.searchWriter(keyword, offset);
+	}
+
+
+	@Override
+	public List<QnaBoardVo> searchTitleAndContent(String keyword, int offset) {
+		return dao.searchTitleAndContent(keyword, offset);
+	}
+
+	@Override
+	public void updateHitcount(int qbno) {
+		dao.updateHitCount(qbno);
 	}
 }
