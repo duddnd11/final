@@ -8,12 +8,16 @@ public class CommentVo {
 	private int level;
 	private int ref;
 	private int step;
+	private String date;
 	
 	public CommentVo() {}
-	public CommentVo(int qbno, String comment, String iD) {
+	public CommentVo(int qbno, String comment, String iD,int ref, int level, int step) {
 		this.qbno = qbno;
 		this.comment = comment;
 		ID = iD;
+		this.ref=ref;
+		this.level=level;
+		this.step=step;
 	}
 	public int getCno() {
 		return cno;
@@ -70,6 +74,13 @@ public class CommentVo {
 	public void setStep(int step) {
 		this.step = step;
 	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
 	
 	
 }

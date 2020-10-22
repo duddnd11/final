@@ -17,7 +17,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		
 		return "home";
 	}
 	@RequestMapping(value = "/popup")
@@ -48,26 +47,7 @@ public class HomeController {
 		
 		return "pwcheck";
 	}
-	@RequestMapping(value = "/admin")
-	public String admin() {
-		
-		return "admin";
-	}
-	@RequestMapping(value = "/admin/customer")
-	public String customer() {
-		
-		return "customer";
-	}
-	@RequestMapping(value = "/admin/customer/info")
-	public String info() {
-		
-		return "customerinfo";
-	}
-	@RequestMapping(value = "/admin/item")
-	public String item() {
-		
-		return "itemmanager";
-	}
+
 	@RequestMapping(value = "/admin/chat")
 	public String chat() {
 		

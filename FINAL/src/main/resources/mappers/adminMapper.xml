@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.auction.mapper.AdminMapper">
+	<!-- member 
+	<select id="showMember" resultType="com.auction.vo.MemberVo">
+		SELECT * FROM member order by pno desc;
+	</select>
+	-->
+
+
+	<!-- product -->
+	<select id="adminProduct" resultType="com.auction.vo.ProductVo">
+		select * from product where admin=#{admin} and deal=#{deal} order by uploaddate desc;
+	</select>
+	<select id="showProduct" resultType="com.auction.vo.ProductVo">
+		SELECT * FROM product order by pno desc;
+	</select>
+</mapper>

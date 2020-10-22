@@ -20,4 +20,19 @@ public class CommentDaoImpl implements CommentDao{
 	public List<CommentVo> selectComment(int qbno) {
 		return sqlSession.selectList("com.auction.mapper.CommentMapper.selectComment", qbno);
 	}
+
+	@Override
+	public int selectMaxCno() {
+		return sqlSession.selectOne("com.auction.mapper.CommentMapper.selectMaxCno");
+	}
+
+	@Override
+	public void updateRef(int cno) {
+		sqlSession.update("com.auction.mapper.CommentMapper.updateRef",cno);
+	}
+
+	@Override
+	public CommentVo topComment(int maxCno) {
+		return sqlSession.selectOne("com.auction.mapper.CommentMapper.topComment", maxCno);
+	}
 }

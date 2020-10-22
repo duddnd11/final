@@ -21,10 +21,20 @@ public class EchoHandler extends TextWebSocketHandler{
 //		Map<String,Object> map = session.getAttributes();
 //		System.out.println(map.get("�븘�씠�뵒"));
 		sessionList.add(session);
+<<<<<<< HEAD
 //		sessionList.add((WebSocketSession) map.get("�븘�씠�뵒"));
 		logger.info("{} �뿰寃곕맖",session.getId());
 		System.out.println("�엯�옣:"+session.getId());
 //		System.out.println("梨꾪똿諛� �엯�옣�옄 : "+ session.getPrincipal().getName());
+=======
+//		sessionList.add((WebSocketSession) map.get("아이디"));
+		logger.info("{} 연결됨",session.getId());
+		System.out.println("입장:"+session.getId());
+//		System.out.println("채팅방 입장자 : "+ session.getPrincipal().getName());
+		for(int i=0; i<sessionList.size();i++) {
+			System.out.println(sessionList.get(i));
+		}
+>>>>>>> refs/remotes/origin/main
 	}
 	// �쎒 �냼耳� �꽌踰꾨줈 �뜲�씠�꽣 �쟾�넚
 	@Override
