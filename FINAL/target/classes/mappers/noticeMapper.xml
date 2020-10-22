@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.auction.mapper.NoticeMapper">
+ 	<select id="selectBoard" resultType="com.auction.vo.NoticeVo">
+ 		SELECT * FROM notice ORDER BY nbo DESC LIMIT 10 OFFSET #{offset}
+ 	</select>
+ 	<select id="selectBoardAll" resultType="com.auction.vo.NoticeVo">
+ 		SELECT * FROM notice ORDER BY nbo DESC
+ 	</select>
+ 	<select id="selectContent" resultType="com.auction.vo.NoticeVo">
+ 		SELECT * FROM notice WHERE nbo=#{nbo}
+ 	</select>
+ 	<update id="updateHitcount">
+ 		UPDATE notice SET hitcount=hitcount+1 WHERE nbo=#{nbo}
+ 	</update>
+ </mapper>

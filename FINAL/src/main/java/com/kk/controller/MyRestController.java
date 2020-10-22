@@ -9,14 +9,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.auction.service.AdminService;
 import com.auction.service.CommentService;
 import com.auction.vo.CommentVo;
+import com.auction.vo.ProductVo;
 
 @RestController
 @RequestMapping(value="/rest", produces="application/json; charset=utf-8")
 public class MyRestController {
 	@Autowired
 	CommentService commentService;
+	@Autowired
+	AdminService adminService;
 	
 	@RequestMapping(value="/writecomment")
 	@ResponseBody
@@ -39,4 +43,22 @@ public class MyRestController {
 		vo = commentService.topComment(maxCno);
 		return vo;
 	}
+	
+	
+	@RequestMapping(value = "/admin/itemadmin")
+	@ResponseBody
+	public List<ProductVo> itemadmin(@RequestBody Map<String, String> param) {
+		int admin = Integer.parseInt(param.get("admin"));
+		List<ProductVo> list = adminService.adminProduct(admin);
+		return list;
+	}
+	@RequestMapping(value = "/admin/itemmanager")
+	@ResponseBody
+	public List<ProductVo> itemmanager(@RequestBody Map<String, String> param) {
+		int admin = Integer.parseInt(param.get("admin"));
+		int deal = Integer.parseInt(param.get("deal"));
+		List<ProductVo> list = adminService.dealProduct(admin, deal);
+		return list;
+	}
+	
 }

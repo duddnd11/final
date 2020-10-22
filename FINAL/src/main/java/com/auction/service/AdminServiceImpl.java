@@ -12,14 +12,20 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	AdminDao dao;
 	
-	@Override
-	public List<ProductVo> adminProduct(int admin, int deal) {
-		return dao.adminProduct(admin, deal);
-	}
 
 	@Override
 	public List<ProductVo> showProduct() {
 		return dao.showProduct();
+	}
+
+	@Override
+	public List<ProductVo> dealProduct(int admin, int deal) {
+		return dao.dealProduct(admin, deal);
+	}
+
+	@Override
+	public List<ProductVo> adminProduct(int admin) {
+		return dao.adminProduct(admin);
 	}
 
 }
