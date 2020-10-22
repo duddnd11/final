@@ -14,14 +14,19 @@
 	}
 </style>
 <body>
-	<h3>인기순</h3>
-	<c:forEach begin="0" end="4" var="showPop" items="${showPop }">
-		<a href="showDetail?pno=${showPop.pno }"><img src="${showPop.image }"/></a>
-	</c:forEach>
-	
-	<h3>시간촉박순</h3>
-	<c:forEach var="showHurry" items="${showHurry }">
-		<a href="showDetail?pno=${showHurry.pno }"><img src="${showHurry.image }"/></a>
+	카테고리 --왼쪽에
+	<c:forEach var="vo" items="${list }">
+		상품 이름: ${vo.pname }<br/>
+		마감날: ${vo.deadlinedate }<br/>
+		조회수: ${vo.hitcount }<br/>
+		입찰수 ${vo.count }<br/>
+		<c:if test="${vo.image ne null }">
+			<a href="showDetail?pno=${vo.pno }"><img src="${vo.image }"/></a>	
+		</c:if>
+		<c:if test="${vo.image eq null }">
+			<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img1 }"/></a> 
+			<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img2 }"/></a> <br/>
+		</c:if>
 	</c:forEach>
 </body>
 </html>

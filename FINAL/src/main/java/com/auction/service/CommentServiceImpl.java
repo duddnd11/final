@@ -22,4 +22,19 @@ public class CommentServiceImpl implements CommentService {
 	public List<CommentVo> selectCommentService(int qbno) {
 		return dao.selectComment(qbno);
 	}
+
+	@Override
+	public int selectMaxCnoService() {
+		return dao.selectMaxCno();
+	}
+
+	@Override
+	public void updateRefService(int cno) {
+		dao.updateRef(cno);
+	}
+
+	@Override
+	public CommentVo topComment(int maxCno) {
+		return dao.topComment(maxCno);
+	}
 }

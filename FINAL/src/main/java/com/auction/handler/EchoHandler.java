@@ -2,7 +2,6 @@ package com.auction.handler;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,38 +11,41 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 public class EchoHandler extends TextWebSocketHandler{
-	// 웹 소켓 세션을 저장할 리스트 생성
+	// �쎒 �냼耳� �꽭�뀡�쓣 ���옣�븷 由ъ뒪�듃 �깮�꽦
 	private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
 	private static Logger logger = LoggerFactory.getLogger(EchoHandler.class);
-	// 클라이언트 연결 후.
+	// �겢�씪�씠�뼵�듃 �뿰寃� �썑.
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 //		System.out.println(session.getAttributes());
 //		Map<String,Object> map = session.getAttributes();
-//		System.out.println(map.get("아이디"));
+//		System.out.println(map.get("�븘�씠�뵒"));
 		sessionList.add(session);
 //		sessionList.add((WebSocketSession) map.get("아이디"));
 		logger.info("{} 연결됨",session.getId());
 		System.out.println("입장:"+session.getId());
 //		System.out.println("채팅방 입장자 : "+ session.getPrincipal().getName());
+		for(int i=0; i<sessionList.size();i++) {
+			System.out.println(sessionList.get(i));
+		}
 	}
-	// 웹 소켓 서버로 데이터 전송
+	// �쎒 �냼耳� �꽌踰꾨줈 �뜲�씠�꽣 �쟾�넚
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-		logger.info("{}로 부터 {} 받음",session.getId(),message.getPayload());
+		logger.info("{}濡� 遺��꽣 {} 諛쏆쓬",session.getId(),message.getPayload());
 //		session.getPrincipal().getName()
 		for(WebSocketSession sess : sessionList) {
 			sess.sendMessage(new TextMessage(session.getId()+" : "+message.getPayload()+"<br/>"));
 		}
 	}
-	// 연결이 끊어진 경우
+	// �뿰寃곗씠 �걡�뼱吏� 寃쎌슦
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		sessionList.remove(session);
 		
-		logger.info("{} 연결 끊김.",session.getId());
-//		System.out.println("채팅방 퇴장자 :"+session.getPrincipal().getName());
-		System.out.println("퇴장:"+session.getId());
+		logger.info("{} �뿰寃� �걡源�.",session.getId());
+//		System.out.println("梨꾪똿諛� �눜�옣�옄 :"+session.getPrincipal().getName());
+		System.out.println("�눜�옣:"+session.getId());
 	}
 	
 }

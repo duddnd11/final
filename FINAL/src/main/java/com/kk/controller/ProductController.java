@@ -1,11 +1,19 @@
 package com.kk.controller;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.auction.service.ProductService;
 import com.auction.vo.ProductVo;
@@ -20,14 +28,48 @@ public class ProductController {
 		return "applyProduct";
 	}
 	
-	@RequestMapping(value="/applyProductAction")
-	public String applyProductAction(ProductVo vo, Model model) {
+	@RequestMapping(value="/applyProductAction", method = RequestMethod.POST)
+	public String applyProductAction(ProductVo vo, Model model, HttpSession session) throws Exception{
+		String filePath = session.getServletContext().getRealPath("/resources/images/");
+		MultipartFile[] arrMultipart = vo.getMultiparts();		
+		String[] arrFilename = new String[arrMultipart.length];		
+		String str ="";
+		
+		for(int i=0; i<=arrMultipart.length-1; i++) {
+			MultipartFile multipart = arrMultipart[i];
+			String filename = "(이름 없음)";
+			
+		if(!multipart.isEmpty()) {
+			filename = multipart.getOriginalFilename();
+			File file = new File(filePath, filename);
+			if(!file.exists())
+				file.mkdirs();
+			multipart.transferTo(file);
+		}
+		arrFilename[i] = filename;
+		str += arrFilename[i] += "_!_";
+		vo.setFilenames(str);
+		}
+		
+		SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+		Date time = new Date();
+		String time1 = format1.format(time);
+		vo.setUploaddate(time1);
+		
 		int result = service.insertProduct(vo);
 		if(result == 1) {
 			System.out.println("경매 등록!!!!");
 		}
 		model.addAttribute("result", result);
-		return "mypage";
+//		return "mypage";
+		
+		vo.setImg1(vo.getFilenames().split("_!_")[0]);
+		vo.setImg2(vo.getFilenames().split("_!_")[1]);
+				
+		List<ProductVo> list = service.selectAuctionBlind();
+		list.add(vo);
+		model.addAttribute("vo", list);
+		return "showAuctionBlind";
 	}
 	
 	@RequestMapping(value="/main")
@@ -42,21 +84,50 @@ public class ProductController {
 	
 	@RequestMapping(value="/showAuctionNormal")
 	public String showAuctionNormal(Model model) {
-		List<ProductVo> showNormal = service.selectAuction();
-		model.addAttribute("showNormal", showNormal);
+		List<ProductVo> list = service.selectAuction();
+		for(ProductVo vo : list) {
+			if(vo.getFilenames()!=null) {
+				vo.setImg1(vo.getFilenames().split("_!_")[0]);
+				vo.setImg2(vo.getFilenames().split("_!_")[1]);
+				vo.setImage(null);
+			} else {
+				vo.setImg1(null);
+				vo.setImg2(null);
+			}
+		}
+		model.addAttribute("list", list);
 		return "showAuctionNormal";
 	}
 	
 	@RequestMapping(value="/showAuctionBlind")
 	public String showAuctionBlind(Model model) {
-		List<ProductVo> showBlind = service.selectAuctionBlind();
-		model.addAttribute("showBlind", showBlind);
+		List<ProductVo> listShowBlind = service.selectAuctionBlind();
+	
+		for(ProductVo vo : listShowBlind) {
+			if(vo.getFilenames()!=null) {
+				vo.setImg1(vo.getFilenames().split("_!_")[0]);
+				vo.setImg2(vo.getFilenames().split("_!_")[1]);
+				vo.setImage(null);
+			} else {
+				vo.setImg1(null);
+				vo.setImg2(null);
+			}
+		}
+		model.addAttribute("voListShowBlind", listShowBlind);
 		return "showAuctionBlind";
 	}
 	
 	@RequestMapping(value="/showDetail")
 	public String showDetail(Model model, int pno) {
 		ProductVo vo = service.selectOne(pno);
+		if(vo.getFilenames()!=null) {
+			vo.setImg1(vo.getFilenames().split("_!_")[0]);
+			vo.setImg2(vo.getFilenames().split("_!_")[1]);
+			vo.setImage(null);
+		} else {
+			vo.setImg1(null);
+			vo.setImg2(null);
+		}
 		model.addAttribute("vo", vo);
 		return "showDetail";
 	}
