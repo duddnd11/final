@@ -28,6 +28,10 @@ public class HomeController {
 	public String login() {
 		return "login";
 	}
+	@RequestMapping(value = "/result")
+	public String result() {
+		return "result";
+	}
 	@RequestMapping(value = "/singup")
 	public String singup() {
 		
@@ -43,29 +47,20 @@ public class HomeController {
 		
 		return "pwcheck";
 	}
-	@RequestMapping(value = "/admin")
-	public String admin() {
-		
-		return "admin";
-	}
-	@RequestMapping(value = "/admin/customer")
-	public String customer() {
-		
-		return "customer";
-	}
-	@RequestMapping(value = "/admin/customer/info")
-	public String info() {
-		
-		return "customerinfo";
-	}
-	@RequestMapping(value = "/admin/item")
-	public String item() {
-		
-		return "itemmanager";
-	}
+
 	@RequestMapping(value = "/admin/chat")
 	public String chat() {
 		
 		return "chat";
+	}
+	@RequestMapping(value = "/test")
+	public String test() {
+		
+		return "test";
+	}
+	@RequestMapping(value = "/chart")
+	public String chart() {
+		
+		return "chart";
 	}
 }

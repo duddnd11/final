@@ -11,10 +11,22 @@ public class AdminController {
 	@Autowired
 	AdminService service;
 	
-	@RequestMapping(value="/adminProduct")
-	public String adminProduct() {
+	@RequestMapping(value = "/admin")
+	public String admin() {
 		
-		return "";
+		return "admin";
 	}
+	@RequestMapping(value = "/admin/customer")
+	public String customer() {
+		
+		return "customer";
+	}
+	@RequestMapping(value = "/admin/customer/info")
+	public String info() {
+		
+		return "customerinfo";
+	}
+
+	
 
 }
