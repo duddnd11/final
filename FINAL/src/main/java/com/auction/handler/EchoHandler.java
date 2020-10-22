@@ -26,6 +26,9 @@ public class EchoHandler extends TextWebSocketHandler{
 		logger.info("{} 연결됨",session.getId());
 		System.out.println("입장:"+session.getId());
 //		System.out.println("채팅방 입장자 : "+ session.getPrincipal().getName());
+		for(int i=0; i<sessionList.size();i++) {
+			System.out.println(sessionList.get(i));
+		}
 	}
 	// 웹 소켓 서버로 데이터 전송
 	@Override

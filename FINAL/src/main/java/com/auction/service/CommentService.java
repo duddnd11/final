@@ -9,4 +9,5 @@ public interface CommentService {
 	public List<CommentVo> selectCommentService(int qbno);
 	public int selectMaxCnoService();
 	public void updateRefService(int cno);
+	public CommentVo topComment(int maxCno);
 }

@@ -9,19 +9,29 @@
 <script src = "https://cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script type="text/javascript">
-	var sock = new SockJS("<c:url value="/echo"/>");
-	
+	var sock = null;
 	$(function(){
 		$("#sendBtn").click(function(){
 			sendMessage();
 		});
+		$("#chatting").click(function(){
+			sock= new SockJS("<c:url value="/echo"/>");
+			sock.onmessage = onMessage;
+		});
+		/*
+		$("#exit").click(function(){
+			sock.onclose = onClose;
+		});*/
 	});
 	
-	sock.onmessage = onMessage;
 	sock.onclose = onClose;
 	
 	function sendMessage(){
 		sock.send($("#message").val());
+	}
+	
+	function onClose(evt){
+		$("#data").append("연결 끊김");
 	}
 	// evt : websocket이 보내준 데이터
 	function onMessage(evt){
@@ -41,13 +51,12 @@
 		*/
 	}
 
-	function onClose(evt){
-		$("#data").append("연결 끊김");
-	}
 </script>
 </head>
 <body>
 <textarea rows="10" cols="50" readonly="readonly" id="data"></textarea><br/>
 <input type="text" id="message"/><input type="button" value="보내기" id="sendBtn"/>
+<input type="button" value="채팅참여" id="chatting"/>
+<input type="button" value="퇴장" id="exit"/>
 </body>
 </html>
