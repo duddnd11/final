@@ -49,7 +49,7 @@ function ajax_admin(admin) {
 				var str="";
 				str += "<tr>";
 				str += "<td>" +list[i].pno + "</td>";
-				str += "<td>" +list[i].pname +"</td>";
+				str += "<td><a href='../showDetail?pno="+ list[i].pno +"'>"  +list[i].pname +"</a></td>";
 				str += "<td>" +list[i].id +"</td>";
 				str += "<td>" +list[i].grade +"</td>";
 				str += "<td>" +list[i].uploaddate +"</td>";
@@ -83,7 +83,7 @@ function ajax(admin, deal) {
 				var str="";
 				str += "<tr>";
 				str += "<td>" +list[i].pno + "</td>";
-				str += "<td>" +list[i].pname +"</td>";
+				str += "<td><a href='../showDetail?pno="+ list[i].pno +"'>" +list[i].pname +"</a></td>";
 				str += "<td>" +list[i].id +"</td>";
 				str += "<td>" +list[i].grade +"</td>";
 				str += "<td>" +list[i].uploaddate +"</td>";
@@ -133,11 +133,8 @@ $(document).ready(function() {
 <br/>
 		<button id="btn4">ê²½ë§¤ì¤‘</button>	<!-- 1.1 -->
 		<button id="btn5">ë§ˆê°</button>	<!-- 1.2 -->
+		
 	<div id="container">
-<<<<<<< HEAD
-		<table id="theTable">
-			<tr id="trr">
-=======
 	
 		<form>
 		
@@ -145,9 +142,9 @@ $(document).ready(function() {
 			<table id="searchtable">
 			<tr>
 				<td>
-					<label><input type="radio" name="a" value="½ÂÀÎ">½ÂÀÎ</label>
-					<label><input type="radio" name="a" value="°ÅºÎ">°ÅºÎ</label>
-					<input type="submit" value="°Ë»ö">
+					<label><input type="radio" name="a" value="ï¿½ï¿½ï¿½ï¿½">ï¿½ï¿½ï¿½ï¿½</label>
+					<label><input type="radio" name="a" value="ï¿½Åºï¿½">ï¿½Åºï¿½</label>
+					<input type="submit" value="ï¿½Ë»ï¿½">
 				</td>
 			</tr>
 			</table>
@@ -155,46 +152,20 @@ $(document).ready(function() {
 			
 		</form>
 	
-		<table>
-			<tr>
-<<<<<<< HEAD
-				<th>¹øÈ£</th>
-				<th>¾ÆÀÌµğ</th>
-				<th>ÀÌ¸§</th>
-				<th>ÀÌ¹ÌÁö</th>
-				<th>µî±Ş</th>
-				<th>°¡°İ</th>
-				<th>½ÂÀÎ¿©ºÎ</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>aaaa</td>
-				<td>aaaa</td>
-				<td></td>
-				<td>f</td>
-				<td>10,000</td>	
-				<td>
-				<button>½ÂÀÎ</button>
-				<button>°ÅºÎ</button>
-				</td>
-=======
->>>>>>> refs/remotes/origin/main
+		<table id="theTable">
+			<tr id="trr">
 				<th>ë²ˆí˜¸</th>
 				<th>ìƒí’ˆì´ë¦„</th>
 				<th>ì•„ì´ë””</th>
 				<th>ë“±ê¸‰</th>
 				<th>ì—…ë¡œë“œ ë‚ ì§œ</th>
 				<th>ìŠ¹ì¸ì—¬ë¶€</th>
-<<<<<<< HEAD
 				<th>ìŠ¹ì¸ì—¬ë¶€2</th>
-=======
->>>>>>> refs/remotes/origin/main
->>>>>>> refs/remotes/origin/main
 			</tr>
 			<c:forEach var="list" items="${list }">
 				<tr id="del">
 					<td>${list.pno }</td>
-					<td>${list.pname }</td>
+					<td><a href="../showDetail?pno=${list.pno }">${list.pname }</a></td>
 					<td>${list.ID }</td>
 					<td>${list.grade }</td>
 					<td>${list.uploaddate }</td>

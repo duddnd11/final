@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.auction.dao.AdminDao;
+import com.auction.vo.AuctionVo;
 import com.auction.vo.ProductVo;
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -27,5 +28,16 @@ public class AdminServiceImpl implements AdminService {
 	public List<ProductVo> adminProduct(int admin) {
 		return dao.adminProduct(admin);
 	}
+
+	@Override
+	public List<ProductVo> saleItem(String ID) {
+		return dao.saleItem(ID);
+	}
+
+	@Override
+	public List<AuctionVo> buyItem(String ID) {
+		return dao.buyItem(ID);
+	}
+
 
 }

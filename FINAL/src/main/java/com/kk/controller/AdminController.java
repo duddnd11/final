@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.auction.service.AdminService;
+import com.auction.vo.AuctionVo;
 import com.auction.vo.ProductVo;
 
 @Controller
@@ -26,8 +27,11 @@ public class AdminController {
 		return "customer";
 	}
 	@RequestMapping(value = "/admin/customer/info")
-	public String info() {
-		
+	public String info(String id, Model model) {
+		List<ProductVo> listP = service.saleItem(id);
+		List<AuctionVo> listA = service.buyItem(id);
+		model.addAttribute("sales", listP);
+		model.addAttribute("purchase", listA);
 		return "customerinfo";
 	}
 	@RequestMapping(value = "/admin/item")

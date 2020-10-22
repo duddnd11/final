@@ -47,6 +47,7 @@ public class ProductDaoImpl implements ProductDao {
 	public List<ProductVo> selectAuctionBlind() {
 		return sqlSession.selectList("com.auction.mapper.ProductMapper.selectAuctionBlind");
 	}
+
 	
 	
 	
