@@ -8,7 +8,7 @@
 <style>
 	th{
 		border: 1px solid #cccccc;
-		
+		background-color: #F9E198;
 	}
 	td{
 		border: 1px solid #cccccc;
@@ -41,7 +41,7 @@
 			</tr>
 			<tr>
 				<td>1</td>
-				<td><a href="#" style="color: black;">aaaa</a></td>
+				<td><a href="http://localhost:9090/final/admin/customer/info" style="color: black;">aaaa</a></td>
 				<td>12345</td>
 				<td>aaaaa</td>
 				<td>서울 동작구 상도로</td>

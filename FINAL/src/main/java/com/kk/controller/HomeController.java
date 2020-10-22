@@ -28,6 +28,10 @@ public class HomeController {
 	public String login() {
 		return "login";
 	}
+	@RequestMapping(value = "/result")
+	public String result() {
+		return "result";
+	}
 	@RequestMapping(value = "/singup")
 	public String singup() {
 		
@@ -48,5 +52,15 @@ public class HomeController {
 	public String chat() {
 		
 		return "chat";
+	}
+	@RequestMapping(value = "/test")
+	public String test() {
+		
+		return "test";
+	}
+	@RequestMapping(value = "/chart")
+	public String chart() {
+		
+		return "chart";
 	}
 }

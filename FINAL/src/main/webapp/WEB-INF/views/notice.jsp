@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의게시판</title>
+<title>공지사항</title>
 <style>
 	form{
 		display: inline;
@@ -20,23 +19,19 @@
 		<tr>
 			<td>글번호</td>
 			<td>글제목</td>
-			<td>작성자</td>
 			<td>날짜</td>
-			<td>조회수</td>
 		</tr>
-	<c:forEach var="qnaBoard" items="${qnaBoard}">
+	<c:forEach var="notice" items="${notice}">
 		<tr>
-			<td>${qnaBoard.qbno}</td>
-			<td><a href="qnaDetail?qbno=${qnaBoard.qbno}">${qnaBoard.title}</a></td>
-			<td>${qnaBoard.ID}</td>
-			<td>${qnaBoard.writedate}</td>
-			<td>${qnaBoard.hitcount}</td>
+			<td>${notice.nbo}</td>
+			<td><a href="noticeDetail?nbo=${notice.nbo}">${notice.title}</a></td>
+			<td>${notice.date}</td>
 		</tr>
 	</c:forEach>
 	</table>
 		<c:if test="${sp ne 0 }">
-			<!-- <a href="qnaBoard?offset=${offset-100}&keyword=${keyword}&searchMenu=${searchMenu}"><<</a> -->
-			<form action="qnaBoard">
+			<!-- <a href="notice?offset=${offset-100}&keyword=${keyword}&searchMenu=${searchMenu}"><<</a> -->
+			<form action="notice">
 				<input type="submit" value="<<"/>
 				<input type="hidden" value="${offset-100}" name="offset"/>
 				<input type="hidden" value="${keyword}" name="keyword"/>
@@ -44,8 +39,8 @@
 			</form>
 		</c:if>	
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
-		<!-- <a href="qnaBoard?offset=${i*10}">${i+1}</a> -->
-		<form action="qnaBoard">
+		<!-- <a href="notice?offset=${i*10}">${i+1}</a> -->
+		<form action="notice">
 			<input type="submit" value="${i+1}"/>
 			<input type="hidden" value="${i*10}" name="offset"/>
 			<input type="hidden" value="${keyword}" name="keyword"/>
@@ -53,8 +48,8 @@
 		</form>
 	</c:forEach>
 		<c:if test="${ps ne sp }">
-			<form action="qnaBoard">
-				<!--  <a href="qnaBoard?offset=${offset+100}&keyword=${keyword}&searchMenu=${searchMenu}">>></a>-->
+			<form action="notice">
+				<!--  <a href="notice?offset=${offset+100}&keyword=${keyword}&searchMenu=${searchMenu}">>></a>-->
 				<input type="submit" value=">>"/>
 				<input type="hidden" value="${offset+100}" name="offset"/>
 				<input type="hidden" value="${keyword}" name="keyword"/>
@@ -67,7 +62,7 @@
 	</c:otherwise>
 	</c:choose>
 	<br/>
-	<form action="qnaBoard">
+	<form action="notice">
 		<select name="searchMenu">
 			<option value="titleAndContent">제목+내용</option>	
 			<option value="title" >제목</option>		
@@ -78,13 +73,5 @@
 		<input name="keyword" value="${keyword}"/>
 		<input type="submit" value="조회"/>
 	</form>
-	<input type="button" value="문의글쓰기" onclick="location.href='qnaWrite'"/>
 </body>
 </html>
-
-
-
-
-
-
-

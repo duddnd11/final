@@ -140,7 +140,7 @@
 		</tr>
 		<tr>
 		<td>날짜</td>
-		<td>${detail.date}</td>
+		<td>${detail.writedate}</td>
 		</tr>
 		<tr>
 		<td>제목</td>

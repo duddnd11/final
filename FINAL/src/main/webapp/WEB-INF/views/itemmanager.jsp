@@ -25,6 +25,12 @@
 		font-size: 18px;
 		text-align: center;
 	}
+	#searchtable{
+		width: 200px;
+		margin-top: -100px;;
+		float: right;
+		
+	}
 </style>
 <script>
 function ajax_admin(admin) {
@@ -128,15 +134,62 @@ $(document).ready(function() {
 		<button id="btn4">ê²½ë§¤ì¤‘</button>	<!-- 1.1 -->
 		<button id="btn5">ë§ˆê°</button>	<!-- 1.2 -->
 	<div id="container">
+<<<<<<< HEAD
 		<table id="theTable">
 			<tr id="trr">
+=======
+	
+		<form>
+		
+			<div>
+			<table id="searchtable">
+			<tr>
+				<td>
+					<label><input type="radio" name="a" value="½ÂÀÎ">½ÂÀÎ</label>
+					<label><input type="radio" name="a" value="°ÅºÎ">°ÅºÎ</label>
+					<input type="submit" value="°Ë»ö">
+				</td>
+			</tr>
+			</table>
+			</div>
+			
+		</form>
+	
+		<table>
+			<tr>
+<<<<<<< HEAD
+				<th>¹øÈ£</th>
+				<th>¾ÆÀÌµğ</th>
+				<th>ÀÌ¸§</th>
+				<th>ÀÌ¹ÌÁö</th>
+				<th>µî±Ş</th>
+				<th>°¡°İ</th>
+				<th>½ÂÀÎ¿©ºÎ</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>aaaa</td>
+				<td>aaaa</td>
+				<td></td>
+				<td>f</td>
+				<td>10,000</td>	
+				<td>
+				<button>½ÂÀÎ</button>
+				<button>°ÅºÎ</button>
+				</td>
+=======
+>>>>>>> refs/remotes/origin/main
 				<th>ë²ˆí˜¸</th>
 				<th>ìƒí’ˆì´ë¦„</th>
 				<th>ì•„ì´ë””</th>
 				<th>ë“±ê¸‰</th>
 				<th>ì—…ë¡œë“œ ë‚ ì§œ</th>
 				<th>ìŠ¹ì¸ì—¬ë¶€</th>
+<<<<<<< HEAD
 				<th>ìŠ¹ì¸ì—¬ë¶€2</th>
+=======
+>>>>>>> refs/remotes/origin/main
+>>>>>>> refs/remotes/origin/main
 			</tr>
 			<c:forEach var="list" items="${list }">
 				<tr id="del">

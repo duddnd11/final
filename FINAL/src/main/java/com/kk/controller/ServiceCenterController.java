@@ -11,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.auction.service.CommentService;
+import com.auction.service.NoticeService;
 import com.auction.service.QnaBoardService;
 import com.auction.vo.CommentVo;
+import com.auction.vo.NoticeVo;
 import com.auction.vo.QnaBoardVo;
 
 @Controller
@@ -21,6 +23,8 @@ public class ServiceCenterController {
 	QnaBoardService qnaBoardService;
 	@Autowired
 	CommentService commentService;
+	@Autowired
+	NoticeService noticeService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ServiceCenterController.class);
 	@RequestMapping(value="/serviceCenter")
@@ -70,7 +74,7 @@ public class ServiceCenterController {
 			}
 		}
 		int pageSize=0;
-		if(listAll.size()%10==0) {
+		if(listAll.size()>=10 && listAll.size()%10==0 ) {
 			pageSize=listAll.size()/10;
 		}else {
 			pageSize=listAll.size()/10+1;
@@ -79,8 +83,18 @@ public class ServiceCenterController {
 		int startPage = nowPage/10*10;
 		int endPage = startPage+9;
 		if(nowPage/10 == pageSize/10) {
-			endPage=pageSize-1;
+			if(pageSize !=0) {
+				endPage=pageSize;
+			}else {
+				endPage=pageSize-1;
+			}
 		}
+		System.out.println(list);
+		System.out.println("ep:"+endPage);
+		System.out.println("ps:"+pageSize);
+		System.out.println("np:"+nowPage);
+		System.out.println("sp:"+startPage);
+		
 		model.addAttribute("searchMenu", searchMenu);
 		model.addAttribute("ps",pageSize/10);
 		model.addAttribute("sp",startPage/10);
@@ -139,6 +153,57 @@ public class ServiceCenterController {
 //		model.addAttribute("endPage", 9);
 //		model.addAttribute("qnaBoard", list);
 		return "qnaDetail";
+	}
+	
+	@RequestMapping(value="/notice")
+	public String notice(Model model,int offset,String keyword,String searchMenu) {
+		if(offset<0) {
+			offset=0;
+		}
+		List<NoticeVo> list= null;
+		List<NoticeVo> listAll = null;
+		if((keyword == null && searchMenu ==null) || (keyword.equals("") && searchMenu.equals("")) ) {
+			list =noticeService.selectBoard(offset);
+			listAll = noticeService.selectBoardAll();
+		}else {
+//			if(searchMenu.equals("title")) {
+//				list = noticeService.searchTitle(keyword,offset);	
+//				listAll = noticeService.searchTitleSize(keyword);
+//			}else if(searchMenu.equals("content")) {
+//				list = noticeService.searchContent(keyword, offset);
+//				listAll = noticeService.searchContentSize(keyword);
+//			}else if(searchMenu.equals("writer")) {
+//				list = noticeService.searchWriter(keyword, offset);
+//				listAll = noticeService.searchWriterSize(keyword);
+//			}else if(searchMenu.equals("titleAndContent")) {
+//				list = noticeService.searchTitleAndContent(keyword, offset);
+//				listAll = noticeService.searchTitleAndContentSize(keyword);
+//			}
+		}
+		int pageSize=0;
+		if(listAll.size()%10==0) {
+			pageSize=listAll.size()/10;
+		}else {
+			pageSize=listAll.size()/10+1;
+		}
+		int nowPage =offset/10+1 ;
+		int startPage = nowPage/10*10;
+		int endPage = startPage+9;
+		if(nowPage/10 == pageSize/10) {
+			endPage=pageSize-1;
+		}
+		System.out.println("ep:"+endPage);
+		System.out.println(list);
+		model.addAttribute("searchMenu", searchMenu);
+		model.addAttribute("ps",pageSize/10);
+		model.addAttribute("sp",startPage/10);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("offset", offset);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("notice", list);
+		return "notice";
 	}
 }
 
