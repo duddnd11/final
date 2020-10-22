@@ -14,16 +14,21 @@ public class AdminDaoImpl implements AdminDao {
 	SqlSession sqlSession;
 	
 	@Override
-	public List<ProductVo> adminProduct(int admin, int deal) {
+	public List<ProductVo> dealProduct(int admin, int deal) {
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		map.put("admin", admin);
 		map.put("deal", deal);
-		return sqlSession.selectList("com.auction.mapper.AdminMapper.adminProduct", map);
+		return sqlSession.selectList("com.auction.mapper.AdminMapper.dealProduct", map);
 	}
 
 	@Override
 	public List<ProductVo> showProduct() {
 		return sqlSession.selectList("com.auction.mapper.AdminMapper.showProduct");
+	}
+
+	@Override
+	public List<ProductVo> adminProduct(int admin) {
+		return sqlSession.selectList("com.auction.mapper.AdminMapper.adminProduct", admin);
 	}
 
 }
