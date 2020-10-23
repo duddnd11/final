@@ -31,13 +31,8 @@
 		<property name="maxUploadSize" value="10485760"/>
 	</bean>
 	
-<<<<<<< HEAD
-	
-	
-	
 
 
-=======
 	<!-- google Class Bean설정 추가 -->
 	<!-- 클라이언트ID와 보안비밀 세팅 -->
 	<bean id="googleConnectionFactory"
@@ -54,16 +49,16 @@
 	  <property name="redirectUri"
 	    value="http://localhost/user/googleSignInCallback" />
 	</bean>
->>>>>>> refs/remotes/origin/main
+
 	
 	<bean id="qnaBoardDao" class="com.auction.dao.QnaBoardDaoImpl"></bean>
 	<bean id="commentDao" class="com.auction.dao.CommentDaoImpl"></bean>
-<<<<<<< HEAD
+
 	<context:component-scan base-package="com.auction.service"></context:component-scan>
 
-=======
+
 	<bean id="productDao" class="com.auction.dao.ProductDaoImpl"/>
 	<bean id="adminDao" class="com.auction.dao.AdminDaoImpl"/>
-	<context:component-scan base-package="com.auction.service" />
->>>>>>> refs/remotes/origin/main
+	
+
 </beans>
