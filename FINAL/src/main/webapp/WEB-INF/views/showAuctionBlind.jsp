@@ -16,7 +16,7 @@
 <body>
 	카테고리 --왼쪽에
 	<c:forEach var="vo" items="${voListShowBlind }">
-		상품 이름: ${vo.pname }<br/>
+		상품 이름: <a href="showDetail?pno=${vo.pno }">${vo.pname }</a><br/>
 		마감날: ${vo.deadlinedate }<br/>
 		조회수: ${vo.hitcount }<br/>
 		입찰수 ${vo.count }<br/>
@@ -24,8 +24,7 @@
 			<a href="showDetail?pno=${vo.pno }"><img src="${vo.image }"/></a>		
 		</c:if>
 		<c:if test="${vo.image eq null }">
-			<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img1 }"/></a> 
-			<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img2 }"/></a> <br/>
+			<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img1 }"/></a> <br/>
 		</c:if>
 	
 	</c:forEach>

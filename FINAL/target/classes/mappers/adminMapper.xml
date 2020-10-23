@@ -6,9 +6,15 @@
 <mapper namespace="com.auction.mapper.AdminMapper">
 	<!-- member 
 	<select id="showMember" resultType="com.auction.vo.MemberVo">
-		SELECT * FROM member order by pno desc;
+		SELECT * FROM member order by grade asc;
 	</select>
 	-->
+	<select id="buyItem" resultType="com.auction.vo.AuctionVo">
+		SELECT * FROM auction where ID=#{ID} order by buydate desc;
+	</select>
+	<select id="saleItem" resultType="com.auction.vo.ProductVo">
+		select * from product where ID=#{ID} order by uploaddate desc;
+	</select>
 
 
 	<!-- product -->
