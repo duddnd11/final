@@ -33,9 +33,10 @@
 	}
 </style>
 <script>
-function ajax_admin(admin) {
+function ajax_admin(admin,offset) {
 	var data = {
-		admin: admin
+		admin: admin,
+		offset : offset
 		}
 	$.ajax({
 		url: 'http://localhost:9090/final/rest/admin/itemadmin',
@@ -99,10 +100,37 @@ function ajax(admin, deal) {
 		})
 	}
 
+function ajax_page(admin,offset){
+	var data = {
+			admin: admin,
+			offset : offset
+			}
+	$.ajax({
+		url: 'http://localhost:9090/final/rest/admin/page',
+		type: 'post',
+		data: JSON.stringify(data),
+		dataType: 'json',
+		contentType: 'application/json',
+		success:function(response){
+			var sp = response["startPage"];
+			var ep = response["endPage"];
+			var str="";
+			str+="<c:forEach var="i" begin="${startPage}" end="${endPage}">";"
+			str+="<form action=item>";
+			str+="<input type=submit value="${i}"/>";
+			str+="<input type=hidden value="${i*10-10}" name="offset" class="offset"/>";
+			str+="</form>";
+			str+="</c:forEach>";
+		error : function(){
+			alert("페이지에러!");
+			}
+		})
+}
 $(document).ready(function() {
 	$("#btn1").click(function() {
 		$("#trr").nextAll().remove();
-		ajax_admin(0);
+		ajax_admin(0,0);
+		ajax_page(0,0);
 		})
 	$("#btn2").click(function() {
 		$("#trr").nextAll().remove();
@@ -120,10 +148,15 @@ $(document).ready(function() {
 		$("#trr").nextAll().remove();
 		ajax(1,2);
 		})
-	
-	});
+});
+
 
 </script>
+<style>
+	form{
+		display: inline;
+	}
+</style>
 </head>
 <body>
 		
@@ -157,6 +190,12 @@ $(document).ready(function() {
 				</tr>
 			</c:forEach>
 		</table>
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+			<form action="item">
+				<input type="submit" value="${i}"/>
+				<input type="hidden" value="${i*10-10}" name="offset" class="offset"/>
+			</form>
+			</c:forEach>
 	</div>
 </body>
 </html>

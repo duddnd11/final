@@ -33,6 +33,13 @@ public class ProductVo {
 	public ProductVo() {}
 
 	
+	public ProductVo(int pno, int admin, int deal) {
+		this.pno = pno;
+		this.admin = admin;
+		this.deal = deal;
+	}
+
+
 	public ProductVo(String pname, String image, int price, String uploaddate, String deadlinedate, int hitcount,
 			String iD, int bestmoney, int admin, String category, String auctionmenu) {
 		super();

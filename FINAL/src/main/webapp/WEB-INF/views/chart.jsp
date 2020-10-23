@@ -20,19 +20,24 @@ $(document).ready(function(){
 		type: 'line',
 		data : {
 			datasets : [{
-				label : "Line Dataset", 
-				backgroundColor : ['#6B66FF','#FFBB00','#6B66FF','#FFBB00'],
+				label : "날짜별 응찰 가격", 
+				//backgroundColor : ['#6B66FF','#FFBB00','#6B66FF','#FFBB00','#FFBB00'],
 				borderColor : ['#FF0000'],
-				data : [1000000,400000,600000,800000],
+//				dat1a : [1000000, 4000000, 6000000, 5000000, 8000000]
+				dat1a : [
+					for(var i=0; i<${list}.length; i++){
+						${list.myprice}
+					}
+						],
 				fill : false,
 			}],
-				labels: ['10:00', '11:00', '12:00', '13:00'],
+			labels: ['10:00', '11:00', '12:00', '13:00', '2020/10/23'],
 				
 		},
 		options :{
 			scales :{
 				yAxes: [{
-					 ticks : { max: 1000000, stepSize: 200000,min:0 },	// 차트의 최대치와 최소치
+					 ticks : { max: 10000000, stepSize: 500000,min:0 },	// 차트의 최대치와 최소치
 				}]
 			}
 		}
