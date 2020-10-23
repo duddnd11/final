@@ -19,13 +19,8 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public NoticeVo selectContent(int qbno) {
-		return dao.selectContent(qbno);
-	}
-
-	@Override
-	public void updateHitCount(int qbno) {
-		dao.updateHitCount(qbno);
+	public NoticeVo selectContent(int nbo) {
+		return dao.selectContent(nbo);
 	}
 
 	@Override
@@ -33,4 +28,13 @@ public class NoticeServiceImpl implements NoticeService {
 		return dao.selectBoardAll();
 	}
 
+	@Override
+	public void wirteBoardService(NoticeVo vo) {
+		dao.writeBoard(vo);
+	}
+
+//	@Override
+//	public void updateHitCount(int nbo) {
+//		dao.updateHitCount(nbo);
+//	}
 }

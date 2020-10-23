@@ -3,12 +3,17 @@ package com.kk.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.auction.service.CommentService;
 import com.auction.service.NoticeService;
@@ -49,7 +54,13 @@ public class ServiceCenterController {
 //	}
 	
 	@RequestMapping(value="/qnaBoard")
-	public String qnaBoard(Model model,int offset,String keyword,String searchMenu) {
+	public String qnaBoard(Model model,int offset,String keyword,String searchMenu,HttpServletRequest request,HttpServletResponse response) {
+		Cookie[] cookies = request.getCookies();
+		for(int i=1; i<cookies.length;i++) {
+			cookies[i].setMaxAge(0);
+			response.addCookie(cookies[i]);
+		}
+		
 		if(offset<0) {
 			offset=0;
 		}
@@ -79,21 +90,12 @@ public class ServiceCenterController {
 		}else {
 			pageSize=listAll.size()/10+1;
 		}
-		int nowPage =offset/10+1 ;
-		int startPage = nowPage/10*10;
+		int nowPage =offset/10;
+		int startPage = nowPage/10*10+1;
 		int endPage = startPage+9;
 		if(nowPage/10 == pageSize/10) {
-			if(pageSize !=0) {
-				endPage=pageSize;
-			}else {
-				endPage=pageSize-1;
-			}
+			endPage=pageSize;
 		}
-		System.out.println(list);
-		System.out.println("ep:"+endPage);
-		System.out.println("ps:"+pageSize);
-		System.out.println("np:"+nowPage);
-		System.out.println("sp:"+startPage);
 		
 		model.addAttribute("searchMenu", searchMenu);
 		model.addAttribute("ps",pageSize/10);
@@ -108,9 +110,22 @@ public class ServiceCenterController {
 	}
 	
 	@RequestMapping(value="/qnaDetail")
-	public String content(Model model,int qbno) {
+	public String content(Model model,int qbno,HttpServletRequest request,HttpServletResponse response) {
+		Cookie[] cookies = request.getCookies();
+		Cookie viewCookie = null;
+		
+		for(int i=0; i<cookies.length;i++) {
+			if(cookies[i].getName().equals("qnaDetail"+qbno)) {
+				viewCookie=cookies[i];
+			}
+		}
+		if(viewCookie==null) {
+			Cookie newCookie = new Cookie("qnaDetail"+qbno, "|"+qbno+"|");
+			response.addCookie(newCookie);
+			qnaBoardService.updateHitcount(qbno);
+		}
+		
 		QnaBoardVo vo =qnaBoardService.selectContent(qbno);
-		qnaBoardService.updateHitcount(qbno);
 		List<CommentVo> commentList = commentService.selectCommentService(qbno);
 		List<CommentVo> reCommentList = new ArrayList<CommentVo>();
 		for(CommentVo comment : commentList) {
@@ -130,9 +145,22 @@ public class ServiceCenterController {
 	}
 	
 	@RequestMapping(value="/qnaWriteAction")
-	public String qnaWriteAction(QnaBoardVo vo,Model model) {
+	public String qnaWriteAction(QnaBoardVo vo,Model model,HttpServletRequest request,HttpServletResponse response) {
+		Cookie[] cookies = request.getCookies();
+		Cookie viewCookie = null;
 		vo.setID("qq");
-		qnaBoardService.wirteBoardService(vo);
+		
+		for(int i=0 ;i<cookies.length;i++) {
+			if(cookies[i].getName().equals("qnaWrite")) {
+				viewCookie=cookies[i];
+			}
+		}
+		if(viewCookie==null) {
+			Cookie newCookie = new Cookie("qnaWrite","write");
+			response.addCookie(newCookie);
+			qnaBoardService.wirteBoardService(vo);
+		}
+		
 		List<QnaBoardVo> list =qnaBoardService.selectBoardAll();
 		int qbno = list.get(0).getQbno();
 		QnaBoardVo detail = qnaBoardService.selectContent(qbno);
@@ -181,19 +209,17 @@ public class ServiceCenterController {
 //			}
 		}
 		int pageSize=0;
-		if(listAll.size()%10==0) {
+		if(listAll.size()>=10 && listAll.size()%10==0 ) {
 			pageSize=listAll.size()/10;
 		}else {
 			pageSize=listAll.size()/10+1;
 		}
-		int nowPage =offset/10+1 ;
-		int startPage = nowPage/10*10;
+		int nowPage =offset/10;
+		int startPage = nowPage/10*10+1;
 		int endPage = startPage+9;
 		if(nowPage/10 == pageSize/10) {
-			endPage=pageSize-1;
+			endPage=pageSize;
 		}
-		System.out.println("ep:"+endPage);
-		System.out.println(list);
 		model.addAttribute("searchMenu", searchMenu);
 		model.addAttribute("ps",pageSize/10);
 		model.addAttribute("sp",startPage/10);
@@ -204,6 +230,14 @@ public class ServiceCenterController {
 		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("notice", list);
 		return "notice";
+	}
+	
+	@RequestMapping(value="/noticeDetail")
+	public String noticeDetail(Model model,int nbo) {
+		NoticeVo vo =noticeService.selectContent(nbo);
+//		noticeService.updateHitCount(nbo);
+		model.addAttribute("detail", vo);
+		return "noticeDetail";
 	}
 }
 

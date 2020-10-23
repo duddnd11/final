@@ -41,8 +41,8 @@
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
 		<!-- <a href="notice?offset=${i*10}">${i+1}</a> -->
 		<form action="notice">
-			<input type="submit" value="${i+1}"/>
-			<input type="hidden" value="${i*10}" name="offset"/>
+			<input type="submit" value="${i}"/>
+			<input type="hidden" value="${i*10-10}" name="offset"/>
 			<input type="hidden" value="${keyword}" name="keyword"/>
 			<input type="hidden" value="${searchMenu}" name="searchMenu"/>
 		</form>
@@ -73,5 +73,6 @@
 		<input name="keyword" value="${keyword}"/>
 		<input type="submit" value="조회"/>
 	</form>
+	<input type="button" value="공지사항 작성" onclick="location.href='qnaWrite'"/>
 </body>
 </html>
