@@ -24,40 +24,55 @@
 <body>
 	<div id="container" style="margin-top: 300px;">
 	
+<h2>--판매--</h2><br/>
 		<table id="salestable">
 			<tr>
+				<th>번호</th>
 				<th>상품이름</th>
-				<th>이미지</th>
+				<th>상품이미지</th>
+				<th>구매자</th>
 				<th>가격</th>
 				<th>날짜</th>
-				<th>판매</th>
 			</tr>
 		<c:forEach var="sales" items="${sales }">
 			<tr>
-				<td>a0001</td>
-				<td>img</td>
-				<td>10,000</td>
-				<td>2020-10-21</td>
-				<td>판매</td>
+				<td>${sales.pno }</td>
+				<td>${sales.pname }</td>
+			<c:if test="${sales.image ne null }">
+				<td><img src="${sales.image }"/></td>
+			</c:if>
+			<c:if test="${sales.image eq null }">
+				<td><img src="resources/images/${sales.img1 }"/></td>
+			</c:if>
+				<td>${sales.bestmoney }</td>
+				<td>${sales. }</td>
 			</tr>
 		</c:forEach>
 		</table>
-
+<br/>
+<h2>--구매--</h2>
+<br/>
 		<table id="purchasetable">
 			<tr>
+				<th>번호</th>
 				<th>상품이름</th>
-				<th>이미지</th>
+				<th>상품이미지</th>
+				<th>판매자</th>
 				<th>가격</th>
 				<th>날짜</th>
-				<th>구매</th>
 			</tr>
 		<c:forEach var="purchase" items="${purchase }">
 			<tr>
-				<td>a0001</td>
-				<td>img</td>
-				<td>10,000</td>
-				<td>2020-10-21</td>
-				<td>판매</td>
+				<td>${purchase.idx }</td>
+				<td>${purchase.pname }</td>
+			<c:if test="${sales.image ne null }">
+				<td><img src="${sales.image }"/></td>
+			</c:if>
+			<c:if test="${sales.image eq null }">
+				<td><img src="resources/images/${sales.img1 }"/></td>
+			</c:if>
+				<td>${purchase.myprice }</td>
+				<td>${purchase.buydate }</td>
 			</tr>
 		</c:forEach>
 		</table>

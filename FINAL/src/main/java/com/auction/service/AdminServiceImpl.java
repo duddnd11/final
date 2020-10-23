@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.auction.dao.AdminDao;
 import com.auction.vo.AuctionVo;
+import com.auction.vo.MemberVo;
 import com.auction.vo.ProductVo;
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -42,6 +43,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int updateAdmin(ProductVo vo) {
 		return dao.updateAdmin(vo);
+	}
+
+	@Override
+	public List<MemberVo> showMember() {
+		return dao.showMember();
 	}
 
 

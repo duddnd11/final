@@ -91,8 +91,8 @@ public class ServiceCenterController {
 			pageSize=listAll.size()/10+1;
 		}
 		int nowPage =offset/10;
-		int startPage = nowPage/10*10+1;
-		int endPage = startPage+9;
+		int startPage = nowPage/10*10+1; 
+		int endPage = startPage+9; 
 		if(nowPage/10 == pageSize/10) {
 			endPage=pageSize;
 		}

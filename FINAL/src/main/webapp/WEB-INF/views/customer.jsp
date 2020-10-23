@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,6 @@
 	<div id="container">
 		<table>
 			<tr>
-				<th>번호</th>
 				<th>아이디</th>
 				<th>비밀번호</th>
 				<th>이름</th>
@@ -39,17 +39,18 @@
 				<th>생년월일</th>
 				<th>등급</th>
 			</tr>
+			<c:forEach var="list" items="${list }">
 			<tr>
-				<td>1</td>
-				<td><a href="/info?id=" style="color: black;">aaaa</a></td>
-				<td>12345</td>
-				<td>aaaaa</td>
-				<td>서울 동작구 상도로</td>
-				<td>010-1111-1111</td>
-				<td>aaaa@naver.com</td>
-				<td>991122</td>
-				<td>f</td>
+				<td>${list.ID }</td>
+				<td>${list.pw }</td>
+				<td><a href="customer/info?id=${list.ID }" style="color: black;">${list.name }</a></td>
+				<td>${list.addr }</td>
+				<td>${list.phonenum }</td>
+				<td>${list.email }</td>
+				<td>${list.birth }</td>
+				<td>${list.grade }</td>
 			</tr>
+			</c:forEach>
 		</table>
 	</div>
 </body>

@@ -18,12 +18,11 @@ public class AdminController {
 	
 	@RequestMapping(value = "/admin")
 	public String admin() {
-		
 		return "admin";
 	}
 	@RequestMapping(value = "/admin/customer")
-	public String customer() {
-		
+	public String customer(Model model) {
+		model.addAttribute("list", service.showMember());
 		return "customer";
 	}
 	@RequestMapping(value = "/admin/customer/info")

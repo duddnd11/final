@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.auction.vo.AuctionVo;
+import com.auction.vo.MemberVo;
 import com.auction.vo.ProductVo;
 @Repository
 public class AdminDaoImpl implements AdminDao {
@@ -45,6 +46,11 @@ public class AdminDaoImpl implements AdminDao {
 	@Override
 	public int updateAdmin(ProductVo vo) {
 		return sqlSession.update("com.auction.mapper.AdminMapper.updateAdmin", vo);
+	}
+
+	@Override
+	public List<MemberVo> showMember() {
+		return sqlSession.selectList("com.auction.mapper.AdminMapper.showMember");
 	}
 
 
