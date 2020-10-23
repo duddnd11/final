@@ -34,7 +34,7 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public List<ProductVo> saleItem(String ID) {
+	public List<AuctionVo> saleItem(String ID) {
 		return sqlSession.selectList("com.auction.mapper.AdminMapper.saleItem", ID);
 	}
 

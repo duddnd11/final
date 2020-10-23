@@ -31,7 +31,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<ProductVo> saleItem(String ID) {
+	public List<AuctionVo> saleItem(String ID) {
 		return dao.saleItem(ID);
 	}
 

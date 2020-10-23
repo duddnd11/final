@@ -8,11 +8,11 @@
 	<select id="showMember" resultType="com.auction.vo.MemberVo">
 		SELECT * FROM member order by grade asc;
 	</select>
-	<select id="buyItem" resultType="com.auction.vo.AuctionVo">
-		SELECT * FROM auction where ID=#{ID} order by buydate desc;
+	<select id="saleItem" resultType="com.auction.vo.AuctionVo">
+		SELECT a.*, p.pname, p.bestmoney FROM product p left outer join auction a on a.pno=p.pno where p.ID=#{ID} and a.pno=p.pno order by buydate desc;
 	</select>
-	<select id="saleItem" resultType="com.auction.vo.ProductVo">
-		select * from product where ID=#{ID} order by uploaddate desc;
+	<select id="buyItem" resultType="com.auction.vo.AuctionVo">
+		SELECT a.idx, a.myprice, a.buydate, p.pname, p.ID FROM product p left outer join auction a on a.pno=p.pno where a.ID=#{ID} and a.pno=p.pno order by buydate desc;
 	</select>
 
 

@@ -1,5 +1,6 @@
 package com.auction.vo;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -288,7 +289,17 @@ public class ProductVo {
 	public void setDeal(int deal) {
 		this.deal = deal;
 	}
-	
-	
+
+
+	@Override
+	public String toString() {
+		return "ProductVo [pno=" + pno + ", pname=" + pname + ", multiparts=" + Arrays.toString(multiparts)
+				+ ", filenames=" + filenames + ", image=" + image + ", img1=" + img1 + ", img2=" + img2 + ", price="
+				+ price + ", uploaddate=" + uploaddate + ", deadlinedate=" + deadlinedate + ", hitcount=" + hitcount
+				+ ", ID=" + ID + ", bestmoney=" + bestmoney + ", admin=" + admin + ", category=" + category
+				+ ", auctionmenu=" + auctionmenu + ", deal=" + deal + ", count=" + count + ", timeout=" + timeout
+				+ ", startmoney=" + startmoney + ", lastmoney=" + lastmoney + ", moneyup=" + moneyup + ", grade="
+				+ grade + "]";
+	}
 	
 }
