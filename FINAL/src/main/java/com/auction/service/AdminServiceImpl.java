@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.auction.dao.AdminDao;
 import com.auction.vo.AuctionVo;
+import com.auction.vo.MemberVo;
 import com.auction.vo.ProductVo;
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -40,9 +41,21 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<ProductVo> showProductPage(int offset) {
 		return dao.showProductPage(offset);
 	}
+=======
+	public int updateAdmin(ProductVo vo) {
+		return dao.updateAdmin(vo);
+	}
+
+	@Override
+	public List<MemberVo> showMember() {
+		return dao.showMember();
+	}
+
+>>>>>>> refs/remotes/origin/main
 
 	@Override
 	public List<ProductVo> adminProductPage(int admin, int offset) {

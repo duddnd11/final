@@ -43,6 +43,7 @@
 				<input type="hidden" value="${searchMenu}" name="searchMenu"/>
 			</form>
 		</c:if>	
+		
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
 		<!-- <a href="qnaBoard?offset=${i*10}">${i+1}</a> -->
 		<form action="qnaBoard">
@@ -52,6 +53,7 @@
 			<input type="hidden" value="${searchMenu}" name="searchMenu"/>
 		</form>
 	</c:forEach>
+	
 		<c:if test="${ps ne sp }">
 			<form action="qnaBoard">
 				<!--  <a href="qnaBoard?offset=${offset+100}&keyword=${keyword}&searchMenu=${searchMenu}">>></a>-->

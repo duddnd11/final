@@ -168,23 +168,6 @@ $(document).ready(function() {
 		<button id="btn5">마감</button>	<!-- 1.2 -->
 		
 	<div id="container">
-	
-		<form>
-		
-			<div>
-			<table id="searchtable">
-			<tr>
-				<td>
-					<label><input type="radio" name="a" value="����">����</label>
-					<label><input type="radio" name="a" value="�ź�">�ź�</label>
-					<input type="submit" value="�˻�">
-				</td>
-			</tr>
-			</table>
-			</div>
-			
-		</form>
-	
 		<table id="theTable">
 			<tr id="trr">
 				<th>번호</th>
