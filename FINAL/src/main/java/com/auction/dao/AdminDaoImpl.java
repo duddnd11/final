@@ -2,6 +2,7 @@ package com.auction.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,16 @@ public class AdminDaoImpl implements AdminDao {
 		return sqlSession.selectList("com.auction.mapper.AdminMapper.buyItem", ID);
 	}
 
+	@Override
+	public List<ProductVo> showProductPage(int offset) {
+		return sqlSession.selectList("com.auction.mapper.AdminMapper.showProductPage", offset);
+	}
 
+	@Override
+	public List<ProductVo> adminProductPage(int admin, int offset) {
+		Map<String,Integer> map = new HashMap<String, Integer>();
+		map.put("admin", admin);
+		map.put("offset", offset);
+		return sqlSession.selectList("com.auction.mapper.AdminMapper.adminProductPage", map);
+	}
 }

@@ -39,5 +39,13 @@ public class AdminServiceImpl implements AdminService {
 		return dao.buyItem(ID);
 	}
 
+	@Override
+	public List<ProductVo> showProductPage(int offset) {
+		return dao.showProductPage(offset);
+	}
 
+	@Override
+	public List<ProductVo> adminProductPage(int admin, int offset) {
+		return dao.adminProductPage(admin, offset);
+	}
 }

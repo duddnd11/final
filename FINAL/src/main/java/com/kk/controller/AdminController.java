@@ -35,8 +35,25 @@ public class AdminController {
 		return "customerinfo";
 	}
 	@RequestMapping(value = "/admin/item")
-	public String itemmanager(Model model) {
-		List<ProductVo> list = service.showProduct();
+	public String itemmanager(Model model,int offset) {
+		List<ProductVo> listAll = service.showProduct();
+		List<ProductVo> list = service.showProductPage(offset);
+		int pageSize=0;
+		if(listAll.size()>=10 && listAll.size()%10==0 ) {
+			pageSize=listAll.size()/10;
+		}else {
+			pageSize=listAll.size()/10+1;
+		}
+		int nowPage =offset/10;
+		int startPage = nowPage/10*10+1;
+		int endPage = startPage+9;
+		if(nowPage/10 == pageSize/10) {
+			endPage=pageSize;
+		}
+		model.addAttribute("offset", offset);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("list", list);
 		return "itemmanager";
 	}
