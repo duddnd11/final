@@ -1,5 +1,15 @@
 Manifest-Version: 1.0
-Built-By: ljk80
-Build-Jdk: 13.0.2
+<<<<<<< HEAD
+Built-By: ITSC
+Build-Jdk: 14.0.2
+=======
+<<<<<<< HEAD
+Built-By: dsgkb
+Build-Jdk: 14.0.1
+=======
+Built-By: 82104
+Build-Jdk: 1.8.0_251
+>>>>>>> refs/remotes/origin/main
+>>>>>>> refs/remotes/origin/main
 Created-By: Maven Integration for Eclipse
 

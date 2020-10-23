@@ -38,7 +38,8 @@ public class ServiceCenterController {
 	}
 	
 	@RequestMapping(value="/chatting")
-	public String chatting() {
+	public String chatting(Model model) {
+		model.addAttribute("userId", "qq");
 		return "chatting";
 	}
 	
@@ -91,8 +92,8 @@ public class ServiceCenterController {
 			pageSize=listAll.size()/10+1;
 		}
 		int nowPage =offset/10;
-		int startPage = nowPage/10*10+1;
-		int endPage = startPage+9;
+		int startPage = nowPage/10*10+1; 
+		int endPage = startPage+9; 
 		if(nowPage/10 == pageSize/10) {
 			endPage=pageSize;
 		}

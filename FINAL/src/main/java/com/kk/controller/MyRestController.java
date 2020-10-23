@@ -1,5 +1,7 @@
 package com.kk.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -49,7 +51,9 @@ public class MyRestController {
 	@ResponseBody
 	public List<ProductVo> itemadmin(@RequestBody Map<String, String> param) {
 		int admin = Integer.parseInt(param.get("admin"));
-		List<ProductVo> list = adminService.adminProduct(admin);
+		int offset = Integer.parseInt(param.get("offset"));
+//		List<ProductVo> list = adminService.adminProduct(admin);
+		List<ProductVo> list = adminService.adminProductPage(admin, offset);
 		return list;
 	}
 	@RequestMapping(value = "/admin/itemmanager")
@@ -59,6 +63,30 @@ public class MyRestController {
 		int deal = Integer.parseInt(param.get("deal"));
 		List<ProductVo> list = adminService.dealProduct(admin, deal);
 		return list;
+	}
+	@RequestMapping(value="/admin/page")
+	@ResponseBody
+	public Map<String,Integer> page(@RequestBody Map<String,Integer> param){
+		int admin = param.get("admin");
+		int offset = param.get("offset");
+		List<ProductVo> listAll = adminService.adminProduct(admin);
+		int pageSize=0;
+		if(listAll.size()>=10 && listAll.size()%10==0 ) {
+			pageSize=listAll.size()/10;
+		}else {
+			pageSize=listAll.size()/10+1;
+		}
+		int nowPage =offset/10;
+		int startPage = nowPage/10*10+1;
+		int endPage = startPage+9;
+		if(nowPage/10 == pageSize/10) {
+			endPage=pageSize;
+		}
+		Map<String,Integer> map = new HashMap<String, Integer>();
+		map.put("startPage", startPage);
+		map.put("endPage", endPage);
+		map.put("pageSize", pageSize);
+		return map;
 	}
 	
 }

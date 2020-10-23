@@ -22,7 +22,7 @@
 		};
 		
 		$.ajax({
-			url:'http://localhost:9091/final/rest/writecomment',
+			url:'http://localhost:9090/final/rest/writecomment',
 			type:'post',
 			data :JSON.stringify(commentData),
 			//dataType:'json', 200에러일때 빼야함.. 400에러 url 405에러 post/get 415에러 contentType 필수속성

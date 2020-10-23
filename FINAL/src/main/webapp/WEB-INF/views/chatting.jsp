@@ -17,6 +17,7 @@
 		$("#chatting").click(function(){
 			sock= new SockJS("<c:url value="/echo"/>");
 			sock.onmessage = onMessage;
+			$("#data").append($("#userId").val()+"님 채팅 입장");
 		});
 		/*
 		$("#exit").click(function(){
@@ -37,7 +38,7 @@
 	function onMessage(evt){
 		var data = evt.data;
 		var sessionid = null;
-		var mesage = null;
+		var message = null;
 		$("#data").append(data);
 		console.log(data);
 		
@@ -58,5 +59,6 @@
 <input type="text" id="message"/><input type="button" value="보내기" id="sendBtn"/>
 <input type="button" value="채팅참여" id="chatting"/>
 <input type="button" value="퇴장" id="exit"/>
+<input type="hidden" value="${userId}" id="userId"/>
 </body>
 </html>
