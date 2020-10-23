@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
 	#dealtable{
@@ -23,21 +24,42 @@
 <body>
 	<div id="container" style="margin-top: 300px;">
 	
-		<table id="dealtable">
+		<table id="salestable">
 			<tr>
-				<th>»óÇ°ÀÌ¸§</th>
-				<th>ÀÌ¹ÌÁö</th>
-				<th>°¡°İ</th>
-				<th>³¯Â¥</th>
-				<th>ÆÇ¸Å/±¸¸Ş</th>
+				<th>ìƒí’ˆì´ë¦„</th>
+				<th>ì´ë¯¸ì§€</th>
+				<th>ê°€ê²©</th>
+				<th>ë‚ ì§œ</th>
+				<th>íŒë§¤</th>
 			</tr>
+		<c:forEach var="sales" items="${sales }">
 			<tr>
 				<td>a0001</td>
 				<td>img</td>
 				<td>10,000</td>
 				<td>2020-10-21</td>
-				<td>ÆÇ¸Å</td>
+				<td>íŒë§¤</td>
 			</tr>
+		</c:forEach>
+		</table>
+
+		<table id="purchasetable">
+			<tr>
+				<th>ìƒí’ˆì´ë¦„</th>
+				<th>ì´ë¯¸ì§€</th>
+				<th>ê°€ê²©</th>
+				<th>ë‚ ì§œ</th>
+				<th>êµ¬ë§¤</th>
+			</tr>
+		<c:forEach var="purchase" items="${purchase }">
+			<tr>
+				<td>a0001</td>
+				<td>img</td>
+				<td>10,000</td>
+				<td>2020-10-21</td>
+				<td>íŒë§¤</td>
+			</tr>
+		</c:forEach>
 		</table>
 	</div>
 </body>

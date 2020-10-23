@@ -39,5 +39,10 @@ public class AdminServiceImpl implements AdminService {
 		return dao.buyItem(ID);
 	}
 
+	@Override
+	public int updateAdmin(ProductVo vo) {
+		return dao.updateAdmin(vo);
+	}
+
 
 }

@@ -28,4 +28,8 @@
 	<select id="showProduct" resultType="com.auction.vo.ProductVo">
 		SELECT p.*, grade FROM product p left outer join member m on m.ID=p.ID order by uploaddate desc, grade asc;
 	</select>
+	
+	<update id="updateAdmin">
+		update product set admin=#{admin}, deal=#{deal} where pno=#{pno};
+	</update>
 </mapper>

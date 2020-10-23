@@ -12,4 +12,5 @@ public interface AdminService {
 //	List<MemberVo> showMember();
 	List<ProductVo> saleItem(String ID);
 	List<AuctionVo> buyItem(String ID);
+	int updateAdmin(ProductVo vo);
 }

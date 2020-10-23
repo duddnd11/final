@@ -42,5 +42,10 @@ public class AdminDaoImpl implements AdminDao {
 		return sqlSession.selectList("com.auction.mapper.AdminMapper.buyItem", ID);
 	}
 
+	@Override
+	public int updateAdmin(ProductVo vo) {
+		return sqlSession.update("com.auction.mapper.AdminMapper.updateAdmin", vo);
+	}
+
 
 }
