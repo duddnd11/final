@@ -28,6 +28,15 @@ public class AdminDaoImpl implements AdminDao {
 		map.put("deal", deal);
 		return sqlSession.selectList("com.auction.mapper.AdminMapper.dealProduct", map);
 	}
+	
+	@Override
+	public List<ProductVo> dealProductPage(int admin, int deal, int offset) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("admin", admin);
+		map.put("deal", deal);
+		map.put("offset", offset);
+		return sqlSession.selectList("com.auction.mapper.AdminMapper.dealProductPage", map);
+	}
 
 	@Override
 	public List<ProductVo> showProduct() {
@@ -45,22 +54,16 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public List<ProductVo> showProductPage(int offset) {
 		return sqlSession.selectList("com.auction.mapper.AdminMapper.showProductPage", offset);
 	}
-=======
 	public int updateAdmin(ProductVo vo) {
 		return sqlSession.update("com.auction.mapper.AdminMapper.updateAdmin", vo);
 	}
-
 	@Override
 	public List<MemberVo> showMember() {
 		return sqlSession.selectList("com.auction.mapper.AdminMapper.showMember");
 	}
-
->>>>>>> refs/remotes/origin/main
-
 	@Override
 	public List<ProductVo> adminProductPage(int admin, int offset) {
 		Map<String,Integer> map = new HashMap<String, Integer>();
@@ -68,4 +71,5 @@ public class AdminDaoImpl implements AdminDao {
 		map.put("offset", offset);
 		return sqlSession.selectList("com.auction.mapper.AdminMapper.adminProductPage", map);
 	}
+
 }
