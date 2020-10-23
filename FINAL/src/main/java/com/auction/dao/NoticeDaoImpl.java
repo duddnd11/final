@@ -18,19 +18,24 @@ public class NoticeDaoImpl implements NoticeDao {
 	}
 
 	@Override
-	public NoticeVo selectContent(int qbno) {
-		return sqlSession.selectOne("com.auction.mapper.NoticeMapper.selectContent", qbno);
+	public NoticeVo selectContent(int nbo) {
+		return sqlSession.selectOne("com.auction.mapper.NoticeMapper.selectContent", nbo);
 	}
 
-	@Override
-	public void updateHitCount(int qbno) {
-		sqlSession.update("com.auction.mapper.NoticeMapper.updateHitcount", qbno);
-	}
 
 	@Override
 	public List<NoticeVo> selectBoardAll() {
 		return sqlSession.selectList("com.auction.mapper.NoticeMapper.selectBoardAll");
 	}
 
+	@Override
+	public void writeBoard(NoticeVo vo) {
+		sqlSession.insert("com.auction.mapper.NoticeMapper.writeBoard", vo);
+	}
+
+//	@Override
+//	public void updateHitCount(int nbo) {
+//		sqlSession.update("com.auction.mapper.NoticeMapper.updateHitcount", nbo);
+//	}
 
 }

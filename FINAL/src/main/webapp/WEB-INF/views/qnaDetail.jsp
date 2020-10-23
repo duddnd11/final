@@ -35,7 +35,7 @@
 					str+="<div class='commentDiv'>"+response.comment+" "+response.date+"</div>";
 					str+="<div class='reCommentWrite'><span id='more' class='more'>답글작성</span></div>";
 					str+="<div class='openReComment'>";
-					str+="<div class='reCommentMenu'></div>";
+					str+="<div class='reCommentMenu"+response.ref+"'></div>";
 					str+="<textarea rows='5' cols='50' id='comment' class='comment'></textarea>";
 					str+="<input type='button' value='등록' id='commentBtn' class='commentBtn'/>";
 					str+="<input type='hidden' value='"+response.ref+"' id='ref'/>";
@@ -46,7 +46,7 @@
 					$(".topUl").append(str);
 				}else if(response.level==1){
 					var	str="<div class='reComment'>→"+response.comment+" "+response.date+"</div>";
-					$(".reCommentMenu").append(str);
+					$(".reCommentMenu"+response.ref).append(str);
 				}
 			},
 			error :function(xhr, status, error) {
@@ -168,15 +168,15 @@
 					
 				
 					<div class="openReComment">
-					<div class="reCommentMenu">
-						<c:forEach items="${reComment}" var="reComment">
-							<c:if test="${comment.cno eq reComment.ref}">
-								<div class="reComment">→${reComment.comment}
-								${reComment.date}
-								</div>
-							</c:if>
-						</c:forEach>
-					</div>
+						<div class="reCommentMenu${comment.ref}">
+							<c:forEach items="${reComment}" var="reComment">
+								<c:if test="${comment.cno eq reComment.ref}">
+									<div class="reComment">→${reComment.comment}
+									${reComment.date}
+									</div>
+								</c:if>
+							</c:forEach>
+						</div>
 						<textarea rows="5" cols="50" id="comment" class="comment"></textarea>
 						<input type="button" value="등록" id="commentBtn" class="commentBtn"/>
 						<input type="hidden" value="${comment.cno}" id="ref"/>
