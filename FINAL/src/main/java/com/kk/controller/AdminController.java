@@ -59,6 +59,25 @@ public class AdminController {
 	@RequestMapping(value = "/admin/item")
 	public String itemmanager(Model model) {
 		List<ProductVo> list = service.showProduct();
+		for(ProductVo vo : list) {
+			switch(vo.getGrade()) {
+			case "a":
+				vo.setGrade("vvip");
+				break;
+			case "b":
+				vo.setGrade("vip");
+				break;
+			case "c":
+				vo.setGrade("gold");
+				break;
+			case "d":
+				vo.setGrade("silver");
+				break;
+			case "e":
+				vo.setGrade("일반");
+				break;
+			}
+		}
 		model.addAttribute("list", list);
 		return "itemmanager";
 	}
