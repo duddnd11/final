@@ -10,7 +10,6 @@ public class QnaBoardVo {
 	private int ref;
 	private int level;
 	private int step;
-	private String date;
 	
 	public QnaBoardVo() {}
 	public QnaBoardVo(String title, String content, String iD) {
@@ -71,12 +70,6 @@ public class QnaBoardVo {
 	}
 	public void setStep(int step) {
 		this.step = step;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
 	}
 	@Override
 	public String toString() {

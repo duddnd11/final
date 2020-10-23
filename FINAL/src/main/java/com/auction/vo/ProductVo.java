@@ -27,6 +27,7 @@ public class ProductVo {
 	private int startmoney;
 	private int lastmoney;
 	private int moneyup;
+	private String grade;
 	
 	public ProductVo() {}
 
@@ -78,6 +79,16 @@ public class ProductVo {
 	}
 
 	
+
+
+	public String getGrade() {
+		return grade;
+	}
+
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
 
 
 	public String getImg1() {

@@ -154,7 +154,10 @@
 		    <artifactId>jackson-databind</artifactId>
 		    <version>2.11.2</version>
 		</dependency>
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/main
 		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
 		<dependency>
 		    <groupId>commons-fileupload</groupId>
@@ -179,7 +182,10 @@
 		  <artifactId>httpclient</artifactId>
 		  <version>4.5.3</version>
 		</dependency> 
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/main
 		
 		<!-- WebSocket -->
 		<dependency>
@@ -206,7 +212,10 @@
 		    <version>4.2.19.RELEASE</version>
 		</dependency>
 		    
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/main
 	</dependencies>
     <build>
         <plugins>

@@ -29,7 +29,7 @@
 			<td>${qnaBoard.qbno}</td>
 			<td><a href="qnaDetail?qbno=${qnaBoard.qbno}">${qnaBoard.title}</a></td>
 			<td>${qnaBoard.ID}</td>
-			<td>${qnaBoard.date}</td>
+			<td>${qnaBoard.writedate}</td>
 			<td>${qnaBoard.hitcount}</td>
 		</tr>
 	</c:forEach>
@@ -43,15 +43,17 @@
 				<input type="hidden" value="${searchMenu}" name="searchMenu"/>
 			</form>
 		</c:if>	
+		
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
 		<!-- <a href="qnaBoard?offset=${i*10}">${i+1}</a> -->
 		<form action="qnaBoard">
-			<input type="submit" value="${i+1}"/>
-			<input type="hidden" value="${i*10}" name="offset"/>
+			<input type="submit" value="${i}"/>
+			<input type="hidden" value="${i*10-10}" name="offset"/>
 			<input type="hidden" value="${keyword}" name="keyword"/>
 			<input type="hidden" value="${searchMenu}" name="searchMenu"/>
 		</form>
 	</c:forEach>
+	
 		<c:if test="${ps ne sp }">
 			<form action="qnaBoard">
 				<!--  <a href="qnaBoard?offset=${offset+100}&keyword=${keyword}&searchMenu=${searchMenu}">>></a>-->

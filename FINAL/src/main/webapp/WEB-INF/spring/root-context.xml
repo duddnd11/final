@@ -2,7 +2,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
@@ -32,6 +34,7 @@
 	</bean>
 	
 
+<<<<<<< HEAD
 
 	<!-- google Class Bean설정 추가 -->
 	<!-- 클라이언트ID와 보안비밀 세팅 -->
@@ -50,15 +53,25 @@
 	    value="http://localhost/user/googleSignInCallback" />
 	</bean>
 
+=======
+>>>>>>> refs/remotes/origin/main
 	
 	<bean id="qnaBoardDao" class="com.auction.dao.QnaBoardDaoImpl"></bean>
 	<bean id="commentDao" class="com.auction.dao.CommentDaoImpl"></bean>
+<<<<<<< HEAD
 
 	<context:component-scan base-package="com.auction.service"></context:component-scan>
 
 
+=======
+>>>>>>> refs/remotes/origin/main
 	<bean id="productDao" class="com.auction.dao.ProductDaoImpl"/>
 	<bean id="adminDao" class="com.auction.dao.AdminDaoImpl"/>
+<<<<<<< HEAD
 	
 
+=======
+	<bean id="noticeDao" class="com.auction.dao.NoticeDaoImpl"/>
+	<context:component-scan base-package="com.auction.service" />
+>>>>>>> refs/remotes/origin/main
 </beans>
