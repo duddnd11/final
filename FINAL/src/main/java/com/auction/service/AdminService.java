@@ -8,6 +8,7 @@ import com.auction.vo.ProductVo;
 
 public interface AdminService {
 	List<ProductVo> dealProduct(int admin, int deal);
+	List<ProductVo> dealProductPage(int admin, int deal,int offset);
 	List<ProductVo> adminProduct(int admin);
 	List<ProductVo> adminProductPage(int admin,int offset);
 	List<ProductVo> showProduct();

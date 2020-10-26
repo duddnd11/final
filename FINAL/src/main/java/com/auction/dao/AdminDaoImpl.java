@@ -28,6 +28,15 @@ public class AdminDaoImpl implements AdminDao {
 		map.put("deal", deal);
 		return sqlSession.selectList("com.auction.mapper.AdminMapper.dealProduct", map);
 	}
+	
+	@Override
+	public List<ProductVo> dealProductPage(int admin, int deal, int offset) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("admin", admin);
+		map.put("deal", deal);
+		map.put("offset", offset);
+		return sqlSession.selectList("com.auction.mapper.AdminMapper.dealProductPage", map);
+	}
 
 	@Override
 	public List<ProductVo> showProduct() {
@@ -53,13 +62,10 @@ public class AdminDaoImpl implements AdminDao {
 	public int updateAdmin(ProductVo vo) {
 		return sqlSession.update("com.auction.mapper.AdminMapper.updateAdmin", vo);
 	}
-
 	@Override
 	public List<MemberVo> showMember() {
 		return sqlSession.selectList("com.auction.mapper.AdminMapper.showMember");
 	}
-
-
 	@Override
 	public List<ProductVo> adminProductPage(int admin, int offset) {
 		Map<String,Integer> map = new HashMap<String, Integer>();

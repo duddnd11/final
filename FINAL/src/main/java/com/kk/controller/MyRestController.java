@@ -61,7 +61,9 @@ public class MyRestController {
 	public List<ProductVo> itemmanager(@RequestBody Map<String, String> param) {
 		int admin = Integer.parseInt(param.get("admin"));
 		int deal = Integer.parseInt(param.get("deal"));
-		List<ProductVo> list = adminService.dealProduct(admin, deal);
+		int offset = Integer.parseInt(param.get("offset"));
+//		List<ProductVo> list = adminService.dealProduct(admin, deal);
+		List<ProductVo> list = adminService.dealProductPage(admin, deal, offset);
 		return list;
 	}
 	@RequestMapping(value="/admin/page")
@@ -69,7 +71,14 @@ public class MyRestController {
 	public Map<String,Integer> page(@RequestBody Map<String,Integer> param){
 		int admin = param.get("admin");
 		int offset = param.get("offset");
-		List<ProductVo> listAll = adminService.adminProduct(admin);
+		int deal = param.get("deal");
+		List<ProductVo> listAll = new ArrayList<ProductVo>();
+		if(deal>=0) {
+			listAll = adminService.dealProduct(admin, deal);
+			admin=admin+deal+1;
+		}else {
+			listAll = adminService.adminProduct(admin);
+		}
 		int pageSize=0;
 		if(listAll.size()>=10 && listAll.size()%10==0 ) {
 			pageSize=listAll.size()/10;
@@ -82,10 +91,17 @@ public class MyRestController {
 		if(nowPage/10 == pageSize/10) {
 			endPage=pageSize;
 		}
+		System.out.println("======admin :"+admin+"======");
+		System.out.println("사이즈:"+listAll.size());
+		System.out.println("deal:"+deal);
+		System.out.println("np:"+nowPage);
+		System.out.println("sp:"+startPage);
+		System.out.println("ep:"+endPage);
 		Map<String,Integer> map = new HashMap<String, Integer>();
 		map.put("startPage", startPage);
 		map.put("endPage", endPage);
 		map.put("pageSize", pageSize);
+		map.put("admin", admin);
 		return map;
 	}
 	

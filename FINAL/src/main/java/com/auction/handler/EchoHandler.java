@@ -25,8 +25,6 @@ public class EchoHandler extends TextWebSocketHandler{
 		}else {
 			System.out.println("2명 제한");
 		}
-		sessionList.add(session);
-
 //		sessionList.add((WebSocketSession) map.get("�븘�씠�뵒"));
 		logger.info("{} �뿰寃곕맖",session.getId());
 		System.out.println("�엯�옣:"+session.getId());
