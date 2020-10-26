@@ -20,15 +20,26 @@ public class EchoHandler extends TextWebSocketHandler{
 //		System.out.println(session.getAttributes());
 //		Map<String,Object> map = session.getAttributes();
 //		System.out.println(map.get("�븘�씠�뵒"));
+<<<<<<< HEAD
 		sessionList.add(session);
 
 
+=======
+		if(sessionList.size()<=1) {
+			sessionList.add(session);
+		}else {
+			System.out.println("2명 제한");
+		}
+>>>>>>> refs/remotes/origin/main
 //		sessionList.add((WebSocketSession) map.get("�븘�씠�뵒"));
 		logger.info("{} �뿰寃곕맖",session.getId());
 		System.out.println("�엯�옣:"+session.getId());
 //		System.out.println("梨꾪똿諛� �엯�옣�옄 : "+ session.getPrincipal().getName());
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/main
 //		sessionList.add((WebSocketSession) map.get("아이디"));
 		logger.info("{} 연결됨",session.getId());
 		System.out.println("입장:"+session.getId());
@@ -36,7 +47,10 @@ public class EchoHandler extends TextWebSocketHandler{
 		for(int i=0; i<sessionList.size();i++) {
 			System.out.println(sessionList.get(i));
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/main
 	}
 	// �쎒 �냼耳� �꽌踰꾨줈 �뜲�씠�꽣 �쟾�넚
 	@Override
@@ -45,6 +59,7 @@ public class EchoHandler extends TextWebSocketHandler{
 //		session.getPrincipal().getName()
 		for(WebSocketSession sess : sessionList) {
 			sess.sendMessage(new TextMessage(session.getId()+" : "+message.getPayload()+"<br/>"));
+			System.out.println("세션:"+sess.getId());
 		}
 	}
 	// �뿰寃곗씠 �걡�뼱吏� 寃쎌슦
@@ -54,7 +69,7 @@ public class EchoHandler extends TextWebSocketHandler{
 		
 		logger.info("{} �뿰寃� �걡源�.",session.getId());
 //		System.out.println("梨꾪똿諛� �눜�옣�옄 :"+session.getPrincipal().getName());
-		System.out.println("�눜�옣:"+session.getId());
+		System.out.println("채팅퇴장:"+session.getId());
 	}
 	
 }

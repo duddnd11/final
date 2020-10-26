@@ -11,6 +11,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
+<<<<<<< HEAD
    function ajax_write(ref,level,step,comment){
       var commentData={
             qbno : $("#qbno").val(),
@@ -52,6 +53,47 @@
             }
          },
          error :function(xhr, status, error) {
+=======
+	function ajax_write(ref,level,step,comment){
+		var commentData={
+				qbno : $("#qbno").val(),
+				comment : comment,
+				/*ref : $("#ref").val(),*/
+				ref : ref,
+				level :level,
+				step: step
+		};
+		
+		$.ajax({
+			url:'http://localhost:9090/final/rest/writecomment',
+			type:'post',
+			data :JSON.stringify(commentData),
+			//dataType:'json', 200에러일때 빼야함.. 400에러 url 405에러 post/get 415에러 contentType 필수속성
+			contentType :'application/json',
+			success : function(response){
+				//alert("성공");
+				//comment = response;
+				if(response.level==0){
+					var str="<li class='topLi>'";
+					str+="<div class='commentDiv'>"+response.comment+" "+response.date+"</div>";
+					str+="<div class='reCommentWrite'><span id='more' class='more'>답글작성</span></div>";
+					str+="<div class='openReComment'>";
+					str+="<div class='reCommentMenu"+response.ref+"'></div>";
+					str+="<textarea rows='5' cols='50' id='comment' class='comment'></textarea>";
+					str+="<input type='button' value='등록' id='commentBtn' class='commentBtn'/>";
+					str+="<input type='hidden' value='"+response.ref+"' id='ref'/>";
+					str+="<input type='hidden' value='"+(response.level+1)+"' id='level'/>";
+					str+="<input type='hidden' value='1' id='step'/>";
+					str+="</div>";
+					str+="</li>";
+					$(".topUl").append(str);
+				}else if(response.level==1){
+					var	str="<div class='reComment'>→"+response.comment+" "+response.date+"</div>";
+					$(".reCommentMenu"+response.ref).append(str);
+				}
+			},
+			error :function(xhr, status, error) {
+>>>>>>> refs/remotes/origin/main
                 alert("에러!");
                 alert("code:"+xhr.status+"\n"+"message:"+xhr.responseText+"\n"+"error:"+error);
             }

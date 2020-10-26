@@ -6,6 +6,8 @@ public class AuctionVo {
 	private int pno;
 	private int myprice;
 	private String buydate;
+	private String pname;
+	private String bestmoney;
 	
 	public AuctionVo() {}
 
@@ -16,6 +18,14 @@ public class AuctionVo {
 		this.pno = pno;
 		this.myprice = myprice;
 		this.buydate = buydate;
+	}
+
+	public String getPname() {
+		return pname;
+	}
+
+	public void setPname(String pname) {
+		this.pname = pname;
 	}
 
 	public int getIdx() {
@@ -57,7 +67,20 @@ public class AuctionVo {
 	public void setBuydate(String buydate) {
 		this.buydate = buydate;
 	}
-	
-	
+
+
+	public String getBestmoney() {
+		return bestmoney;
+	}
+
+	public void setBestmoney(String bestmoney) {
+		this.bestmoney = bestmoney;
+	}
+
+	@Override
+	public String toString() {
+		return "AuctionVo [idx=" + idx + ", ID=" + ID + ", pno=" + pno + ", myprice=" + myprice + ", buydate=" + buydate
+				+ ", pname=" + pname + ", bestmoney=" + bestmoney + "]";
+	}
 	
 }

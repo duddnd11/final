@@ -31,7 +31,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<ProductVo> saleItem(String ID) {
+	public List<AuctionVo> saleItem(String ID) {
 		return dao.saleItem(ID);
 	}
 
@@ -41,14 +41,30 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
+	public List<ProductVo> showProductPage(int offset) {
+		return dao.showProductPage(offset);
+	}
+
+	@Override
 	public int updateAdmin(ProductVo vo) {
 		return dao.updateAdmin(vo);
 	}
-
 	@Override
 	public List<MemberVo> showMember() {
 		return dao.showMember();
 	}
 
 
+	@Override
+	public List<ProductVo> adminProductPage(int admin, int offset) {
+		return dao.adminProductPage(admin, offset);
+	}
+
+	@Override
+	public List<AuctionVo> chart(int pno) {
+		return dao.chart(pno);
+	}
+	public List<ProductVo> dealProductPage(int admin, int deal, int offset) {
+		return dao.dealProductPage(admin, deal, offset);
+	}
 }

@@ -33,9 +33,10 @@
 	}
 </style>
 <script>
-function ajax_admin(admin) {
+function ajax_admin(admin,offset) {
 	var data = {
-		admin: admin
+		admin: admin,
+		offset : offset
 		}
 	$.ajax({
 		url: 'http://localhost:9090/final/rest/admin/itemadmin',
@@ -64,9 +65,10 @@ function ajax_admin(admin) {
 			}
 		})
 	}
-function ajax(admin, deal) {
+function ajax(admin,offset,deal) {
 	var data = {
 		admin: admin,
+		offset:offset,
 		deal: deal
 		}
 	$.ajax({
@@ -99,10 +101,44 @@ function ajax(admin, deal) {
 		})
 	}
 
+function ajax_page(admin,offset,deal){
+	var data = {
+			admin: admin,
+			offset : offset,
+			deal : deal
+			}
+	$.ajax({
+		url: 'http://localhost:9090/final/rest/admin/page',
+		type: 'post',
+		data: JSON.stringify(data),
+		dataType: 'json',
+		contentType: 'application/json',
+		success:function(response){
+			var sp = response["startPage"];
+			var ep = response["endPage"];
+			var admin = response["admin"];
+			var str="";
+			for(var i=sp; i<=ep ;i++){
+			str+="<form class='pageForm'>";
+			str+="<input type='button' id='btn"+(admin+1)+"' class='btn"+(admin+1)+"' value='"+i+"'/>";
+			str+="<input type='hidden' value="+(i*10-10)+" name='offset' class='offset'/>";
+			str+="</form>";
+			}
+			$(".pageDiv").append(str);
+			
+			},
+		error : function(){
+			alert("페이지에러!");
+			}
+		})
+}
 $(document).ready(function() {
+/*
 	$("#btn1").click(function() {
 		$("#trr").nextAll().remove();
-		ajax_admin(0);
+		$(".pageForm").remove();
+		ajax_admin(0,0);
+		ajax_page(0,0);
 		})
 	$("#btn2").click(function() {
 		$("#trr").nextAll().remove();
@@ -114,16 +150,56 @@ $(document).ready(function() {
 		})
 	$("#btn4").click(function() {
 		$("#trr").nextAll().remove();
-		ajax(1,1);
+		ajax(1,1,0);
 		})
 	$("#btn5").click(function() {
 		$("#trr").nextAll().remove();
-		ajax(1,2);
+		ajax(1,2,0);
 		})
-	
-	});
+	*/
+});
+$(document).on("click","#btn1",function(){
+	var offset=$(this).parent().find("input.offset").val();
+	$("#trr").nextAll().remove();
+	$(".pageForm").remove();
+	ajax_admin(0,offset);
+	ajax_page(0,offset,-1);
+});
+$(document).on("click","#btn2",function(){
+	var offset=$(this).parent().find("input.offset").val();
+	$("#trr").nextAll().remove();
+	$(".pageForm").remove();
+	ajax_admin(1,offset);
+	ajax_page(1,offset,-1);
+});
+$(document).on("click","#btn3",function(){
+	var offset=$(this).parent().find("input.offset").val();
+	$("#trr").nextAll().remove();
+	$(".pageForm").remove();
+	ajax_admin(2,offset);
+	ajax_page(2,offset,-1);
+});
+$(document).on("click","#btn4",function(){
+	var offset=$(this).parent().find("input.offset").val();
+	$("#trr").nextAll().remove();
+	$(".pageForm").remove();
+	ajax(1,offset,1);
+	ajax_page(1,offset,1);
+});
+$(document).on("click","#btn5",function(){
+	var offset=$(this).parent().find("input.offset").val();
+	$("#trr").nextAll().remove();
+	$(".pageForm").remove();
+	ajax(1,offset,2);
+	ajax_page(1,offset,2);
+});
 
 </script>
+<style>
+	form{
+		display: inline;
+	}
+</style>
 </head>
 <body>
 		
@@ -157,6 +233,14 @@ $(document).ready(function() {
 				</tr>
 			</c:forEach>
 		</table>
+		<div class="pageDiv">
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+			<form action="item" class="pageForm">
+				<input type="submit" value="${i}"/>
+				<input type="hidden" value="${i*10-10}" name="offset" class="offset"/>
+			</form>
+			</c:forEach>
+		</div>
 	</div>
 </body>
 </html>
