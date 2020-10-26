@@ -130,12 +130,12 @@ public class MyRestController {
 		if(nowPage/10 == pageSize/10) {
 			endPage=pageSize;
 		}
-		System.out.println("======admin :"+admin+"======");
-		System.out.println("사이즈:"+listAll.size());
-		System.out.println("deal:"+deal);
-		System.out.println("np:"+nowPage);
-		System.out.println("sp:"+startPage);
-		System.out.println("ep:"+endPage);
+//		System.out.println("======admin :"+admin+"======");
+//		System.out.println("사이즈:"+listAll.size());
+//		System.out.println("deal:"+deal);
+//		System.out.println("np:"+nowPage);
+//		System.out.println("sp:"+startPage);
+//		System.out.println("ep:"+endPage);
 		Map<String,Integer> map = new HashMap<String, Integer>();
 		map.put("startPage", startPage);
 		map.put("endPage", endPage);

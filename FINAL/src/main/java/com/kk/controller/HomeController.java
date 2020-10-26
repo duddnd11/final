@@ -37,6 +37,10 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		return "home";
 	}
+	@RequestMapping(value = "/mainpage")
+	public String maainpage() {
+		return "mainpage";
+	}
 	@RequestMapping(value = "/popup")
 	public String popup() {
 		

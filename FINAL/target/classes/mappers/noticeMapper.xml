@@ -21,4 +21,29 @@
  		UPDATE notice SET hitcount=hitcount+1 WHERE nbo=#{nbo}
  	</update>
  	 -->
+ 	<select id="searchTitle" resultType="com.auction.vo.NoticeVo">
+ 		SELECT * FROM notice WHERE title LIKE CONCAT('%', #{keyword},'%') ORDER BY nbo DESC LIMIT 10 OFFSET #{offset}
+ 	</select>
+ 	<select id="searchContent" resultType="com.auction.vo.NoticeVo">
+ 		SELECT * FROM notice WHERE content LIKE CONCAT('%', #{keyword},'%') ORDER BY nbo DESC LIMIT 10 OFFSET #{offset}
+ 	</select>
+ 	<select id="searchWriter" resultType="com.auction.vo.NoticeVo">
+ 		SELECT * FROM notice WHERE ID LIKE CONCAT('%', #{keyword},'%') ORDER BY nbo DESC LIMIT 10 OFFSET #{offset}
+ 	</select>
+ 	<select id="searchTitleAndContent" resultType="com.auction.vo.NoticeVo">
+ 		SELECT * FROM notice WHERE title LIKE CONCAT('%', #{keyword},'%') OR content LIKE CONCAT('%', #{keyword},'%') ORDER BY nbo DESC LIMIT 10 OFFSET #{offset}
+ 	</select>
+ 	<select id="searchTitleSize" resultType="com.auction.vo.NoticeVo">
+ 		SELECT * FROM notice WHERE title LIKE CONCAT('%', #{keyword},'%')
+ 	</select>
+ 	<select id="searchContentSize" resultType="com.auction.vo.NoticeVo">
+ 		SELECT * FROM notice WHERE content LIKE CONCAT('%', #{keyword},'%')
+ 	</select>
+ 	<select id="searchWriterSize" resultType="com.auction.vo.NoticeVo">
+ 		SELECT * FROM notice WHERE ID LIKE CONCAT('%', #{keyword},'%')
+ 	</select>
+ 	<select id="searchTitleAndContentSize" resultType="com.auction.vo.NoticeVo">
+ 		SELECT * FROM notice WHERE title LIKE CONCAT('%', #{keyword},'%') OR content LIKE CONCAT('%', #{keyword},'%')
+ 	</select>
+ 	 
  </mapper>

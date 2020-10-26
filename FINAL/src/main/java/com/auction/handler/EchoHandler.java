@@ -20,6 +20,7 @@ public class EchoHandler extends TextWebSocketHandler{
 //		System.out.println(session.getAttributes());
 //		Map<String,Object> map = session.getAttributes();
 //		System.out.println(map.get("�븘�씠�뵒"));
+
 		if(sessionList.size()<=1) {
 			sessionList.add(session);
 		}else {
