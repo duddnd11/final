@@ -70,6 +70,25 @@ public class AdminController {
 		if(nowPage/10 == pageSize/10) {
 			endPage=pageSize;
 		}
+		for(ProductVo vo : list) {
+			switch(vo.getGrade()) {
+				case "a":
+					vo.setGrade("vvip");
+					break;
+				case "b":
+					vo.setGrade("vip");
+					break;
+				case "c":
+					vo.setGrade("gold");
+					break;
+				case "d":
+					vo.setGrade("silver");
+					break;
+				case "e":
+					vo.setGrade("일반");
+					break;
+			}
+		}
 		model.addAttribute("offset", offset);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
@@ -103,6 +122,10 @@ public class AdminController {
 	public String chart(int pno, Model model) {
 		List<AuctionVo> list = service.chart(1015);		//수정
 		model.addAttribute("list", list);
+		for(int i=0; i<list.size();i++) {
+			System.out.println(list.get(i).getMyprice());
+		}
+		
 		return "chart";
 	}
 

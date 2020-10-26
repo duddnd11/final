@@ -1,49 +1,52 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div style="width: 700px; height: 700px;">
 	<canvas id="myChart"></canvas>
 	</div>
 <script>
+	var data1 = new Array();
+	var labels1 = new Array();
+<c:forEach var="list" items="${list}">
+	data1.push(${list.getMyprice()})
+	labels1.push(${list.getBuydate()})
+</c:forEach>
+
+	
 $(document).ready(function(){
-	const ctx = $('#myChart')
-	//Ã¹¹øÂ° ÀÎÀÚ´Â ³» ÅÂ±×(¼±ÅÃÀÚ), µÎ¹øÂ° ÀÎÀÚ´Â ¿É¼Ç
+	const ctx = $('#myChart');
+	//ì²«ë²ˆì§¸ ì¸ìëŠ” ë‚´ íƒœê·¸(ì„ íƒì), ë‘ë²ˆì§¸ ì¸ìëŠ” ì˜µì…˜
 	const myChart = new Chart(ctx, {
 		type: 'line',
 		data : {
 			datasets : [{
-				label : "³¯Â¥º° ÀÀÂû °¡°İ", 
+				label : "ë‚ ì§œë³„ ì‘ì°° ê°€ê²©", 
 				//backgroundColor : ['#6B66FF','#FFBB00','#6B66FF','#FFBB00','#FFBB00'],
 				borderColor : ['#FF0000'],
-//				dat1a : [1000000, 4000000, 6000000, 5000000, 8000000]
-				dat1a : [
-					for(var i=0; i<${list}.length; i++){
-						${list.myprice}
-					}
-						],
+				data : data1,
 				fill : false,
 			}],
-			labels: ['10:00', '11:00', '12:00', '13:00', '2020/10/23'],
+			labels: labels1,
 				
 		},
 		options :{
 			scales :{
 				yAxes: [{
-					 ticks : { max: 10000000, stepSize: 500000,min:0 },	// Â÷Æ®ÀÇ ÃÖ´ëÄ¡¿Í ÃÖ¼ÒÄ¡
+					 ticks : { max: 10000000, stepSize: 500000,min:0 },	// ì°¨íŠ¸ì˜ ìµœëŒ€ì¹˜ì™€ ìµœì†Œì¹˜
 				}]
 			}
 		}
 	})
 });
 </script>
-
 </body>
 </html>
