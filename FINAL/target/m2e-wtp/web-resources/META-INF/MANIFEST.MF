@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: owner
 Build-Jdk: 1.8.0_241
+=======
+Built-By: 82104
+Build-Jdk: 1.8.0_251
+>>>>>>> refs/remotes/origin/main
 Created-By: Maven Integration for Eclipse
 

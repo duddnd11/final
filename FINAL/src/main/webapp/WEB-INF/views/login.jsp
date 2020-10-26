@@ -3,12 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8">  
+  <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="1001790183901-cb9d2bt84dqu3v7e0gfsg6rtjrpapdd7.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-    <script>"jquery-3.5.1min.js"</script>
+    <script src="resources/js/jquery-3.5.1.min.js"></script>
   <script>
         // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
         Kakao.init('37ce67905ce0fd50ce6c67104e979081');
@@ -34,10 +38,9 @@
             success: function(res) {
                 console.log(res);
                 var id = res.id;
-                var email = res.kakao_account.email;
-
+               
                 console.log(id);
-                console.log(email);
+                
             },
             fail: function(error) {
                 console.log(error);
@@ -97,22 +100,39 @@
 	    src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
 	    width="277px;" height="60px;"/>
 		</a>
+		
+		
 		</div>
 	    <!-- 네이버아이디로로그인 버튼 노출 영역 -->
 	  <div id="naver_id_login" style="margin-left: 50px; margin-top: 10px;">
 	  <!-- //네이버아이디로로그인 버튼 노출 영역 -->
 	  <script type="text/javascript">
-	  	var naver_id_login = new naver_id_login("J9LhL5HfjKG4bDjLYBHL", "http://localhost:9090/final/login/");
+	  	var naver_id_login = new naver_id_login("J9LhL5HfjKG4bDjLYBHL", "http://localhost:9090/final/result/");
 	  	var state = naver_id_login.getUniqState();
 	  	naver_id_login.setButton("white", 277,60);
-	  	naver_id_login.setDomain("http://localhost:9090/final/login/");
+	  	naver_id_login.setDomain("http://localhost:9090/final/result/");
 	  	naver_id_login.setState(state);
-	  	naver_id_login.setPopup();
 	  	naver_id_login.init_naver_id_login();
 	  </script>
+	  
 	  </div>
     </form>
     
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">dfd</div>
+    <script>
+        function onSignIn(googleUser) {
+            // Useful data for your client-side scripts:
+            var profile = googleUser.getBasicProfile();
+            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+            console.log('Full Name: ' + profile.getName());
+            console.log("Email: " + profile.getAccountEmail());
+            console.log("birth: "+profile.getBirthday())
+
+            // The ID token you need to pass to your backend:
+            var id_token = googleUser.getAuthResponse().id_token;
+            console.log("ID Token: " + id_token);
+        };
+    </script>
   </div>
 </body>
 </html>

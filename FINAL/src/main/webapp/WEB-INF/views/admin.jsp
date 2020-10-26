@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <style>
 	#btn{
@@ -19,12 +20,12 @@
 			<div style="display: flex; margin-top: 200px; margin-left: 250px;">
 				<div style="width: 200px; height: 200px; ">
 					<h2 style="font-size: 35px;">고객관리</h2>
-					<a href="#"><button style=" width: 70px; height: 40px; font-size: 18px;
+					<a href="admin/customer"><button style=" width: 70px; height: 40px; font-size: 18px;
 					font-weight: 900; margin-left: 35px; margin-top: 50px;">이동</button></a>
 				</div>
 				<div style="width: 200px; height: 200px; margin-left: 250px;">
 					<h2 style="font-size: 35px;">상품관리</h2>
-					<a href="#"><button style=" width: 70px; height: 40px; font-size: 18px;
+					<a href="admin/item"><button style=" width: 70px; height: 40px; font-size: 18px;
 					font-weight: 900; margin-left: 35px; margin-top: 50px;">이동</button></a>
 				</div>
 				<div style="width: 200px; height: 200px; margin-left: 250px;">
