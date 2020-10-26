@@ -3,7 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8">  
+  <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="1001790183901-cb9d2bt84dqu3v7e0gfsg6rtjrpapdd7.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
@@ -114,6 +118,21 @@
 	  </div>
     </form>
     
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">dfd</div>
+    <script>
+        function onSignIn(googleUser) {
+            // Useful data for your client-side scripts:
+            var profile = googleUser.getBasicProfile();
+            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+            console.log('Full Name: ' + profile.getName());
+            console.log("Email: " + profile.getAccountEmail());
+            console.log("birth: "+profile.getBirthday())
+
+            // The ID token you need to pass to your backend:
+            var id_token = googleUser.getAuthResponse().id_token;
+            console.log("ID Token: " + id_token);
+        };
+    </script>
   </div>
 </body>
 </html>

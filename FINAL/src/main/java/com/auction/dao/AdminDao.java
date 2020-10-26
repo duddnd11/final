@@ -14,7 +14,8 @@ public interface AdminDao {
 	List<ProductVo> showProduct();
 	List<ProductVo> showProductPage(int offset);
 	List<MemberVo> showMember();
-	List<ProductVo> saleItem(String ID);
+	List<AuctionVo> saleItem(String ID);
 	List<AuctionVo> buyItem(String ID);
 	int updateAdmin(ProductVo vo);
+	List<AuctionVo> chart(int pno);
 }

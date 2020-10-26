@@ -44,7 +44,7 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public List<ProductVo> saleItem(String ID) {
+	public List<AuctionVo> saleItem(String ID) {
 		return sqlSession.selectList("com.auction.mapper.AdminMapper.saleItem", ID);
 	}
 
@@ -57,6 +57,8 @@ public class AdminDaoImpl implements AdminDao {
 	public List<ProductVo> showProductPage(int offset) {
 		return sqlSession.selectList("com.auction.mapper.AdminMapper.showProductPage", offset);
 	}
+
+	@Override
 	public int updateAdmin(ProductVo vo) {
 		return sqlSession.update("com.auction.mapper.AdminMapper.updateAdmin", vo);
 	}
@@ -72,4 +74,8 @@ public class AdminDaoImpl implements AdminDao {
 		return sqlSession.selectList("com.auction.mapper.AdminMapper.adminProductPage", map);
 	}
 
+	@Override
+	public List<AuctionVo> chart(int pno) {
+		return sqlSession.selectList("com.auction.mapper.AdminMapper.chart", pno);
+	}
 }

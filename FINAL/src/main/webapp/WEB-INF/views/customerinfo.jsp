@@ -29,7 +29,6 @@
 			<tr>
 				<th>번호</th>
 				<th>상품이름</th>
-				<th>상품이미지</th>
 				<th>구매자</th>
 				<th>가격</th>
 				<th>날짜</th>
@@ -38,14 +37,9 @@
 			<tr>
 				<td>${sales.pno }</td>
 				<td>${sales.pname }</td>
-			<c:if test="${sales.image ne null }">
-				<td><img src="${sales.image }"/></td>
-			</c:if>
-			<c:if test="${sales.image eq null }">
-				<td><img src="resources/images/${sales.img1 }"/></td>
-			</c:if>
+				<td>${sales.ID }</td>
 				<td>${sales.bestmoney }</td>
-				<td>${sales. }</td>
+				<td>${sales.buydate }</td>
 			</tr>
 		</c:forEach>
 		</table>
@@ -56,7 +50,6 @@
 			<tr>
 				<th>번호</th>
 				<th>상품이름</th>
-				<th>상품이미지</th>
 				<th>판매자</th>
 				<th>가격</th>
 				<th>날짜</th>
@@ -65,12 +58,7 @@
 			<tr>
 				<td>${purchase.idx }</td>
 				<td>${purchase.pname }</td>
-			<c:if test="${sales.image ne null }">
-				<td><img src="${sales.image }"/></td>
-			</c:if>
-			<c:if test="${sales.image eq null }">
-				<td><img src="resources/images/${sales.img1 }"/></td>
-			</c:if>
+				<td>${purchase.ID }</td>
 				<td>${purchase.myprice }</td>
 				<td>${purchase.buydate }</td>
 			</tr>

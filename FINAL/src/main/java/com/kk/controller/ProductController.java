@@ -79,7 +79,7 @@ public class ProductController {
 		
 		model.addAttribute("showPop", showPop);
 		model.addAttribute("showHurry", showHurry);
-		return "main";
+		return "mainpage";
 	}
 	
 	@RequestMapping(value="/showAuctionNormal")

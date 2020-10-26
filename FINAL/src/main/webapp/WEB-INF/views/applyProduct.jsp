@@ -14,11 +14,11 @@
 <script src="resources/js/plmi.js"></script>
 
 <style>
-	form{
-		margin-left: 600px;
-		margin-top: 300px;
-		
-	}
+	form {
+    margin-left: 480px;
+    margin-top: 50px;
+    height: 1100px;
+}
 	th{
 		text-align: right;
 		padding: 10px;
@@ -29,9 +29,10 @@
 		margin-left: 30px;
 		font-size: 20px;
 	}
+	
 	select{
 		font-size: 20px;
-		width: 200px;
+		width: 260px;
 		height: 40px;
 		text-align: center;
 	}
@@ -43,9 +44,14 @@
 		font-size: 20px;
 	}	
 	select option { text-align: center; }
+	h2{
+		font-size: 30px;
+		margin-top: 100px;
+	}
 </style>
 </head>
 <body>
+	<h2 style="text-align: center;">상품등록</h2>
 	<form action="applyProductAction" method="post" enctype="multipart/form-data">
 	<table>
 	<tr>
@@ -55,7 +61,7 @@
 	<tr>
 		<th>사진</th> 
 			<td> 
-			 <input type="file" name="multiparts"/>
+			 <input type="file" name="multiparts"/><br/>
 		     <input type="file" name="multiparts"/>
 		    </td>
 	</tr>
@@ -83,7 +89,7 @@
 						<button type="button" class="sp-sub-minus" onclick="optnQtyMinus($(this));" style="width: 40px; height: 32px;">
 							<b>-</b>
 						</button>
-							<input style="margin-left: 0px;" type="tel" class="num" value="0" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
+							<input style=" width: 160px;margin-left: 0px;" type="tel" class="num" value="0" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
 							<button type="button" class="sp-sub-plus" onclick="optnQtyPlus($(this), '3091');" style="width: 40px; height: 32px;">
 								<b>+</b>
 							</button>
@@ -104,11 +110,8 @@
 			</select>
 			</td>
 	</tr>
-	<tr>
-		<td><input type="submit" value="승인 요청"/ style="margin-top: 50px;"></td>
-	</tr>
 		</table>
-		
+		<input id="apply" type="submit" value="승인 요청" style="width: 260px;height: 60px;margin-top: 50px;margin-left: 150px;">
 	</form>
 </body>
 </html>
