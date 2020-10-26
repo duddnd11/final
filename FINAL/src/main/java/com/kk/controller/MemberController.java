@@ -17,16 +17,10 @@ import com.auction.vo.MemberDto;
 
 
 @Controller
-public class MemberHomeController {
+public class MemberController {
 	@Autowired
 	MemberService service;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-
-		
-		return "home";
-	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)	//로그인
 	public String login(Locale locale, Model model) {
 		

@@ -46,11 +46,11 @@ public class HomeController {
 		
 		return "popup";
 	}
-	@RequestMapping(value = "/login")
-	public String login() {
-		return "login";
-	}
-	
+//	@RequestMapping(value = "/login")
+//	public String login() {
+//		return "login";
+//	}
+//	
 	@RequestMapping(value = "/googleLogin", method = RequestMethod.POST)
 	public String doGoogleSignInActionPage(HttpServletResponse response, Model model) throws Exception{
 	  OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
@@ -101,11 +101,11 @@ public class HomeController {
 	public String result() {
 		return "result";
 	}
-	@RequestMapping(value = "/signup")
-	public String singup() {
-		
-		return "signup";
-	}
+//	@RequestMapping(value = "/signup")
+//	public String singup() {
+//		
+//		return "signup";
+//	}
 	@RequestMapping(value = "/idcheck")
 	public String idcheck() {
 		
