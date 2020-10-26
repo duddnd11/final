@@ -38,7 +38,7 @@
 			<!-- <a href="qnaBoard?offset=${offset-100}&keyword=${keyword}&searchMenu=${searchMenu}"><<</a> -->
 			<form action="qnaBoard">
 				<input type="submit" value="<<"/>
-				<input type="hidden" value="${offset-100}" name="offset"/>
+				<input type="hidden" value="${sp*100-100}" name="offset"/>
 				<input type="hidden" value="${keyword}" name="keyword"/>
 				<input type="hidden" value="${searchMenu}" name="searchMenu"/>
 			</form>
@@ -58,13 +58,22 @@
 			<form action="qnaBoard">
 				<!--  <a href="qnaBoard?offset=${offset+100}&keyword=${keyword}&searchMenu=${searchMenu}">>></a>-->
 				<input type="submit" value=">>"/>
-				<input type="hidden" value="${offset+100}" name="offset"/>
+				<input type="hidden" value="${sp*100+100}" name="offset"/>
 				<input type="hidden" value="${keyword}" name="keyword"/>
 				<input type="hidden" value="${searchMenu}" name="searchMenu"/>
 			</form>
 		</c:if>
 	</c:when>
 	<c:otherwise>
+		<table>
+		<tr>
+			<td>글번호</td>
+			<td>글제목</td>
+			<td>작성자</td>
+			<td>날짜</td>
+			<td>조회수</td>
+		</tr>
+		</table>
 		찾으시는 게시글이 없습니다.
 	</c:otherwise>
 	</c:choose>
