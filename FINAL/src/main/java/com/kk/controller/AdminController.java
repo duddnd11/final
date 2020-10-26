@@ -122,10 +122,6 @@ public class AdminController {
 	public String chart(int pno, Model model) {
 		List<AuctionVo> list = service.chart(1015);		//수정
 		model.addAttribute("list", list);
-		for(int i=0; i<list.size();i++) {
-			System.out.println(list.get(i).getMyprice());
-		}
-		
 		return "chart";
 	}
 
