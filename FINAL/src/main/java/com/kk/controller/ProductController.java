@@ -78,19 +78,7 @@ public class ProductController {
 		return "showAuctionBlind";
 	}
 	
-	@RequestMapping(value="/main")
-	public String main(Model model) {
-		List<ProductVo> showPop = service.selectPop();
-		List<ProductVo> showHurry = service.selectHurry();
-		
-		model.addAttribute("showPop", showPop);
-		model.addAttribute("showHurry", showHurry);
-		return "mainpage";
-	}
-	
-	@RequestMapping(value="/showAuctionNormal")
-	public String showAuctionNormal(Model model) {
-		List<ProductVo> list = service.selectAuction();
+	public void setImg(List<ProductVo> list) {
 		for(ProductVo vo : list) {
 			if(vo.getFilenames()!=null) {
 				vo.setImg1(vo.getFilenames().split("_!_")[0]);
@@ -101,6 +89,24 @@ public class ProductController {
 				vo.setImg2(null);
 			}
 		}
+	}
+	
+	@RequestMapping(value="/main")
+	public String main(Model model) {
+		List<ProductVo> showPop = service.selectPop();
+		List<ProductVo> showHurry = service.selectHurry();
+		setImg(showPop);
+		setImg(showHurry);
+		
+		model.addAttribute("showPop", showPop);
+		model.addAttribute("showHurry", showHurry);
+		return "mainpage";
+	}
+	
+	@RequestMapping(value="/showAuctionNormal")
+	public String showAuctionNormal(Model model) {
+		List<ProductVo> list = service.selectAuction();
+		setImg(list);
 		model.addAttribute("list", list);
 		return "showAuctionNormal";
 	}
@@ -108,27 +114,16 @@ public class ProductController {
 	@RequestMapping(value="/showAuctionBlind")
 	public String showAuctionBlind(Model model) {
 		List<ProductVo> listShowBlind = service.selectAuctionBlind();
-	
-		for(ProductVo vo : listShowBlind) {
-			if(vo.getFilenames()!=null) {
-				vo.setImg1(vo.getFilenames().split("_!_")[0]);
-				vo.setImg2(vo.getFilenames().split("_!_")[1]);
-				vo.setImage(null);
-			} else {
-				vo.setImg1(null);
-				vo.setImg2(null);
-			}
-		}
-		
-//		service.showCategory(category);
+		setImg(listShowBlind);
 		model.addAttribute("voListShowBlind", listShowBlind);
 		return "showAuctionBlind";
 	}
 	
 	@RequestMapping(value="/showDetail")
 	public String showDetail(Model model, int pno, HttpSession session) {
-		session.setAttribute("session_id", "admin");
+		session.setAttribute("session_id", "admin");				//수정
 		String ID = (String) session.getAttribute("session_id");
+		
 		ProductVo vo = service.selectOne(pno);
 		List<AuctionVo> list = adminService.chart(pno);	
 		if(vo.getFilenames()!=null) {

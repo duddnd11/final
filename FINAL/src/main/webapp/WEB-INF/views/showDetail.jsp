@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	<%@ include file="header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -11,9 +12,15 @@
 
 <title>Insert title here</title>
 </head>
+<style>
+	img {
+		width: 200px;
+		height: 200px;
+	}
+</style>
 <body>
-	경매번호: ${vo.pno }
-	상품: ${vo.pname }
+	경매번호: ${vo.pno }	<br/>
+	상품: ${vo.pname }<br/>
 	<c:if test="${vo.image ne null }">
 		<img src="${vo.image }"/>		
 	</c:if>
@@ -21,13 +28,14 @@
 		<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img1 }"/></a> 
 		<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img2 }"/></a> <br/>
 	</c:if>
-	상품 가격: ${vo.price }
-	D-day: ${vo.timeout }
-	판매자: ${vo.ID }
-	날짜: ${vo.uploaddate } ~ ${vo.deadlinedate }
-	시작가: ${vo.startmoney }
-	가능한 최고 입찰가?응찰가?: ${vo.lastmoney }
-	입찰 단위: ${vo.moneyup }
+	<br/>
+	상품 가격: ${vo.price }<br/>
+	D-day: ${vo.timeout }<br/>
+	판매자: ${vo.ID }<br/>
+	날짜: ${vo.uploaddate } ~ ${vo.deadlinedate }<br/>
+	시작가: ${vo.startmoney }<br/>
+	가능한 최고 입찰가?응찰가?: ${vo.lastmoney }<br/>
+	입찰 단위: ${vo.moneyup }<br/>
 	
 	
 	<c:if test="${ID eq 'admin' }">
@@ -73,5 +81,6 @@ $(document).ready(function(){
 </script>
 </body>
 </html>
+	<%@ include file="footer.jsp" %>
 
 

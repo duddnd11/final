@@ -22,7 +22,7 @@
 	</select>
 
 	<select id="selectHurry" resultType="com.auction.vo.ProductVo">
-		SELECT *  from product order by (TIMESTAMPDIFF(day, NOW(), deadlinedate)+1) asc;
+		SELECT * from product order by (TIMESTAMPDIFF(day, NOW(), deadlinedate)+1) asc;
 	</select>
 	
 	<!-- 상세 -->

@@ -29,7 +29,7 @@
 		</c:if>
 	</c:forEach>
 </body>
-	<%@ include file="footer.jsp" %>
 </html>
+	<%@ include file="footer.jsp" %>
 
 

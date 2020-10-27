@@ -22,12 +22,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.auction.service.MemberService;
+import com.auction.service.ProductService;
 import com.auction.vo.MemberVo;
 
 
 
 @Controller
 public class HomeController {
+	@Autowired
+	MemberService service;
+	
 	@Autowired
 	GoogleConnectionFactory googleConnectionFactory;
 	@Autowired
@@ -90,7 +95,7 @@ public class HomeController {
 //	  vo.setBirth(profile.getBirthday());
 	  
 	  HttpSession session = request.getSession();
-//	  vo = service.googleLogin(vo);
+//	  vo = service.(vo);
 	  
 //	  session.setAttribute("login", vo);
 
