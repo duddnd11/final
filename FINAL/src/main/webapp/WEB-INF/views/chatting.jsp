@@ -13,12 +13,19 @@
 	$(function(){
 		$("#sendBtn").click(function(){
 			sendMessage();
+			$("#message").val('');
 		});
 		$("#chatting").click(function(){
 			sock= new SockJS("<c:url value="/echo"/>");
 			sock.onmessage = onMessage;
 			$("#data").append($("#userId").val()+"님 채팅 입장");
 		});
+		$("#message").keydown(function(key){
+			if(key.keyCode==13){
+				sendMessage();
+				$("#message").val('');
+				}
+			});
 		/*
 		$("#exit").click(function(){
 			sock.onclose = onClose;

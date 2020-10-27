@@ -4,6 +4,14 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+<script>
+function popup(){
+		var url = "login/";
+		var name = "login popup";
+		var option = "width = 550, height = 500, top = 100, left = 200, location = no"
+		window.open(url, name, option);
+	}
+</script>
 <style>
 * {
 	box-sizing: border-box;
@@ -207,7 +215,7 @@ header.header .nav_wrap nav.main {
 						src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw="></a>
 				</div>
 				<div class="login">
-					<a href="로그인페이지">로그인</a>
+					<a href="javascript:popup()">로그인</a>
 				</div>
 			</div>
 		</section>

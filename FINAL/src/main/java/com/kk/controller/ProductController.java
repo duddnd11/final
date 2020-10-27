@@ -30,7 +30,9 @@ public class ProductController {
 	
 	@RequestMapping(value="/applyProductAction", method = RequestMethod.POST)
 	public String applyProductAction(ProductVo vo, Model model, HttpSession session) throws Exception{
-		String filePath = session.getServletContext().getRealPath("/resources/images/");
+		//String filePath = session.getServletContext().getRealPath("/resources/images/");
+		// request.getSession().getServletContext().getRealPath("/");  
+		String filePath = session.getServletContext().getRealPath("/")+"resources/images/";
 		MultipartFile[] arrMultipart = vo.getMultiparts();		
 		String[] arrFilename = new String[arrMultipart.length];		
 		String str ="";
