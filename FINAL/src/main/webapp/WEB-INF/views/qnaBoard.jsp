@@ -83,7 +83,14 @@
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
 		<!-- <a href="qnaBoard?offset=${i*10}">${i+1}</a> -->
 		<form action="qnaBoard">
-			<input type="submit" value="${i}"/>
+			<c:choose>
+				<c:when test="${(offset+10)/10 eq i}">
+					<input type="submit" style= "font-weight:bold;" value="${i}"/>
+				</c:when>
+				<c:otherwise>
+					<input type="submit" value="${i}"/>
+				</c:otherwise>
+			</c:choose>
 			<input type="hidden" value="${i*10-10}" name="offset"/>
 			<input type="hidden" value="${keyword}" name="keyword"/>
 			<input type="hidden" value="${searchMenu}" name="searchMenu"/>
