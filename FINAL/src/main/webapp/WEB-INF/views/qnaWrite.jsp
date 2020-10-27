@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,4 +15,5 @@
 	<input type="submit" value="문의글쓰기"/>
 	</form>
 </body>
+<%@ include file="footer.jsp" %>
 </html>

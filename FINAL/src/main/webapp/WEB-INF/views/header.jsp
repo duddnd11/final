@@ -1,8 +1,8 @@
-<%@ page language="java" pageEncoding="utf-8"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
 * {
@@ -136,23 +136,23 @@ header.header .nav_wrap nav.main {
 	<header class="header">
 		<section class="nav_wrap">
 			<div class="inner_wrap">
-				<a href="메인 페이지"><img class="logo"
+				<a href="main"><img class="logo"
 					src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile6.uf.tistory.com%2Fimage%2F277027375874594F095C54"></a>
 				<nav class="main">
 					<ul class="main_cate">
 						<li id="main_auction" class="menu"><a class="menu_title"
-							href="경매페이지">경매</a>
+							href="showAuctionNormal">경매</a>
 							<div class="contextual">
 								<ul class="depth_1">
 									<li class="selected"><a class="submenu_title"
-										href="온라인 경매">온라인 경매</a>
+										href="showAuctionNormal">온라인 경매</a>
 										<ul class="depth_2" id="menu_list">
 											<li><a href="온라인 경매 1">온라인 경매 2</a></li>
 											<li><a href="온라인 경매 2">온라인 경매 2</a></li>
 											<li><a href="온라인 경매 3">온라인 경매 3</a></li>
 										</ul></li>
 									<li class="selected"><a class="submenu_title"
-										href="블라인드 경매">블라인드 경매</a>
+										href="showAuctionBlind">블라인드 경매</a>
 										<ul class="depth_2" id="menu_list">
 											<li><a href="블라인드 경매 1">블라인드 경매 2</a></li>
 											<li><a href="블라인드 경매 2">블라인드 경매 2</a></li>
@@ -181,7 +181,7 @@ header.header .nav_wrap nav.main {
 								</ul>
 							</div></li>
 						<li id="main_customer" class="menu"><a class="menu_title"
-							href="고객센터페이지">고객센터</a>
+							href="serviceCenter">고객센터</a>
 							<div class="contextual">
 								<ul class="depth_1">
 									<li class="selected"><a class="menu_title" href="온라인 경매">온라인

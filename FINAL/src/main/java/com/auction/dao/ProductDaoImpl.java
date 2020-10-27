@@ -1,5 +1,6 @@
 package com.auction.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -49,8 +50,11 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public List<ProductVo> showCategory(String category) {
-		return sqlSession.selectList("com.auction.mapper.ProductMapper.category", category);
+	public List<ProductVo> showCategory(String category, String auctionmenu) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("category", category);
+		map.put("auctionmenu", auctionmenu);
+		return sqlSession.selectList("com.auction.mapper.ProductMapper.category", map);
 	}
 
 	

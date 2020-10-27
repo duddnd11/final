@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -128,6 +128,7 @@
 	</form>
 	<input style="float: right; margin-right: 50px;" type="button" value="문의글쓰기" onclick="location.href='qnaWrite'"/>
 </body>
+<%@ include file="footer.jsp" %>
 </html>
 
 

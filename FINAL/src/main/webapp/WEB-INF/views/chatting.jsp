@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,4 +62,5 @@
 <input type="button" value="퇴장" id="exit"/>
 <input type="hidden" value="${userId}" id="userId"/>
 </body>
+<%@ include file="footer.jsp" %>
 </html>

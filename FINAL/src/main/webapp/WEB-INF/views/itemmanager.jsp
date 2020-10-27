@@ -159,26 +159,33 @@ $(document).ready(function() {
 	*/
 });
 $(document).on("click","#btn1",function(){
+	/*
 	var offset=$(this).parent().find("input.offset").val();
 	$("#trr").nextAll().remove();
 	$(".pageForm").remove();
 	ajax_admin(0,offset);
 	ajax_page(0,offset,-1);
+	*/
 });
 $(document).on("click","#btn2",function(){
+	/*
 	var offset=$(this).parent().find("input.offset").val();
 	$("#trr").nextAll().remove();
 	$(".pageForm").remove();
 	ajax_admin(1,offset);
 	ajax_page(1,offset,-1);
+	*/
 });
 $(document).on("click","#btn3",function(){
+	/*
 	var offset=$(this).parent().find("input.offset").val();
 	$("#trr").nextAll().remove();
 	$(".pageForm").remove();
 	ajax_admin(2,offset);
 	ajax_page(2,offset,-1);
+	*/
 });
+/*
 $(document).on("click","#btn4",function(){
 	var offset=$(this).parent().find("input.offset").val();
 	$("#trr").nextAll().remove();
@@ -192,7 +199,7 @@ $(document).on("click","#btn5",function(){
 	$(".pageForm").remove();
 	ajax(1,offset,2);
 	ajax_page(1,offset,2);
-});
+});*/
 
 </script>
 <style>
@@ -203,12 +210,12 @@ $(document).on("click","#btn5",function(){
 </head>
 <body>
 		
-		<button id="btn1">승인요청</button>	<!-- => 옵션으루  0.0 -->
-		<button id="btn2">승인</button>		<!-- 1.0 -->
-		<button id="btn3">거부</button>	<!-- 2.0 -->
+		<button id="btn1" onclick="location.href='item?offset=0&admin=0&deal=-1'">승인요청</button>	<!-- => 옵션으루  0.0 -->
+		<button id="btn2" onclick="location.href='item?offset=0&admin=1&deal=-1'">승인</button>		<!-- 1.0 -->
+		<button id="btn3" onclick="location.href='item?offset=0&admin=2&deal=-1'">거부</button>	<!-- 2.0 -->
 <br/>
-		<button id="btn4">경매중</button>	<!-- 1.1 -->
-		<button id="btn5">마감</button>	<!-- 1.2 -->
+		<button id="btn4" onclick="location.href='item?offset=0&admin=1&deal=1'">경매중</button>	<!-- 1.1 -->
+		<button id="btn5"onclick="location.href='item?offset=0&admin=1&deal=2'">마감</button>	<!-- 1.2 -->
 		
 	<div id="container">
 		<table id="theTable">
@@ -236,8 +243,17 @@ $(document).on("click","#btn5",function(){
 		<div class="pageDiv">
 			<c:forEach var="i" begin="${startPage}" end="${endPage}">
 			<form action="item" class="pageForm">
-				<input type="submit" value="${i}"/>
+			<c:choose>
+				<c:when test="${(offset+10)/10 eq i}">
+					<input type="submit" style= "font-weight:bold;" value="${i}"/>
+				</c:when>
+				<c:otherwise>
+					<input type="submit" value="${i}"/>
+				</c:otherwise>
+			</c:choose>
 				<input type="hidden" value="${i*10-10}" name="offset" class="offset"/>
+				<input type="hidden" value="${deal}" name="deal"/>
+				<input type="hidden" value="${admin}" name="admin"/>
 			</form>
 			</c:forEach>
 		</div>

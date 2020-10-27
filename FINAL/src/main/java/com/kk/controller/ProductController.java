@@ -15,13 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.auction.service.AdminService;
 import com.auction.service.ProductService;
+import com.auction.vo.AuctionVo;
 import com.auction.vo.ProductVo;
 
 @Controller
 public class ProductController {
 	@Autowired
 	ProductService service;
+	@Autowired
+	AdminService adminService;
 	
 	@RequestMapping(value="/applyProduct")
 	public String applyProduct() {
@@ -113,13 +117,18 @@ public class ProductController {
 				vo.setImg2(null);
 			}
 		}
+		
+//		service.showCategory(category);
 		model.addAttribute("voListShowBlind", listShowBlind);
 		return "showAuctionBlind";
 	}
 	
 	@RequestMapping(value="/showDetail")
-	public String showDetail(Model model, int pno) {
+	public String showDetail(Model model, int pno, HttpSession session) {
+		session.setAttribute("session_id", "admin");
+		String ID = (String) session.getAttribute("session_id");
 		ProductVo vo = service.selectOne(pno);
+		List<AuctionVo> list = adminService.chart(pno);	
 		if(vo.getFilenames()!=null) {
 			vo.setImg1(vo.getFilenames().split("_!_")[0]);
 			vo.setImg2(vo.getFilenames().split("_!_")[1]);
@@ -128,7 +137,9 @@ public class ProductController {
 			vo.setImg1(null);
 			vo.setImg2(null);
 		}
+		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
+		model.addAttribute("ID", ID);
 		return "showDetail";
 	}
 	

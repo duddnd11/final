@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -192,6 +193,7 @@
             ajax_write(ref,level,step,comment);
             $('#comment').val('');
          $('.comment').val('');
+       }
    });
     $(document).on("keydown","textarea.comment",function(key){
        if (key.keyCode == 13) {
@@ -311,4 +313,5 @@
       
       <input type="hidden" value="${detail.qbno}" id="qbno"/>
 </body>
+<%@ include file="footer.jsp" %>
 </html>
