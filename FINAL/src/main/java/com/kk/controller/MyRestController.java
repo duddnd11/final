@@ -48,34 +48,34 @@ public class MyRestController {
 	}
 	
 	
-	@RequestMapping(value = "/admin/itemadmin")
-	@ResponseBody
-	public List<ProductVo> itemadmin(@RequestBody Map<String, String> param) {
-		int admin = Integer.parseInt(param.get("admin"));
-		int offset = Integer.parseInt(param.get("offset"));
-//		List<ProductVo> list = adminService.adminProduct(admin);
-		List<ProductVo> list = adminService.adminProductPage(admin, offset);
-		for(ProductVo vo : list) {
-			switch(vo.getGrade()) {
-				case "a":
-					vo.setGrade("vvip");
-					break;
-				case "b":
-					vo.setGrade("vip");
-					break;
-				case "c":
-					vo.setGrade("gold");
-					break;
-				case "d":
-					vo.setGrade("silver");
-					break;
-				case "e":
-					vo.setGrade("일반");
-					break;
-			}
-		}
-		return list;
-	}
+//	@RequestMapping(value = "/admin/itemadmin")
+//	@ResponseBody
+//	public List<ProductVo> itemadmin(@RequestBody Map<String, String> param) {
+//		int admin = Integer.parseInt(param.get("admin"));
+//		int offset = Integer.parseInt(param.get("offset"));
+////		List<ProductVo> list = adminService.adminProduct(admin);
+//		List<ProductVo> list = adminService.adminProductPage(admin, offset);
+//		for(ProductVo vo : list) {
+//			switch(vo.getGrade()) {
+//				case "a":
+//					vo.setGrade("vvip");
+//					break;
+//				case "b":
+//					vo.setGrade("vip");
+//					break;
+//				case "c":
+//					vo.setGrade("gold");
+//					break;
+//				case "d":
+//					vo.setGrade("silver");
+//					break;
+//				case "e":
+//					vo.setGrade("일반");
+//					break;
+//			}
+//		}
+//		return list;
+//	}
 	@RequestMapping(value = "/admin/itemmanager")
 	@ResponseBody
 	public List<ProductVo> itemmanager(@RequestBody Map<String, String> param) {
