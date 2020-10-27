@@ -159,25 +159,31 @@ $(document).ready(function() {
 	*/
 });
 $(document).on("click","#btn1",function(){
+	/*
 	var offset=$(this).parent().find("input.offset").val();
 	$("#trr").nextAll().remove();
 	$(".pageForm").remove();
 	ajax_admin(0,offset);
 	ajax_page(0,offset,-1);
+	*/
 });
 $(document).on("click","#btn2",function(){
+	/*
 	var offset=$(this).parent().find("input.offset").val();
 	$("#trr").nextAll().remove();
 	$(".pageForm").remove();
 	ajax_admin(1,offset);
 	ajax_page(1,offset,-1);
+	*/
 });
 $(document).on("click","#btn3",function(){
+	/*
 	var offset=$(this).parent().find("input.offset").val();
 	$("#trr").nextAll().remove();
 	$(".pageForm").remove();
 	ajax_admin(2,offset);
 	ajax_page(2,offset,-1);
+	*/
 });
 $(document).on("click","#btn4",function(){
 	var offset=$(this).parent().find("input.offset").val();
@@ -203,9 +209,9 @@ $(document).on("click","#btn5",function(){
 </head>
 <body>
 		
-		<button id="btn1">승인요청</button>	<!-- => 옵션으루  0.0 -->
-		<button id="btn2">승인</button>		<!-- 1.0 -->
-		<button id="btn3">거부</button>	<!-- 2.0 -->
+		<button id="btn1" onclick="location.href='item?offset=0&admin=0&deal=-1'">승인요청</button>	<!-- => 옵션으루  0.0 -->
+		<button id="btn2" onclick="location.href='item?offset=0&admin=1&deal=-1'">승인</button>		<!-- 1.0 -->
+		<button id="btn3" onclick="location.href='item?offset=0&admin=2&deal=-1'">거부</button>	<!-- 2.0 -->
 <br/>
 		<button id="btn4">경매중</button>	<!-- 1.1 -->
 		<button id="btn5">마감</button>	<!-- 1.2 -->
@@ -238,6 +244,8 @@ $(document).on("click","#btn5",function(){
 			<form action="item" class="pageForm">
 				<input type="submit" value="${i}"/>
 				<input type="hidden" value="${i*10-10}" name="offset" class="offset"/>
+				<input type="hidden" value="${deal}" name="deal"/>
+				<input type="hidden" value="${admin}" name="admin"/>
 			</form>
 			</c:forEach>
 		</div>
