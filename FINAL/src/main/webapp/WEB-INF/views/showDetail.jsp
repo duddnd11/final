@@ -33,9 +33,12 @@
 	D-day: ${vo.timeout }<br/>
 	판매자: ${vo.ID }<br/>
 	날짜: ${vo.uploaddate } ~ ${vo.deadlinedate }<br/>
-	시작가: ${vo.startmoney }<br/>
-	가능한 최고 입찰가?응찰가?: ${vo.lastmoney }<br/>
-	입찰 단위: ${vo.moneyup }<br/>
+	
+	<c:if test="${vo.auctionmenu eq '일반' }">
+		시작가: ${vo.startmoney }<br/>
+		가능한 최고 입찰가?응찰가?: ${vo.lastmoney }<br/>
+		입찰 단위: ${vo.moneyup }<br/>
+	</c:if>
 	
 	
 	<c:if test="${ID eq 'admin' }">
