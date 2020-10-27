@@ -16,9 +16,11 @@
 <script>
 	var data1 = new Array();
 	var labels1 = new Array();
+	var backColor = new Array();
 <c:forEach var="list" items="${list}">
-	data1.push(${list.getMyprice()})
-	labels1.push(${list.getBuydate()})
+	data1.push(${list.getMyprice()});
+	labels1.push('${list.getBuydate()}');
+	backColor.push('#6B66FF');
 </c:forEach>
 
 	
@@ -30,18 +32,17 @@ $(document).ready(function(){
 		data : {
 			datasets : [{
 				label : "날짜별 응찰 가격", 
-				//backgroundColor : ['#6B66FF','#FFBB00','#6B66FF','#FFBB00','#FFBB00'],
+				backgroundColor : backColor,	
 				borderColor : ['#FF0000'],
 				data : data1,
 				fill : false,
 			}],
-			labels: labels1,
-				
+			labels: labels1
 		},
 		options :{
 			scales :{
 				yAxes: [{
-					 ticks : { max: 10000000, stepSize: 500000,min:0 },	// 차트의 최대치와 최소치
+					 ticks : { max: 10000000, stepSize: 500000, min:0 },	// 차트의 최대치와 최소치
 				}]
 			}
 		}

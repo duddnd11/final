@@ -8,6 +8,7 @@
 		INSERT INTO product(pname, image, filenames, price, uploaddate, deadlinedate, hitcount, ID, bestmoney, admin, category, auctionmenu, deal, moneyup) VALUES(#{pname},#{image},#{filenames},#{price},#{uploaddate},#{deadlinedate},#{hitcount},#{ID},#{bestmoney},#{admin},#{category},#{auctionmenu},#{deal},#{moneyup})
 	</insert>
 	
+	<!-- 전체 -->
 	<select id="selectAuction" resultType="com.auction.vo.ProductVo">
 		select * from product where auctionmenu='일반' order by uploaddate desc;
 	</select>
@@ -24,6 +25,7 @@
 		SELECT *  from product order by (TIMESTAMPDIFF(day, NOW(), deadlinedate)+1) asc;
 	</select>
 	
+	<!-- 상세 -->
 	<select id="selectOne" resultType="com.auction.vo.ProductVo">
 		SELECT * FROM product where pno=#{pno}
 	</select>
@@ -31,6 +33,7 @@
 		update product set hitcount= hitcount+1 where pno=#{pno}
 	</update>
 	
+	<!-- 등록 -->
 	<update id="timeout">
 		update product set timeout=(TIMESTAMPDIFF(day, NOW(), deadlinedate)+1);
 	</update>
@@ -41,4 +44,8 @@
 		update product set lastmoney=price*1.4;
 	</update>
 	
+	<!-- 카테고리 -->
+	<select id="category" resultType="com.auction.vo.ProductVo">
+		select * from product where category=#{category} order by uploaddate desc;
+	</select>
 </mapper>  

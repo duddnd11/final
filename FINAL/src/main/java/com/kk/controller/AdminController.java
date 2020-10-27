@@ -120,7 +120,7 @@ public class AdminController {
 	
 	@RequestMapping(value = "/admin/chart")
 	public String chart(int pno, Model model) {
-		List<AuctionVo> list = service.chart(1015);		//수정
+		List<AuctionVo> list = service.chart(pno);	
 		model.addAttribute("list", list);
 		return "chart";
 	}

@@ -131,4 +131,11 @@ public class ProductController {
 		model.addAttribute("vo", vo);
 		return "showDetail";
 	}
+	
+	@RequestMapping(value="/showCategory")
+	public String showCategory(Model model, String category) {
+		
+		
+		return "showAuctionBlind";
+	}
 }

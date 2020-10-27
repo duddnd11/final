@@ -48,6 +48,11 @@ public class ProductDaoImpl implements ProductDao {
 		return sqlSession.selectList("com.auction.mapper.ProductMapper.selectAuctionBlind");
 	}
 
+	@Override
+	public List<ProductVo> showCategory(String category) {
+		return sqlSession.selectList("com.auction.mapper.ProductMapper.category", category);
+	}
+
 	
 	
 	

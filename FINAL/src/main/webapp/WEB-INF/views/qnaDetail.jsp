@@ -12,8 +12,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-<<<<<<< HEAD
-<<<<<<< HEAD
    function ajax_write(ref,level,step,comment){
       var commentData={
             qbno : $("#qbno").val(),
@@ -55,7 +53,6 @@
             }
          },
          error :function(xhr, status, error) {
-=======
 	function ajax_write(ref,level,step,comment){
 		var commentData={
 				qbno : $("#qbno").val(),
@@ -95,8 +92,6 @@
 				}
 			},
 			error :function(xhr, status, error) {
->>>>>>> refs/remotes/origin/main
-=======
    function ajax_write(ref,level,step,comment){
       var commentData={
             qbno : $("#qbno").val(),
@@ -138,7 +133,6 @@
             }
          },
          error :function(xhr, status, error) {
->>>>>>> refs/remotes/origin/main
                 alert("에러!");
                 alert("code:"+xhr.status+"\n"+"message:"+xhr.responseText+"\n"+"error:"+error);
             }
@@ -186,7 +180,6 @@
          var   step= $(this).parent().find("input#step").val();
          var comment = $(this).parent().find("textarea#comment").val();
          ajax_write(ref,level,step,comment);
-<<<<<<< HEAD
          $('#comment').val('');
    });
     $(document).on("keydown","textarea.comment",function(key){
@@ -198,7 +191,6 @@
             var comment = $(this).parent().find("textarea#comment").val();
             ajax_write(ref,level,step,comment);
             $('#comment').val('');
-=======
          $('.comment').val('');
    });
     $(document).on("keydown","textarea.comment",function(key){
@@ -210,7 +202,6 @@
             var comment = $(this).parent().find("textarea#comment").val();
             ajax_write(ref,level,step,comment);
             $('.comment').val('');
->>>>>>> refs/remotes/origin/main
            }
      });
 </script>
