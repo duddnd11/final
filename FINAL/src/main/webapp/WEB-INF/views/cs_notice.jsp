@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -12,21 +12,21 @@
 		<%@ include file="aside.jsp"%>
 		<main>
 			<section class="content_header no_border">
-				<h3>°øÁö»çÇ×</h3>
-				<small class="list_count"> ÃÑ 180°³ </small>
+				<h3>ê³µì§€ì‚¬í•­</h3>
+				<small class="list_count"> ì´ 180ê°œ </small>
 			</section>
 			<table class="item_list">
 				<thead>
 					<tr>
-						<th class="classify">±¸ºÐ</th>
-						<th class="subject">Á¦¸ñ</th>
-						<th class="date">µî·ÏÀÏ</th>
+						<th class="classify">êµ¬ë¶„</th>
+						<th class="subject">ì œëª©</th>
+						<th class="date">ë“±ë¡ì¼</th>
 					</tr>
 				</thead>
 				<tbody id="notice_list">
 					<tr class="top">
-						<td class="classify">±¸ºÐ</td>
-						<td class="title"><a href="»ó¼¼Á¤º¸">°øÁö»çÇ×</a></td>
+						<td class="classify">êµ¬ë¶„</td>
+						<td class="title"><a href="ìƒì„¸ì •ë³´">ê³µì§€ì‚¬í•­</a></td>
 						<td class="date">2020.10.21</td>
 					</tr>
 				</tbody>

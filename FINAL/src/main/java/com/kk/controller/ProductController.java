@@ -15,13 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.auction.service.AdminService;
 import com.auction.service.ProductService;
+import com.auction.vo.AuctionVo;
 import com.auction.vo.ProductVo;
 
 @Controller
 public class ProductController {
 	@Autowired
 	ProductService service;
+	@Autowired
+	AdminService adminService;
 	
 	@RequestMapping(value="/applyProduct")
 	public String applyProduct() {
@@ -30,7 +34,9 @@ public class ProductController {
 	
 	@RequestMapping(value="/applyProductAction", method = RequestMethod.POST)
 	public String applyProductAction(ProductVo vo, Model model, HttpSession session) throws Exception{
-		String filePath = session.getServletContext().getRealPath("/resources/images/");
+		//String filePath = session.getServletContext().getRealPath("/resources/images/");
+		// request.getSession().getServletContext().getRealPath("/");  
+		String filePath = session.getServletContext().getRealPath("/")+"resources/images/";
 		MultipartFile[] arrMultipart = vo.getMultiparts();		
 		String[] arrFilename = new String[arrMultipart.length];		
 		String str ="";
@@ -72,19 +78,7 @@ public class ProductController {
 		return "showAuctionBlind";
 	}
 	
-	@RequestMapping(value="/main")
-	public String main(Model model) {
-		List<ProductVo> showPop = service.selectPop();
-		List<ProductVo> showHurry = service.selectHurry();
-		
-		model.addAttribute("showPop", showPop);
-		model.addAttribute("showHurry", showHurry);
-		return "mainpage";
-	}
-	
-	@RequestMapping(value="/showAuctionNormal")
-	public String showAuctionNormal(Model model) {
-		List<ProductVo> list = service.selectAuction();
+	public void setImg(List<ProductVo> list) {
 		for(ProductVo vo : list) {
 			if(vo.getFilenames()!=null) {
 				vo.setImg1(vo.getFilenames().split("_!_")[0]);
@@ -95,6 +89,24 @@ public class ProductController {
 				vo.setImg2(null);
 			}
 		}
+	}
+	
+	@RequestMapping(value="/main")
+	public String main(Model model) {
+		List<ProductVo> showPop = service.selectPop();
+		List<ProductVo> showHurry = service.selectHurry();
+		setImg(showPop);
+		setImg(showHurry);
+		
+		model.addAttribute("showPop", showPop);
+		model.addAttribute("showHurry", showHurry);
+		return "mainpage";
+	}
+	
+	@RequestMapping(value="/showAuctionNormal")
+	public String showAuctionNormal(Model model) {
+		List<ProductVo> list = service.selectAuction();
+		setImg(list);
 		model.addAttribute("list", list);
 		return "showAuctionNormal";
 	}
@@ -102,24 +114,18 @@ public class ProductController {
 	@RequestMapping(value="/showAuctionBlind")
 	public String showAuctionBlind(Model model) {
 		List<ProductVo> listShowBlind = service.selectAuctionBlind();
-	
-		for(ProductVo vo : listShowBlind) {
-			if(vo.getFilenames()!=null) {
-				vo.setImg1(vo.getFilenames().split("_!_")[0]);
-				vo.setImg2(vo.getFilenames().split("_!_")[1]);
-				vo.setImage(null);
-			} else {
-				vo.setImg1(null);
-				vo.setImg2(null);
-			}
-		}
+		setImg(listShowBlind);
 		model.addAttribute("voListShowBlind", listShowBlind);
 		return "showAuctionBlind";
 	}
 	
 	@RequestMapping(value="/showDetail")
-	public String showDetail(Model model, int pno) {
+	public String showDetail(Model model, int pno, HttpSession session) {
+		session.setAttribute("session_id", "admin");				//수정
+		String ID = (String) session.getAttribute("session_id");
+		
 		ProductVo vo = service.selectOne(pno);
+		List<AuctionVo> list = adminService.chart(pno);	
 		if(vo.getFilenames()!=null) {
 			vo.setImg1(vo.getFilenames().split("_!_")[0]);
 			vo.setImg2(vo.getFilenames().split("_!_")[1]);
@@ -128,7 +134,16 @@ public class ProductController {
 			vo.setImg1(null);
 			vo.setImg2(null);
 		}
+		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
+		model.addAttribute("ID", ID);
 		return "showDetail";
+	}
+	
+	@RequestMapping(value="/showCategory")
+	public String showCategory(Model model, String category) {
+		
+		
+		return "showAuctionBlind";
 	}
 }

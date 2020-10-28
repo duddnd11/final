@@ -1,11 +1,15 @@
 package com.kk.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.auction.service.AdminService;
 import com.auction.vo.AuctionVo;
@@ -55,9 +59,19 @@ public class AdminController {
 		return "customerinfo";
 	}
 	@RequestMapping(value = "/admin/item")
-	public String itemmanager(Model model,int offset) {
-		List<ProductVo> listAll = service.showProduct();
-		List<ProductVo> list = service.showProductPage(offset);
+	public String itemmanager(Model model,int offset,int admin,int deal) {
+		List<ProductVo> listAll = new ArrayList<ProductVo>();
+		List<ProductVo> list = new ArrayList<ProductVo>();
+		if(admin<0 && deal<0) {
+			listAll = service.showProduct();
+			list = service.showProductPage(offset);
+		}else if(admin>=0 && deal<0) {
+			listAll = service.adminProduct(admin);
+			list = service.adminProductPage(admin, offset);
+		}else if(admin>=0 && deal>=0) {
+			listAll = service.dealProduct(admin, deal);
+			list = service.dealProductPage(admin, deal, offset);
+		}
 		int pageSize=0;
 		if(listAll.size()>=10 && listAll.size()%10==0 ) {
 			pageSize=listAll.size()/10;
@@ -89,6 +103,8 @@ public class AdminController {
 					break;
 			}
 		}
+		model.addAttribute("deal", deal);
+		model.addAttribute("admin", admin);
 		model.addAttribute("offset", offset);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
@@ -118,11 +134,11 @@ public class AdminController {
 		return "itemmanager";
 	}
 	
-	@RequestMapping(value = "/admin/chart")
-	public String chart(int pno, Model model) {
-		List<AuctionVo> list = service.chart(1015);		//수정
-		model.addAttribute("list", list);
-		return "chart";
-	}
+//	@RequestMapping(value = "/admin/chart")
+//	public String chart(int pno, Model model) {
+//		List<AuctionVo> list = service.chart(pno);	
+//		model.addAttribute("list", list);
+//		return "chart";
+//	}
 
 }

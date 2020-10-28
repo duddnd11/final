@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>main page</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet"
@@ -31,7 +31,12 @@
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
 					<c:forEach begin="0" end="4" var="showPop" items="${showPop }">
-						<a href="showDetail?pno=${showPop.pno }"><img src="${showPop.image }"/></a>
+						<c:if test="${showPop.image ne null }">
+							<a href="showDetail?pno=${showPop.pno }"><img src="${showPop.image }"/></a>	
+						</c:if>
+						<c:if test="${showPop.image eq null }">
+							<a href="showDetail?pno=${showPop.pno }"><img src="resources/images/${showPop.img1 }"/></a> <br/>
+						</c:if>
 					</c:forEach>
 				</div>
 			</div>
@@ -50,7 +55,12 @@
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
 					<c:forEach var="showHurry" items="${showHurry }">
-						<a href="showDetail?pno=${showHurry.pno }"><img src="${showHurry.image }"/></a>
+						<c:if test="${showHurry.image ne null }">
+							<a href="showDetail?pno=${showHurry.pno }"><img src="${showHurry.image }"/></a>	
+						</c:if>
+						<c:if test="${showHurry.image eq null }">
+							<a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img1 }"/></a> <br/>
+						</c:if>
 					</c:forEach>
 				</div>
 			</div>
@@ -100,6 +110,6 @@
 			});
 		</script>
 	</div>
-	<%@ include file="footer.jsp" %>
 </body>
 </html>
+	<%@ include file="footer.jsp" %>

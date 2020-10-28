@@ -19,18 +19,11 @@ public class EchoHandler extends TextWebSocketHandler{
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 //		System.out.println(session.getAttributes());
 //		Map<String,Object> map = session.getAttributes();
-//		System.out.println(map.get("�븘�씠�뵒"));
-
 		if(sessionList.size()<=1) {
 			sessionList.add(session);
 		}else {
 			System.out.println("2명 제한");
 		}
-//		sessionList.add((WebSocketSession) map.get("�븘�씠�뵒"));
-		logger.info("{} �뿰寃곕맖",session.getId());
-		System.out.println("�엯�옣:"+session.getId());
-//		System.out.println("梨꾪똿諛� �엯�옣�옄 : "+ session.getPrincipal().getName());
-
 //		sessionList.add((WebSocketSession) map.get("아이디"));
 		logger.info("{} 연결됨",session.getId());
 		System.out.println("입장:"+session.getId());

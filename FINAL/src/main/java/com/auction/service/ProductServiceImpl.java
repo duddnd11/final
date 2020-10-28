@@ -42,4 +42,9 @@ public class ProductServiceImpl implements ProductService {
 		return dao.selectAuctionBlind();
 	}
 
+	@Override
+	public List<ProductVo> showCategory(String category, String auctionmenu) {
+		return dao.showCategory(category, auctionmenu);
+	}
+
 }

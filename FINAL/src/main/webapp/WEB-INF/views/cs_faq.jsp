@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>
@@ -34,18 +34,18 @@
 		<main class="cs_main">
 			<div class="cs_main_faq faq" id="faq_list">
 				<section class="content_header">
-					<h3>ÀÚÁÖ Ã£´Â Áú¹®</h3>
+					<h3>ìžì£¼ ì°¾ëŠ” ì§ˆë¬¸</h3>
 				</section>
 				<div id="faq-wrap">
-					<div id="spreadBtn01" class="btn">¿ÀÇÁ¶óÀÎ ½ºÅä¾îÀÇ ¿î¿µ ½Ã°£Àº ¾î¶»°Ô µÇ³ª¿ä?</div>
+					<div id="spreadBtn01" class="btn">ì˜¤í”„ë¼ì¸ ìŠ¤í† ì–´ì˜ ìš´ì˜ ì‹œê°„ì€ ì–´ë–»ê²Œ ë˜ë‚˜ìš”?</div>
 					<hr>
 					<div id="hiddenFAQ01" class="faq-con" style="display: none;">
-						<p>¾È³çÇÏ¼¼¿ä °í°´´Ô, ´ã´çÀÚÀÔ´Ï´Ù. ¿î¿µ ½Ã°£Àº ¿ù¿äÀÏ~ÀÏ¿äÀÏ 10:30~19:00ÀÔ´Ï´Ù.</p>
+						<p>ì•ˆë…•í•˜ì„¸ìš” ê³ ê°ë‹˜, ë‹´ë‹¹ìžìž…ë‹ˆë‹¤. ìš´ì˜ ì‹œê°„ì€ ì›”ìš”ì¼~ì¼ìš”ì¼ 10:30~19:00ìž…ë‹ˆë‹¤.</p>
 					</div>
-					<div id="spreadBtn02" class="btn">È¸¿ø°¡ÀÔ ½Ã ¾î¶°ÇÑ ÇýÅÃÀÌ ÀÖ³ª¿ä?</div>
+					<div id="spreadBtn02" class="btn">íšŒì›ê°€ìž… ì‹œ ì–´ë– í•œ í˜œíƒì´ ìžˆë‚˜ìš”?</div>
 					<hr>
 					<div id="hiddenFAQ02" class="faq-con" style="display: none;">
-						<p>ÇýÅÃÀ» ¹ÞÀ¸½Ç ¼ö ÀÖ½À´Ï´Ù.</p>
+						<p>í˜œíƒì„ ë°›ìœ¼ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.</p>
 					</div>
 				</div>
 			</div>

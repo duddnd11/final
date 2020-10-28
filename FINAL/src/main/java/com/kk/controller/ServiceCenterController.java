@@ -101,8 +101,6 @@ public class ServiceCenterController {
 		if(nowPage/10 == pageSize/10) {
 			endPage=pageSize;
 		}
-		System.out.println("ps:"+pageSize);
-		System.out.println("ep:"+endPage);
 		model.addAttribute("searchMenu", searchMenu);
 		model.addAttribute("ps",pageSize/10);
 		model.addAttribute("sp",startPage/10);

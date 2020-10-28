@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,7 +83,14 @@
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
 		<!-- <a href="qnaBoard?offset=${i*10}">${i+1}</a> -->
 		<form action="qnaBoard">
-			<input type="submit" value="${i}"/>
+			<c:choose>
+				<c:when test="${(offset+10)/10 eq i}">
+					<input type="submit" style= "font-weight:bold;" value="${i}"/>
+				</c:when>
+				<c:otherwise>
+					<input type="submit" value="${i}"/>
+				</c:otherwise>
+			</c:choose>
 			<input type="hidden" value="${i*10-10}" name="offset"/>
 			<input type="hidden" value="${keyword}" name="keyword"/>
 			<input type="hidden" value="${searchMenu}" name="searchMenu"/>
@@ -128,6 +135,7 @@
 	</form>
 	<input style="float: right; margin-right: 50px;" type="button" value="문의글쓰기" onclick="location.href='qnaWrite'"/>
 </body>
+<%@ include file="footer.jsp" %>
 </html>
 
 
