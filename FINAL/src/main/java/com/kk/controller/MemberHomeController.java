@@ -64,7 +64,7 @@ public class MemberHomeController {
 	
 	@RequestMapping(value = "/memberupdate")
 	public String memberupdate() {
-		return "member";
+		return "memberupdate";
 	}
 	@RequestMapping(value = "/memberaction")
 	public String UpdateAction(MemberDto dto, HttpSession session) {
