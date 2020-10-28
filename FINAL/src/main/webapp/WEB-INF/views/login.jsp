@@ -84,8 +84,8 @@
 </head>
 <body>
 	<div id="container" style="width: 600px; height: 600px; margin-left: 50px;">
-    <form style="margin-top: 100px;">
-        <input type="text" name="id" id="id" placeholder="아이디" >
+    <form action = "loginaction" style="margin-top: 100px;">
+        <input type="text" name="ID" id="ID" placeholder="아이디" >
         <input type="password" name="pw" id="pw" placeholder="비밀번호">
         <input type="submit" value="로그인" style=" margin-left: 5px; background-color: #FFAC04; color: white;
         height: 60px;">
