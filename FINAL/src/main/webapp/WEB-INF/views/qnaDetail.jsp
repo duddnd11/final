@@ -13,92 +13,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-<<<<<<< HEAD
-
-   
-
-=======
-   function ajax_write(ref,level,step,comment){
-      var commentData={
-            qbno : $("#qbno").val(),
-            comment : comment,
-            /*ref : $("#ref").val(),*/
-            ref : ref,
-            level :level,
-            step: step
-      };
-      
-      $.ajax({
-         url:'http://localhost:9090/final/rest/writecomment',
-         type:'post',
-         data :JSON.stringify(commentData),
-         //dataType:'json', 200에러일때 빼야함.. 400에러 url 405에러 post/get 415에러 contentType 필수속성
-         contentType :'application/json',
-         success : function(response){
-            //alert("성공");
-            //comment = response;
-            if(response.level==0){
-               var str="<li class='topLi'>";
-               str+="<div class='commentDiv' style='margin-left: 330px;'>";
-               str+="<span style='float: left; font-size: 12px; color: #cccccc;'>"+response.date+"</span><br/>";
-               str+="<span style='float: left;'>"+response.comment+"</span><br/></div>";
-               str+="<div class='reCommentWrite' style='margin-top: 5px; margin-left :330px;'><span id='more' class='more'>답글작성</span></div><br/>";
-               str+="<div class='openReComment' style='margin-left: 330px;'>";
-               str+="<div class='reCommentMenu"+response.ref+"'></div>";
-               str+="<textarea rows='5' cols='50' id='comment' class='comment' style='margin-left: 20px; width: 780px; height: 50px;'></textarea>";
-               str+="<input type='button' value='등록' id='commentBtn' class='commentBtn'/>";
-               str+="<input type='hidden' value='"+response.ref+"' id='ref'/>";
-               str+="<input type='hidden' value='"+(response.level+1)+"' id='level'/>";
-               str+="<input type='hidden' value='1' id='step'/>";
-               str+="</div>";
-               str+="</li>";
-               $(".topUl").append(str);
-            }else if(response.level==1){
-               var   str="<div class='reComment'>→"+response.comment+" "+response.date+"</div>";
-               $(".reCommentMenu"+response.ref).append(str);
-            }
-         },
-         error :function(xhr, status, error) {
-	function ajax_write(ref,level,step,comment){
-		var commentData={
-				qbno : $("#qbno").val(),
-				comment : comment,
-				/*ref : $("#ref").val(),*/
-				ref : ref,
-				level :level,
-				step: step
-		};
-		
-		$.ajax({
-			url:'http://localhost:9090/final/rest/writecomment',
-			type:'post',
-			data :JSON.stringify(commentData),
-			//dataType:'json', 200에러일때 빼야함.. 400에러 url 405에러 post/get 415에러 contentType 필수속성
-			contentType :'application/json',
-			success : function(response){
-				//alert("성공");
-				//comment = response;
-				if(response.level==0){
-					var str="<li class='topLi>'";
-					str+="<div class='commentDiv'>"+response.comment+" "+response.date+"</div>";
-					str+="<div class='reCommentWrite'><span id='more' class='more'>답글작성</span></div>";
-					str+="<div class='openReComment'>";
-					str+="<div class='reCommentMenu"+response.ref+"'></div>";
-					str+="<textarea rows='5' cols='50' id='comment' class='comment'></textarea>";
-					str+="<input type='button' value='등록' id='commentBtn' class='commentBtn'/>";
-					str+="<input type='hidden' value='"+response.ref+"' id='ref'/>";
-					str+="<input type='hidden' value='"+(response.level+1)+"' id='level'/>";
-					str+="<input type='hidden' value='1' id='step'/>";
-					str+="</div>";
-					str+="</li>";
-					$(".topUl").append(str);
-				}else if(response.level==1){
-					var	str="<div class='reComment'>→"+response.comment+" "+response.date+"</div>";
-					$(".reCommentMenu"+response.ref).append(str);
-				}
-			},
-			error :function(xhr, status, error) {
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
    function ajax_write(ref,level,step,comment){
       var commentData={
             qbno : $("#qbno").val(),
@@ -140,11 +54,6 @@
             }
          },
          error :function(xhr, status, error) {
-<<<<<<< HEAD
-
-
-=======
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
                 alert("에러!");
                 alert("code:"+xhr.status+"\n"+"message:"+xhr.responseText+"\n"+"error:"+error);
             }
@@ -192,10 +101,6 @@
          var   step= $(this).parent().find("input#step").val();
          var comment = $(this).parent().find("textarea#comment").val();
          ajax_write(ref,level,step,comment);
-<<<<<<< HEAD
-
-
-=======
          $('#comment').val('');
    });
     $(document).on("keydown","textarea.comment",function(key){
@@ -207,26 +112,8 @@
             var comment = $(this).parent().find("textarea#comment").val();
             ajax_write(ref,level,step,comment);
             $('#comment').val('');
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
-         $('.comment').val('');
        }
    });
-    $(document).on("keydown","textarea.comment",function(key){
-       if (key.keyCode == 13) {
-             var ref= $(this).parent().find("input#ref").val();
-            var ref= $(this).parent().find("input#ref").val();
-            var   level =$(this).parent().find("input#level").val();
-            var   step= $(this).parent().find("input#step").val();
-            var comment = $(this).parent().find("textarea#comment").val();
-            ajax_write(ref,level,step,comment);
-            $('.comment').val('');
-<<<<<<< HEAD
-
-
-=======
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
-           }
-     });
 </script>
 <style>
    #submenu{
