@@ -33,7 +33,7 @@ public class MemberHomeController {
 		return "login";
 	}
 	
-	@RequestMapping(value = "/loginaction")
+	@RequestMapping(value = "/login/loginaction")
 	public String LoginCheck(MemberDto dto, HttpServletRequest req, HttpSession session, RedirectAttributes redirectattributes) throws Exception {
 		session = req.getSession();
 		//System.out.println(dto.getID());
@@ -44,7 +44,8 @@ public class MemberHomeController {
 			
 		}else {
 			session.setAttribute("member", memberdto);
-			return "loginaction";
+			
+			return "mainpage";
 		}
 		return "redirect:/singup";
 	}
