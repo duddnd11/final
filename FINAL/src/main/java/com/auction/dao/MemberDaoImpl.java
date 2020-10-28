@@ -18,17 +18,18 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
-	public boolean loginUp(MemberDto dto) throws Exception{
-		MemberDto dtoDB = sqlSession.selectOne("com.auction.mapper.SignUpMapper.login", dto);
-		if(dtoDB == null) {
-			return false;
-		}
-		if(dto.getID().equals(dtoDB.getID()) && dto.getPw().equals(dtoDB.getPw())) {
-			return true;
-		}else {
-			return false;
-		}
+	public MemberDto login(MemberDto dto) {
+		return sqlSession.selectOne("com.auction.mapper.SignUpMapper.login", dto);
+//		if(voDB == null) {
+//			return false;
+//		}
+//		if(vo.getID().equals(voDB.getID()) && vo.getPW().equals(voDB.getPW())) {
+//			return true;
+//		}else {
+//			return false;
+//		}
 	}
+		
 	
 	@Override		//회원 정보 수정
 	public void memberUpdate(MemberDto dto) {

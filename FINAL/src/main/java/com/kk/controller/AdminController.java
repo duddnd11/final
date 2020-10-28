@@ -2,14 +2,11 @@ package com.kk.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.auction.service.AdminService;
 import com.auction.vo.AuctionVo;
@@ -121,7 +118,7 @@ public class AdminController {
 			System.out.println("승인함.");
 		}
 		model.addAttribute("result", result);
-		return "itemmanager";
+		return "redirect:/admin/item?offset=0&admin=1&deal=-1";
 	}
 	@RequestMapping(value="/admin/rejectItem")
 	public String rejectItem(int pno, Model model) {
@@ -131,7 +128,7 @@ public class AdminController {
 			System.out.println("거부 완료.");
 		}
 		model.addAttribute("result", result);
-		return "itemmanager";
+		return "redirect:/admin/item?offset=0&admin=2&deal=-1";
 	}
 	
 //	@RequestMapping(value = "/admin/chart")

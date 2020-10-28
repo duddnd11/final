@@ -133,6 +133,9 @@ function ajax_page(admin,offset,deal){
 		})
 }
 $(document).ready(function() {
+	$(".admin").click(function(){
+			
+		});
 /*
 	$("#btn1").click(function() {
 		$("#trr").nextAll().remove();
@@ -206,6 +209,13 @@ $(document).on("click","#btn5",function(){
 	form{
 		display: inline;
 	}
+	a{
+		text-decoration: none;
+		color: black;
+	}
+	th{
+		background-color: #F9E198;
+	}
 </style>
 </head>
 <body>
@@ -217,6 +227,28 @@ $(document).on("click","#btn5",function(){
 		<button id="btn4" onclick="location.href='item?offset=0&admin=1&deal=1'">경매중</button>	<!-- 1.1 -->
 		<button id="btn5"onclick="location.href='item?offset=0&admin=1&deal=2'">마감</button>	<!-- 1.2 -->
 		
+	<c:choose>
+		<c:when test="${admin eq 0 }">
+			<h2>승인요청</h2>
+		</c:when>
+		<c:when test="${admin eq 1 }">
+			<c:if test="${deal eq -1 }">
+				<h2>승인</h2>
+			</c:if>
+			<c:if test="${deal eq 1 }">
+				<h2>경매중</h2>
+			</c:if>
+			<c:if test="${deal eq 2 }">
+				<h2>마감</h2>
+			</c:if>
+		</c:when>
+		<c:when test="${admin eq 2 }">
+			<h2>거절</h2>
+		</c:when>
+		<c:otherwise>
+			<h2>전체</h2>
+		</c:otherwise>
+	</c:choose>
 	<div id="container">
 		<table id="theTable">
 			<tr id="trr">
@@ -226,7 +258,9 @@ $(document).on("click","#btn5",function(){
 				<th>등급</th>
 				<th>업로드 날짜</th>
 				<th>승인여부</th>
-				<th>승인여부2</th>
+				
+		<!--	<th>승인여부</th>
+				<th>경매여부</th>	-->
 			</tr>
 			<c:forEach var="list" items="${list }">
 				<tr id="del">
@@ -235,14 +269,19 @@ $(document).on("click","#btn5",function(){
 					<td>${list.ID }</td>
 					<td>${list.grade }</td>
 					<td>${list.uploaddate }</td>
-					<td>${list.admin }</td>
-					<td>${list.deal }</td>
+					<td><button id="admin" class="admin" style="margin: 10px;" onclick="location.href='approveItem?pno=${list.pno}'">승인</button>
+					<button onclick="location.href='rejectItem?pno=${list.pno}'">거절</button></td>
+					
+					
+		<!-- 		<td>${list.admin }</td>
+					<td>${list.deal }</td> -->
 				</tr>
 			</c:forEach>
 		</table>
-		<div class="pageDiv">
+		<div class="pageDiv" style="margin-top: 60px; margin-left: 600px;">
 			<c:forEach var="i" begin="${startPage}" end="${endPage}">
-			<form action="item" class="pageForm">
+
+			<form action="item" class="pageForm" style="padding: 5px;">
 			<c:choose>
 				<c:when test="${(offset+10)/10 eq i}">
 					<input type="submit" style= "font-weight:bold;" value="${i}"/>
@@ -250,10 +289,13 @@ $(document).on("click","#btn5",function(){
 				<c:otherwise>
 					<input type="submit" value="${i}"/>
 				</c:otherwise>
+
 			</c:choose>
+
+
 				<input type="hidden" value="${i*10-10}" name="offset" class="offset"/>
 				<input type="hidden" value="${deal}" name="deal"/>
-				<input type="hidden" value="${admin}" name="admin"/>
+				<input type="hidden" value="${admin}" name="admin" id="admin"/>
 			</form>
 			</c:forEach>
 		</div>

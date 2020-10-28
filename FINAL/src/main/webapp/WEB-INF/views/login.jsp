@@ -9,7 +9,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>로그인 페이지</title>
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
     <script src="resources/js/jquery-3.5.1.min.js"></script>
@@ -61,6 +61,10 @@
 		      opener.location.href="http://localhost:9090/final/singup";
 		      self.close();
 		    }
+	    function moveClose4() {
+		      opener.location.href="http://localhost:9090/final/main";
+		      self.close();
+		    }
     </script>
     <style>
     	input{
@@ -79,16 +83,18 @@
       }
       a{
       	text-decoration: none;
+      	color: black;
       }
     </style>
 </head>
 <body>
+
 	<div id="container" style="width: 600px; height: 600px; margin-left: 50px;">
-    <form style="margin-top: 100px;">
-        <input type="text" name="id" id="id" placeholder="아이디" >
+    <form action = "loginaction" style="margin-top: 100px;">
+        <input type="text" name="ID" id="ID" placeholder="아이디" >
         <input type="password" name="pw" id="pw" placeholder="비밀번호">
         <input type="submit" value="로그인" style=" margin-left: 5px; background-color: #FFAC04; color: white;
-        height: 60px;">
+        height: 60px;" onclick="javascript:moveClose4()">
         <ul>
         	<li><a href="javascript:moveClose()">아이디 찾기</a></li>
         	<li style="border-left: 1px solid #cccccc"><a href="javascript:moveClose2()">비밀번호 찾기</a></li>
