@@ -121,7 +121,7 @@ public class ProductController {
 	
 	@RequestMapping(value="/showDetail")
 	public String showDetail(Model model, int pno, HttpSession session) {
-		session.setAttribute("session_id", "admin");				//수정
+//		session.setAttribute("session_id", "admin");				//수정
 		String ID = (String) session.getAttribute("session_id");
 		
 		ProductVo vo = service.selectOne(pno);
