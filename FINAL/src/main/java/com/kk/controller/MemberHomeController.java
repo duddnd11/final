@@ -36,7 +36,6 @@ public class MemberHomeController {
 	@RequestMapping(value = "/login/loginaction")
 	public String LoginCheck(MemberDto dto, HttpServletRequest req, HttpSession session, RedirectAttributes redirectattributes) throws Exception {
 		session = req.getSession();
-		System.out.println("로그인액션확인");
 		//System.out.println(dto.getID());
 		MemberDto memberdto = service.loginCheck(dto);
 		if(memberdto == null) {
@@ -44,10 +43,8 @@ public class MemberHomeController {
 			redirectattributes.addFlashAttribute("msg", memberdto);
 			
 		}else {
-			System.out.println("세션확인");
 			session.setAttribute("member", memberdto);
 			return "loginaction";
-			
 		}
 		return "redirect:/singup";
 	}

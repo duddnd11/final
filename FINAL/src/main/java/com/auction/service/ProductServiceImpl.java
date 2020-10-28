@@ -43,8 +43,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductVo> showCategory(String category, String auctionmenu) {
-		return dao.showCategory(category, auctionmenu);
+	public List<ProductVo> showNormalCategory(String category) {
+		return dao.showNormalCategory(category);
+	}
+
+	@Override
+	public List<ProductVo> showBlindCategory(String category) {
+		return dao.showBlindCategory(category);
 	}
 
 }

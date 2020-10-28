@@ -217,9 +217,9 @@
          </li>
       </c:forEach>
    </ul>
-   
-      
-      <input type="hidden" value="${detail.qbno}" id="qbno"/>
+   	<input type="button" value="삭제" onclick="location.href='deleteBoard?qbno=${detail.qbno}&id=${member.ID}'"/>
+    <input type="button" value="수정" onclick="location.href='modifyBoard?qbno=${detail.qbno}&id=${member.ID}'"/>  
+    <input type="hidden" value="${detail.qbno}" id="qbno"/>
 </body>
 <%@ include file="footer.jsp" %>
 </html>
