@@ -43,7 +43,7 @@ public class ProductController {
 		
 		for(int i=0; i<=arrMultipart.length-1; i++) {
 			MultipartFile multipart = arrMultipart[i];
-			String filename = "(이름 없음)";
+			String filename = "(�씠由� �뾾�쓬)";
 			
 		if(!multipart.isEmpty()) {
 			filename = multipart.getOriginalFilename();
@@ -64,7 +64,7 @@ public class ProductController {
 		
 		int result = service.insertProduct(vo);
 		if(result == 1) {
-			System.out.println("경매 등록!!!!");
+			System.out.println("寃쎈ℓ �벑濡�!!!!");
 		}
 		model.addAttribute("result", result);
 //		return "mypage";
@@ -121,7 +121,7 @@ public class ProductController {
 	
 	@RequestMapping(value="/showDetail")
 	public String showDetail(Model model, int pno, HttpSession session) {
-		session.setAttribute("session_id", "admin");				//수정
+		session.setAttribute("session_id", "admin");				//�닔�젙
 		String ID = (String) session.getAttribute("session_id");
 		
 		ProductVo vo = service.selectOne(pno);

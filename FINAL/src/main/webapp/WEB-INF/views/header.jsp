@@ -59,7 +59,7 @@ function popup(){
 }
 
 .depth_1 {
-	position: absolute;
+	position: absolute;	
 	background-color: 2d2d2d;
 	height: 0px;
 	overflow: hidden;
