@@ -3,13 +3,24 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
+<<<<<<< HEAD
 <mapper namespace = "com.ya.mapper.SignUpMapper">
 	<insert id = "insert">
 		INSERT INTO member(ID, PW, name) VALUES(#{ID},#{PW}, #{name})
+=======
+<mapper namespace = "com.auction.mapper.SignUpMapper">
+	<insert id = "insert"><!-- 회원가입 -->
+		INSERT INTO member(ID, pw, name, addr, phonenum, email, birth, grade) VALUES(#{ID},#{pw}, #{name}, #{addr}, #{phonenum}, #{email}, #{birth}, #{grade})
+>>>>>>> refs/remotes/origin/main
 	</insert>
 	
+<<<<<<< HEAD
 	<select id="login" resultType = "com.ya.dto.MemberDto">
 		SELECT * FROM member WHERE ID = #{ID} AND PW = #{PW}
+=======
+	<select id="login" resultType = "com.auction.vo.MemberDto"><!-- 로그인 -->
+		select * from member where ID = #{ID} and pw = #{pw}
+>>>>>>> refs/remotes/origin/main
 	</select>
 	
 	<update id="memebrUpdate">

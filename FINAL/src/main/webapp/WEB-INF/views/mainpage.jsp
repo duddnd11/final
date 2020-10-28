@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>main page</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet"
@@ -17,6 +18,11 @@
 	align-items: center;
 	justify-content: center;
 }
+
+	img {
+		width: 200px;
+    	height: 200px;
+	}
 </style>
 </head>
 <body>
@@ -24,19 +30,14 @@
 		<div class="swiper-container swiper1">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
-					<img src="http://oldmidi.cdn3.cafe24.com/p/0283.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="http://ktsmemo.cdn3.cafe24.com/p/0462.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="http://oldmidi.cdn3.cafe24.com/p/0797.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="http://ktsmemo.cdn3.cafe24.com/p/0484.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="https://ktsmemo.cafe24.com/p/0276.jpg">
+					<c:forEach begin="0" end="4" var="showPop" items="${showPop }">
+						<c:if test="${showPop.image ne null }">
+							<a href="showDetail?pno=${showPop.pno }"><img src="${showPop.image }"/></a>	
+						</c:if>
+						<c:if test="${showPop.image eq null }">
+							<a href="showDetail?pno=${showPop.pno }"><img src="resources/images/${showPop.img1 }"/></a> <br/>
+						</c:if>
+					</c:forEach>
 				</div>
 			</div>
 
@@ -53,49 +54,14 @@
 		<div class="swiper-container swiper2">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
-					<img src="http://oldmidi.cdn3.cafe24.com/p/0429.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="http://oldmidi.cdn3.cafe24.com/p/0549.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="http://ktsmemo.cdn3.cafe24.com/p/0011.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="http://ktsmemo.cdn3.cafe24.com/p/0724.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="http://ktsmemo.cdn3.cafe24.com/p/0064.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="http://ktsmemo.cdn3.cafe24.com/p/0287.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="https://ktsmemo.cafe24.com/p/0751.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="https://ktsmemo.cafe24.com/p/0053.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="https://ktsmemo.cafe24.com/p/0540.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="http://oldmidi.cdn3.cafe24.com/p/0678.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="http://oldmidi.cdn3.cafe24.com/p/0166.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="http://ktsmemo.cdn3.cafe24.com/p/0484.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="https://ktsmemo.cafe24.com/p/0600.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="http://ktsmemo.cdn3.cafe24.com/p/0785.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="https://ktsmemo.cafe24.com/p/0526.jpg">
+					<c:forEach var="showHurry" items="${showHurry }">
+						<c:if test="${showHurry.image ne null }">
+							<a href="showDetail?pno=${showHurry.pno }"><img src="${showHurry.image }"/></a>	
+						</c:if>
+						<c:if test="${showHurry.image eq null }">
+							<a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img1 }"/></a> <br/>
+						</c:if>
+					</c:forEach>
 				</div>
 			</div>
 
@@ -144,6 +110,6 @@
 			});
 		</script>
 	</div>
-	<%@ include file="footer.jsp" %>
 </body>
 </html>
+	<%@ include file="footer.jsp" %>

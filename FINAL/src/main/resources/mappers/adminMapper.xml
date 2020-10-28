@@ -40,6 +40,6 @@
 	</update>
 	
 	<select id="chart" resultType="com.auction.vo.AuctionVo">
-		select * from auction where pno=#{pno} order by buydate desc;
+		select * from auction where pno=#{pno} order by buydate asc;
 	</select>
 </mapper>

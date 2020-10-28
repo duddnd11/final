@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +11,41 @@
 	form{
 		display: inline;
 	}
+	*{
+		text-align: center;
+	}
+	table{
+		margin-left: 300px;
+		margin-top: 200px;
+		width: 1000px;
+		border-top: 1px solid black;
+		
+		
+	}
+	th{
+		padding: 5px;
+		border-bottom: 1px solid #cccccc;
+		background-color: #cccccc;
+	}
+	td{
+		padding: 10px;
+		border-bottom: 1px solid #cccccc;
+	}
+	#number{
+		margin-top: 40px;
+	}
+	.search{
+		padding-bottom: 50px;
+		margin-left: 120px;
+	}
+	select{
+		font-size: 15px;
+		height: 25px;
+	}
+	a{
+		text-decoration: none;
+		color: black;
+	}
 </style>
 </head>
 <body>
@@ -18,11 +53,11 @@
 	<c:when test="${endPage >0 }">
 	<table>
 		<tr>
-			<td>글번호</td>
-			<td>글제목</td>
-			<td>작성자</td>
-			<td>날짜</td>
-			<td>조회수</td>
+			<th>글번호</th>
+			<th>글제목</th>
+			<th>작성자</th>
+			<th>날짜</th>
+			<th>조회수</th>
 		</tr>
 	<c:forEach var="qnaBoard" items="${qnaBoard}">
 		<tr>
@@ -34,11 +69,12 @@
 		</tr>
 	</c:forEach>
 	</table>
+	<div id="number">
 		<c:if test="${sp ne 0 }">
 			<!-- <a href="qnaBoard?offset=${offset-100}&keyword=${keyword}&searchMenu=${searchMenu}"><<</a> -->
 			<form action="qnaBoard">
 				<input type="submit" value="<<"/>
-				<input type="hidden" value="${offset-100}" name="offset"/>
+				<input type="hidden" value="${sp*100-100}" name="offset"/>
 				<input type="hidden" value="${keyword}" name="keyword"/>
 				<input type="hidden" value="${searchMenu}" name="searchMenu"/>
 			</form>
@@ -47,7 +83,14 @@
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">
 		<!-- <a href="qnaBoard?offset=${i*10}">${i+1}</a> -->
 		<form action="qnaBoard">
-			<input type="submit" value="${i}"/>
+			<c:choose>
+				<c:when test="${(offset+10)/10 eq i}">
+					<input type="submit" style= "font-weight:bold;" value="${i}"/>
+				</c:when>
+				<c:otherwise>
+					<input type="submit" value="${i}"/>
+				</c:otherwise>
+			</c:choose>
 			<input type="hidden" value="${i*10-10}" name="offset"/>
 			<input type="hidden" value="${keyword}" name="keyword"/>
 			<input type="hidden" value="${searchMenu}" name="searchMenu"/>
@@ -58,18 +101,28 @@
 			<form action="qnaBoard">
 				<!--  <a href="qnaBoard?offset=${offset+100}&keyword=${keyword}&searchMenu=${searchMenu}">>></a>-->
 				<input type="submit" value=">>"/>
-				<input type="hidden" value="${offset+100}" name="offset"/>
+				<input type="hidden" value="${sp*100+100}" name="offset"/>
 				<input type="hidden" value="${keyword}" name="keyword"/>
 				<input type="hidden" value="${searchMenu}" name="searchMenu"/>
 			</form>
 		</c:if>
+	</div>
 	</c:when>
 	<c:otherwise>
+		<table>
+		<tr>
+			<td>글번호</td>
+			<td>글제목</td>
+			<td>작성자</td>
+			<td>날짜</td>
+			<td>조회수</td>
+		</tr>
+		</table>
 		찾으시는 게시글이 없습니다.
 	</c:otherwise>
 	</c:choose>
 	<br/>
-	<form action="qnaBoard">
+	<form action="qnaBoard" class="search">
 		<select name="searchMenu">
 			<option value="titleAndContent">제목+내용</option>	
 			<option value="title" >제목</option>		
@@ -77,11 +130,12 @@
 			<option value="writer">작성자</option>		
 		</select>
 		<input type="hidden" name="offset" value="0"/>
-		<input name="keyword" value="${keyword}"/>
+		<input name="keyword" value="${keyword}"/ style="width: 300px; font-size: 15px;">
 		<input type="submit" value="조회"/>
 	</form>
-	<input type="button" value="문의글쓰기" onclick="location.href='qnaWrite'"/>
+	<input style="float: right; margin-right: 50px;" type="button" value="문의글쓰기" onclick="location.href='qnaWrite'"/>
 </body>
+<%@ include file="footer.jsp" %>
 </html>
 
 

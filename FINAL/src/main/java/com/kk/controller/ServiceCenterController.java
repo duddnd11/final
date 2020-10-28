@@ -89,7 +89,11 @@ public class ServiceCenterController {
 		if(listAll.size()>=10 && listAll.size()%10==0 ) {
 			pageSize=listAll.size()/10;
 		}else {
-			pageSize=listAll.size()/10+1;
+			if(listAll.size()==0) {
+				pageSize=0;
+			}else {
+				pageSize=listAll.size()/10+1;
+			}
 		}
 		int nowPage =offset/10;
 		int startPage = nowPage/10*10+1; 
@@ -97,7 +101,6 @@ public class ServiceCenterController {
 		if(nowPage/10 == pageSize/10) {
 			endPage=pageSize;
 		}
-		
 		model.addAttribute("searchMenu", searchMenu);
 		model.addAttribute("ps",pageSize/10);
 		model.addAttribute("sp",startPage/10);
@@ -195,25 +198,29 @@ public class ServiceCenterController {
 			list =noticeService.selectBoard(offset);
 			listAll = noticeService.selectBoardAll();
 		}else {
-//			if(searchMenu.equals("title")) {
-//				list = noticeService.searchTitle(keyword,offset);	
-//				listAll = noticeService.searchTitleSize(keyword);
-//			}else if(searchMenu.equals("content")) {
-//				list = noticeService.searchContent(keyword, offset);
-//				listAll = noticeService.searchContentSize(keyword);
-//			}else if(searchMenu.equals("writer")) {
-//				list = noticeService.searchWriter(keyword, offset);
-//				listAll = noticeService.searchWriterSize(keyword);
-//			}else if(searchMenu.equals("titleAndContent")) {
-//				list = noticeService.searchTitleAndContent(keyword, offset);
-//				listAll = noticeService.searchTitleAndContentSize(keyword);
-//			}
+			if(searchMenu.equals("title")) {
+				list = noticeService.searchTitle(keyword,offset);	
+				listAll = noticeService.searchTitleSize(keyword);
+			}else if(searchMenu.equals("content")) {
+				list = noticeService.searchContent(keyword, offset);
+				listAll = noticeService.searchContentSize(keyword);
+			}else if(searchMenu.equals("writer")) {
+				list = noticeService.searchWriter(keyword, offset);
+				listAll = noticeService.searchWriterSize(keyword);
+			}else if(searchMenu.equals("titleAndContent")) {
+				list = noticeService.searchTitleAndContent(keyword, offset);
+				listAll = noticeService.searchTitleAndContentSize(keyword);
+			}
 		}
 		int pageSize=0;
 		if(listAll.size()>=10 && listAll.size()%10==0 ) {
 			pageSize=listAll.size()/10;
 		}else {
-			pageSize=listAll.size()/10+1;
+			if(listAll.size()==0) {
+				pageSize=0;
+			}else {
+				pageSize=listAll.size()/10+1;
+			}
 		}
 		int nowPage =offset/10;
 		int startPage = nowPage/10*10+1;
@@ -221,6 +228,7 @@ public class ServiceCenterController {
 		if(nowPage/10 == pageSize/10) {
 			endPage=pageSize;
 		}
+		
 		model.addAttribute("searchMenu", searchMenu);
 		model.addAttribute("ps",pageSize/10);
 		model.addAttribute("sp",startPage/10);

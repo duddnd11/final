@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
 .content aside {
@@ -35,7 +35,7 @@
 	<div id="support_header">
 		<div class="wrapper">
 			<h2>
-				<a href="°í°´¼¾ÅÍ">°í°´¼¾ÅÍ</a>
+				<a href="ê³ ê°ì„¼í„°">ê³ ê°ì„¼í„°</a>
 			</h2>
 		</div>
 	</div>
@@ -48,17 +48,17 @@
 			</div>
 			<div class="block" id="centerConsult">
 				<h4>
-					<a href="1¤§1¹®ÀÇ">1:1 ¹®ÀÇ</a>
+					<a href="1ã„·1ë¬¸ì˜">1:1 ë¬¸ì˜</a>
 				</h4>
 			</div>
 			<div class="block">
 				<h4>
-					<a href="°øÁö»çÇ×">°øÁö»çÇ×</a>
+					<a href="ê³µì§€ì‚¬í•­">ê³µì§€ì‚¬í•­</a>
 				</h4>
 			</div>
 			<div class="block">
 				<h4>
-					<a href="¹®ÀÇ°Ô½ÃÆÇ">¹®ÀÇ°Ô½ÃÆÇ</a>
+					<a href="ë¬¸ì˜ê²Œì‹œíŒ">ë¬¸ì˜ê²Œì‹œíŒ</a>
 				</h4>
 			</div>
 		</aside>

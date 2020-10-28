@@ -11,5 +11,5 @@ public interface ProductDao {
 	List<ProductVo> selectAuctionBlind();
 	List<ProductVo> selectPop();
 	List<ProductVo> selectHurry();
-	
+	List<ProductVo> showCategory(String category, String auctionmenu);
 }

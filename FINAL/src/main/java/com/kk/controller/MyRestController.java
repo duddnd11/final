@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.auction.service.AdminService;
 import com.auction.service.CommentService;
 import com.auction.vo.CommentVo;
+import com.auction.vo.MemberVo;
 import com.auction.vo.ProductVo;
 
 @RestController
@@ -47,15 +48,34 @@ public class MyRestController {
 	}
 	
 	
-	@RequestMapping(value = "/admin/itemadmin")
-	@ResponseBody
-	public List<ProductVo> itemadmin(@RequestBody Map<String, String> param) {
-		int admin = Integer.parseInt(param.get("admin"));
-		int offset = Integer.parseInt(param.get("offset"));
-//		List<ProductVo> list = adminService.adminProduct(admin);
-		List<ProductVo> list = adminService.adminProductPage(admin, offset);
-		return list;
-	}
+//	@RequestMapping(value = "/admin/itemadmin")
+//	@ResponseBody
+//	public List<ProductVo> itemadmin(@RequestBody Map<String, String> param) {
+//		int admin = Integer.parseInt(param.get("admin"));
+//		int offset = Integer.parseInt(param.get("offset"));
+////		List<ProductVo> list = adminService.adminProduct(admin);
+//		List<ProductVo> list = adminService.adminProductPage(admin, offset);
+//		for(ProductVo vo : list) {
+//			switch(vo.getGrade()) {
+//				case "a":
+//					vo.setGrade("vvip");
+//					break;
+//				case "b":
+//					vo.setGrade("vip");
+//					break;
+//				case "c":
+//					vo.setGrade("gold");
+//					break;
+//				case "d":
+//					vo.setGrade("silver");
+//					break;
+//				case "e":
+//					vo.setGrade("일반");
+//					break;
+//			}
+//		}
+//		return list;
+//	}
 	@RequestMapping(value = "/admin/itemmanager")
 	@ResponseBody
 	public List<ProductVo> itemmanager(@RequestBody Map<String, String> param) {
@@ -64,6 +84,25 @@ public class MyRestController {
 		int offset = Integer.parseInt(param.get("offset"));
 //		List<ProductVo> list = adminService.dealProduct(admin, deal);
 		List<ProductVo> list = adminService.dealProductPage(admin, deal, offset);
+		for(ProductVo vo : list) {
+			switch(vo.getGrade()) {
+				case "a":
+					vo.setGrade("vvip");
+					break;
+				case "b":
+					vo.setGrade("vip");
+					break;
+				case "c":
+					vo.setGrade("gold");
+					break;
+				case "d":
+					vo.setGrade("silver");
+					break;
+				case "e":
+					vo.setGrade("일반");
+					break;
+			}
+		}
 		return list;
 	}
 	@RequestMapping(value="/admin/page")
@@ -91,12 +130,12 @@ public class MyRestController {
 		if(nowPage/10 == pageSize/10) {
 			endPage=pageSize;
 		}
-		System.out.println("======admin :"+admin+"======");
-		System.out.println("사이즈:"+listAll.size());
-		System.out.println("deal:"+deal);
-		System.out.println("np:"+nowPage);
-		System.out.println("sp:"+startPage);
-		System.out.println("ep:"+endPage);
+//		System.out.println("======admin :"+admin+"======");
+//		System.out.println("사이즈:"+listAll.size());
+//		System.out.println("deal:"+deal);
+//		System.out.println("np:"+nowPage);
+//		System.out.println("sp:"+startPage);
+//		System.out.println("ep:"+endPage);
 		Map<String,Integer> map = new HashMap<String, Integer>();
 		map.put("startPage", startPage);
 		map.put("endPage", endPage);

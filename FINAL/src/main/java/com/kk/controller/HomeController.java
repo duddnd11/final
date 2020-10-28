@@ -22,12 +22,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.auction.service.MemberService;
+import com.auction.service.ProductService;
 import com.auction.vo.MemberVo;
 
 
 
 @Controller
 public class HomeController {
+	@Autowired
+	MemberService service;
+	
 	@Autowired
 	GoogleConnectionFactory googleConnectionFactory;
 	@Autowired
@@ -37,16 +42,21 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		return "home";
 	}
+//	@RequestMapping(value = "/mainpage")
+//	public String maainpage() {
+//		
+//		return "mainpage";
+//	}
 	@RequestMapping(value = "/popup")
 	public String popup() {
 		
 		return "popup";
 	}
-	@RequestMapping(value = "/login")
-	public String login() {
-		return "login";
-	}
-	
+//	@RequestMapping(value = "/login")
+//	public String login() {
+//		return "login";
+//	}
+//	
 	@RequestMapping(value = "/googleLogin", method = RequestMethod.POST)
 	public String doGoogleSignInActionPage(HttpServletResponse response, Model model) throws Exception{
 	  OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
@@ -85,7 +95,7 @@ public class HomeController {
 //	  vo.setBirth(profile.getBirthday());
 	  
 	  HttpSession session = request.getSession();
-//	  vo = service.googleLogin(vo);
+//	  vo = service.(vo);
 	  
 //	  session.setAttribute("login", vo);
 
@@ -97,11 +107,11 @@ public class HomeController {
 	public String result() {
 		return "result";
 	}
-	@RequestMapping(value = "/signup")
-	public String singup() {
-		
-		return "signup";
-	}
+//	@RequestMapping(value = "/signup")
+//	public String singup() {
+//		
+//		return "signup";
+//	}
 	@RequestMapping(value = "/idcheck")
 	public String idcheck() {
 		

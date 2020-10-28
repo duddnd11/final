@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.auction.dao.NoticeDao;
 import com.auction.vo.NoticeVo;
+import com.auction.vo.NoticeVo;
 
 @Service
 public class NoticeServiceImpl implements NoticeService {
@@ -31,6 +32,47 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void wirteBoardService(NoticeVo vo) {
 		dao.writeBoard(vo);
+	}
+	
+	@Override
+	public List<NoticeVo> searchTitleSize(String keyword) {
+		return dao.searchTitleSize(keyword);
+	}
+	
+	@Override
+	public List<NoticeVo> searchContentSize(String keyword) {
+		return dao.searchContentSize(keyword);
+	}
+	
+	@Override
+	public List<NoticeVo> searchWriterSize(String keyword) {
+		return dao.searchWriterSize(keyword);
+	}
+	
+	@Override
+	public List<NoticeVo> searchTitleAndContentSize(String keyword) {
+		return dao.searchTitleAndContentSize(keyword);
+	}
+
+	@Override
+	public List<NoticeVo> searchTitle(String keyword,int offset) {
+		return dao.searchTitle(keyword,offset);
+	}
+
+	@Override
+	public List<NoticeVo> searchContent(String keyword, int offset) {
+		return dao.searchContent(keyword, offset);
+	}
+
+	@Override
+	public List<NoticeVo> searchWriter(String keyword, int offset) {
+		return dao.searchWriter(keyword, offset);
+	}
+
+
+	@Override
+	public List<NoticeVo> searchTitleAndContent(String keyword, int offset) {
+		return dao.searchTitleAndContent(keyword, offset);
 	}
 
 //	@Override

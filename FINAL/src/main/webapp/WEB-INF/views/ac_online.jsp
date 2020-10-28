@@ -1,16 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<hr>
 	<div class="auction_list_header">
 		<div class="wrapper">
-			<h2 id="auction_title">¿Â¶óÀÎ °æ¸Å</h2>
+			<h2 id="auction_title">ì˜¨ë¼ì¸ ê²½ë§¤</h2>
 			<ul>
 				<li>
 					<span class="label">Preview : </span>
@@ -19,14 +19,14 @@
 				<li>
 					<span class="label">Auction : </span>
 					<time>2020-10-29 13:00</time>
-					<span class="text">LOTº° ¼øÂ÷¸¶°¨</span>
+					<span class="text">LOTë³„ ìˆœì°¨ë§ˆê°</span>
 				</li>
 			</ul>
 		</div>
 	</div>
 	<div class="content">
 		<aside>
-			<h3>Ä«Å×°í¸®</h3>
+			<h3>ì¹´í…Œê³ ë¦¬</h3>
 			<div>
 				
 			</div>
@@ -37,11 +37,11 @@
 					<li>
 						<figure>
 							<div class="wrapper">
-								<img src="»óÇ° ÀÌ¹ÌÁö">
+								<img src="ìƒí’ˆ ì´ë¯¸ì§€">
 								<div>
 									<span class="title">
-										<span class="no">»óÇ°¹øÈ£</span>
-										<h3>ÀÛ°¡¸í</h3>
+										<span class="no">ìƒí’ˆë²ˆí˜¸</span>
+										<h3>ìž‘ê°€ëª…</h3>
 																				
 									</span>
 								</div>
