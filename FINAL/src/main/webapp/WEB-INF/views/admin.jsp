@@ -15,11 +15,7 @@
 <body>
 	<div id="container">
 		<div style="height: 100px; margin-right: 20px;">
-<<<<<<< HEAD
-			<a href="http://localhost:9090/final/main"><button id="btn" style="height: 50px;">메인화면</button></a>
-=======
 			<a href="main"><button id="btn" style="height: 50px;">메인화면</button></a>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 		</div>	
 			<div style="display: flex; margin-top: 200px; margin-left: 250px;">
 				<div style="width: 200px; height: 200px; ">

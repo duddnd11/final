@@ -254,11 +254,7 @@ $(document).on("click","#btn5",function(){
 		</table>
 		<div class="pageDiv" style="margin-top: 60px; margin-left: 600px;">
 			<c:forEach var="i" begin="${startPage}" end="${endPage}">
-<<<<<<< HEAD
 			<form action="item" class="pageForm" style="padding: 5px;">
-				<input type="submit" value="${i}"/>
-=======
-			<form action="item" class="pageForm">
 			<c:choose>
 				<c:when test="${(offset+10)/10 eq i}">
 					<input type="submit" style= "font-weight:bold;" value="${i}"/>
@@ -267,7 +263,6 @@ $(document).on("click","#btn5",function(){
 					<input type="submit" value="${i}"/>
 				</c:otherwise>
 			</c:choose>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 				<input type="hidden" value="${i*10-10}" name="offset" class="offset"/>
 				<input type="hidden" value="${deal}" name="deal"/>
 				<input type="hidden" value="${admin}" name="admin"/>
