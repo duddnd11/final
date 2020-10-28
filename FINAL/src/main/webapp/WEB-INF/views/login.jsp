@@ -61,6 +61,10 @@
 		      opener.location.href="http://localhost:9090/final/singup";
 		      self.close();
 		    }
+	    function moveClose4() {
+		      opener.location.href="http://localhost:9090/final/main";
+		      self.close();
+		    }
     </script>
     <style>
     	input{

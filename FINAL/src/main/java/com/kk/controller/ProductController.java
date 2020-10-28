@@ -121,11 +121,9 @@ public class ProductController {
 	
 	@RequestMapping(value="/showDetail")
 	public String showDetail(Model model, int pno, HttpSession session) {
-<<<<<<< HEAD
+
 		session.setAttribute("session_id", "admin");				//�닔�젙
-=======
-//		session.setAttribute("session_id", "admin");				//수정
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
+
 		String ID = (String) session.getAttribute("session_id");
 		
 		ProductVo vo = service.selectOne(pno);
