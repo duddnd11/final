@@ -9,7 +9,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>로그인 페이지</title>
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
     <script src="resources/js/jquery-3.5.1.min.js"></script>
@@ -79,6 +79,7 @@
       }
       a{
       	text-decoration: none;
+      	color: black;
       }
     </style>
 </head>
