@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.auction.vo.NoticeVo;
-import com.auction.vo.NoticeVo;
 
 public class NoticeDaoImpl implements NoticeDao {
 	@Autowired

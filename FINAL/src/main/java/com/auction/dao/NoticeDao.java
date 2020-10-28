@@ -3,7 +3,6 @@ package com.auction.dao;
 import java.util.List;
 
 import com.auction.vo.NoticeVo;
-import com.auction.vo.NoticeVo;
 
 public interface NoticeDao {
 	public void writeBoard(NoticeVo vo);
