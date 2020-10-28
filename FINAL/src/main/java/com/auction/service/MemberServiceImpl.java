@@ -1,7 +1,5 @@
 package com.auction.service;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,15 +16,10 @@ public class MemberServiceImpl implements MemberService {
 		dao.write(dto);
 	}
 	
-	@Override	//로그인
-	public boolean loginCheck(MemberDto dto, HttpSession session) throws Exception{
-		
-		boolean result = dao.loginUp(dto);
-		if(result == true) {	//true일 경우 세션 등록
-			//세션 변수 등록
-			session.setAttribute("ID", dto.getID());
-		}
-		return result;
+	@Override
+	public MemberDto loginCheck(MemberDto dto) throws Exception{
+//		dao.login(vo);
+		return dao.login(dto);
 	}
 	
 	@Override	//회원 정보 수정

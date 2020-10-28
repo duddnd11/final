@@ -80,13 +80,13 @@ public class ProductController {
 	
 	public void setImg(List<ProductVo> list) {
 		for(ProductVo vo : list) {
-			if(vo.getFilenames()!=null) {
+			if(vo.getFilenames()==null || vo.getFilenames().equals("")) {
+				vo.setImg1(null);
+				vo.setImg2(null);
+			} else {
 				vo.setImg1(vo.getFilenames().split("_!_")[0]);
 				vo.setImg2(vo.getFilenames().split("_!_")[1]);
 				vo.setImage(null);
-			} else {
-				vo.setImg1(null);
-				vo.setImg2(null);
 			}
 		}
 	}
@@ -121,7 +121,11 @@ public class ProductController {
 	
 	@RequestMapping(value="/showDetail")
 	public String showDetail(Model model, int pno, HttpSession session) {
+<<<<<<< HEAD
 		session.setAttribute("session_id", "admin");				//�닔�젙
+=======
+//		session.setAttribute("session_id", "admin");				//수정
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 		String ID = (String) session.getAttribute("session_id");
 		
 		ProductVo vo = service.selectOne(pno);

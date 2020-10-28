@@ -17,7 +17,7 @@
 </head>
 <body>
   <div id="container">
-  <form action="writeAction" style="height: 700px;">
+  <form action="signupaction" style="height: 700px;">
  
     <table id="signup-table" style="margin-top: 20px;">
         <tr>
