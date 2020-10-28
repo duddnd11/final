@@ -44,6 +44,8 @@
 		update product set lastmoney=price*1.4;
 	</update>
 	
+	<!-- 입찰 -->
+	
 	<!-- 카테고리 -->
 	<select id="category" resultType="com.auction.vo.ProductVo">
 		select * from product where category=#{category} and auctionmenu=#{auctionmenu} order by uploaddate desc;
