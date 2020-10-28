@@ -37,10 +37,8 @@ public class MemberHomeController {
 	}
 	
 	@RequestMapping(value = "/login/loginaction")
-	public String LoginCheck(MemberDto dto, HttpServletRequest req, HttpSession session, RedirectAttributes redirectattributes, 
-			HttpServletResponse res) throws Exception {
+	public String LoginCheck(MemberDto dto, HttpServletRequest req, HttpSession session, RedirectAttributes redirectattributes) throws Exception {
 		session = req.getSession();
-		PrintWriter writer = res.getWriter();
 		
 		//System.out.println(dto.getID());
 		MemberDto memberdto = service.loginCheck(dto);
@@ -50,8 +48,8 @@ public class MemberHomeController {
 			
 		}else {
 			session.setAttribute("member", memberdto);
-			//writer.println("<script>self.close();</script>");
 			return "loginaction";
+			
 		}
 		return "redirect:/singup";
 	}
