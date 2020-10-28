@@ -17,5 +17,6 @@
 			<input type = "submit" value = "게시글 작성"/>
 		</div>
 	</c:if>
+	
 </body>
 </html>
