@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.auction.service.MemberService;
-import com.auction.service.ProductService;
 import com.auction.vo.MemberVo;
 
 

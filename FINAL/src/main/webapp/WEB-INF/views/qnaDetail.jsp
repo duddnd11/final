@@ -111,9 +111,9 @@
             var   step= $(this).parent().find("input#step").val();
             var comment = $(this).parent().find("textarea#comment").val();
             ajax_write(ref,level,step,comment);
-            $('#comment').val('');
-       }
-   });
+            $('.comment').val('');
+           }
+     });
 </script>
 <style>
    #submenu{

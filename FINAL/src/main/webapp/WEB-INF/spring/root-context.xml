@@ -54,7 +54,8 @@
 	<bean id="commentDao" class="com.auction.dao.CommentDaoImpl"></bean>
 	<bean id="productDao" class="com.auction.dao.ProductDaoImpl"/>
 	<bean id="adminDao" class="com.auction.dao.AdminDaoImpl"/>
+	<bean id= "memberDao" class = "com.auction.dao.MemberDaoImpl"></bean>
+
 	<bean id="noticeDao" class="com.auction.dao.NoticeDaoImpl"/>
-	<bean id="sbDao" class="com.auction.dao.MemberDaoImpl"/>
 	<context:component-scan base-package="com.auction.service" />
 </beans>

@@ -149,6 +149,7 @@ header.header .nav_wrap nav.main {
 	</script>
 </head>
 <body>
+${member.ID }
 	<header class="header">
 		<section class="nav_wrap">
 			<div class="inner_wrap">

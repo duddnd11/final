@@ -12,9 +12,8 @@
 		select * from member where ID = #{ID} and pw = #{pw}
 	</select>
 	
-	<update id="memberUpdate"><!-- 회원정보 수정 -->
-		UPDATE 	member SET pw = #{pw}, name = #{name}, addr = #{addr}, phonenum = #{phonenum}, email = #{email}
-		WHERE ID = #{ID}
+	<update id="memebrUpdate">
+		UPDATE member SET pw = #{pw}, name = #{name} WHERE ID = #{ID}
 	</update>
 	
 </mapper>
