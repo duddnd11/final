@@ -199,6 +199,13 @@ $(document).on("click","#btn5",function(){
 	form{
 		display: inline;
 	}
+	a{
+		text-decoration: none;
+		color: black;
+	}
+	th{
+		background-color: #F9E198;
+	}
 </style>
 </head>
 <body>
@@ -219,7 +226,9 @@ $(document).on("click","#btn5",function(){
 				<th>등급</th>
 				<th>업로드 날짜</th>
 				<th>승인여부</th>
-				<th>승인여부2</th>
+				
+		<!--	<th>승인여부</th>
+				<th>경매여부</th>	-->
 			</tr>
 			<c:forEach var="list" items="${list }">
 				<tr id="del">
@@ -228,14 +237,17 @@ $(document).on("click","#btn5",function(){
 					<td>${list.ID }</td>
 					<td>${list.grade }</td>
 					<td>${list.uploaddate }</td>
-					<td>${list.admin }</td>
-					<td>${list.deal }</td>
+					<td><button style="margin: 10px;">승인</button><button>거절</button></td>
+					
+					
+		<!-- 		<td>${list.admin }</td>
+					<td>${list.deal }</td> -->
 				</tr>
 			</c:forEach>
 		</table>
-		<div class="pageDiv">
+		<div class="pageDiv" style="margin-top: 60px; margin-left: 600px;">
 			<c:forEach var="i" begin="${startPage}" end="${endPage}">
-			<form action="item" class="pageForm">
+			<form action="item" class="pageForm" style="padding: 5px;">
 				<input type="submit" value="${i}"/>
 				<input type="hidden" value="${i*10-10}" name="offset" class="offset"/>
 			</form>
