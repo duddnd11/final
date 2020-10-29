@@ -33,10 +33,10 @@
 		});*/
 	});
 	
-	sock.onclose = onClose;
+	//sock.onclose = onClose;
 	
 	function sendMessage(){
-		sock.send($("#message").val());
+		sock.send($("#userId").val()+" : "+$("#message").val());
 	}
 	
 	function onClose(evt){
@@ -47,9 +47,19 @@
 		var data = evt.data;
 		var sessionid = null;
 		var message = null;
-		$("#data").append(data);
+		var current_session = $("#userId").val();
+		//$("#data").append(data);
+		var arr = data.split(" : ");
+		sessionid= arr[0];
+		message = arr[1];
 		console.log(data);
-		
+		if(sessionid == current_session){
+			var str = "나 : "+message;
+			$("#data").append(str);
+		}else{
+			var str =sessionid+" : "+message;
+			$("#data").append(str);
+		}
 		/*
 		var strArray = data.split('|');
 

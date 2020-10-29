@@ -42,11 +42,11 @@ public class EchoHandler extends TextWebSocketHandler{
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		logger.info("{}濡� 遺��꽣 {} 諛쏆쓬",session.getId(),message.getPayload());
-		Map<String,Object> map=session.getAttributes();
-		MemberVo vo=(MemberVo) map.get("member");
+//		Map<String,Object> map=session.getAttributes();
+//		MemberVo vo=(MemberVo) map.get("member");
 //		session.getPrincipal().getName()
 		for(WebSocketSession sess : sessionList) {
-			sess.sendMessage(new TextMessage(session.getId()+" : "+message.getPayload()+"\n"));
+			sess.sendMessage(new TextMessage(message.getPayload()+"\n"));
 			System.out.println("세션:"+sess.getId());
 		}
 	}
