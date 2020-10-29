@@ -1,12 +1,12 @@
 package com.auction.service;
 
-import com.auction.vo.MemberDto;
+import com.auction.vo.MemberVo;
 
 
 public interface MemberService {
-	void writeSignUp(MemberDto dto);	//회원 가입
+	void writeSignUp(MemberVo vo);	//회원 가입
 	
-	MemberDto loginCheck(MemberDto dto) throws Exception;	//로그인
+	MemberVo loginCheck(MemberVo vo) throws Exception;	//로그인
 	
-	void memberUpdate(MemberDto dto);	//회원 정보 수정
+	void memberUpdate(MemberVo vo);	//회원 정보 수정
 }

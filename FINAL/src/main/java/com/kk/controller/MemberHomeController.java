@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.auction.service.MemberService;
-import com.auction.vo.MemberDto;
+import com.auction.vo.MemberVo;
 
 
 @Controller
@@ -34,10 +34,10 @@ public class MemberHomeController {
 	}
 	
 	@RequestMapping(value = "/login/loginaction")
-	public String LoginCheck(MemberDto dto, HttpServletRequest req, HttpSession session, RedirectAttributes redirectattributes) throws Exception {
+	public String LoginCheck(MemberVo vo, HttpServletRequest req, HttpSession session, RedirectAttributes redirectattributes) throws Exception {
 		session = req.getSession();
 		//System.out.println(dto.getID());
-		MemberDto memberdto = service.loginCheck(dto);
+		MemberVo memberdto = service.loginCheck(vo);
 		if(memberdto == null) {
 			session.setAttribute("member", null);
 			redirectattributes.addFlashAttribute("msg", memberdto);
@@ -55,20 +55,20 @@ public class MemberHomeController {
 		return "singup";
 	}
 	@RequestMapping(value = "/signupaction")	//등록처리
-	public String insertPost(RedirectAttributes redirectattributes, MemberDto dto) throws Exception{
+	public String insertPost(RedirectAttributes redirectattributes, MemberVo vo) throws Exception{
 	//	model.addAttribute("mvo", vo);
 	//	redirectattributes.addFlashAttribute("msg", "regSuccess");
-		service.writeSignUp(dto);
+		service.writeSignUp(vo);
 		return "redirect:login";
 	}
 	
 	@RequestMapping(value = "/memberupdate")
 	public String memberupdate() {
-		return "member";
+		return "memberupdate";
 	}
 	@RequestMapping(value = "/memberaction")
-	public String UpdateAction(MemberDto dto, HttpSession session) {
-		service.memberUpdate(dto);
+	public String UpdateAction(MemberVo vo, HttpSession session) {
+		service.memberUpdate(vo);
 		session.invalidate();
 		
 		return "redirect:/login";

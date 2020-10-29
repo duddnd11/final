@@ -18,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.auction.service.AdminService;
 import com.auction.service.ProductService;
 import com.auction.vo.AuctionVo;
-import com.auction.vo.MemberDto;
 import com.auction.vo.MemberVo;
 import com.auction.vo.ProductVo;
 

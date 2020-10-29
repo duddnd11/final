@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.auction.dao.MemberDao;
-import com.auction.vo.MemberDto;
+import com.auction.vo.MemberVo;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -12,19 +12,19 @@ public class MemberServiceImpl implements MemberService {
 	MemberDao dao;
 	
 	@Override	//회원가입
-	public void writeSignUp(MemberDto dto) {
-		dao.write(dto);
+	public void writeSignUp(MemberVo vo) {
+		dao.write(vo);
 	}
 	
 	@Override
-	public MemberDto loginCheck(MemberDto dto) throws Exception{
+	public MemberVo loginCheck(MemberVo vo) throws Exception{
 //		dao.login(vo);
-		return dao.login(dto);
+		return dao.login(vo);
 	}
 	
 	@Override	//회원 정보 수정
-	public void memberUpdate(MemberDto dto) {
-		dao.memberUpdate(dto);
+	public void memberUpdate(MemberVo vo) {
+		dao.memberUpdate(vo);
 	}
 
 }

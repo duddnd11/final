@@ -1,11 +1,11 @@
 package com.auction.dao;
 
-import com.auction.vo.MemberDto;
+import com.auction.vo.MemberVo;
 
 public interface MemberDao {
-	void write(MemberDto dto);		//회원가입
+	void write(MemberVo vo);		//회원가입
 	
-	MemberDto login(MemberDto dto);	//로그인
+	MemberVo login(MemberVo vo);	//로그인
 	
-	void memberUpdate(MemberDto dto);	//회원 정보 수정
+	void memberUpdate(MemberVo vo);	//회원 정보 수정
 }
