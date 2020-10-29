@@ -73,5 +73,8 @@ public class MemberHomeController {
 		
 		return "redirect:/login";
 	}
-	
+	@RequestMapping(value="/myPage")
+	public String myPage() {
+		return "myPage";
+	}
 }

@@ -45,7 +45,7 @@
 	</update>
 	
 	<!-- 입찰 -->
-	<select id="selectAuction" resultType="int">
+	<select id="showAuction" resultType="int">
 		SELECT count(*) FROM auction where pno=#{pno};
 	</select>
 	<insert id="insertAuction">

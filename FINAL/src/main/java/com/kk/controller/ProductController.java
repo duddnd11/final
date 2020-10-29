@@ -186,20 +186,17 @@ public class ProductController {
 	@RequestMapping(value="/insertAuction")
 	public String insertAuction(HttpSession session, Model model, int pno, int myprice) {
 		MemberVo ID =  (MemberVo) session.getAttribute("member");
+		if(ID==null) {
+			return "login";
+		}
 		String id = ID.getID();
-//		list ==null{
-//			AuctionVo vo = new AuctionVo(id, pno, myprice);
-//			
-//		}else {
-//			AuctionVo vo = new AuctionVo(id, pno, myprice+5000);
-//			
-//		}
-//		int result = service.insertAuction(vo);
-//		if(result==2) {
-//			System.out.println("입찰됨!!!");
-//		}
-//		model.addAttribute("result", result);
-		return "showDetail";
+		AuctionVo vo = new AuctionVo(id, pno, myprice);
+		int result = service.insertAuction(vo);
+		if(result==2) {
+			System.out.println("입찰됨!!!");
+		}
+		model.addAttribute("result", result);
+		return "redirect:/showDetail?pno="+pno;
 	}
 	
 }

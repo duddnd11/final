@@ -39,7 +39,6 @@ public class ServiceCenterController {
 	
 	@RequestMapping(value="/chatting")
 	public String chatting(Model model) {
-		model.addAttribute("userId", "qq");
 		return "chatting";
 	}
 	

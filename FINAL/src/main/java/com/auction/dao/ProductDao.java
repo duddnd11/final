@@ -12,7 +12,6 @@ public interface ProductDao {
 	List<ProductVo> selectAuctionBlind();
 	List<ProductVo> selectPop();
 	List<ProductVo> selectHurry();
-	int insertAuctionFirst(AuctionVo vo);
 	int insertAuction(AuctionVo vo);
 	List<ProductVo> showNormalCategory(String category);
 	List<ProductVo> showBlindCategory(String category);

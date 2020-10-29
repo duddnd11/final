@@ -103,6 +103,7 @@ header.header .nav_wrap nav.main .main_cate>li.menu>.menu_title {
 
 a {
 	text-decoration: none;
+	color: black;
 }
 
 .login a {
@@ -140,14 +141,7 @@ header.header .nav_wrap nav.main {
 	margin-top: 45px;
 }
 </style>
-<script>
-		function popup(){
-				var url = "login/";
-				var name = "login popup";
-				var option = "width = 550, height = 500, top = 100, left = 200, location = no"
-				window.open(url, name, option);
-			}
-	</script>
+
 </head>
 <body>
 	<header class="header">
@@ -223,18 +217,21 @@ header.header .nav_wrap nav.main {
 					<a href="검색"><img class="search_img"
 						src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw="></a>
 				</div>
+				<div class="login">
 				<c:choose>
-					<c:when test="${member.ID eq null }">
-						<div class="login">
-							<a href="javascript:popup()">로그인</a>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="logout">
-							<a href="#">로그아웃</a>
-						</div>
-					</c:otherwise>
+						<c:when test="${member.grade eq null }">
+								<a href="javascript:popup()">로그인</a>
+						</c:when>
+						<c:when test="${member.grade eq 'z' }">
+								<a href="#">로그아웃</a>
+								<a href="admin">관리자 페이지</a>
+						</c:when>
+						<c:otherwise>
+								<a href="#">로그아웃</a>
+								<a href="myPage">마이페이지</a>
+						</c:otherwise>
 				</c:choose>
+				</div>
 			</div>
 		</section>
 	</header>
