@@ -29,7 +29,10 @@ public class ProductController {
 	AdminService adminService;
 	
 	@RequestMapping(value="/applyProduct")
-	public String applyProduct() {
+	public String applyProduct(HttpSession session, Model model) {
+		MemberVo vo = (MemberVo) session.getAttribute("member");
+		String id = vo.getID();
+		model.addAttribute("id", id);
 		return "applyProduct";
 	}
 	
@@ -57,11 +60,6 @@ public class ProductController {
 		str += arrFilename[i] += "_!_";
 		vo.setFilenames(str);
 		}
-		
-		SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
-		Date time = new Date();
-		String time1 = format1.format(time);
-		vo.setUploaddate(time1);
 		
 		int result = service.insertProduct(vo);
 		if(result == 1) {
@@ -177,6 +175,10 @@ public class ProductController {
 			vo.setImg2(vo.getFilenames().split("_!_")[1]);
 			vo.setImage(null);
 		}
+		SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+		Date time = new Date();
+		String time1 = format1.format(time);
+		vo.setToday(time1);
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
 		model.addAttribute("ID", ID);

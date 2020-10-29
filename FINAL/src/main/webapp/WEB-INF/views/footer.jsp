@@ -8,7 +8,7 @@
 <style>
 footer .foot_wrap {
 	display: table;
-	font-size: 12px;
+	font-size: 15px;
 	font-family: Roboto, "Malgun Gothic", sans-serif;
 	margin: 0 auto;
 	position: relative;
@@ -45,11 +45,11 @@ footer .foot_wrap .group:nth-child(1) ul.agreements li {
 					<li>사업자등록번호 : 123-45-67890</li>
 					<li>통신판매업신고 : 2016-서울강남-12345</li>
 				</ul>
-				<div id="copyright">Copyright ⓒ 2020 Auction Co., Ltd. All
+				<div id="copyright" style="margin-left: 40px;">Copyright ⓒ 2020 Auction Co., Ltd. All
 					Rights Reserved.</div>
 			</div>
 			<div class="group">
-				<h6>CONTACT</h6>
+				<h4>CONTACT</h4>
 				<address>
 					<ul>
 						<li>서울특별시 마포구 서강로 136<br /> 아이비티워 2층,3층
