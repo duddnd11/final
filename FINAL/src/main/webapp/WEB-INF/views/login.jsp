@@ -61,6 +61,10 @@
 		      opener.location.href="http://localhost:9090/final/singup";
 		      self.close();
 		    }
+	    function moveClose4() {
+		      opener.location.href="http://localhost:9090/final/main";
+		      self.close();
+		    }
     </script>
     <style>
     	input{
@@ -84,6 +88,7 @@
     </style>
 </head>
 <body>
+
 	<div id="container" style="width: 600px; height: 600px; margin-left: 50px;">
     <form action = "loginaction" style="margin-top: 100px;">
         <input type="text" name="ID" id="ID" placeholder="아이디" >

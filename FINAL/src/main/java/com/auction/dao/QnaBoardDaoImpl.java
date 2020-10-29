@@ -88,4 +88,17 @@ public class QnaBoardDaoImpl implements QnaBoardDao {
 	public void updateHitCount(int qbno) {
 		sqlSession.update("com.auction.mapper.QnaBoardMapper.updateHitcount", qbno);
 	}
+
+	@Override
+	public void deleteBoard(int qbno) {
+		sqlSession.delete("com.auction.mapper.QnaBoardMapper.deleteBoard", qbno);
+	}
+
+	@Override
+	public void updateBoard(int qbno, String content) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("qbno", qbno);
+		map.put("content", content);
+		sqlSession.update("com.auction.mapper.QnaBoardMapper.updateBoard", map);
+	}
 }

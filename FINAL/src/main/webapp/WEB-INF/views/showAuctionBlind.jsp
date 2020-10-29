@@ -15,6 +15,9 @@
 	}
 </style>
 <body>
+	<c:forEach var="category" items="${category}">
+		<a href="showAuctionBlind?category=${category}">${category}</a><br/>
+	</c:forEach>
 	카테고리 --왼쪽에
 	<c:forEach var="vo" items="${voListShowBlind }">
 		상품 이름: <a href="showDetail?pno=${vo.pno }">${vo.pname }</a><br/>

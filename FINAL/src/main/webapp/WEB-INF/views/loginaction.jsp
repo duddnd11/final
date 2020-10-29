@@ -5,8 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+  <script src="resources/js/jquery-3.5.1.min.js"></script>
 <title>Insert title here</title>
-
+<script>
+	window.close();
+</script>
 
 </head>
 <body>
@@ -17,5 +20,6 @@
 			<input type = "submit" value = "게시글 작성"/>
 		</div>
 	</c:if>
+	
 </body>
 </html>
