@@ -44,32 +44,7 @@
 	<br/>
 	</div>
 	
-<<<<<<< HEAD
-	<table style="margin-left: 500px; margin-top: -330px;">
-		<tr>
-			<th>D-day </th> <td>${vo.timeout }</td>
-		</tr>
-		<tr>
-			<th>판매자</th> <td>${vo.ID }</td>
-		</tr>
-		<tr>
-			<th>날짜</th> <td>${vo.uploaddate } ~ ${vo.deadlinedate }</td>
-		</tr>
-		<tr>
-			<th>입찰 수</th> <td>${vo.count }</td>
-		</tr>
-	<c:if test="${vo.auctionmenu eq '일반' }">
-		<tr>
-			<th>시작가</th> <td>${vo.startmoney }</td>
-		</tr>
-		<tr>
-			<th>상한가</th> <td>${vo.lastmoney }</td>
-		</tr>
-		<tr>
-			<th>입찰 단위</th> <td>${vo.moneyup }</td>
-		</tr>
-	</c:if>
-=======
+	
 	<c:if test="${vo.auctionmenu eq '일반' }">
 	<table style="margin-left: 500px; margin-top: -350px;">
 	<tr>
@@ -96,14 +71,14 @@
 	<tr>
 		<th>입찰 수 </th> <td>${vo.count }</td>
 	</tr>
->>>>>>> refs/remotes/origin/main
+
 	</table>
-<<<<<<< HEAD
-	<button id="btn" onclick="alertMsg()">입찰</button>
-=======
+
+
 	<div style="display: flex;">
 	<button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
-	<button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;" >입찰</button>
+	<button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"
+	id="btn" onclick="alertMsg()" >입찰</button>
 	</div>
 	</c:if>
 	
@@ -134,24 +109,17 @@
 						<b>+</b>
 					</button><br/>
 				<button style=" width: 100px; height: 40px; margin-top: 20px; margin-left: 30px;" >관심상품</button>
-				<button style="margin-top: 20px;  margin-left: 20px; width: 100px; height: 40px;">응찰</button>	
+				<button style="margin-top: 20px;  margin-left: 20px; width: 100px; height: 40px;"
+				id="btn" onclick="alertMsg()">입찰</button>	
 	</div>
 	</c:if>
-	
->>>>>>> refs/remotes/origin/main
-	
-<<<<<<< HEAD
+  
 	<c:if test="${ID.ID eq 'admin' }">
-		<div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: -20px;">
-=======
-	<c:if test="${ID eq 'admin' }">
-		<div style="width: 1000px; height: 1000px; margin-top: 300px; margin-left: -20px;">
->>>>>>> refs/remotes/origin/main
+		<div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: -20px;">	
 		<canvas id="myChart"></canvas>
 		</div>
 	</c:if>
-	
-	
+		
 </div>
 <script>
 <c:if test="${result eq 2 }">
