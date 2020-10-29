@@ -57,7 +57,7 @@
 			var str = "나 : "+message;
 			$("#data").append(str);
 		}else{
-			var str =current_session+" : "+message;
+			var str =sessionid+" : "+message;
 			$("#data").append(str);
 		}
 		/*
