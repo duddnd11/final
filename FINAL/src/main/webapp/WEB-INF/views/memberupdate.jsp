@@ -16,9 +16,9 @@
 			})
 		
 			$("#submit").on("click", function(){
-				if($("#PW").val()==""){
+				if($("#pw").val()==""){
 					alert("비밀번호를 입력해주세요.");
-					$("#PW").focus();
+					$("#pw").focus();
 					return false;
 				}
 				if($("#name").val()==""){

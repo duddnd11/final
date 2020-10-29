@@ -8,12 +8,12 @@
 		INSERT INTO member(ID, pw, name, addr, phonenum, email, birth, grade) VALUES(#{ID},#{pw}, #{name}, #{addr}, #{phonenum}, #{email}, #{birth}, #{grade})
 	</insert>
 	
-	<select id="login" resultType = "com.auction.vo.MemberDto"><!-- 로그인 -->
+	<select id="login" resultType = "com.auction.vo.MemberVo"><!-- 로그인 -->
 		select * from member where ID = #{ID} and pw = #{pw}
 	</select>
 	
-	<update id="memebrUpdate">
-		UPDATE member SET pw = #{pw}, name = #{name} WHERE ID = #{ID}
+	<update id="memberUpdate">
+		UPDATE member SET pw = #{pw}, name = #{name}, addr = #{addr}, phonenum = #{phonenum}, email = #{email} WHERE ID = #{ID}
 	</update>
 	
 </mapper>
