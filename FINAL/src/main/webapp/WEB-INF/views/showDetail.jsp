@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script src="resources/js/jquery-3.5.1.min.js"></script>
+<script src="resources/js/plmi.js"></script>
 <title>Insert title here</title>
 
 </head>
@@ -23,6 +24,9 @@
 	td{
 		padding: 5px;
 		padding-left: 20px;
+	}
+	th{
+		text-align: left;
 	}
 </style>
 <body>
@@ -39,7 +43,8 @@
 	</c:if>
 	</div>
 	
-	<table style="margin-left: 500px; margin-top: -330px;">
+	<c:if test="${vo.auctionmenu eq '일반' }">
+	<table style="margin-left: 500px; margin-top: -350px;">
 	<tr>
 	<th>상품 가격</th> <td>${vo.price }</td>
 	</tr>
@@ -52,7 +57,6 @@
 	<tr>
 	<th>날짜</th> <td>${vo.uploaddate } ~ ${vo.deadlinedate }</td>
 	</tr>
-	<c:if test="${vo.auctionmenu eq '일반' }">
 	<tr>
 		<th>시작가</th> <td>${vo.startmoney }</td>
 	</tr>
@@ -62,14 +66,55 @@
 	<tr>
 		<th>입찰 단위</th> <td>${vo.moneyup }</td>
 	</tr>
-	</c:if>
+	<tr>
+		<th>입찰 수 </th> <td>${vo.count }</td>
+	</tr>
 	</table>
+	<div style="display: flex;">
+	<button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
+	<button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;" >입찰</button>
+	</div>
+	</c:if>
+	
+	<c:if test="${vo.auctionmenu eq '블라인드' }">
+	<table style="margin-left: 500px; margin-top: -350px;">
+	<tr>
+	<th>상품 가격</th> <td>${vo.price }</td>
+	</tr>
+	<tr>
+	<th>D-day </th> <td>${vo.timeout }</td>
+	</tr>
+	<tr>
+	<th>판매자</th> <td>${vo.ID }</td>
+	</tr>
+	<tr>
+	<th>날짜</th> <td>${vo.uploaddate } ~ ${vo.deadlinedate }</td>
+	</tr>
+	<tr>
+		<th>입찰 수 </th> <td>${vo.count }</td>
+	</tr>
+	</table>
+	<div class="spinner" style="margin-left: 500px; margin-top: 40px;">
+				<button type="button" class="sp-sub-minus" onclick="optnQtyMinus($(this));" style="width: 40px; height: 32px;">
+					<b>-</b>
+				</button>
+					<input style=" width: 200px; height: 30px;margin-left: 0px;" type="tel" class="num" value="0" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
+					<button type="button" class="sp-sub-plus" onclick="optnQtyPlus($(this), '3091');" style="width: 40px; height: 32px;">
+						<b>+</b>
+					</button><br/>
+				<button style=" width: 100px; height: 40px; margin-top: 20px; margin-left: 30px;" >관심상품</button>
+				<button style="margin-top: 20px;  margin-left: 20px; width: 100px; height: 40px;">응찰</button>	
+	</div>
+	</c:if>
+	
 	
 	<c:if test="${ID eq 'admin' }">
-		<div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: -20px;">
+		<div style="width: 1000px; height: 1000px; margin-top: 300px; margin-left: -20px;">
 		<canvas id="myChart"></canvas>
 		</div>
 	</c:if>
+	
+	
 </div>
 <script>
 	var data1 = new Array();
