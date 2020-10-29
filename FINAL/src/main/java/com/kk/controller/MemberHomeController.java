@@ -71,7 +71,7 @@ public class MemberHomeController {
 		service.memberUpdate(vo);
 		session.invalidate();
 		
-		return "redirect:/login";
+		return "redirect:/main";
 	}
 	
 }
