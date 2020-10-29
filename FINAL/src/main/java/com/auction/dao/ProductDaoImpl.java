@@ -50,15 +50,12 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public List<ProductVo> showCategory(String category, String auctionmenu) {
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("category", category);
-		map.put("auctionmenu", auctionmenu);
-		return sqlSession.selectList("com.auction.mapper.ProductMapper.category", map);
+	public List<ProductVo> showNormalCategory(String category) {
+		return sqlSession.selectList("com.auction.mapper.ProductMapper.normalCategory", category);
 	}
 
-	
-	
-	
-
+	@Override
+	public List<ProductVo> showBlindCategory(String category) {
+		return sqlSession.selectList("com.auction.mapper.ProductMapper.blindCategory", category);
+	}
 }

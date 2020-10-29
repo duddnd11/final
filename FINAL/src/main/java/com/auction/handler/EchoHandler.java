@@ -2,6 +2,7 @@ package com.auction.handler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,8 @@ import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
+
+import com.auction.vo.MemberVo;
 
 public class EchoHandler extends TextWebSocketHandler{
 	// �쎒 �냼耳� �꽭�뀡�쓣 ���옣�븷 由ъ뒪�듃 �깮�꽦
@@ -27,6 +30,9 @@ public class EchoHandler extends TextWebSocketHandler{
 //		sessionList.add((WebSocketSession) map.get("아이디"));
 		logger.info("{} 연결됨",session.getId());
 		System.out.println("입장:"+session.getId());
+		Map<String,Object> map=session.getAttributes();
+		MemberVo vo=(MemberVo) map.get("member");
+		System.out.println("session아이디:"+vo.getID());
 //		System.out.println("채팅방 입장자 : "+ session.getPrincipal().getName());
 		for(int i=0; i<sessionList.size();i++) {
 			System.out.println(sessionList.get(i));
@@ -36,9 +42,11 @@ public class EchoHandler extends TextWebSocketHandler{
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		logger.info("{}濡� 遺��꽣 {} 諛쏆쓬",session.getId(),message.getPayload());
+		Map<String,Object> map=session.getAttributes();
+		MemberVo vo=(MemberVo) map.get("member");
 //		session.getPrincipal().getName()
 		for(WebSocketSession sess : sessionList) {
-			sess.sendMessage(new TextMessage(session.getId()+" : "+message.getPayload()+"<br/>"));
+			sess.sendMessage(new TextMessage(session.getId()+" : "+message.getPayload()+"\n"));
 			System.out.println("세션:"+sess.getId());
 		}
 	}

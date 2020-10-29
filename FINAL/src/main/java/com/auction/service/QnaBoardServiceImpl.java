@@ -79,4 +79,14 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 	public void updateHitcount(int qbno) {
 		dao.updateHitCount(qbno);
 	}
+
+	@Override
+	public void deleteBoard(int qbno) {
+		dao.deleteBoard(qbno);
+	}
+
+	@Override
+	public void updateBoard(int qbno, String content) {
+		dao.updateBoard(qbno, content);
+	}
 }

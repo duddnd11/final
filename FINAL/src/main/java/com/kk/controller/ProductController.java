@@ -104,18 +104,58 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/showAuctionNormal")
-	public String showAuctionNormal(Model model) {
+	public String showAuctionNormal(Model model,String category) {
 		List<ProductVo> list = service.selectAuction();
+		List<ProductVo> listCategory = service.showNormalCategory(category);
+		List<String> categoryMenu = new ArrayList<String>();
+		boolean check =true;
+		for(ProductVo vo : list) {
+			check=true;
+			for(String str : categoryMenu) {
+				if(vo.getCategory().equals("") || str.equals(vo.getCategory())) {
+					check=false;
+					break;
+				}
+			}
+			if(check==true) {
+				categoryMenu.add(vo.getCategory());
+			}
+		}
 		setImg(list);
-		model.addAttribute("list", list);
+		model.addAttribute("category", categoryMenu);
+		if(category==null) {
+			model.addAttribute("list", list);
+		}else {
+			model.addAttribute("list",listCategory);
+		}
 		return "showAuctionNormal";
 	}
 	
 	@RequestMapping(value="/showAuctionBlind")
-	public String showAuctionBlind(Model model) {
+	public String showAuctionBlind(Model model,String category) {
 		List<ProductVo> listShowBlind = service.selectAuctionBlind();
+		List<ProductVo> listCategory = service.showBlindCategory(category);
+		List<String> categoryMenu = new ArrayList<String>();
+		boolean check =true;
+		for(ProductVo vo : listShowBlind) {
+			check=true;
+			for(String str : categoryMenu) {
+				if(vo.getCategory().equals("") || str.equals(vo.getCategory())) {
+					check=false;
+					break;
+				}
+			}
+			if(check==true) {
+				categoryMenu.add(vo.getCategory());
+			}
+		}
 		setImg(listShowBlind);
-		model.addAttribute("voListShowBlind", listShowBlind);
+		model.addAttribute("category", categoryMenu);
+		if(category==null) {
+			model.addAttribute("voListShowBlind", listShowBlind);
+		}else {
+			model.addAttribute("voListShowBlind", listCategory);
+		}
 		return "showAuctionBlind";
 	}
 	
@@ -128,13 +168,13 @@ public class ProductController {
 		
 		ProductVo vo = service.selectOne(pno);
 		List<AuctionVo> list = adminService.chart(pno);	
-		if(vo.getFilenames()!=null) {
+		if(vo.getFilenames()==null || vo.getFilenames().equals("")) {
+			vo.setImg1(null);
+			vo.setImg2(null);
+		} else {
 			vo.setImg1(vo.getFilenames().split("_!_")[0]);
 			vo.setImg2(vo.getFilenames().split("_!_")[1]);
 			vo.setImage(null);
-		} else {
-			vo.setImg1(null);
-			vo.setImg2(null);
 		}
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
@@ -142,10 +182,4 @@ public class ProductController {
 		return "showDetail";
 	}
 	
-	@RequestMapping(value="/showCategory")
-	public String showCategory(Model model, String category) {
-		
-		
-		return "showAuctionBlind";
-	}
 }
