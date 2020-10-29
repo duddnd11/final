@@ -18,11 +18,12 @@
 	}
 	td{
 		border-bottom: 1px solid #cccccc;
+		padding: 10px;
 	}
 </style>
 </head>
 <body>
-	<div id="container" style="margin-top: 300px;">
+	<div id="container" style="margin-top: 200px; margin-left: 400px;">
 	
 <h2>--판매--</h2><br/>
 		<table id="salestable">

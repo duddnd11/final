@@ -8,31 +8,52 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-
+<script src="resources/js/jquery-3.5.1.min.js"></script>
 <title>Insert title here</title>
+<script>
+$(document).ready(function(){
+	  $('.bxslider').bxSlider({
+	    auto: false,
+	    autoControls: false,
+	    stopAutoOnClick: true,
+	    pager: true,
+	    slideWidth: 400,
+	    controls: true,
+	    
+	    minSlides: 1,
+	    maxSlides: 1,
+	    moveSlides: 1,
+	  });
+	});
+</script>
 </head>
 <style>
 	img {
-		width: 200px;
-		height: 200px;
+		width: 400px;
+		height: 400px;
 	}
 </style>
 <body>
-	경매번호: ${vo.pno }	<br/>
-	상품: ${vo.pname }<br/>
+<div style="margin-left: 300px;">
+	<span>${vo.pno }</span>
+	<span style="margin-left: 30px;">${vo.pname }</span><br/>
+	<div class="bxslider">
 	<c:if test="${vo.image ne null }">
 		<img src="${vo.image }"/>		
 	</c:if>
-	<c:if test="${vo.image eq null }">
-		<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img1 }"/></a> 
-		<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img2 }"/></a> <br/>
+	<div class="bxslider" style="display: flex;" >
+	<c:if test="${vo.image eq null }">	
+		<div><img src="resources/images/${vo.img1 }"/></div>
+		<div><img src="resources/images/${vo.img2 }"/></div>
 	</c:if>
-	<br/>
+	</div>
+	</div>
+	
+	<div>
 	상품 가격: ${vo.price }<br/>
 	D-day: ${vo.timeout }<br/>
 	판매자: ${vo.ID }<br/>
-	날짜: ${vo.uploaddate } ~ ${vo.deadlinedate }<br/>
+	날짜: ${vo.uploaddate } ~ ${vo.deadlinedate }</div><br/>
 	
 	<c:if test="${vo.auctionmenu eq '일반' }">
 		시작가: ${vo.startmoney }<br/>
@@ -42,10 +63,11 @@
 	
 	
 	<c:if test="${ID eq 'admin' }">
-		<div style="width: 700px; height: 700px;">
+		<div style="width: 1000px; height: 1000px; margin-left: -300px; margin-top: 50px;">
 		<canvas id="myChart"></canvas>
 		</div>
 	</c:if>
+</div>
 <script>
 	var data1 = new Array();
 	var labels1 = new Array();
@@ -75,7 +97,7 @@ $(document).ready(function(){
 		options :{
 			scales :{
 				yAxes: [{
-					 ticks : { max: 10000000, stepSize: 500000, min:0 },	// 차트의 최대치와 최소치
+					 ticks : { max: 15000000, stepSize: 1000000, min:0 },	// 차트의 최대치와 최소치
 				}]
 			}
 		}
