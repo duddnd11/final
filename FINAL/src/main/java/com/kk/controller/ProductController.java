@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.auction.service.AdminService;
 import com.auction.service.ProductService;
 import com.auction.vo.AuctionVo;
+import com.auction.vo.MemberDto;
 import com.auction.vo.MemberVo;
 import com.auction.vo.ProductVo;
 
@@ -105,18 +106,60 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/showAuctionNormal")
-	public String showAuctionNormal(Model model) {
+	public String showAuctionNormal(Model model,String category) {
 		List<ProductVo> list = service.selectAuction();
+		List<ProductVo> listCategory = service.showNormalCategory(category);
+		List<String> categoryMenu = new ArrayList<String>();
+		boolean check =true;
+		for(ProductVo vo : list) {
+			check=true;
+			for(String str : categoryMenu) {
+				if(vo.getCategory().equals("") || str.equals(vo.getCategory())) {
+					check=false;
+					break;
+				}
+			}
+			if(check==true) {
+				categoryMenu.add(vo.getCategory());
+			}
+		}
 		setImg(list);
-		model.addAttribute("list", list);
+		setImg(listCategory);
+		model.addAttribute("category", categoryMenu);
+		if(category==null) {
+			model.addAttribute("list", list);
+		}else {
+			model.addAttribute("list",listCategory);
+		}
 		return "showAuctionNormal";
 	}
 	
 	@RequestMapping(value="/showAuctionBlind")
-	public String showAuctionBlind(Model model) {
+	public String showAuctionBlind(Model model,String category) {
 		List<ProductVo> listShowBlind = service.selectAuctionBlind();
+		List<ProductVo> listCategory = service.showBlindCategory(category);
+		List<String> categoryMenu = new ArrayList<String>();
+		boolean check =true;
+		for(ProductVo vo : listShowBlind) {
+			check=true;
+			for(String str : categoryMenu) {
+				if(vo.getCategory().equals("") || str.equals(vo.getCategory())) {
+					check=false;
+					break;
+				}
+			}
+			if(check==true) {
+				categoryMenu.add(vo.getCategory());
+			}
+		}
 		setImg(listShowBlind);
-		model.addAttribute("voListShowBlind", listShowBlind);
+		setImg(listCategory);
+		model.addAttribute("category", categoryMenu);
+		if(category==null) {
+			model.addAttribute("voListShowBlind", listShowBlind);
+		}else {
+			model.addAttribute("voListShowBlind", listCategory);
+		}
 		return "showAuctionBlind";
 	}
 	
@@ -141,15 +184,17 @@ public class ProductController {
 		return "showDetail";
 	}
 	
-//	@RequestMapping(value="/insertAuction")
-//	public String insertAuction() {
-//		
-//	}
-	
-	@RequestMapping(value="/showCategory")
-	public String showCategory(Model model, String category) {
-		
-		
-		return "showAuctionBlind";
+	@RequestMapping(value="/insertAuction")
+	public String insertAuction(HttpSession session, Model model, int pno, int myprice) {
+		MemberVo ID =  (MemberVo) session.getAttribute("member");
+		String id = ID.getID();
+		AuctionVo vo = new AuctionVo(id, pno, myprice);
+		int result = service.insertAuction(vo);
+		if(result==2) {
+			System.out.println("입찰됨!!!");
+		}
+		model.addAttribute("result", result);
+		return "showDetail";
 	}
+	
 }

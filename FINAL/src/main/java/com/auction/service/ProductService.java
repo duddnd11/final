@@ -12,6 +12,8 @@ public interface ProductService {
 	List<ProductVo> selectAuctionBlind();
 	List<ProductVo> selectPop();
 	List<ProductVo> selectHurry();
-	List<ProductVo> showCategory(String category, String auctionmenu);
+//	List<ProductVo> showCategory(String category, String auctionmenu);
 	int insertAuction(AuctionVo vo);
+	List<ProductVo> showNormalCategory(String category);
+	List<ProductVo> showBlindCategory(String category);
 }

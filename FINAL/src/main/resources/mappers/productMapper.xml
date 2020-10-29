@@ -53,7 +53,15 @@
 	</update>
 	
 	<!-- 카테고리 -->
-	<select id="category" resultType="com.auction.vo.ProductVo">
-		select * from product where category=#{category} and auctionmenu=#{auctionmenu} order by uploaddate desc;
+	<select id="normalCategory" resultType="com.auction.vo.ProductVo">
+		select * from product where category=#{category} and auctionmenu='일반' order by uploaddate desc;
 	</select>
-</mapper>  
+	<select id="blindCategory" resultType="com.auction.vo.ProductVo">
+		SELECT * FROM product WHERE category=#{category} and auctionmenu='블라인드' ORDER BY uploaddate DESC;
+	</select>
+</mapper>
+
+
+
+
+  

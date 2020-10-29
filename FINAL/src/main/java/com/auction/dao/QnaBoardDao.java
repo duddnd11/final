@@ -22,4 +22,7 @@ public interface QnaBoardDao {
 	public List<QnaBoardVo> searchContent(String keyword,int offset);
 	public List<QnaBoardVo> searchWriter(String keyword,int offset);
 	public List<QnaBoardVo> searchTitleAndContent(String keyword,int offset);
+	
+	public void deleteBoard(int qbno);
+	public void updateBoard(int qbno, String content);
 }
