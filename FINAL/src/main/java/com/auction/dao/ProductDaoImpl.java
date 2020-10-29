@@ -62,10 +62,9 @@ public class ProductDaoImpl implements ProductDao {
 		if(select>0) {
 			result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
 			result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoney", vo.getPno());
-			
 		}else {
-		result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
-		result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoneyFirst", vo.getPno());
+			result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
+			result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoneyFirst", vo.getPno());
 		}
 		return result;
 	}
