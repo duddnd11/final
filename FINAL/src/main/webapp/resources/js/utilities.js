@@ -47,7 +47,7 @@ function searchPostcode(){
 
     new daum.Postcode({
       oncomplete: function(data) {
-        $("input[name='addr']").val(data.addr);
+        $("input[name='addr']").val(data.address);
       }
     }).open();
   });
