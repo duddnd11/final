@@ -8,7 +8,7 @@
 		INSERT INTO member(ID, pw, name, addr, phonenum, email, birth, grade) VALUES(#{ID},#{pw}, #{name}, #{addr}, #{phonenum}, #{email}, #{birth}, #{grade})
 	</insert>
 	
-	<select id="login" resultType = "com.auction.vo.MemberDto"><!-- 로그인 -->
+	<select id="login" resultType = "com.auction.vo.MemberVo"><!-- 로그인 -->
 		select * from member where ID = #{ID} and pw = #{pw}
 	</select>
 	
