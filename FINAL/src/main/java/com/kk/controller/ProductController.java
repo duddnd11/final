@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.auction.service.AdminService;
 import com.auction.service.ProductService;
 import com.auction.vo.AuctionVo;
+import com.auction.vo.MemberVo;
 import com.auction.vo.ProductVo;
 
 @Controller
@@ -43,7 +44,7 @@ public class ProductController {
 		
 		for(int i=0; i<=arrMultipart.length-1; i++) {
 			MultipartFile multipart = arrMultipart[i];
-			String filename = "(�씠由� �뾾�쓬)";
+			String filename = "(이름없음)";
 			
 		if(!multipart.isEmpty()) {
 			filename = multipart.getOriginalFilename();
@@ -64,7 +65,7 @@ public class ProductController {
 		
 		int result = service.insertProduct(vo);
 		if(result == 1) {
-			System.out.println("寃쎈ℓ �벑濡�!!!!");
+			System.out.println("등록됨!!!!");
 		}
 		model.addAttribute("result", result);
 //		return "mypage";
@@ -122,6 +123,7 @@ public class ProductController {
 			}
 		}
 		setImg(list);
+		setImg(listCategory);
 		model.addAttribute("category", categoryMenu);
 		if(category==null) {
 			model.addAttribute("list", list);
@@ -150,6 +152,7 @@ public class ProductController {
 			}
 		}
 		setImg(listShowBlind);
+		setImg(listCategory);
 		model.addAttribute("category", categoryMenu);
 		if(category==null) {
 			model.addAttribute("voListShowBlind", listShowBlind);
@@ -161,10 +164,8 @@ public class ProductController {
 	
 	@RequestMapping(value="/showDetail")
 	public String showDetail(Model model, int pno, HttpSession session) {
-
-		session.setAttribute("session_id", "admin");				//�닔�젙
-
-		String ID = (String) session.getAttribute("session_id");
+//		session.setAttribute("member", "admin");				//수정
+		MemberVo ID =  (MemberVo) session.getAttribute("member");
 		
 		ProductVo vo = service.selectOne(pno);
 		List<AuctionVo> list = adminService.chart(pno);	
@@ -180,6 +181,22 @@ public class ProductController {
 		model.addAttribute("vo", vo);
 		model.addAttribute("ID", ID);
 		return "showDetail";
+	}
+	
+	@RequestMapping(value="/insertAuction")
+	public String insertAuction(HttpSession session, Model model, int pno, int myprice) {
+		MemberVo ID =  (MemberVo) session.getAttribute("member");
+		if(ID==null) {
+			return "login";
+		}
+		String id = ID.getID();
+		AuctionVo vo = new AuctionVo(id, pno, myprice);
+		int result = service.insertAuction(vo);
+		if(result==2) {
+			System.out.println("입찰됨!!!");
+		}
+		model.addAttribute("result", result);
+		return "redirect:/showDetail?pno="+pno;
 	}
 	
 }

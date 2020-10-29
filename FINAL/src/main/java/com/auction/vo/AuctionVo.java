@@ -11,6 +11,13 @@ public class AuctionVo {
 	
 	public AuctionVo() {}
 
+	public AuctionVo(String iD, int pno, int myprice) {
+		super();
+		ID = iD;
+		this.pno = pno;
+		this.myprice = myprice;
+	}
+
 	public AuctionVo(int idx, String iD, int pno, int myprice, String buydate) {
 		super();
 		this.idx = idx;
