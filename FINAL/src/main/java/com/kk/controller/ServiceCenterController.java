@@ -152,7 +152,6 @@ public class ServiceCenterController {
 	public String qnaWriteAction(QnaBoardVo vo,Model model,HttpServletRequest request,HttpServletResponse response) {
 		Cookie[] cookies = request.getCookies();
 		Cookie viewCookie = null;
-		vo.setID("qq");
 		
 		for(int i=0 ;i<cookies.length;i++) {
 			if(cookies[i].getName().equals("qnaWrite")) {

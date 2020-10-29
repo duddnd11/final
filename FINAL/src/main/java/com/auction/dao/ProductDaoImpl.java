@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.auction.vo.AuctionVo;
 import com.auction.vo.ProductVo;
 
 @Repository
@@ -55,6 +56,13 @@ public class ProductDaoImpl implements ProductDao {
 		map.put("category", category);
 		map.put("auctionmenu", auctionmenu);
 		return sqlSession.selectList("com.auction.mapper.ProductMapper.category", map);
+	}
+
+	@Override
+	public int insertAuction(AuctionVo vo) {
+		int result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
+		result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoney", vo.getPno());
+		return result;
 	}
 
 	

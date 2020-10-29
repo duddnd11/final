@@ -41,7 +41,7 @@
 	</c:if>
 	
 	
-	<c:if test="${ID eq 'admin' }">
+	<c:if test="${ID.ID eq 'admin' }">
 		<div style="width: 700px; height: 700px;">
 		<canvas id="myChart"></canvas>
 		</div>

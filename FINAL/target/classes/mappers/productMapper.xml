@@ -45,6 +45,12 @@
 	</update>
 	
 	<!-- 입찰 -->
+	<insert id="insertAuction">
+		insert into auction(ID, pno, myprice) values(#{ID}, #{pno}, #{myprice});
+	</insert>
+	<update id="updateMoney">
+		update product set count =count+1, startmoney =startmoney+moneyup where pno=#{pno};
+	</update>
 	
 	<!-- 카테고리 -->
 	<select id="category" resultType="com.auction.vo.ProductVo">

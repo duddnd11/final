@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -222,10 +223,18 @@ header.header .nav_wrap nav.main {
 					<a href="검색"><img class="search_img"
 						src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw="></a>
 				</div>
-				<a>${member.ID}</a>
-				<div class="login">
-					<a href="javascript:popup()">로그인</a>
-				</div>
+				<c:choose>
+					<c:when test="${member.ID eq null }">
+						<div class="login">
+							<a href="javascript:popup()">로그인</a>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="logout">
+							<a href="#">로그아웃</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</section>
 	</header>

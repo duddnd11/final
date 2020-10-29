@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.auction.dao.ProductDao;
+import com.auction.vo.AuctionVo;
 import com.auction.vo.ProductVo;
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -45,6 +46,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductVo> showCategory(String category, String auctionmenu) {
 		return dao.showCategory(category, auctionmenu);
+	}
+
+	@Override
+	public int insertAuction(AuctionVo vo) {
+		return dao.insertAuction(vo);
 	}
 
 }

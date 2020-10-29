@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.auction.service.AdminService;
 import com.auction.service.ProductService;
 import com.auction.vo.AuctionVo;
+import com.auction.vo.MemberVo;
 import com.auction.vo.ProductVo;
 
 @Controller
@@ -121,8 +122,8 @@ public class ProductController {
 	
 	@RequestMapping(value="/showDetail")
 	public String showDetail(Model model, int pno, HttpSession session) {
-		session.setAttribute("member", "admin");				//수정
-		String ID = (String) session.getAttribute("member");
+//		session.setAttribute("member", "admin");				//수정
+		MemberVo ID =  (MemberVo) session.getAttribute("member");
 		
 		ProductVo vo = service.selectOne(pno);
 		List<AuctionVo> list = adminService.chart(pno);	
@@ -139,6 +140,11 @@ public class ProductController {
 		model.addAttribute("ID", ID);
 		return "showDetail";
 	}
+	
+//	@RequestMapping(value="/insertAuction")
+//	public String insertAuction() {
+//		
+//	}
 	
 	@RequestMapping(value="/showCategory")
 	public String showCategory(Model model, String category) {
