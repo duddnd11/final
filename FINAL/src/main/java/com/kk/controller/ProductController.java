@@ -187,12 +187,18 @@ public class ProductController {
 	public String insertAuction(HttpSession session, Model model, int pno, int myprice) {
 		MemberVo ID =  (MemberVo) session.getAttribute("member");
 		String id = ID.getID();
-		AuctionVo vo = new AuctionVo(id, pno, myprice);
-		int result = service.insertAuction(vo);
-		if(result==2) {
-			System.out.println("입찰됨!!!");
-		}
-		model.addAttribute("result", result);
+//		list ==null{
+//			AuctionVo vo = new AuctionVo(id, pno, myprice);
+//			
+//		}else {
+//			AuctionVo vo = new AuctionVo(id, pno, myprice+5000);
+//			
+//		}
+//		int result = service.insertAuction(vo);
+//		if(result==2) {
+//			System.out.println("입찰됨!!!");
+//		}
+//		model.addAttribute("result", result);
 		return "showDetail";
 	}
 	

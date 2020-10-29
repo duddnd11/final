@@ -25,8 +25,8 @@
 		<img src="${vo.image }"/>		
 	</c:if>
 	<c:if test="${vo.image eq null }">
-		<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img1 }"/></a> 
-		<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img2 }"/></a> <br/>
+		<img src="resources/images/${vo.img1 }"/>
+		<img src="resources/images/${vo.img2 }"/> <br/>
 	</c:if>
 	<br/>
 	상품 가격: ${vo.price }<br/>
@@ -39,7 +39,7 @@
 		가능한 최고 입찰가?응찰가?: ${vo.lastmoney }<br/>
 		입찰 단위: ${vo.moneyup }<br/>
 	</c:if>
-	
+	<button id="btn" onclick="location.href='insertAuction?pno=${vo.pno}&myprice=${vo.startmoney }&moneyup=${vo.moneyup }'">입찰</button>
 	
 	<c:if test="${ID.ID eq 'admin' }">
 		<div style="width: 700px; height: 700px;">

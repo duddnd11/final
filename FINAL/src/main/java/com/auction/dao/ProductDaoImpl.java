@@ -57,8 +57,14 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public int insertAuction(AuctionVo vo) {
-		int result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
-		result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoney", vo.getPno());
+		int result=0;
+		int select = sqlSession.selectOne("com.auction.mapper.ProductMapper.selectAuction", vo.getPno());
+		if(select>0) {
+			result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
+			result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoney", vo.getPno());
+			
+		}
+		result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoneyFirst", vo.getPno());
 		return result;
 	}
 
@@ -66,5 +72,10 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public List<ProductVo> showBlindCategory(String category) {
 		return sqlSession.selectList("com.auction.mapper.ProductMapper.blindCategory", category);
+	}
+
+	@Override
+	public int insertAuctionFirst(AuctionVo vo) {
+		return result;
 	}
 }

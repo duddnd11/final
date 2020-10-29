@@ -45,9 +45,15 @@
 	</update>
 	
 	<!-- 입찰 -->
+	<select id="selectAuction" resultType="int">
+		SELECT count(*) FROM auction where pno=#{pno};
+	</select>
 	<insert id="insertAuction">
 		insert into auction(ID, pno, myprice) values(#{ID}, #{pno}, #{myprice});
 	</insert>
+	<update id="updateMoneyFirst">
+		update product set count =count+1 where pno=#{pno};
+	</update>
 	<update id="updateMoney">
 		update product set count =count+1, startmoney =startmoney+moneyup where pno=#{pno};
 	</update>
