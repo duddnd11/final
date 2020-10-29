@@ -11,7 +11,6 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import com.auction.vo.MemberDto;
 import com.auction.vo.MemberVo;
 
 public class EchoHandler extends TextWebSocketHandler{
@@ -32,7 +31,7 @@ public class EchoHandler extends TextWebSocketHandler{
 		logger.info("{} 연결됨",session.getId());
 		System.out.println("입장:"+session.getId());
 		Map<String,Object> map=session.getAttributes();
-		MemberDto vo=(MemberDto) map.get("member");
+		MemberVo vo=(MemberVo) map.get("member");
 		System.out.println("session아이디:"+vo.getID());
 //		System.out.println("채팅방 입장자 : "+ session.getPrincipal().getName());
 		for(int i=0; i<sessionList.size();i++) {
@@ -44,7 +43,7 @@ public class EchoHandler extends TextWebSocketHandler{
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		logger.info("{}濡� 遺��꽣 {} 諛쏆쓬",session.getId(),message.getPayload());
 		Map<String,Object> map=session.getAttributes();
-		MemberDto vo=(MemberDto) map.get("member");
+		MemberVo vo=(MemberVo) map.get("member");
 //		session.getPrincipal().getName()
 		for(WebSocketSession sess : sessionList) {
 			sess.sendMessage(new TextMessage(session.getId()+" : "+message.getPayload()+"\n"));
