@@ -10,60 +10,63 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script src="resources/js/jquery-3.5.1.min.js"></script>
 <title>Insert title here</title>
-<script>
-$(document).ready(function(){
-	  $('.bxslider').bxSlider({
-	    auto: false,
-	    autoControls: false,
-	    stopAutoOnClick: true,
-	    pager: true,
-	    slideWidth: 400,
-	    controls: true,
-	    
-	    minSlides: 1,
-	    maxSlides: 1,
-	    moveSlides: 1,
-	  });
-	});
-</script>
+
 </head>
 <style>
 	img {
 		width: 400px;
 		height: 400px;
 	}
+	table{
+		font-size: 20px;
+	}
+	td{
+		padding: 5px;
+		padding-left: 20px;
+	}
 </style>
 <body>
 <div style="margin-left: 300px;">
-	<span>${vo.pno }</span>
-	<span style="margin-left: 30px;">${vo.pname }</span><br/>
-	<div class="bxslider">
+	<span style="font-size: 20px;"><b>${vo.pno }</b></span>
+	<span style="margin-left: 30px; font-size: 20px;">${vo.pname }</span>
+	<div style="margin-top: 10px;">
 	<c:if test="${vo.image ne null }">
 		<img src="${vo.image }"/>		
-	</c:if>
-	<div class="bxslider" style="display: flex;" >
+	</c:if>	
 	<c:if test="${vo.image eq null }">	
 		<div><img src="resources/images/${vo.img1 }"/></div>
 		<div><img src="resources/images/${vo.img2 }"/></div>
 	</c:if>
 	</div>
-	</div>
 	
-	<div>
-	상품 가격: ${vo.price }<br/>
-	D-day: ${vo.timeout }<br/>
-	판매자: ${vo.ID }<br/>
-	날짜: ${vo.uploaddate } ~ ${vo.deadlinedate }</div><br/>
-	
+	<table style="margin-left: 500px; margin-top: -330px;">
+	<tr>
+	<th>상품 가격</th> <td>${vo.price }</td>
+	</tr>
+	<tr>
+	<th>D-day </th> <td>${vo.timeout }</td>
+	</tr>
+	<tr>
+	<th>판매자</th> <td>${vo.ID }</td>
+	</tr>
+	<tr>
+	<th>날짜</th> <td>${vo.uploaddate } ~ ${vo.deadlinedate }</td>
+	</tr>
 	<c:if test="${vo.auctionmenu eq '일반' }">
-		시작가: ${vo.startmoney }<br/>
-		가능한 최고 입찰가?응찰가?: ${vo.lastmoney }<br/>
-		입찰 단위: ${vo.moneyup }<br/>
+	<tr>
+		<th>시작가</th> <td>${vo.startmoney }</td>
+	</tr>
+	<tr>
+		<th>상한가</th> <td>${vo.lastmoney }</td>
+	</tr>
+	<tr>
+		<th>입찰 단위</th> <td>${vo.moneyup }</td>
+	</tr>
 	</c:if>
-	
+	</table>
 	
 	<c:if test="${ID eq 'admin' }">
-		<div style="width: 1000px; height: 1000px; margin-left: -300px; margin-top: 50px;">
+		<div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: -20px;">
 		<canvas id="myChart"></canvas>
 		</div>
 	</c:if>
