@@ -27,10 +27,9 @@
 				$("#message").val('');
 				}
 			});
-		/*
 		$("#exit").click(function(){
 			sock.onclose = onClose;
-		});*/
+		});
 	});
 	
 	//sock.onclose = onClose;

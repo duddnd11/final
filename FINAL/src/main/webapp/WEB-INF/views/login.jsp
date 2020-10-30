@@ -12,6 +12,7 @@
   <title>로그인 페이지</title>
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="resources/js/jquery-3.5.1.min.js"></script>
   <script>
         // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
@@ -113,10 +114,10 @@
 	  <div id="naver_id_login" style="margin-left: 50px; margin-top: 10px;">
 	  <!-- //네이버아이디로로그인 버튼 노출 영역 -->
 	  <script type="text/javascript">
-	  	var naver_id_login = new naver_id_login("J9LhL5HfjKG4bDjLYBHL", "http://localhost:9090/final/result/");
+	  	var naver_id_login = new naver_id_login("2ti48YANpdiJUdiguK3P", "http://localhost:9090/final/result/");
 	  	var state = naver_id_login.getUniqState();
 	  	naver_id_login.setButton("white", 277,60);
-	  	naver_id_login.setDomain("http://localhost:9090/final/result/");
+	  	naver_id_login.setDomain("http://localhost:9090/final/login/");
 	  	naver_id_login.setState(state);
 	  	naver_id_login.init_naver_id_login();
 	  </script>
