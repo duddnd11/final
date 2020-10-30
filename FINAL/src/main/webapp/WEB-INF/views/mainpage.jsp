@@ -17,6 +17,43 @@
 	align-items: center;
 	justify-content: center;
 }
+
+.swiper1 {
+	width:900px;
+	height:800px;
+}
+
+#content {
+	margin:0 80px 80px 80px;
+}
+
+h2, small {
+	display:inline-block;
+}
+
+h2 {
+    color: #000;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    vertical-align: middle;
+    font-family: "Nanum Barun Gothic", sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top:80px;
+    margin-bottom:50px;
+}
+
+small {
+	color: gray;
+    font-size: 15px;
+    line-height: 1;
+    vertical-align: middle;
+    font-family: "Nanum Barun Gothic", sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin:80px 0 50px 30px;
+}
 </style>
 </head>
 <body>
@@ -49,7 +86,8 @@
 			<!-- 페이징 -->
 			<div class="swiper-pagination"></div>
 		</div>
-		<h1>촉박 경매</h1>
+		<h2>촉박 경매</h2>
+		<small>옥션이 선정한 경매 작품들을 소개합니다.</small>
 		<div class="swiper-container swiper2">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">

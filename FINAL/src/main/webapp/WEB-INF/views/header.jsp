@@ -74,7 +74,7 @@
 	overflow: hidden;
 	transition: height .2s;
 	width: 1600px;
-	left: 35px;
+	left: 38px;
 	top:70px;
 	background-color: black; /* [추가] 하위 메뉴 전체에 배경색 설정 */
 }
@@ -117,7 +117,6 @@ ul, li {
 	width: 40px;
 	height: 40px;
 	margin-top: -5px;
-	margin-right: 30px;
 }
 
 .inner_wrap {
@@ -131,6 +130,14 @@ ul, li {
 
 .login {
 	float:right;
+}
+
+.login:hover {
+	text-decoration:underline;
+}
+
+.login a {
+	color:blue;
 }
 
 .logo {
