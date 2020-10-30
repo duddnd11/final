@@ -65,10 +65,15 @@
 			<th>날짜</th> <td>${fn:substring(up,0,10) } ~ ${fn:substring(dead,0,10) }</td>
 		</tr>
 		<tr>
-			<th>현재가</th> <td><fmt:formatNumber value="${vo.startmoney }" pattern="#,###" /></td>
+			<th>현재가</th> 
+			
+			<c:if test="${vo.bestmoney == 0  }">
+			<td><fmt:formatNumber value="${vo.startmoney }" pattern="#,###" /></td>
+			</c:if>
+			<td><fmt:formatNumber value="${vo.bestmoney }" pattern="#,###" /></td>
 		</tr>
 		<tr>
-			<th>상한가</th> <td><fmt:formatNumber value="${vo.lastmoney }" pattern="#,###" /></td>
+			<th>상한가</th><td><fmt:formatNumber value="${vo.lastmoney }" pattern="#,###" /></td>
 		</tr>
 		<tr>
 			<th>입찰 단위</th> <td><fmt:formatNumber value="${vo.moneyup }" pattern="#,###" /></td>
@@ -111,28 +116,21 @@
 		id="btn" onclick="alertMsgBlind()">입찰</button>	
 	</div>
 	</c:if>
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 </div>
 	<c:if test="${ID.ID eq 'admin' }">
 		<div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: -20px;">	
 		<canvas id="myChart"></canvas>
 		</div>
 	</c:if>
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 <script>
-<c:if test="${result eq 2 }">
+<c:if test="${result == 2 }">
 	alert("입찰됨!!!");
 </c:if>
+
 var myprice = $("#btnQtyC3_1000020518522").val();
 function alertMsg(){
 	alert("입찰하겠?");
-	location.href='insertAuction?pno=${vo.pno}&myprice=${vo.startmoney }';
+	location.href='insertAuction?pno=${vo.pno}&myprice=${vo.bestmoney }';
 }
 function alertMsgBlind(){
 	alert("입찰하겠?");

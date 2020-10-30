@@ -55,7 +55,7 @@
 		update product set count =count+1 where pno=#{pno};
 	</update>
 	<update id="updateMoney">
-		update product set count =count+1, startmoney =startmoney+moneyup where pno=#{pno};
+		update product set count =count+1, bestmoney =bestmoney+moneyup where pno=#{pno};
 	</update>
 	
 	<!-- 카테고리 -->
