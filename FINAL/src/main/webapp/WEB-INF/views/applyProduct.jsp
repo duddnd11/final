@@ -72,7 +72,7 @@
 	</tr>
 	<tr>		
 		<th>작성자</th>
-		<td> <input type="text" name="ID"/></td>
+		<td> <input type="text" value="${id }" name="ID" readonly/></td>
 	</tr>
 	<tr>
 		<th>경매 종류</th> 

@@ -29,6 +29,7 @@ public class ProductVo {
 	private int lastmoney;
 	private int moneyup;
 	private String grade;
+	private String today;
 	
 	public ProductVo() {}
 
@@ -87,6 +88,16 @@ public class ProductVo {
 	}
 
 	
+
+
+	public String getToday() {
+		return today;
+	}
+
+
+	public void setToday(String today) {
+		this.today = today;
+	}
 
 
 	public String getGrade() {
