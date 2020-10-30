@@ -12,7 +12,7 @@
 	<input type="button" value="거래내역"/>
 	<input type="button" value="문의내역"/>
 	<input type="button" value="관심상품"/>
-	<input type="button" value="상품등록"/>
+	<input type="button" onclick="location.href='applyProduct'" value="상품등록"/>
 </body>
 </html>
 <%@ include file="footer.jsp" %>
