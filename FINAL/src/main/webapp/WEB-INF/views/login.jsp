@@ -131,8 +131,10 @@
             var profile = googleUser.getBasicProfile();
             console.log("ID: " + profile.getId()); // Don't send this directly to your server!
             console.log('Full Name: ' + profile.getName());
-            console.log("Email: " + profile.getAccountEmail());
-            console.log("birth: "+profile.getBirthday())
+            //console.log("Email: " + profile.getAccountEmail());
+            //console.log("birth: "+profile.getBirthDay())
+            console.log("email: "+profile.getEmail())
+            //console.log("birth: "+profile.getEmailAddresses())
 
             // The ID token you need to pass to your backend:
             var id_token = googleUser.getAuthResponse().id_token;
