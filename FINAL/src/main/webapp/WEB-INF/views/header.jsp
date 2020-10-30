@@ -17,13 +17,17 @@ function popup(){
 * {
 	box-sizing: border-box;
 }
-
+header{
+	top: 0px;
+}
 .main {
 	height: 30px;
 	width: 770px;
 	position: relative;
 }
-
+.menu_title{
+	margin-top:20px;
+}
 .main ul {
 	margin: 0px;
 	padding: 0px;
@@ -55,8 +59,8 @@ function popup(){
 	text-decoration: underline;
 }
 
-.submenu_title > a{
-	
+.contextual {
+	padding-top: 20px;
 }
 
 .depth_1 {
@@ -143,7 +147,7 @@ header.header .nav_wrap nav.main {
 
 </head>
 <body>
-	<header class="header">
+	<header class="header" style="position: fixed; z-index: 2; background-color: white;">
 		<section class="nav_wrap">
 			<div class="inner_wrap">
 				<a href="main"><img class="logo"
@@ -168,16 +172,16 @@ header.header .nav_wrap nav.main {
 								
 							</div></li>
 						<li id="main_customer" class="menu"><a class="menu_title"
-							href="serviceCenter">고객센터</a>
+							href="http://localhost:9090/final/notice?offset=0">고객센터</a>
 							<div class="contextual">
-								<ul class="depth_1">
-									<li class="selected"><a class="submenu_title" href="온라인 경매"
+								<ul class="depth_1">					
+									<li class="selected"><a class="submenu_title" href="http://localhost:9090/final/notice?offset=0"
+									>공지사항</a>
+									<li class="selected"><a class="submenu_title" href="http://localhost:9090/final/qnaBoard?offset=0"
 									>문의게시판</a>
 									</li>
-									<li class="selected"><a class="submenu_title" href="블라인드 경매"
-									>공지사항</a>
 									</li>
-									<li class="selected"><a class="submenu_title" href="블라인드 경매"
+									<li class="selected"><a class="submenu_title" href="http://localhost:9090/final/chatting"
 									>채팅</a>
 									</li>
 								</ul>

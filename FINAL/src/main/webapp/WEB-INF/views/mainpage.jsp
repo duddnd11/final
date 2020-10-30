@@ -27,7 +27,7 @@
 </style>
 </head>
 <body>
-	<div id="content">
+	<div id="content" style="margin-top: 200px; z-index: 1; ">
 		<div class="swiper-container swiper1">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
