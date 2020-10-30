@@ -9,87 +9,88 @@
 	box-sizing: border-box;
 }
 
-.main {
+.header {
+	margin-bottom:45px;
+}
+
+#topMenu {
 	height: 30px;
-	width: 770px;
+	width: 1600px; /* [변경] 하위 메뉴와 동일하게 맞춤 */
 	position: relative;
 }
 
-.main ul {
+#topMenu ul { /* 메인 메뉴 안의 ul을 설정함: 상위메뉴의 ul+하위 메뉴의 ul */
+	list-style-type: none;
 	margin: 0px;
 	padding: 0px;
 }
 
-.main ul li {
-	color: white;
+#topMenu ul li { /* 메인 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용(상위/하위메뉴 모두) */
+	color: black;
 	float: left;
 	line-height: 30px;
 	vertical-align: middle;
 	text-align: center;
-	position: relative;
+	-position: relative;
+	padding: 0 40px 50px;
 }
 
-.menu_title .submenu_title {
+.menuLink { /* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */
 	text-decoration: none;
 	display: block;
 	width: 150px;
-	font-size: 12px;
-	font-weight: bold;
+	font-size: 20px;
+    color: #000;
+    font-weight: 700;
+    font-family: "Nanum Barun Gothic", sans-serif;
 }
 
-.menu_title {
+.menuLink { /* 상위 메뉴의 글씨색을 흰색으로 설정 */
 	color: black;
 }
 
-.menu:hover .menu_title {
+.topMenuLi:hover .menuLink { /* 상위 메뉴의 li에 마우스오버 되었을 때 스타일 설정 */
 	color: blue;
-	text-decoration: underline;
+	text-decoration:underline;
 }
 
-.submenu_title {
-	color: #2d2d2d;
+.longLink { /* 좀 더 긴 메뉴 스타일 설정 */
+	width: 190px;
 }
 
-.depth_1 {
+.submenuLink { /* 하위 메뉴의 a 태그 스타일 설정 */
+	color: gray;
+	background-color: black; /* [변경] 배경색 변경 */
+	text-decoration: none;
+	display: block;
+	width: 150px;
+	font-size: 18px;
+    font-family: "Nanum Barun Gothic", sans-serif;
+}
+
+.submenu { /* 하위 메뉴 스타일 설정 */
 	position: absolute;
-	background-color: 2d2d2d;
 	height: 0px;
 	overflow: hidden;
 	transition: height .2s;
-	-webkit-transition: height .2s;
-	-moz-transition: height .2s;
-	-o-transition: height .2s;
-	width: 770px;
-	left: 0;
+	width: 1600px;
+	left: 35px;
+	top:70px;
+	background-color: black; /* [추가] 하위 메뉴 전체에 배경색 설정 */
 }
 
-.depth_1 li {
+.submenu li {
 	display: inline-block;
+	margin:10px;
+	text-align:center;
 }
 
-.menu:hover .depth_1 {
-	height: 32px;
+.topMenuLi:hover .submenu {
+	height: 55px;
 }
 
-.submenu_title:hover {
+.submenuLink:hover {
 	color: blue;
-	background: ddd;
-}
-
-header.header .login {
-	position: absolute;
-	display: inline-block;
-	right: 114px;
-}
-
-header.header .nav_wrap nav.main .main_cate>li.menu>.menu_title {
-	position: relative;
-	display: inline-block;
-	padding: 0 49px 55px;
-	font-size: 25px;
-	color: #000;
-	font-weight: 700;
-	font-family: "Nanum Barun Gothic", sans-serif;
 }
 
 a {
@@ -104,9 +105,12 @@ ul, li {
 	list-style: none;
 }
 
-.logo {
-	width: 20%;
-	height: 20%;
+.logo_img {
+	width:400px;
+	height:80px;
+	margin-top: -30px;
+	margin-left:50px;
+	margin-right:20px;
 }
 
 .search_img {
@@ -116,19 +120,21 @@ ul, li {
 	margin-right: 30px;
 }
 
-header.header .nav_wrap nav.main .main_cate>li {
-	float: left;
+.inner_wrap {
+	margin-top:60px;
 }
 
-header.header .nav_wrap nav.main {
-	display: inline-block;
-	vertical-align: top;
-	margin-top: 30px;
+.search {
+	float:right;
+	margin-left:40px;
 }
 
-.inner_wrap div {
-	float: right;
-	margin-top: 45px;
+.login {
+	float:right;
+}
+
+.logo {
+	float:left;
 }
 </style>
 </head>
@@ -136,79 +142,41 @@ header.header .nav_wrap nav.main {
 	<header class="header">
 		<section class="nav_wrap">
 			<div class="inner_wrap">
-				<a href="메인 페이지"><img class="logo"
-					src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile6.uf.tistory.com%2Fimage%2F277027375874594F095C54"></a>
-				<nav class="main">
-					<ul class="main_cate">
-						<li id="main_auction" class="menu"><a class="menu_title"
-							href="경매페이지">경매</a>
-							<div class="contextual">
-								<ul class="depth_1">
-									<li class="selected"><a class="submenu_title"
-										href="온라인 경매">온라인 경매</a>
-										<ul class="depth_2" id="menu_list">
-											<li><a href="온라인 경매 1">온라인 경매 2</a></li>
-											<li><a href="온라인 경매 2">온라인 경매 2</a></li>
-											<li><a href="온라인 경매 3">온라인 경매 3</a></li>
-										</ul></li>
-									<li class="selected"><a class="submenu_title"
-										href="블라인드 경매">블라인드 경매</a>
-										<ul class="depth_2" id="menu_list">
-											<li><a href="블라인드 경매 1">블라인드 경매 2</a></li>
-											<li><a href="블라인드 경매 2">블라인드 경매 2</a></li>
-											<li><a href="블라인드 경매 3">블라인드 경매 3</a></li>
-										</ul></li>
-								</ul>
-							</div></li>
-						<li id="main_service" class="menu"><a class="menu_title"
-							href="서비스소개페이지">서비스 소개</a>
-							<div class="contextual">
-								<ul class="depth_1">
-									<li class="selected"><a class="menu_title" href="온라인 경매">온라인
-											경매</a>
-										<ul class="depth_2" id="menu_list">
-											<li><a href="온라인 경매 1">온라인 경매 2</a></li>
-											<li><a href="온라인 경매 2">온라인 경매 2</a></li>
-											<li><a href="온라인 경매 3">온라인 경매 3</a></li>
-										</ul></li>
-									<li class="selected"><a class="menu_title" href="블라인드 경매">블라인드
-											경매</a>
-										<ul class="depth_2" id="menu_list">
-											<li><a href="블라인드 경매 1">블라인드 경매 2</a></li>
-											<li><a href="블라인드 경매 2">블라인드 경매 2</a></li>
-											<li><a href="블라인드 경매 3">블라인드 경매 3</a></li>
-										</ul></li>
-								</ul>
-							</div></li>
-						<li id="main_customer" class="menu"><a class="menu_title"
-							href="고객센터페이지">고객센터</a>
-							<div class="contextual">
-								<ul class="depth_1">
-									<li class="selected"><a class="menu_title" href="온라인 경매">온라인
-											경매</a>
-										<ul class="depth_2" id="menu_list">
-											<li><a href="온라인 경매 1">온라인 경매 2</a></li>
-											<li><a href="온라인 경매 2">온라인 경매 2</a></li>
-											<li><a href="온라인 경매 3">온라인 경매 3</a></li>
-										</ul></li>
-									<li class="selected"><a class="menu_title" href="블라인드 경매">블라인드
-											경매</a>
-										<ul class="depth_2" id="menu_list">
-											<li><a href="블라인드 경매 1">블라인드 경매 2</a></li>
-											<li><a href="블라인드 경매 2">블라인드 경매 2</a></li>
-											<li><a href="블라인드 경매 3">블라인드 경매 3</a></li>
-										</ul></li>
-								</ul>
-							</div></li>
+				<nav id="topMenu">
+					<ul>
+						<div class="logo">
+							<a href="메인 페이지">
+								<img class="logo_img" src="https://cdn.clien.net/web/api/file/F01/9396867/5ccb776a9703.jpg">
+							</a>
+						</div>
+						<li class="topMenuLi"><a class="menuLink"
+							href="http://unikys.tistory.com/category/Programming%20Lecture">경매</a>
+							<ul class="submenu">
+								<li><a href="#" class="submenuLink longLink">일반 경매</a></li>
+								<li><a href="#" class="submenuLink longLink">블라인드 경매</a></li>
+							</ul></li>
+						<li>|</li>
+						<li class="topMenuLi"><a class="menuLink"
+							href="http://unikys.tistory.com/guestbook">서비스 소개</a></li>
+						<li>|</li>
+						<li class="topMenuLi"><a class="menuLink"
+							href="http://unikys.tistory.com/tag">고객센터</a>
+							<ul class="submenu">
+								<li><a href="#" class="submenuLink">FAQ</a></li>
+								<li><a href="#" class="submenuLink">1:1 문의</a></li>
+								<li><a href="#" class="submenuLink">공지사항</a></li>
+								<li><a href="#" class="submenuLink">문의 게시판</a></li>
+							</ul></li>
+						<div class="search">
+							<a href="http://unikys.tistory.com/guestbook">
+								<img class="search_img" src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw=">
+							</a>
+						</div>
+						<div class="login">
+							<a href="http://unikys.tistory.com/guestbook">로그인</a>
+						</div>
 					</ul>
 				</nav>
-				<div class="search">
-					<a href="검색"><img class="search_img"
-						src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw="></a>
-				</div>
-				<div class="login">
-					<a href="로그인페이지">로그인</a>
-				</div>
 			</div>
 		</section>
 	</header>
