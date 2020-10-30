@@ -13,7 +13,7 @@
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://localhost:3306/final?characterEncoding=UTF-8&amp;serverTimezone=UTC"></property>
 		<property name="username" value="root"></property>
-		<property name="password" value="simya0438"></property>
+		<property name="password" value="tiger"></property>
 	</bean>
 	
 	<!-- SqlSessionFactory 객체: DB와의 연결과 SQL 실행에 대한 모든 것을 가진 가장 중요한 객체-->
@@ -55,7 +55,7 @@
 	<bean id="productDao" class="com.auction.dao.ProductDaoImpl"/>
 	<bean id="adminDao" class="com.auction.dao.AdminDaoImpl"/>
 	<bean id= "memberDao" class = "com.auction.dao.MemberDaoImpl"></bean>
-
 	<bean id="noticeDao" class="com.auction.dao.NoticeDaoImpl"/>
+	<bean id="chatRoom" class="com.auction.handler.ChatRoomRepository"/>
 	<context:component-scan base-package="com.auction.service" />
 </beans>

@@ -56,7 +56,6 @@ public class ServiceCenterController {
 	@RequestMapping(value="/qnaBoard")
 	public String qnaBoard(Model model,int offset,String keyword,String searchMenu,HttpServletRequest request,HttpServletResponse response) {
 		Cookie[] cookies = request.getCookies();
-		System.out.println("=================");
 		for(int i=1; i<cookies.length;i++) {
 			System.out.println(cookies[i].getName());
 			cookies[i].setMaxAge(0);

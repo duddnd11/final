@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,8 +55,8 @@ function popup(){
 	text-decoration: underline;
 }
 
-.submenu_title {
-	color: #2d2d2d;
+.submenu_title > a{
+	
 }
 
 .depth_1 {
@@ -72,7 +73,7 @@ function popup(){
 }
 
 .depth_1 li {
-	display: inline-block;
+	margin-left: 20px;
 }
 
 .menu:hover .depth_1 {
@@ -81,7 +82,6 @@ function popup(){
 
 .submenu_title:hover {
 	color: blue;
-	background: ddd;
 }
 
 header.header .login {
@@ -155,59 +155,39 @@ header.header .nav_wrap nav.main {
 							<div class="contextual">
 								<ul class="depth_1">
 									<li class="selected"><a class="submenu_title"
-										href="showAuctionNormal">온라인 경매</a>
-										<ul class="depth_2" id="menu_list">
-											<li><a href="온라인 경매 1">온라인 경매 2</a></li>
-											<li><a href="온라인 경매 2">온라인 경매 2</a></li>
-											<li><a href="온라인 경매 3">온라인 경매 3</a></li>
-										</ul></li>
+										href="showAuctionNormal" style="margin-left: 0;">온라인 경매</a>
+										
 									<li class="selected"><a class="submenu_title"
 										href="showAuctionBlind">블라인드 경매</a>
-										<ul class="depth_2" id="menu_list">
-											<li><a href="블라인드 경매 1">블라인드 경매 2</a></li>
-											<li><a href="블라인드 경매 2">블라인드 경매 2</a></li>
-											<li><a href="블라인드 경매 3">블라인드 경매 3</a></li>
-										</ul></li>
+									</li>
 								</ul>
 							</div></li>
 						<li id="main_service" class="menu"><a class="menu_title"
 							href="서비스소개페이지">서비스 소개</a>
 							<div class="contextual">
 								<ul class="depth_1">
-									<li class="selected"><a class="menu_title" href="온라인 경매">온라인
+									<li class="selected"><a class="submenu_title" href="온라인 경매"
+									>온라인
 											경매</a>
-										<ul class="depth_2" id="menu_list">
-											<li><a href="온라인 경매 1">온라인 경매 2</a></li>
-											<li><a href="온라인 경매 2">온라인 경매 2</a></li>
-											<li><a href="온라인 경매 3">온라인 경매 3</a></li>
-										</ul></li>
-									<li class="selected"><a class="menu_title" href="블라인드 경매">블라인드
+									</li>
+									<li class="selected"><a class="submenu_title" href="블라인드 경매"
+									>블라인드
 											경매</a>
-										<ul class="depth_2" id="menu_list">
-											<li><a href="블라인드 경매 1">블라인드 경매 2</a></li>
-											<li><a href="블라인드 경매 2">블라인드 경매 2</a></li>
-											<li><a href="블라인드 경매 3">블라인드 경매 3</a></li>
-										</ul></li>
+									</li>
 								</ul>
 							</div></li>
 						<li id="main_customer" class="menu"><a class="menu_title"
 							href="serviceCenter">고객센터</a>
 							<div class="contextual">
 								<ul class="depth_1">
-									<li class="selected"><a class="menu_title" href="온라인 경매">온라인
+									<li class="selected"><a class="submenu_title" href="온라인 경매"
+									>온라인
 											경매</a>
-										<ul class="depth_2" id="menu_list">
-											<li><a href="온라인 경매 1">온라인 경매 2</a></li>
-											<li><a href="온라인 경매 2">온라인 경매 2</a></li>
-											<li><a href="온라인 경매 3">온라인 경매 3</a></li>
-										</ul></li>
-									<li class="selected"><a class="menu_title" href="블라인드 경매">블라인드
+									</li>
+									<li class="selected"><a class="submenu_title" href="블라인드 경매"
+									>블라인드
 											경매</a>
-										<ul class="depth_2" id="menu_list">
-											<li><a href="블라인드 경매 1">블라인드 경매 2</a></li>
-											<li><a href="블라인드 경매 2">블라인드 경매 2</a></li>
-											<li><a href="블라인드 경매 3">블라인드 경매 3</a></li>
-										</ul></li>
+									</li>
 								</ul>
 							</div></li>
 					</ul>
@@ -216,9 +196,20 @@ header.header .nav_wrap nav.main {
 					<a href="검색"><img class="search_img"
 						src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw="></a>
 				</div>
-				<a>${member.ID}</a>
 				<div class="login">
-					<a href="javascript:popup()">로그인</a>
+				<c:choose>
+						<c:when test="${member.grade eq null }">
+								<a href="javascript:popup()">로그인</a>
+						</c:when>
+						<c:when test="${member.grade eq 'z' }">
+								<a href="#">로그아웃</a>
+								<a href="admin">관리자 페이지</a>
+						</c:when>
+						<c:otherwise>
+								<a href="logout">로그아웃</a>
+								<a href="myPage">마이페이지</a>
+						</c:otherwise>
+				</c:choose>
 				</div>
 			</div>
 		</section>

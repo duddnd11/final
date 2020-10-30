@@ -49,6 +49,12 @@ public class MemberHomeController {
 		return "redirect:/singup";
 	}
 	
+	@RequestMapping(value = "/logout")		//로그아웃
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "logout";
+	}
+	
 	@RequestMapping(value = "/singup", method = RequestMethod.GET)	//회원가입
 	public String singup(Locale locale, Model model) {
 		
@@ -73,5 +79,8 @@ public class MemberHomeController {
 		
 		return "redirect:/main";
 	}
-	
+	@RequestMapping(value="/myPage")
+	public String myPage() {
+		return "myPage";
+	}
 }

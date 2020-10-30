@@ -2,6 +2,7 @@ package com.auction.service;
 
 import java.util.List;
 
+import com.auction.vo.AuctionVo;
 import com.auction.vo.ProductVo;
 
 public interface ProductService {
@@ -11,6 +12,8 @@ public interface ProductService {
 	List<ProductVo> selectAuctionBlind();
 	List<ProductVo> selectPop();
 	List<ProductVo> selectHurry();
+//	List<ProductVo> showCategory(String category, String auctionmenu);
+	int insertAuction(AuctionVo vo);
 	List<ProductVo> showNormalCategory(String category);
 	List<ProductVo> showBlindCategory(String category);
 }
