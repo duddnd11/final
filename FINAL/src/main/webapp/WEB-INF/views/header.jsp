@@ -160,7 +160,7 @@ ul, li {
 							href="http://unikys.tistory.com/guestbook">서비스 소개</a></li>
 						<li>|</li>
 						<li class="topMenuLi"><a class="menuLink"
-							href="http://unikys.tistory.com/tag">고객센dsdf터</a>
+							href="http://unikys.tistory.com/tag">고객센터</a>
 							<ul class="submenu">
 								<li><a href="#" class="submenuLink">FAQ</a></li>
 								<li><a href="#" class="submenuLink">1:1 문의</a></li>
