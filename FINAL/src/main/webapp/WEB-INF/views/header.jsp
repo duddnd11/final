@@ -165,28 +165,20 @@ header.header .nav_wrap nav.main {
 						<li id="main_service" class="menu"><a class="menu_title"
 							href="서비스소개페이지">서비스 소개</a>
 							<div class="contextual">
-								<ul class="depth_1">
-									<li class="selected"><a class="submenu_title" href="온라인 경매"
-									>온라인
-											경매</a>
-									</li>
-									<li class="selected"><a class="submenu_title" href="블라인드 경매"
-									>블라인드
-											경매</a>
-									</li>
-								</ul>
+								
 							</div></li>
 						<li id="main_customer" class="menu"><a class="menu_title"
 							href="serviceCenter">고객센터</a>
 							<div class="contextual">
 								<ul class="depth_1">
 									<li class="selected"><a class="submenu_title" href="온라인 경매"
-									>온라인
-											경매</a>
+									>문의게시판</a>
 									</li>
 									<li class="selected"><a class="submenu_title" href="블라인드 경매"
-									>블라인드
-											경매</a>
+									>공지사항</a>
+									</li>
+									<li class="selected"><a class="submenu_title" href="블라인드 경매"
+									>채팅</a>
 									</li>
 								</ul>
 							</div></li>
