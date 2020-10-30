@@ -15,22 +15,30 @@
 	}
 </style>
 <body>
+<div id="container" style="width: 1500px;">
+	<div style="width: 300px; height: 1000px; position: fixed;">
 	<c:forEach var="category" items="${category}">
 		<a href="showAuctionNormal?category=${category}">${category}</a><br/>
 	</c:forEach>
 	카테고리 --왼쪽에
+	</div>
+	<div style="width: 1100px; height: 400px; display: flex; margin-left: 300px; ">
 	<c:forEach var="vo" items="${list }">
-		상품 이름: <a href="showDetail?pno=${vo.pno }">${vo.pname }</a><br/>
-		마감날: ${vo.deadlinedate }<br/>
-		조회수: ${vo.hitcount }<br/>
-		입찰수 ${vo.count }<br/>
-		<c:if test="${vo.image ne null }">
+	<div style="margin-left: 50px; width: 200px; display: block;">
+	<c:if test="${vo.image ne null }">
 			<a href="showDetail?pno=${vo.pno }"><img src="${vo.image }"/></a>	
 		</c:if>
 		<c:if test="${vo.image eq null }">
 			<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img1 }"/></a> <br/>
 		</c:if>
+		<p>상품 이름: <a href="showDetail?pno=${vo.pno }">${vo.pname }</a><br/>
+		마감날: ${vo.deadlinedate }<br/>
+		조회수: ${vo.hitcount }<br/>
+		입찰수 ${vo.count }<br/></p>
+	</div>
 	</c:forEach>
+	</div>
+</div>
 </body>
 </html>
 	<%@ include file="footer.jsp" %>

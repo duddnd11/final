@@ -154,8 +154,8 @@ header.header .nav_wrap nav.main {
 							href="showAuctionNormal">경매</a>
 							<div class="contextual">
 								<ul class="depth_1">
-									<li class="selected"><a class="submenu_title"
-										href="showAuctionNormal" style="margin-left: 0;">온라인 경매</a>
+									<li class="selected" style="margin: 0;"><a class="submenu_title"
+										href="showAuctionNormal">온라인 경매</a>
 										
 									<li class="selected"><a class="submenu_title"
 										href="showAuctionBlind">블라인드 경매</a>
