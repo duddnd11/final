@@ -8,10 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach items="${rooms}" var="rooms">
-		방제목 : ${rooms.name}<br/>
-		방번호(id) :${rooms.roomId}<br/>
-		<input type="button" onclick="location.href='room?id=${rooms.roomId}'" value="방입장"/>
-	</c:forEach>
+	<div id="chatRooms">
+		<c:forEach items="${rooms}" var="rooms">
+			방제목 : ${rooms.name}<br/>
+			방번호(id) :${rooms.roomId}<br/>
+			<input type="button" onclick="location.href='room?id=${rooms.roomId}'" value="방입장"/>
+		</c:forEach>
+	</div>
 </body>
 </html>

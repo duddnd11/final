@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +46,6 @@
 		 sock.send(JSON.stringify({chatRoomId : roomId,type:'ENTER',writer:$("#userId").val()}));
 		}
 	function sendMessage(){
-		//sock.send($("#userId").val()+" : "+$("#message").val());
 		sock.send(JSON.stringify({chatRoomId : roomId, type :'CHAT', writer:$("#userId").val(), message:$("#message").val()}));
 		}
 	
@@ -58,14 +58,6 @@
 		var sessionid = null;
 		var message = null;
 		$("#data").append(data+"\n");
-		/*
-		var strArray = data.split('|');
-
-		for(var i=0 ; i<strArray.length; i++){
-			console.log('str['+i+']:'+strArray[i]);
-		}
-		var currnetuser_session = $('#sessionuserid').val();
-		*/
 	}
 </script>
 </head>
@@ -81,3 +73,4 @@
 	<input type="text" value="${member.ID}" id="userId" />
 </body>
 </html>
+<%@ include file="footer.jsp" %>
