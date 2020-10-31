@@ -13,7 +13,7 @@
 		<aside>
 			<h3>카테고리</h3>
 			<div></div>
-		</aside>dfsdsfsdfsdfsfd
+		</aside>
 		<main>
 			<div id="product_list">
 				<ol>
