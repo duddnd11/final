@@ -115,20 +115,12 @@
 		id="btn" onclick="alertMsg()">입찰</button>	
 	</div>
 	</c:if>
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
-</div>
+	</div>
 	<c:if test="${ID.ID eq 'admin' }">
 		<div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: -20px;">	
 		<canvas id="myChart"></canvas>
 		</div>
 	</c:if>
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 <script>
 <c:if test="${result eq 2 }">
 	alert("입찰됨!!!");

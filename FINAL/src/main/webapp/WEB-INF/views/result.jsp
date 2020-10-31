@@ -20,11 +20,14 @@
   naver_id_login.get_naver_userprofile("naverSignInCallback()");
   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
   function naverSignInCallback() {
-    alert(naver_id_login.getProfileData('email'));
-    alert(naver_id_login.getProfileData('id'));
-    alert(naver_id_login.getProfileData('name'));
-    alert(naver_id_login.getProfileData('birthday'));
+	var email=naver_id_login.getProfileData('email');
+	var id= naver_id_login.getProfileData('id');
+	var name= naver_id_login.getProfileData('name');
+	var birthday = naver_id_login.getProfileData('birthday');
+	// 폰넘버 ,주소
+	//location.href="naverLogin?name="+name+"&email="+email+"&birthday="+birthday;
   }
+  
 </script>
 </body>
 </html>
