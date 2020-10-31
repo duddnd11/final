@@ -36,7 +36,7 @@
 	}
 </style>
 <body>
-<div style="margin-left: 300px;">
+<div style="margin-left: 300px;  margin-top: 200px;">
 	<span style="font-size: 20px;"><b>${vo.pno }</b></span>
 	<span style="margin-left: 30px; font-size: 20px;">${vo.pname }</span>
 	<div style="margin-top: 10px;">
@@ -50,7 +50,6 @@
 	<br/>
 	</div>
 	
-
 	<c:set var="up" value="${vo.uploaddate }"/>
 	<c:set var="dead" value="${vo.deadlinedate }"/>
 	<c:if test="${vo.auctionmenu eq '일반' }">
@@ -65,12 +64,15 @@
 			<th>날짜</th> <td>${fn:substring(up,0,10) } ~ ${fn:substring(dead,0,10) }</td>
 		</tr>
 		<tr>
-			<th>현재가</th> 
-			
-			<c:if test="${vo.bestmoney == 0  }">
-			<td><fmt:formatNumber value="${vo.startmoney }" pattern="#,###" /></td>
-			</c:if>
-			<td><fmt:formatNumber value="${vo.bestmoney }" pattern="#,###" /></td>
+			<th>현재가</th>
+			<c:choose>
+				<c:when test="${vo.bestmoney == 0  }">
+					<td><fmt:formatNumber value="${vo.startmoney }" pattern="#,###" /></td>
+				</c:when>
+				<c:otherwise>
+					<td><fmt:formatNumber value="${vo.bestmoney }" pattern="#,###" /></td>
+				</c:otherwise>
+			</c:choose>		 
 		</tr>
 		<tr>
 			<th>상한가</th><td><fmt:formatNumber value="${vo.lastmoney }" pattern="#,###" /></td>
@@ -82,6 +84,7 @@
 			<th>입찰 수 </th> <td>${vo.count }</td>
 		</tr>
 	</table>
+
 	<div style="display: flex;">
 		<button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
 		<button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="alertMsg()">입찰</button>
@@ -104,11 +107,11 @@
 		</tr>
 	</table>
 	<div class="spinner" style="margin-left: 500px; margin-top: 40px;">
-		<button type="button" class="sp-sub-minus" onclick="optnQtyMinus($(this));" style="width: 40px; height: 32px;">
+		<button type="button" class="sp-sub-minus"  style="width: 40px; height: 32px;">
 			<b>-</b>
 		</button>
 			<input style=" width: 200px; height: 30px;margin-left: 0px;" type="tel" class="num" value="0" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
-			<button type="button" class="sp-sub-plus" onclick="optnQtyPlus($(this), '3091');" style="width: 40px; height: 32px;">
+			<button type="button" class="sp-sub-plus" style="width: 40px; height: 32px;">
 				<b>+</b>
 			</button><br/>
 		<button style=" width: 100px; height: 40px; margin-top: 20px; margin-left: 30px;" >관심상품</button>
@@ -116,25 +119,42 @@
 		id="btn" onclick="alertMsgBlind()">입찰</button>	
 	</div>
 	</c:if>
+
 </div>
+
 	<c:if test="${ID.ID eq 'admin' }">
+
 		<div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: -20px;">	
+
 		<canvas id="myChart"></canvas>
 		</div>
+
 	</c:if>
+
 <script>
 <c:if test="${result == 2 }">
 	alert("입찰됨!!!");
 </c:if>
-
 var myprice = $("#btnQtyC3_1000020518522").val();
 function alertMsg(){
-	alert("입찰하겠?");
-	location.href='insertAuction?pno=${vo.pno}&myprice=${vo.bestmoney }';
+	if (confirm("입찰하겠?")) {
+        // 확인 버튼 클릭 시 동작
+		location.href='insertAuction?pno=${vo.pno}&myprice=${vo.bestmoney }';
+    } else {
+        // 취소 버튼 클릭 시 동작
+    }
 }
+
+
 function alertMsgBlind(){
-	alert("입찰하겠?");
-	location.href='insertAuction?pno=${vo.pno}&myprice='+myprice;
+	alert(myprice);
+	alert($(this).prev().prev().prev().val());
+	if (confirm("입찰하겠?")) {
+        // 확인 버튼 클릭 시 동작
+		location.href='insertAuction?pno=${vo.pno}&myprice='+myprice;
+    } else {
+        // 취소 버튼 클릭 시 동작
+    }
 }
 
 	var data1 = new Array();

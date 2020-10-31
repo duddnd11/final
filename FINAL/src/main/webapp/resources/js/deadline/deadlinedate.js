@@ -4,7 +4,8 @@ function init(){
     changeYear: true,
     closeText: "Close",
     yearRange: 'c-100:c+20',
-    minDate: "+1w"
+    minDate: "+1w",
+    dateFormat: "yy-mm-dd"
   });
 }
 
