@@ -196,7 +196,7 @@ public class ProductController {
 		}
 		res.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = res.getWriter();
-		out.println("<script>alert('입찰됨!!!');");
+		out.println("<script>alert('입찰됨!!!');</script>");
 
 		return "redirect:/showDetail?pno="+pno;
 	}

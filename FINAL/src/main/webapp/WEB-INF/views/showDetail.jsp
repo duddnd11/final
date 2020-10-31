@@ -150,13 +150,10 @@ function alertMsg(){
     }
 }
 
-var myprice = $("#btnQtyC3_1000020518522").val();
 function alertMsgBlind(){
-	alert(myprice);
-	alert($(this).prev().prev().prev().val());
 	if (confirm("입찰하겠?")) {
         // 확인 버튼 클릭 시 동작
-		location.href='insertAuction?pno=${vo.pno}&myprice='+myprice;
+		location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val();
     } else {
         // 취소 버튼 클릭 시 동작
     }
