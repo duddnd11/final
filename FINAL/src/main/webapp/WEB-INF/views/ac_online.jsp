@@ -9,7 +9,7 @@
 </head>
 <body>
 	<hr>
-	<div class="content">
+	<div class="content">qeweqweqwrqe
 		<aside>
 			<h3>카테고리</h3>
 			<div></div>
