@@ -15,7 +15,7 @@
 
 #topMenu {
 	height: 30px;
-	width: 1600px; /* [변경] 하위 메뉴와 동일하게 맞춤 */
+	width: 1600px; 
 	position: relative;
 }
 

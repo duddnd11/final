@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="utf-8"%>
-<%@ include file="header.jsp" %>
+<%@ include file="header.jsp"%>
 <!doctype html>
 <head>
 <meta charset="utf-8">

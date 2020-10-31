@@ -100,7 +100,8 @@ footer .foot_wrap .group:nth-child(2) ul {
 					<li><a href="#">개인정보취급방침</a></li>
 				</ul>
 				<ul class="information">
-					<br/><br/>
+					<br/>
+					<br/>
 					<li>상호 : 김땡땡</li>
 					<li>대표이사 : 황땡땡</li>
 					<li>사업자등록번호 : 123-45-67890</li>
