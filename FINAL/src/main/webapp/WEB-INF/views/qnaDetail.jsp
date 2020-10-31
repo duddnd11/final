@@ -151,7 +151,6 @@
       padding-bottom: 20px;
       height: 100px;
    }
-   
 </style>
 </head>
 <body>

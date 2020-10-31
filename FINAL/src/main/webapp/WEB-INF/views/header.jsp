@@ -129,7 +129,7 @@ ul, li {
 	margin-right: 30px;
 }
 
-header.header .nav_wrap nav.main .main_cate>li {
+header.header .nav_wrap nav.main .main_cate> li {
 	float: left;
 }
 
@@ -138,7 +138,6 @@ header.header .nav_wrap nav.main {
 	vertical-align: top;
 	margin-top: 30px;
 }
-
 .inner_wrap div {
 	float: right;
 	margin-top: 45px;
@@ -202,7 +201,7 @@ header.header .nav_wrap nav.main {
 								<a href="admin">관리자 페이지</a>
 						</c:when>
 						<c:otherwise>
-								<a href="#">로그아웃</a>
+								<a href="logout">로그아웃</a>
 								<a href="myPage">마이페이지</a>
 						</c:otherwise>
 				</c:choose>

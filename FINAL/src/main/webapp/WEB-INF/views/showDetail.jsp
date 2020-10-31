@@ -56,12 +56,13 @@
 	<fmt:parseDate value="${vo.deadlinedate }" var="endDate" pattern="yyyy-MM-dd"/>
 	<fmt:parseNumber value="${endDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber>
 
+
 	<c:set var="up" value="${vo.uploaddate }"/>
 	<c:set var="dead" value="${vo.deadlinedate }"/>
 	<c:if test="${vo.auctionmenu eq '일반' }">
 	<table style="margin-left: 500px; margin-top: -350px;">
 		<tr>
-			<th>D-day </th> <td>${endDate - strDate }</td>
+			<th>D-day </th> <td>${vo.timeout }</td>
 		</tr>
 		<tr>
 			<th>판매자</th> <td>${vo.ID }</td>
@@ -70,10 +71,15 @@
 			<th>날짜</th> <td>${fn:substring(up,0,10) } ~ ${fn:substring(dead,0,10) }</td>
 		</tr>
 		<tr>
-			<th>현재가</th> <td><fmt:formatNumber value="${vo.startmoney }" pattern="#,###" /></td>
+			<th>현재가</th> 
+			
+			<c:if test="${vo.bestmoney == 0  }">
+			<td><fmt:formatNumber value="${vo.startmoney }" pattern="#,###" /></td>
+			</c:if>
+			<td><fmt:formatNumber value="${vo.bestmoney }" pattern="#,###" /></td>
 		</tr>
 		<tr>
-			<th>상한가</th> <td><fmt:formatNumber value="${vo.lastmoney }" pattern="#,###" /></td>
+			<th>상한가</th><td><fmt:formatNumber value="${vo.lastmoney }" pattern="#,###" /></td>
 		</tr>
 		<tr>
 			<th>입찰 단위</th> <td><fmt:formatNumber value="${vo.moneyup }" pattern="#,###" /></td>
@@ -92,7 +98,7 @@
 	<c:if test="${vo.auctionmenu eq '블라인드' }">
 	<table style="margin-left: 500px; margin-top: -350px;">
 		<tr>
-			<th>D-day </th> <td>${endDate - strDate }</td>
+			<th>D-day </th> <td>${vo.timeout }</td>
 		</tr>
 		<tr>
 			<th>판매자</th> <td>${vo.ID }</td>
@@ -114,26 +120,37 @@
 			</button><br/>
 		<button style=" width: 100px; height: 40px; margin-top: 20px; margin-left: 30px;" >관심상품</button>
 		<button style="margin-top: 20px;  margin-left: 20px; width: 100px; height: 40px;"
-		id="btn" onclick="alertMsg()">입찰</button>	
+		id="btn" onclick="alertMsgBlind()">입찰</button>	
 	</div>
 	</c:if>
 
-
-	<c:if test="${ID.ID eq 'admin' }">
-		<div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: -20px;">	
-		<canvas id="myChart"></canvas>
-		</div>
-	</c:if>
 </div>
 
+	<c:if test="${ID.ID eq 'admin' }">
+
+		<div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: -20px;">	
+
+		<canvas id="myChart"></canvas>
+		</div>
+
+	</c:if>
+
+
+
+
 <script>
-<c:if test="${result eq 2 }">
+<c:if test="${result == 2 }">
 	alert("입찰됨!!!");
 </c:if>
 
+var myprice = $("#btnQtyC3_1000020518522").val();
 function alertMsg(){
 	alert("입찰하겠?");
-	location.href='insertAuction?pno=${vo.pno}&myprice=${vo.startmoney }';
+	location.href='insertAuction?pno=${vo.pno}&myprice=${vo.bestmoney }';
+}
+function alertMsgBlind(){
+	alert("입찰하겠?");
+	location.href='insertAuction?pno=${vo.pno}&myprice='+myprice;
 }
 
 	var data1 = new Array();

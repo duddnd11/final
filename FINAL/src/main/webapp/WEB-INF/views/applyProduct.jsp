@@ -81,11 +81,10 @@
 	</tr>
 	<tr>
 		<th>경매 종류</th> 
-			<td id="radio">	
-					<input type="radio" name="auctionmenu" value="nomal" checked="checked" 
-					style="width: 15px; height: 15px; margin-left: 50px;">일반경매 <!-- 일반/블라인드 만 선택 가능하게  -->
-					<input type="radio" name="auctionmenu" value="blind" 
-					style="width: 15px; height: 15px;">블라인드경매
+			<td id="radio">		
+					<input type="radio" name="auctionmenu" value="일반" checked="checked" 
+					style="width: 15px; height: 15px;">일반경매 <!-- 일반/블라인드 만 선택 가능하게  -->
+					<input type="radio" name="auctionmenu" value="블라인드" style="width: 15px; height: 15px;">블라인드경매
 			</td>
 	</tr>
 	<tr>

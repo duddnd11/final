@@ -31,7 +31,7 @@
 	<ul>
 	<c:forEach var="vo" items="${voListShowBlind }">
 	<li style="margin-top: 50px;">
-	<div style="margin-left: 50px; width: 200px; display: block;">
+	<div style="margin-left: 50px; width: 200px; display: block;" >
 		<c:if test="${vo.image ne null }">
 			<a href="showDetail?pno=${vo.pno }"><img src="${vo.image }"/></a>		
 		</c:if>

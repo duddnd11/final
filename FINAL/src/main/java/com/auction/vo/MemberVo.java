@@ -9,6 +9,7 @@ public class MemberVo {
 	private String email;
 	private String birth;
 	private String grade;
+	private String api;
 	
 	public MemberVo() {}
 	public MemberVo(String iD, String pw, String name, String addr, String phonenum, String email, String birth,
@@ -21,6 +22,14 @@ public class MemberVo {
 		this.email = email;
 		this.birth = birth;
 		this.grade = grade;
+	}
+	
+	
+	public String getApi() {
+		return api;
+	}
+	public void setApi(String api) {
+		this.api = api;
 	}
 	public String getID() {
 		return ID;

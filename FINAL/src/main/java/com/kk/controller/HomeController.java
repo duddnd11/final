@@ -90,11 +90,11 @@ public class HomeController {
 	  
 	  vo.setEmail(profile.getAccountEmail());
 	  vo.setName(profile.getDisplayName());
-	  vo.setID("g_"+profile.getId());
-//	  vo.setBirth(profile.getBirthday());
+	  vo.setID(profile.getId());
+	  vo.setBirth(profile.getBirthday().toString());
 	  
 	  HttpSession session = request.getSession();
-//	  vo = service.(vo);
+	  vo = service.loginCheck(vo);
 	  
 //	  session.setAttribute("login", vo);
 

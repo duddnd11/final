@@ -20,8 +20,7 @@
 		margin-top: 100px;
 		width: 1000px;
 		border-top: 1px solid black;
-		text-align: center;
-		
+		text-align: center;	
 	}
 	th{
 		padding: 5px;
