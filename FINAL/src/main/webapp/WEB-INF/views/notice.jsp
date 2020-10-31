@@ -17,11 +17,10 @@
 	}
 	table{
 		margin-left: 300px;
-		margin-top: 200px;
+		margin-top: 100px;
 		width: 1000px;
 		border-top: 1px solid black;
-		text-align: center;
-		
+		text-align: center;	
 	}
 	th{
 		padding: 5px;
@@ -36,9 +35,56 @@
 		font-size: 15px;
 		height: 25px;
 	}
+	
+	.wrapper-customer .wrap-aside {
+    margin-top: 60px;
+}
+.wrap-aside .aside {
+    float: left;
+}
+
+.aside-customer {
+    width: 158px;
+}
+.aside-customer .title {
+    padding: 10px 20px 0;
+    font-size: 23px;
+    color: #fff;
+    line-height: 90px;
+    background-color: #222;
+    font-family: 'ssgBan', sans-serif;
+}
+.aside{
+	margin-left: 40px;
+}
+.aside-customer .wrap-link {
+    padding: 0 10px;
+    border: 1px solid #ddd;
+}
+.aside-customer .wrap-link .link:first-of-type {
+    border-top: 0;
+}
+.aside-customer .wrap-link .link {
+    display: block;
+    padding: 0 5px;
+    border-top: 1px solid #ddd;
+    line-height: 50px;
+}
 </style>
 </head>
 <body>
+<div style="margin-top: 200px;">
+<h2 style="text-align: center; margin-left: 50px; font-size: 30px;">공지사항</h2>
+	<div class="wrap-aside" style="position: fixed;">
+			<div class="aside aside-customer">
+				<p class="title">고객센터</p>
+				<div class="wrap-link">
+				<a href="http://localhost:9090/final/notice?offset=0" class="link">공지사항</a>
+				<a href="http://localhost:9090/final/qnaBoard?offset=0" class="link">문의게시판</a>
+				<a href="http://localhost:9090/final/chatting" class="link">채팅</a>
+				</div>
+			</div>
+		</div>
 	<c:choose>
 	<c:when test="${endPage >0 }">
 	<table>
@@ -120,6 +166,7 @@
 		<input type="submit" value="조회"/>
 	</form>
 	<input type="button" value="공지사항 작성" onclick="location.href='qnaWrite'"/ style="float: right; margin-right: 220px;">
+</div>
 </body>
 <%@ include file="footer.jsp" %>
 </html>

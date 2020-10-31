@@ -17,13 +17,17 @@ function popup(){
 * {
 	box-sizing: border-box;
 }
-
+header{
+	top: 0px;
+}
 .main {
 	height: 30px;
 	width: 770px;
 	position: relative;
 }
-
+.menu_title{
+	margin-top:20px;
+}
 .main ul {
 	margin: 0px;
 	padding: 0px;
@@ -44,6 +48,7 @@ function popup(){
 	width: 150px;
 	font-size: 12px;
 	font-weight: bold;
+	
 }
 
 .menu_title {
@@ -55,8 +60,8 @@ function popup(){
 	text-decoration: underline;
 }
 
-.submenu_title > a{
-	
+.contextual {
+	padding-top: 20px;
 }
 
 .depth_1 {
@@ -100,15 +105,13 @@ header.header .nav_wrap nav.main .main_cate>li.menu>.menu_title {
 	font-family: "Nanum Barun Gothic", sans-serif;
 }
 
+.login a {
+	font-size: 12px;
+}
 a {
 	text-decoration: none;
 	color: black;
 }
-
-.login a {
-	font-size: 12px;
-}
-
 ul, li {
 	list-style: none;
 }
@@ -125,7 +128,7 @@ ul, li {
 	margin-right: 30px;
 }
 
-header.header .nav_wrap nav.main .main_cate>li {
+header.header .nav_wrap nav.main .main_cate> li {
 	float: left;
 }
 
@@ -134,7 +137,6 @@ header.header .nav_wrap nav.main {
 	vertical-align: top;
 	margin-top: 30px;
 }
-
 .inner_wrap div {
 	float: right;
 	margin-top: 45px;
@@ -143,7 +145,7 @@ header.header .nav_wrap nav.main {
 
 </head>
 <body>
-	<header class="header">
+	<header class="header" style="position: fixed; z-index: 2; background-color: white;">
 		<section class="nav_wrap">
 			<div class="inner_wrap">
 				<a href="main"><img class="logo"
@@ -154,8 +156,8 @@ header.header .nav_wrap nav.main {
 							href="showAuctionNormal">경매</a>
 							<div class="contextual">
 								<ul class="depth_1">
-									<li class="selected"><a class="submenu_title"
-										href="showAuctionNormal" style="margin-left: 0;">온라인 경매</a>
+									<li class="selected" style="margin: 0;"><a class="submenu_title"
+										href="showAuctionNormal">온라인 경매</a>
 										
 									<li class="selected"><a class="submenu_title"
 										href="showAuctionBlind">블라인드 경매</a>
@@ -165,28 +167,20 @@ header.header .nav_wrap nav.main {
 						<li id="main_service" class="menu"><a class="menu_title"
 							href="서비스소개페이지">서비스 소개</a>
 							<div class="contextual">
-								<ul class="depth_1">
-									<li class="selected"><a class="submenu_title" href="온라인 경매"
-									>온라인
-											경매</a>
-									</li>
-									<li class="selected"><a class="submenu_title" href="블라인드 경매"
-									>블라인드
-											경매</a>
-									</li>
-								</ul>
+								
 							</div></li>
 						<li id="main_customer" class="menu"><a class="menu_title"
-							href="serviceCenter">고객센터</a>
+							href="http://localhost:9090/final/notice?offset=0">고객센터</a>
 							<div class="contextual">
-								<ul class="depth_1">
-									<li class="selected"><a class="submenu_title" href="온라인 경매"
-									>온라인
-											경매</a>
+								<ul class="depth_1">					
+									<li class="selected"><a class="submenu_title" href="http://localhost:9090/final/notice?offset=0"
+									>공지사항</a>
+									<li class="selected"><a class="submenu_title" href="http://localhost:9090/final/qnaBoard?offset=0"
+									>문의게시판</a>
 									</li>
-									<li class="selected"><a class="submenu_title" href="블라인드 경매"
-									>블라인드
-											경매</a>
+									</li>
+									<li class="selected"><a class="submenu_title" href="http://localhost:9090/final/chatting"
+									>채팅</a>
 									</li>
 								</ul>
 							</div></li>
