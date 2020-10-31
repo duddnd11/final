@@ -1,5 +1,6 @@
 package com.auction.vo;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -27,10 +28,18 @@ public class ProductVo {
 	private int startmoney;
 	private int lastmoney;
 	private int moneyup;
+	private String grade;
 	
 	public ProductVo() {}
 
 	
+	public ProductVo(int pno, int admin, int deal) {
+		this.pno = pno;
+		this.admin = admin;
+		this.deal = deal;
+	}
+
+
 	public ProductVo(String pname, String image, int price, String uploaddate, String deadlinedate, int hitcount,
 			String iD, int bestmoney, int admin, String category, String auctionmenu) {
 		super();
@@ -78,6 +87,18 @@ public class ProductVo {
 	}
 
 	
+
+
+
+
+	public String getGrade() {
+		return grade;
+	}
+
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
 
 
 	public String getImg1() {
@@ -277,7 +298,7 @@ public class ProductVo {
 	public void setDeal(int deal) {
 		this.deal = deal;
 	}
-	
-	
+
+
 	
 }

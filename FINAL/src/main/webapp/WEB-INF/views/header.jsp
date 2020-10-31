@@ -1,26 +1,49 @@
-<%@ page language="java" pageEncoding="utf-8"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function popup(){
+		var url = "login/";
+		var name = "login popup";
+		var option = "width = 550, height = 500, top = 100, left = 200, location = no"
+		window.open(url, name, option);
+	}
+</script>
 <style>
 * {
 	box-sizing: border-box;
 }
+<<<<<<< HEAD
 
 .header {
 	margin-bottom:45px;
 }
 
 #topMenu {
+=======
+header{
+	top: 0px;
+}
+.main {
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 	height: 30px;
 	width: 1600px; 
 	position: relative;
 }
+<<<<<<< HEAD
 
 #topMenu ul { /* 메인 메뉴 안의 ul을 설정함: 상위메뉴의 ul+하위 메뉴의 ul */
 	list-style-type: none;
+=======
+.menu_title{
+	margin-top:20px;
+}
+.main ul {
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 	margin: 0px;
 	padding: 0px;
 }
@@ -39,10 +62,16 @@
 	text-decoration: none;
 	display: block;
 	width: 150px;
+<<<<<<< HEAD
 	font-size: 20px;
     color: #000;
     font-weight: 700;
     font-family: "Nanum Barun Gothic", sans-serif;
+=======
+	font-size: 12px;
+	font-weight: bold;
+	
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .menuLink { /* 상위 메뉴의 글씨색을 흰색으로 설정 */
@@ -54,10 +83,16 @@
 	text-decoration:underline;
 }
 
+<<<<<<< HEAD
 .longLink { /* 좀 더 긴 메뉴 스타일 설정 */
 	width: 190px;
+=======
+.contextual {
+	padding-top: 20px;
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
+<<<<<<< HEAD
 .submenuLink { /* 하위 메뉴의 a 태그 스타일 설정 */
 	color: gray;
 	background-color: black; /* [변경] 배경색 변경 */
@@ -70,6 +105,11 @@
 
 .submenu { /* 하위 메뉴 스타일 설정 */
 	position: absolute;
+=======
+.depth_1 {
+	position: absolute;	
+	background-color: 2d2d2d;
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 	height: 0px;
 	overflow: hidden;
 	transition: height .2s;
@@ -79,10 +119,15 @@
 	background-color: black; /* [추가] 하위 메뉴 전체에 배경색 설정 */
 }
 
+<<<<<<< HEAD
 .submenu li {
 	display: inline-block;
 	margin:10px;
 	text-align:center;
+=======
+.depth_1 li {
+	margin-left: 20px;
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .topMenuLi:hover .submenu {
@@ -91,16 +136,34 @@
 
 .submenuLink:hover {
 	color: blue;
+<<<<<<< HEAD
+=======
 }
 
-a {
-	text-decoration: none;
+header.header .login {
+	position: absolute;
+	display: inline-block;
+	right: 114px;
+}
+
+header.header .nav_wrap nav.main .main_cate>li.menu>.menu_title {
+	position: relative;
+	display: inline-block;
+	padding: 0 49px 55px;
+	font-size: 25px;
+	color: #000;
+	font-weight: 700;
+	font-family: "Nanum Barun Gothic", sans-serif;
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .login a {
 	font-size: 12px;
 }
-
+a {
+	text-decoration: none;
+	color: black;
+}
 ul, li {
 	list-style: none;
 }
@@ -119,14 +182,20 @@ ul, li {
 	margin-top: -5px;
 }
 
+<<<<<<< HEAD
 .inner_wrap {
 	margin-top:60px;
+=======
+header.header .nav_wrap nav.main .main_cate> li {
+	float: left;
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .search {
 	float:right;
 	margin-left:40px;
 }
+<<<<<<< HEAD
 
 .login {
 	float:right;
@@ -142,13 +211,20 @@ ul, li {
 
 .logo {
 	float:left;
+=======
+.inner_wrap div {
+	float: right;
+	margin-top: 45px;
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 </style>
+
 </head>
 <body>
-	<header class="header">
+	<header class="header" style="position: fixed; z-index: 2; background-color: white;">
 		<section class="nav_wrap">
 			<div class="inner_wrap">
+<<<<<<< HEAD
 				<nav id="topMenu">
 					<ul>
 						<div class="logo">
@@ -182,8 +258,68 @@ ul, li {
 						<div class="login">
 							<a href="http://unikys.tistory.com/guestbook">로그인</a>
 						</div>
+=======
+				<a href="main"><img class="logo"
+					src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile6.uf.tistory.com%2Fimage%2F277027375874594F095C54"></a>
+				<nav class="main">
+					<ul class="main_cate">
+						<li id="main_auction" class="menu"><a class="menu_title"
+							href="showAuctionNormal">경매</a>
+							<div class="contextual">
+								<ul class="depth_1">
+									<li class="selected" style="margin: 0;"><a class="submenu_title"
+										href="showAuctionNormal">온라인 경매</a>
+										
+									<li class="selected"><a class="submenu_title"
+										href="showAuctionBlind">블라인드 경매</a>
+									</li>
+								</ul>
+							</div></li>
+						<li id="main_service" class="menu"><a class="menu_title"
+							href="서비스소개페이지">서비스 소개</a>
+							<div class="contextual">
+								
+							</div></li>
+						<li id="main_customer" class="menu"><a class="menu_title"
+							href="http://localhost:9090/final/notice?offset=0">고객센터</a>
+							<div class="contextual">
+								<ul class="depth_1">					
+									<li class="selected"><a class="submenu_title" href="http://localhost:9090/final/notice?offset=0"
+									>공지사항</a>
+									<li class="selected"><a class="submenu_title" href="http://localhost:9090/final/qnaBoard?offset=0"
+									>문의게시판</a>
+									</li>
+									</li>
+									<li class="selected"><a class="submenu_title" href="http://localhost:9090/final/chatting"
+									>채팅</a>
+									</li>
+								</ul>
+							</div></li>
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 					</ul>
 				</nav>
+<<<<<<< HEAD
+=======
+				<div class="search">
+					<a href="검색"><img class="search_img"
+						src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw="></a>
+				</div>
+				<div class="login">
+				<c:choose>
+						<c:when test="${member.grade eq null }">
+								<a href="javascript:popup()">로그인</a>
+						</c:when>
+						<c:when test="${member.grade eq 'z' }">
+								<a href="#">로그아웃</a>
+								<a href="admin">관리자 페이지</a>
+						</c:when>
+						<c:otherwise>
+								<a href="logout">로그아웃</a>
+								<a href="myPage">마이페이지</a>
+						</c:otherwise>
+				</c:choose>
+				</div>
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 			</div>
 		</section>
 	</header>

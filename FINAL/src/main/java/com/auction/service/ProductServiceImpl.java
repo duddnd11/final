@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.auction.dao.ProductDao;
+import com.auction.vo.AuctionVo;
 import com.auction.vo.ProductVo;
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -40,6 +41,21 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductVo> selectAuctionBlind() {
 		return dao.selectAuctionBlind();
+	}
+
+	@Override
+	public List<ProductVo> showNormalCategory(String category) {
+		return dao.showNormalCategory(category);
+	}
+
+	@Override
+	public List<ProductVo> showBlindCategory(String category) {
+		return dao.showBlindCategory(category);
+	}
+
+	@Override
+	public int insertAuction(AuctionVo vo) {
+		return dao.insertAuction(vo);
 	}
 
 }

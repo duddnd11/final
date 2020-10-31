@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
 footer {
@@ -13,12 +13,21 @@ footer {
 }
 
 footer .foot_wrap {
+<<<<<<< HEAD
     display: table;
     font-size: 12px;
     font-family: Roboto,"Malgun Gothic",sans-serif;
     margin: 0 auto;
     position: relative;
     width: 1240px;
+=======
+	display: table;
+	font-size: 15px;
+	font-family: Roboto, "Malgun Gothic", sans-serif;
+	margin: 0 auto;
+	position: relative;
+	width: 1240px;
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 footer .foot_wrap .group {
@@ -94,30 +103,38 @@ footer .foot_wrap .group:nth-child(2) ul {
 		<div class="foot_wrap">
 			<div class="group">
 				<ul class="agreements">
-					<li><a href="#">¼­ºñ½ºÀÌ¿ë¾à°ü</a></li>
-					<li><a href="#">¿Â¶óÀÎ°æ¸Å¾à°ü</a></li>
-					<li><a href="#">°æ¸Å¼­ºñ½º¿î¿µ¹æÄ§</a></li>
-					<li><a href="#">°³ÀÎÁ¤º¸Ãë±Ş¹æÄ§</a></li>
+					<li><a href="#">ì„œë¹„ìŠ¤ì´ìš©ì•½ê´€</a></li>
+					<li><a href="#">ì˜¨ë¼ì¸ê²½ë§¤ì•½ê´€</a></li>
+					<li><a href="#">ê²½ë§¤ì„œë¹„ìŠ¤ìš´ì˜ë°©ì¹¨</a></li>
+					<li><a href="#">ê°œì¸ì •ë³´ì·¨ê¸‰ë°©ì¹¨</a></li>
 				</ul>
 				<ul class="information">
+<<<<<<< HEAD
 					<br/>
 					<br/>
 					<li>»óÈ£ : ±è¶¯¶¯</li>
 					<li>´ëÇ¥ÀÌ»ç : È²¶¯¶¯</li>
 					<li>»ç¾÷ÀÚµî·Ï¹øÈ£ : 123-45-67890</li>
 					<li>Åë½ÅÆÇ¸Å¾÷½Å°í : 2016-¼­¿ï°­³²-12345</li>
+=======
+					<br/><br/>
+					<li>ìƒí˜¸ : ê¹€ë•¡ë•¡</li>
+					<li>ëŒ€í‘œì´ì‚¬ : í™©ë•¡ë•¡</li>
+					<li>ì‚¬ì—…ìë“±ë¡ë²ˆí˜¸ : 123-45-67890</li>
+					<li>í†µì‹ íŒë§¤ì—…ì‹ ê³  : 2016-ì„œìš¸ê°•ë‚¨-12345</li>
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 				</ul>
-				<div id="copyright">Copyright ¨Ï 2020 Auction Co., Ltd. All
+				<div id="copyright" style="margin-left: 40px;">Copyright â“’ 2020 Auction Co., Ltd. All
 					Rights Reserved.</div>
 			</div>
 			<div class="group">
-				<h6>CONTACT</h6>
+				<h4>CONTACT</h4>
 				<address>
 					<ul>
-						<li>¼­¿ïÆ¯º°½Ã ¸¶Æ÷±¸ ¼­°­·Î 136<br /> ¾ÆÀÌºñÆ¼¿ö 2Ãş,3Ãş
+						<li>ì„œìš¸íŠ¹ë³„ì‹œ ë§ˆí¬êµ¬ ì„œê°•ë¡œ 136<br /> ì•„ì´ë¹„í‹°ì›Œ 2ì¸µ,3ì¸µ
 						</li>
-						<li>´ëÇ¥¹®ÀÇ : 02-313-7300</li>
-						<li>°³ÀÎÁ¤º¸Ã¥ÀÓÀÚ : ¾ÈÇõÈ¯<br /> Email : koreais@koreaedugroup.com
+						<li>ëŒ€í‘œë¬¸ì˜ : 02-313-7300</li>
+						<li>ê°œì¸ì •ë³´ì±…ì„ì : ì•ˆí˜í™˜<br /> Email : koreais@koreaedugroup.com
 						</li>
 					</ul>
 				</address>

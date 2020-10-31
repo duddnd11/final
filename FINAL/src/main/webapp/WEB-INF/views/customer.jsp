@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
 	th{
@@ -29,27 +30,27 @@
 	<div id="container">
 		<table>
 			<tr>
-				<th>¹øÈ£</th>
-				<th>¾ÆÀÌµğ</th>
-				<th>ºñ¹Ğ¹øÈ£</th>
-				<th>ÀÌ¸§</th>
-				<th>ÁÖ¼Ò</th>
-				<th>ÀüÈ­¹øÈ£</th>
-				<th>ÀÌ¸ŞÀÏ</th>
-				<th>»ı³â¿ùÀÏ</th>
-				<th>µî±Ş</th>
+				<th>ì•„ì´ë””</th>
+				<th>ë¹„ë°€ë²ˆí˜¸</th>
+				<th>ì´ë¦„</th>
+				<th>ì£¼ì†Œ</th>
+				<th>ì „í™”ë²ˆí˜¸</th>
+				<th>ì´ë©”ì¼</th>
+				<th>ìƒë…„ì›”ì¼</th>
+				<th>ë“±ê¸‰</th>
 			</tr>
+			<c:forEach var="list" items="${list }">
 			<tr>
-				<td>1</td>
-				<td><a href="http://localhost:9090/final/admin/customer/info" style="color: black;">aaaa</a></td>
-				<td>12345</td>
-				<td>aaaaa</td>
-				<td>¼­¿ï µ¿ÀÛ±¸ »óµµ·Î</td>
-				<td>010-1111-1111</td>
-				<td>aaaa@naver.com</td>
-				<td>991122</td>
-				<td>f</td>
+				<td>${list.ID }</td>
+				<td>${list.pw }</td>
+				<td><a href="customer/info?id=${list.ID }" style="color: black;">${list.name }</a></td>
+				<td>${list.addr }</td>
+				<td>${list.phonenum }</td>
+				<td>${list.email }</td>
+				<td>${list.birth }</td>
+				<td>${list.grade }</td>
 			</tr>
+			</c:forEach>
 		</table>
 	</div>
 </body>

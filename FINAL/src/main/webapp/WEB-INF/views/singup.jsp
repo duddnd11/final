@@ -17,7 +17,7 @@
 </head>
 <body>
   <div id="container">
-  <form action="#" style="height: 700px;">
+  <form action="signupaction" style="height: 700px;">
  
     <table id="signup-table" style="margin-top: 20px;">
         <tr>
@@ -33,35 +33,14 @@
           <td><input type="text" name="name" placeholder="이름"/></td>
         </tr>
         <tr>
-<<<<<<< HEAD
           <th>주소</th>
           <td>
-            <input type="text" name="address" placeholder="주소"/>
+            <input type="text" name="addr" placeholder="주소"/>
           </td>
         </tr>
         <tr>
           <th>전화번호</th>
           <td>
-            <input type="text" name="phonenum" placeholder="휴대전화 번호"/>
-          </td>
-        </tr>
-=======
->>>>>>> refs/remotes/origin/main
-        <tr>
-          <th>이메일</th>
-          <td>
-            <input title="정확한 메일 주소를 작성해주세요" type="email" name="email">
-          </td>
-        </tr>
-          <th>전화번호</th>
-          <td>
-<<<<<<< HEAD
-            <input type="text" name="birth" placeholder="생년월일"/>
-          </td>
-        </tr>
-        <tr>
-        
-=======
             <input type="text" name="phonenum" placeholder="휴대전화 번호"/>
           </td>
         </tr>
@@ -77,7 +56,8 @@
             <input type="text" name="birth" placeholder="생년월일"/>
           </td>
         </tr>
->>>>>>> refs/remotes/origin/main
+        <tr>
+        
     </table>
     <div id="buttons">
       <input title="가입하기" type="submit" id="btn_join" class="btn ui-button ui-corner-all ui-widget" 

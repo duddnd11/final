@@ -2,6 +2,7 @@ package com.auction.dao;
 
 import java.util.List;
 
+import com.auction.vo.AuctionVo;
 import com.auction.vo.ProductVo;
 
 public interface ProductDao {
@@ -11,5 +12,7 @@ public interface ProductDao {
 	List<ProductVo> selectAuctionBlind();
 	List<ProductVo> selectPop();
 	List<ProductVo> selectHurry();
-	
+	int insertAuction(AuctionVo vo);
+	List<ProductVo> showNormalCategory(String category);
+	List<ProductVo> showBlindCategory(String category);
 }

@@ -1,18 +1,50 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	<hr>
-	<div class="content">qeweqweqwrqe
+<<<<<<< HEAD
+	<div class="content">
+=======
+	<div class="auction_list_header">
+		<div class="wrapper">
+			<h2 id="auction_title">ì˜¨ë¼ì¸ ê²½ë§¤</h2>
+			<ul>
+				<li>
+					<span class="label">Preview : </span>
+					<time>2020-10-09~2020-10-29</time>
+				</li>
+				<li>
+					<span class="label">Auction : </span>
+					<time>2020-10-29 13:00</time>
+					<span class="text">LOTë³„ ìˆœì°¨ë§ˆê°</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="content">
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 		<aside>
-			<h3>Ä«Å×°í¸®</h3>
+<<<<<<< HEAD
+			<h3>Ä«ï¿½×°ï¿½</h3>
 			<div></div>
+=======
+			<h3>ì¹´í…Œê³ ë¦¬</h3>
+			<div>
+				
+			</div>
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 		</aside>
 		<main>
 			<div id="product_list">
@@ -20,24 +52,35 @@
 					<li class="group">
 						<figure>
 							<div class="wrapper">
-								<img src="»óÇ° ÀÌ¹ÌÁö">
+<<<<<<< HEAD
+								<img src="ï¿½ï¿½Ç° ï¿½Ì¹ï¿½ï¿½ï¿½">
+=======
+								<img src="ìƒí’ˆ ì´ë¯¸ì§€">
+								<div>
+									<span class="title">
+										<span class="no">ìƒí’ˆë²ˆí˜¸</span>
+										<h3>ì‘ê°€ëª…</h3>
+																				
+									</span>
+								</div>
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 							</div>
 							<figcaption>
 								<span class="title"> 
-									<span class="no">»óÇ°¹øÈ£</span>
-									<h3>°æ¸Å ÀÌ¸§</h3>
+									<span class="no">ï¿½ï¿½Ç°ï¿½ï¿½È£</span>
+									<h3>ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½</h3>
 								</span>
-								<small class="subtitle">°¡°İ</small>
+								<small class="subtitle">ï¿½ï¿½ï¿½ï¿½</small>
 							</figcaption>
 						</figure>
 						<div class="wrapper">
 							<dl class="info">
 								<dd class="desc">
 									<ul>
-										<li>ÀÔÂû</li>
-										<li>Á¶È¸</li>
-										<li>¸¶°¨</li>
-										<li>°æ¸ÅÀÚ ÀÌ¸§</li>
+										<li>ï¿½ï¿½ï¿½ï¿½</li>
+										<li>ï¿½ï¿½È¸</li>
+										<li>ï¿½ï¿½ï¿½ï¿½</li>
+										<li>ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½</li>
 									</ul>
 								</dd>
 							</dl>

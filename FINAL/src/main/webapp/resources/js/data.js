@@ -7,7 +7,7 @@ function handleData(){
     const pw = $('form')[0].pw.value
     const name = $('form')[0].name.value
     const phonenum = $('form')[0].phonenum.value
-    const address = $('form')[0].address.value + " " + $('form')[0].addrdetail.value
+    const addr = $('form')[0].addr.value + " " + $('form')[0].addrdetail.value
     const birth = $('form')[0].birth.value
     const job = $('form')[0].job.value
     const gender = $('form')[0].gender.value
@@ -19,7 +19,7 @@ function handleData(){
       pw: pw,
       name : name,
       phonenum : phonenum,
-      address : address,
+      addr : addr,
       birth : birth,
       job:job,
       gender: gender,

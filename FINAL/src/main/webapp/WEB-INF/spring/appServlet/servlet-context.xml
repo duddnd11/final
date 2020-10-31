@@ -13,7 +13,7 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
-
+	
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
@@ -25,9 +25,17 @@
 	
 	<context:component-scan base-package="com.kk.controller" />
 	<beans:bean id="echoHandler" class="com.auction.handler.EchoHandler" ></beans:bean>
+	<beans:bean id="webSocketHandler" class="com.auction.handler.WebSocketHandler" ></beans:bean>
 	
 	<websocket:handlers>
 		<websocket:mapping handler="echoHandler" path="/echo"/>
+		<websocket:handshake-interceptors>
+			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
+		</websocket:handshake-interceptors>
+		<websocket:sockjs/>
+	</websocket:handlers>
+	<websocket:handlers>
+		<websocket:mapping handler="webSocketHandler" path="/chat"/>
 		<websocket:handshake-interceptors>
 			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
 		</websocket:handshake-interceptors>

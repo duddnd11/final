@@ -5,40 +5,69 @@
   
 <mapper namespace="com.auction.mapper.ProductMapper">
 	<insert id="insertProduct">
-		INSERT INTO product(pname, image, filenames, price, uploaddate, deadlinedate, hitcount, ID, bestmoney, admin, category, auctionmenu, deal, moneyup) VALUES(#{pname},#{image},#{filenames},#{price},#{uploaddate},#{deadlinedate},#{hitcount},#{ID},#{bestmoney},#{admin},#{category},#{auctionmenu},#{deal},#{moneyup})
+		INSERT INTO product(pname, image, filenames, price, deadlinedate, hitcount, ID, bestmoney, admin, category, auctionmenu, deal, moneyup) VALUES(#{pname},#{image},#{filenames},#{price},#{deadlinedate},#{hitcount},#{ID},#{bestmoney},#{admin},#{category},#{auctionmenu},#{deal},#{moneyup});
 	</insert>
 	
+	<!-- 전체 -->
 	<select id="selectAuction" resultType="com.auction.vo.ProductVo">
-		select * from product where auctionmenu='일반' order by uploaddate desc;
+		select * from product where auctionmenu='일반' and deal=1 order by uploaddate desc;
 	</select>
 
 	<select id="selectAuctionBlind" resultType="com.auction.vo.ProductVo">
-		select * from product where auctionmenu='블라인드' order by uploaddate desc;
+		select * from product where auctionmenu='블라인드' and deal=1 order by uploaddate desc;
 	</select>
 		
 	<select id="selectPop" resultType="com.auction.vo.ProductVo">
-		SELECT * FROM product order by hitcount desc;
+		SELECT * FROM product where deal=1 order by hitcount desc;
 	</select>
 
 	<select id="selectHurry" resultType="com.auction.vo.ProductVo">
-		SELECT *  from product order by (TIMESTAMPDIFF(day, NOW(), deadlinedate)+1) asc;
+		SELECT * from product where deal=1 order by (TIMESTAMPDIFF(day, NOW(), deadlinedate)+1) asc;
 	</select>
 	
+	<!-- 상세 -->
 	<select id="selectOne" resultType="com.auction.vo.ProductVo">
-		SELECT * FROM product where pno=#{pno}
+		SELECT * FROM product where pno=#{pno};
 	</select>
 	<update id="hitcountUp">
-		update product set hitcount= hitcount+1 where pno=#{pno}
+		update product set hitcount= hitcount+1 where pno=#{pno};
 	</update>
 	
+	<!-- 등록 -->
 	<update id="timeout">
 		update product set timeout=(TIMESTAMPDIFF(day, NOW(), deadlinedate)+1);
 	</update>
 	<update id="startmoney">
-		update product set startmoney=price*0.6;
+		update product set startmoney=price*0.6 where pno=#{pno};
 	</update>
 	<update id="lastmoney">
-		update product set lastmoney=price*1.4;
+		update product set lastmoney=price*1.4 where pno=#{pno};
 	</update>
 	
-</mapper>  
+	<!-- 입찰 -->
+	<select id="showAuction" resultType="int">
+		SELECT count(*) FROM auction where pno=#{pno};
+	</select>
+	<insert id="insertAuction">
+		insert into auction(ID, pno, myprice) values(#{ID}, #{pno}, #{myprice});
+	</insert>
+	<update id="updateMoneyFirst">
+		update product set count =count+1 where pno=#{pno};
+	</update>
+	<update id="updateMoney">
+		update product set count =count+1, bestmoney =bestmoney+moneyup where pno=#{pno};
+	</update>
+	
+	<!-- 카테고리 -->
+	<select id="normalCategory" resultType="com.auction.vo.ProductVo">
+		select * from product where category=#{category} and auctionmenu='일반' order by uploaddate desc;
+	</select>
+	<select id="blindCategory" resultType="com.auction.vo.ProductVo">
+		SELECT * FROM product WHERE category=#{category} and auctionmenu='블라인드' ORDER BY uploaddate DESC;
+	</select>
+</mapper>
+
+
+
+
+  

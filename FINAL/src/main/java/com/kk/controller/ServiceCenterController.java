@@ -3,16 +3,23 @@ package com.kk.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.auction.service.CommentService;
+import com.auction.service.NoticeService;
 import com.auction.service.QnaBoardService;
 import com.auction.vo.CommentVo;
+import com.auction.vo.NoticeVo;
 import com.auction.vo.QnaBoardVo;
 
 @Controller
@@ -21,6 +28,8 @@ public class ServiceCenterController {
 	QnaBoardService qnaBoardService;
 	@Autowired
 	CommentService commentService;
+	@Autowired
+	NoticeService noticeService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ServiceCenterController.class);
 	@RequestMapping(value="/serviceCenter")
@@ -29,7 +38,7 @@ public class ServiceCenterController {
 	}
 	
 	@RequestMapping(value="/chatting")
-	public String chatting() {
+	public String chatting(Model model) {
 		return "chatting";
 	}
 	
@@ -45,7 +54,14 @@ public class ServiceCenterController {
 //	}
 	
 	@RequestMapping(value="/qnaBoard")
-	public String qnaBoard(Model model,int offset,String keyword,String searchMenu) {
+	public String qnaBoard(Model model,int offset,String keyword,String searchMenu,HttpServletRequest request,HttpServletResponse response) {
+		Cookie[] cookies = request.getCookies();
+		for(int i=1; i<cookies.length;i++) {
+			System.out.println(cookies[i].getName());
+			cookies[i].setMaxAge(0);
+			response.addCookie(cookies[i]);
+		}
+		
 		if(offset<0) {
 			offset=0;
 		}
@@ -70,16 +86,20 @@ public class ServiceCenterController {
 			}
 		}
 		int pageSize=0;
-		if(listAll.size()%10==0) {
+		if(listAll.size()>=10 && listAll.size()%10==0 ) {
 			pageSize=listAll.size()/10;
 		}else {
-			pageSize=listAll.size()/10+1;
+			if(listAll.size()==0) {
+				pageSize=0;
+			}else {
+				pageSize=listAll.size()/10+1;
+			}
 		}
-		int nowPage =offset/10+1 ;
-		int startPage = nowPage/10*10;
-		int endPage = startPage+9;
+		int nowPage =offset/10;
+		int startPage = nowPage/10*10+1; 
+		int endPage = startPage+9; 
 		if(nowPage/10 == pageSize/10) {
-			endPage=pageSize-1;
+			endPage=pageSize;
 		}
 		model.addAttribute("searchMenu", searchMenu);
 		model.addAttribute("ps",pageSize/10);
@@ -94,9 +114,22 @@ public class ServiceCenterController {
 	}
 	
 	@RequestMapping(value="/qnaDetail")
-	public String content(Model model,int qbno) {
+	public String content(Model model,int qbno,HttpServletRequest request,HttpServletResponse response) {
+		Cookie[] cookies = request.getCookies();
+		Cookie viewCookie = null;
+		
+		for(int i=0; i<cookies.length;i++) {
+			if(cookies[i].getName().equals("qnaDetail"+qbno)) {
+				viewCookie=cookies[i];
+			}
+		}
+		if(viewCookie==null) {
+			Cookie newCookie = new Cookie("qnaDetail"+qbno, "|"+qbno+"|");
+			response.addCookie(newCookie);
+			qnaBoardService.updateHitcount(qbno);
+		}
+		
 		QnaBoardVo vo =qnaBoardService.selectContent(qbno);
-		qnaBoardService.updateHitcount(qbno);
 		List<CommentVo> commentList = commentService.selectCommentService(qbno);
 		List<CommentVo> reCommentList = new ArrayList<CommentVo>();
 		for(CommentVo comment : commentList) {
@@ -116,9 +149,21 @@ public class ServiceCenterController {
 	}
 	
 	@RequestMapping(value="/qnaWriteAction")
-	public String qnaWriteAction(QnaBoardVo vo,Model model) {
-		vo.setID("qq");
-		qnaBoardService.wirteBoardService(vo);
+	public String qnaWriteAction(QnaBoardVo vo,Model model,HttpServletRequest request,HttpServletResponse response) {
+		Cookie[] cookies = request.getCookies();
+		Cookie viewCookie = null;
+		
+		for(int i=0 ;i<cookies.length;i++) {
+			if(cookies[i].getName().equals("qnaWrite")) {
+				viewCookie=cookies[i];
+			}
+		}
+		if(viewCookie==null) {
+			Cookie newCookie = new Cookie("qnaWrite","write");
+			response.addCookie(newCookie);
+			qnaBoardService.wirteBoardService(vo);
+		}
+		
 		List<QnaBoardVo> list =qnaBoardService.selectBoardAll();
 		int qbno = list.get(0).getQbno();
 		QnaBoardVo detail = qnaBoardService.selectContent(qbno);
@@ -138,6 +183,111 @@ public class ServiceCenterController {
 //		model.addAttribute("startPage", 0);
 //		model.addAttribute("endPage", 9);
 //		model.addAttribute("qnaBoard", list);
+		return "qnaDetail";
+	}
+	
+	@RequestMapping(value="/notice")
+	public String notice(Model model,int offset,String keyword,String searchMenu) {
+		if(offset<0) {
+			offset=0;
+		}
+		List<NoticeVo> list= null;
+		List<NoticeVo> listAll = null;
+		if((keyword == null && searchMenu ==null) || (keyword.equals("") && searchMenu.equals("")) ) {
+			list =noticeService.selectBoard(offset);
+			listAll = noticeService.selectBoardAll();
+		}else {
+			if(searchMenu.equals("title")) {
+				list = noticeService.searchTitle(keyword,offset);	
+				listAll = noticeService.searchTitleSize(keyword);
+			}else if(searchMenu.equals("content")) {
+				list = noticeService.searchContent(keyword, offset);
+				listAll = noticeService.searchContentSize(keyword);
+			}else if(searchMenu.equals("writer")) {
+				list = noticeService.searchWriter(keyword, offset);
+				listAll = noticeService.searchWriterSize(keyword);
+			}else if(searchMenu.equals("titleAndContent")) {
+				list = noticeService.searchTitleAndContent(keyword, offset);
+				listAll = noticeService.searchTitleAndContentSize(keyword);
+			}
+		}
+		int pageSize=0;
+		if(listAll.size()>=10 && listAll.size()%10==0 ) {
+			pageSize=listAll.size()/10;
+		}else {
+			if(listAll.size()==0) {
+				pageSize=0;
+			}else {
+				pageSize=listAll.size()/10+1;
+			}
+		}
+		int nowPage =offset/10;
+		int startPage = nowPage/10*10+1;
+		int endPage = startPage+9;
+		if(nowPage/10 == pageSize/10) {
+			endPage=pageSize;
+		}
+		
+		model.addAttribute("searchMenu", searchMenu);
+		model.addAttribute("ps",pageSize/10);
+		model.addAttribute("sp",startPage/10);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("offset", offset);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("notice", list);
+		return "notice";
+	}
+	
+	@RequestMapping(value="/noticeDetail")
+	public String noticeDetail(Model model,int nbo) {
+		NoticeVo vo =noticeService.selectContent(nbo);
+//		noticeService.updateHitCount(nbo);
+		model.addAttribute("detail", vo);
+		return "noticeDetail";
+	}
+	
+	@RequestMapping(value="/deleteBoard")
+	public String deleteBoard(int qbno,String id) {
+		QnaBoardVo vo = qnaBoardService.selectContent(qbno);
+		if(id.equals(vo.getID())) {
+			qnaBoardService.deleteBoard(qbno);
+		}else {
+			System.out.println("아이디가 다릅니다. 삭제불가");
+		}
+		return "redirect:/qnaBoard?offset=0";
+	}
+	
+	@RequestMapping(value="/modifyBoard")
+	public String modifyBoard(Model model,int qbno, String id) {
+		QnaBoardVo vo = qnaBoardService.selectContent(qbno);
+		System.out.println(vo.getID());
+		System.out.println(id);
+		if(id.equals(vo.getID())) {
+			System.out.println("수정가능");
+		}else {
+			System.out.println("아이디가 다릅니다. 수정불가");
+			return "redirect:/qnaBoard?offset=0";
+		}
+		model.addAttribute("detail", vo);
+		return "modifyBoard";
+	}
+	
+	@RequestMapping(value="/modifyAction")
+	public String modifyAction(Model model,int qbno, String content) {
+		qnaBoardService.updateBoard(qbno, content);
+		QnaBoardVo vo =qnaBoardService.selectContent(qbno);
+		List<CommentVo> commentList = commentService.selectCommentService(qbno);
+		List<CommentVo> reCommentList = new ArrayList<CommentVo>();
+		for(CommentVo comment : commentList) {
+			if(comment.getLevel()==1) {
+				reCommentList.add(comment);
+			}
+		}
+		model.addAttribute("reComment",reCommentList);
+		model.addAttribute("comment", commentList);
+		model.addAttribute("detail", vo);
 		return "qnaDetail";
 	}
 }
