@@ -64,7 +64,7 @@
 			<th>날짜</th> <td>${fn:substring(up,0,10) } ~ ${fn:substring(dead,0,10) }</td>
 		</tr>
 		<tr>
-			<th>현재가</th>
+			<th id="price">현재가</th>
 			<c:choose>
 				<c:when test="${vo.bestmoney == 0  }">
 					<td><fmt:formatNumber value="${vo.startmoney }" pattern="#,###" /></td>
@@ -132,20 +132,25 @@
 	</c:if>
 
 <script>
-<c:if test="${result == 2 }">
-	alert("입찰됨!!!");
-</c:if>
-var myprice = $("#btnQtyC3_1000020518522").val();
+var myprice2 = 0;
+<c:choose>
+	<c:when test="${vo.bestmoney == 0  }">
+		myprice2 = ${vo.startmoney };
+	</c:when>
+	<c:otherwise>
+		myprice2 = ${vo.bestmoney };
+	</c:otherwise>
+</c:choose>	
 function alertMsg(){
 	if (confirm("입찰하겠?")) {
         // 확인 버튼 클릭 시 동작
-		location.href='insertAuction?pno=${vo.pno}&myprice=${vo.bestmoney }';
+		location.href='insertAuction?pno=${vo.pno}&myprice='+myprice2;
     } else {
         // 취소 버튼 클릭 시 동작
     }
 }
 
-
+var myprice = $("#btnQtyC3_1000020518522").val();
 function alertMsgBlind(){
 	alert(myprice);
 	alert($(this).prev().prev().prev().val());
