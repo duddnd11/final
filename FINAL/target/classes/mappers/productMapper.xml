@@ -52,10 +52,10 @@
 		insert into auction(ID, pno, myprice) values(#{ID}, #{pno}, #{myprice});
 	</insert>
 	<update id="updateMoneyFirst">
-		update product set count =count+1 where pno=#{pno};
+		update product set count =count+1, bestmoney =bestmoney+startmoney, getcustomer=#{getcustomer} where pno=#{pno};
 	</update>
 	<update id="updateMoney">
-		update product set count =count+1, bestmoney =bestmoney+moneyup where pno=#{pno};
+		update product set count =count+1, bestmoney =bestmoney+moneyup, getcustomer=#{getcustomer} where pno=#{pno};
 	</update>
 	
 	<!-- 카테고리 -->

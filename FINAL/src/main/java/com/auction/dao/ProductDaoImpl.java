@@ -58,13 +58,16 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public int insertAuction(AuctionVo vo) {
 		int result=0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("getcustomer", vo.getID());
+		map.put("pno", vo.getPno());
 		int select = sqlSession.selectOne("com.auction.mapper.ProductMapper.showAuction", vo.getPno());
 		if(select>0) {
 			result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
-			result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoney", vo.getPno());
+			result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoney", map);
 		}else {
 			result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
-			result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoneyFirst", vo.getPno());
+			result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoneyFirst", map);
 		}
 		return result;
 	}

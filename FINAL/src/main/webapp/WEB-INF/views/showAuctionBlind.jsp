@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 </head>
 <style>
@@ -30,7 +31,6 @@
 	</div>
 	
 	
-	<c:set var="dead" value="${vo.deadlinedate }"/>
 	<div style="width: 1100px;display: flex; margin-left: 200px; ">
 	<ul>
 	<c:forEach var="vo" items="${voListShowBlind }">
@@ -43,7 +43,8 @@
 			<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img1 }"/></a> <br/>
 		</c:if>
 		<p><b><a href="showDetail?pno=${vo.pno }">${vo.pname }</a></b></p>
-		<p>마감날: ${fn:substring(dead,0,10) }</p>
+	<c:set var="dead" value="${vo.deadlinedate }"/>
+		<p>마감날: ${fn:substring(dead,0,10) } </p>
 		조회수: ${vo.hitcount }<span>&nbsp</span><span>&nbsp</span><span>&nbsp</span><span>&nbsp</span><span>&nbsp</span>
 		입찰수 ${vo.count }<br/>
 	</div>

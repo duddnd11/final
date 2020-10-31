@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 </head>
 <style>
@@ -20,7 +21,7 @@
 	}
 </style>
 <body>
-<div id="container" style="width: -webkit-fill-available; margin-top: 200px;">
+<div id="container" style="width: -webkit-fill-available; margin-top:200px">
 	<h2 style="text-align: center; margin-left: -200px; font-size: 30px;">온라인 경매</h2>
 	<div style="width: 300px; height: 1000px; position: fixed;">
 	<c:forEach var="category" items="${category}">
