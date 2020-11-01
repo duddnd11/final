@@ -40,7 +40,16 @@
 			<a href="showDetail?pno=${vo.pno }"><img src="${vo.image }"/></a>		
 		</c:if>
 		<c:if test="${vo.image eq null }">
-			<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img1 }"/></a> <br/>
+			<a href="showDetail?pno=${vo.pno }">
+			<c:choose>
+				<c:when test="${vo.img1 ne '(이름없음)' }">
+				<img src="resources/images/${vo.img1 }"/>
+				</c:when>
+				<c:otherwise>
+				<img src="resources/images/${vo.img2 }"/>
+				</c:otherwise>
+			</c:choose>
+			</a> <br/>
 		</c:if>
 		<p><b><a href="showDetail?pno=${vo.pno }">${vo.pname }</a></b></p>
 	<c:set var="dead" value="${vo.deadlinedate }"/>

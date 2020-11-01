@@ -65,17 +65,12 @@ public class ProductController {
 		int result = service.insertProduct(vo);
 		if(result == 1) {
 			System.out.println("등록됨!!!!");
+		}else {
+			System.out.println("등록...안됨..");
 		}
 		model.addAttribute("result", result);
-//		return "mypage";
+		return "myPage";
 		
-		vo.setImg1(vo.getFilenames().split("_!_")[0]);
-		vo.setImg2(vo.getFilenames().split("_!_")[1]);
-				
-		List<ProductVo> list = service.selectAuctionBlind();
-		list.add(vo);
-		model.addAttribute("vo", list);
-		return "showAuctionBlind";
 	}
 	
 	public void setImg(List<ProductVo> list) {

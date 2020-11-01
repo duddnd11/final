@@ -68,9 +68,11 @@
 	<tr>
 		<th>사진</th> 
 			<td> 
-			 <input type="file" name="multiparts"/><br/>
-		     <input type="file" name="multiparts"/>
+			 <input type="file" name="multiparts" accept="image/*" onchange="setThumbnail(event);"/><br/>
+		     <input type="file" name="multiparts" accept="image/*" onchange="setThumbnail(event);"/>
+		    <div id="image_container"></div>
 		    </td>
+
 	</tr>
 	<tr>
 		<th>가격</th> 
@@ -121,5 +123,16 @@
 	</form>
 </body>
 <script>
+function setThumbnail(event) { 
+	var reader = new FileReader(); 
+	reader.onload = function(event) {
+		var img = document.createElement("img"); 
+		img.setAttribute("src", event.target.result); 
+		document.querySelector("div#image_container").appendChild(img); 
+		}; 
+		reader.readAsDataURL(event.target.files[0]); 
+	}
+
+
 </script>
 </html>

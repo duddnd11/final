@@ -48,7 +48,6 @@ header{
 	width: 150px;
 	font-size: 12px;
 	font-weight: bold;
-	
 }
 
 .menu_title {
@@ -105,13 +104,15 @@ header.header .nav_wrap nav.main .main_cate>li.menu>.menu_title {
 	font-family: "Nanum Barun Gothic", sans-serif;
 }
 
-.login a {
-	font-size: 12px;
-}
 a {
 	text-decoration: none;
 	color: black;
 }
+
+.login a {
+	font-size: 12px;
+}
+
 ul, li {
 	list-style: none;
 }
@@ -128,7 +129,7 @@ ul, li {
 	margin-right: 30px;
 }
 
-header.header .nav_wrap nav.main .main_cate> li {
+header.header .nav_wrap nav.main .main_cate>li {
 	float: left;
 }
 
@@ -137,6 +138,7 @@ header.header .nav_wrap nav.main {
 	vertical-align: top;
 	margin-top: 30px;
 }
+
 .inner_wrap div {
 	float: right;
 	margin-top: 45px;
@@ -196,7 +198,7 @@ header.header .nav_wrap nav.main {
 								<a href="javascript:popup()">로그인</a>
 						</c:when>
 						<c:when test="${member.grade eq 'z' }">
-								<a href="#">로그아웃</a>
+								<a href="logout">로그아웃</a>
 								<a href="admin">관리자 페이지</a>
 						</c:when>
 						<c:otherwise>

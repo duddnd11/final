@@ -59,11 +59,10 @@ function msg_time() {
   if(seconds <10){
 	seconds = '0'+seconds;
 	}
-  m = hours + ":" +  miniutes + ":" + seconds ; // 남은 시간 text형태로 변경
-  document.all.timer.innerHTML = m;   // div 영역에 보여줌 
+  m = hours + ":" +  miniutes + ":" + seconds ; 
+  document.all.timer.innerHTML = m;   
   
-  if (RemainDate < 0) {      
-    // 시간이 종료 되었으면..
+  if (RemainDate < 0) {      //시간 종료
     clearInterval(tid);   // 타이머 해제
   }else{
     RemainDate = RemainDate - 1000; // 남은시간 -1초
@@ -79,8 +78,12 @@ function msg_time() {
 		<img src="${vo.image }"/>		
 	</c:if>	
 	<c:if test="${vo.image eq null }">
+		<c:if test="${vo.img1 ne '(이름없음)' }">
 		<img src="resources/images/${vo.img1 }"/>
+		</c:if>
+		<c:if test="${vo.img2 ne '(이름없음)' }">
 		<img src="resources/images/${vo.img2 }"/> <br/>
+		</c:if>
 	</c:if>
 	<br/>
 	</div>
@@ -131,7 +134,17 @@ function msg_time() {
 
 	<div style="display: flex;">
 		<button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
-		<button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="alertMsg()">입찰</button>
+		<c:choose>
+		<c:when test="${vo.deal == 2 }">
+			<button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;"  onclick="deadline()">마감</button>
+		</c:when>
+		<c:when test="${ID.ID eq vo.getcustomer || ID.ID eq vo.ID }">
+			<button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
+		</c:when>
+		<c:otherwise>
+			<button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="alertMsg()">입찰</button>
+		</c:otherwise>
+		</c:choose>
 	</div>
 	</c:if>
 	
@@ -158,24 +171,41 @@ function msg_time() {
 			<button type="button" class="sp-sub-plus" style="width: 40px; height: 32px;">
 				<b>+</b>
 			</button><br/>
-		<button style=" width: 100px; height: 40px; margin-top: 20px; margin-left: 30px;" >관심상품</button>
-		<button style="margin-top: 20px;  margin-left: 20px; width: 100px; height: 40px;"
-		id="btn" onclick="alertMsgBlind()">입찰</button>	
+		
+		<c:choose>
+		<c:when test="${vo.deal == 2 }">
+			<button style=" width: 100px; height: 40px; margin-top: 20px; margin-left: 30px;" >관심상품</button>
+			<button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;"  onclick="deadline()">마감</button>
+		</c:when>
+		<c:when test="${ID.ID eq vo.getcustomer || ID.ID eq vo.ID }">
+			<button style="margin-top: 20px;  margin-left: 20px; width: 100px; height: 40px;"
+			 onclick="rejectAlert()">입찰</button>	
+		</c:when>
+		<c:otherwise>
+			<button style=" width: 100px; height: 40px; margin-top: 20px; margin-left: 30px;" >관심상품</button>
+			<button style="margin-top: 20px;  margin-left: 20px; width: 100px; height: 40px;"
+			 onclick="alertMsgBlind()">입찰</button>	
+		</c:otherwise>
+		</c:choose>
 	</div>
 	</c:if>
 
 </div>
 
 	<c:if test="${ID.ID eq 'admin' }">
-
 		<div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: -20px;">	
-
 		<canvas id="myChart"></canvas>
 		</div>
-
 	</c:if>
 
 <script>
+function deadline(){
+	alert("=====마감=====");
+}
+function rejectAlert(){
+	alert("입찰 못하심ㅎㅅㅎ");
+}
+
 var myprice2 = 0;
 <c:choose>
 	<c:when test="${vo.bestmoney == 0  }">
@@ -197,7 +227,7 @@ function alertMsg(){
 function alertMsgBlind(){
 	if (confirm("입찰하겠?")) {
         // 확인 버튼 클릭 시 동작
-		location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val()+'&moneyup=${vo.moneyup }';
+		location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val()+'&moneyup=0';
     } else {
         // 취소 버튼 클릭 시 동작
     }
