@@ -35,7 +35,7 @@ public class ChatController {
 		//새로운 채팅방 생성
 		@RequestMapping(value = "/new")
 	    public String makeRoom(ChatRoomForm form,Model model){
-			ChatRoom room=chatRoomRepository.createChatRoom(form.getName());
+			ChatRoom room=chatRoomRepository.createChatRoom(form.getName(),form.getUser(),form.getUserId());
 	        model.addAttribute("room",room);
 	        return "room";
 	    }

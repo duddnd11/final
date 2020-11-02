@@ -2,14 +2,11 @@
    pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<<<<<< HEAD
 <!Doctype html>
 <html>
-=======
-<!doctype html>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>main page</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet"
@@ -60,18 +57,11 @@ small {
     text-transform: uppercase;
     margin:80px 0 50px 30px;
 }
-<<<<<<< HEAD
-	img {
-		width: 200px;
-    	height: 200px;
-	}
-=======
 img {
 	width: 200px;
 	height: 200px;
 }
 
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 </style>
 </head>
 <body>
