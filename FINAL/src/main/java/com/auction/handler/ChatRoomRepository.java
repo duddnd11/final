@@ -33,8 +33,8 @@ public class ChatRoomRepository {
 	}
 	
 	//새로운 방 생성
-	public ChatRoom createChatRoom(String name) {
-		ChatRoom chatRoom = ChatRoom.create(name);
+	public ChatRoom createChatRoom(String name,String user,String userId) {
+		ChatRoom chatRoom = ChatRoom.create(name,user,userId);
 		chatRoomMap.put(chatRoom.getRoomId(), chatRoom);
 		return chatRoom;
 	}

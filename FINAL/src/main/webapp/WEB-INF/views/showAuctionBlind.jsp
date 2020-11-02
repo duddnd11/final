@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file="header.jsp" %>
+   <%@ include file="header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +22,7 @@
 	}
 </style>
 <body>
-<div id="container" style="width: -webkit-fill-available; margin-top: 200px;">
+<div id="container" style="width: 1700px; margin-top: 200px;">
 	<h2 style="text-align: center; margin-left: -200px; font-size: 30px;">블라인드 경매</h2>
 	<div style="width: 300px; height: 1000px; position: fixed;">
 	<c:forEach var="category" items="${category}">
@@ -65,4 +66,5 @@
 </body>
 </html>
 <%@ include file="footer.jsp" %>
+
 

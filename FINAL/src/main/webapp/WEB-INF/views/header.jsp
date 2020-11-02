@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <script>
 function popup(){
@@ -22,101 +23,87 @@ header{
 }
 .main {
 <<<<<<< HEAD
-   height: 30px;
-   width: 770px;
-   position: relative;
-=======
 	height: 30px;
 	width: 770px;
 	position: relative;
+=======
+   height: 30px;
+   width: 770px;
+   position: relative;
 >>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 .menu_title{
    margin-top:20px;
+   color: black;
 }
 .main ul {
 <<<<<<< HEAD
-   margin: 0px;
-   padding: 0px;
-=======
 	margin: 0px;
 	padding: 0px;
+=======
+   margin: 0px;
+   padding: 0px;
 >>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .main ul li {
 <<<<<<< HEAD
-   color: white;
-   float: left;
-   line-height: 30px;
-   vertical-align: middle;
-   text-align: center;
-   position: relative;
-=======
 	color: white;
 	float: left;
 	line-height: 30px;
 	vertical-align: middle;
 	text-align: center;
 	position: relative;
+=======
+   color: white;
+   float: left;
+   line-height: 30px;
+   vertical-align: middle;
+   text-align: center;
+   position: relative;
 >>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
+
+.menu:hover .menu_title {
+   color: blue;
+   text-decoration: underline;
+   }
 .menu_title .submenu_title {
 <<<<<<< HEAD
-   text-decoration: none;
-   display: block;
-   width: 150px;
-   font-size: 12px;
-   font-weight: bold;
-=======
 	text-decoration: none;
 	display: block;
 	width: 150px;
 	font-size: 12px;
 	font-weight: bold;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .menu_title {
-<<<<<<< HEAD
-   color: black;
-=======
 	color: black;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .menu:hover .menu_title {
-<<<<<<< HEAD
-   color: blue;
-   text-decoration: underline;
-=======
 	color: blue;
 	text-decoration: underline;
+=======
+   text-decoration: none;
+   display: block;
+   width: 150px;
+   font-size: 12px;
+   font-weight: bold;
 >>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .contextual {
 <<<<<<< HEAD
-   padding-top: 20px;
-=======
 	padding-top: 20px;
+=======
+   padding-top: 20px;
 >>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .depth_1 {
 <<<<<<< HEAD
-   position: absolute;   
-   background-color: 2d2d2d;
-   height: 0px;
-   overflow: hidden;
-   transition: height .2s;
-   -webkit-transition: height .2s;
-   -moz-transition: height .2s;
-   -o-transition: height .2s;
-   width: 770px;
-   left: 0;
-=======
 	position: absolute;	
 	background-color: 2d2d2d;
 	height: 0px;
@@ -127,30 +114,41 @@ header{
 	-o-transition: height .2s;
 	width: 770px;
 	left: 0;
+=======
+   position: absolute;   
+   background-color: 2d2d2d;
+   height: 0px;
+   overflow: hidden;
+   transition: height .2s;
+   -webkit-transition: height .2s;
+   -moz-transition: height .2s;
+   -o-transition: height .2s;
+   width: 770px;
+   left: 0;
 >>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .depth_1 li {
 <<<<<<< HEAD
-   margin-left: 20px;
-=======
 	margin-left: 20px;
+=======
+   margin-left: 20px;
 >>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .menu:hover .depth_1 {
 <<<<<<< HEAD
-   height: 32px;
-=======
 	height: 32px;
+=======
+   height: 32px;
 >>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .submenu_title:hover {
 <<<<<<< HEAD
-   color: blue;
-=======
 	color: blue;
+=======
+   color: blue;
 >>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
@@ -162,14 +160,6 @@ header.header .login {
 
 header.header .nav_wrap nav.main .main_cate>li.menu>.menu_title {
 <<<<<<< HEAD
-   position: relative;
-   display: inline-block;
-   padding: 0 49px 55px;
-   font-size: 25px;
-   color: #000;
-   font-weight: 700;
-   font-family: "Nanum Barun Gothic", sans-serif;
-=======
 	position: relative;
 	display: inline-block;
 	padding: 0 49px 55px;
@@ -177,16 +167,25 @@ header.header .nav_wrap nav.main .main_cate>li.menu>.menu_title {
 	color: #000;
 	font-weight: 700;
 	font-family: "Nanum Barun Gothic", sans-serif;
-}
+=======
 
-a {
-	text-decoration: none;
-	color: black;
+   position: relative;
+   display: inline-block;
+   padding: 0 49px 55px;
+   font-size: 25px;
+   color: #000;
+   font-weight: 700;
+   font-family: "Nanum Barun Gothic", sans-serif;
 >>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
-<<<<<<< HEAD
 a {
+<<<<<<< HEAD
+	text-decoration: none;
+	color: black;
+}
+
+=======
    text-decoration: none;
    color: black;
 }
@@ -219,28 +218,30 @@ header.header .nav_wrap nav.main {
    display: inline-block;
    vertical-align: top;
    margin-top: 30px;
-=======
+   }
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 .login a {
-	font-size: 12px;
+   font-size: 12px;
 }
 
 ul, li {
-	list-style: none;
+   list-style: none;
 }
 
 .logo {
-	width: 20%;
-	height: 20%;
+   width: 20%;
+   height: 20%;
 }
 
 .search_img {
-	width: 40px;
-	height: 40px;
-	margin-top: -5px;
-	margin-right: 30px;
+   width: 40px;
+   height: 40px;
+   margin-top: -5px;
+   margin-right: 30px;
 }
 
 header.header .nav_wrap nav.main .main_cate>li {
+<<<<<<< HEAD
 	float: left;
 }
 
@@ -248,16 +249,18 @@ header.header .nav_wrap nav.main {
 	display: inline-block;
 	vertical-align: top;
 	margin-top: 30px;
+=======
+   float: left;
 >>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .inner_wrap div {
 <<<<<<< HEAD
-   float: right;
-   margin-top: 45px;
-=======
 	float: right;
 	margin-top: 45px;
+=======
+   float: right;
+   margin-top: 45px;
 >>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 </style>
@@ -265,70 +268,6 @@ header.header .nav_wrap nav.main {
 </head>
 <body>
 <<<<<<< HEAD
-   <header class="header" style="position: fixed; z-index: 2; background-color: white;">
-      <section class="nav_wrap">
-         <div class="inner_wrap">
-            <a href="main"><img class="logo"
-               src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile6.uf.tistory.com%2Fimage%2F277027375874594F095C54"></a>
-            <nav class="main">
-               <ul class="main_cate">
-                  <li id="main_auction" class="menu"><a class="menu_title"
-                     href="showAuctionNormal">경매</a>
-                     <div class="contextual">
-                        <ul class="depth_1">
-                           <li class="selected" style="margin: 0;"><a class="submenu_title"
-                              href="showAuctionNormal">온라인 경매</a>
-                              
-                           <li class="selected"><a class="submenu_title"
-                              href="showAuctionBlind">블라인드 경매</a>
-                           </li>
-                        </ul>
-                     </div></li>
-                  <li id="main_service" class="menu"><a class="menu_title"
-                     href="서비스소개페이지">서비스 소개</a>
-                     <div class="contextual">
-                        
-                     </div></li>
-                  <li id="main_customer" class="menu"><a class="menu_title"
-                     href="http://localhost:9090/final/notice?offset=0">고객센터</a>
-                     <div class="contextual">
-                        <ul class="depth_1">               
-                           <li class="selected"><a class="submenu_title" href="http://localhost:9090/final/notice?offset=0"
-                           >공지사항</a>
-                           <li class="selected"><a class="submenu_title" href="http://localhost:9090/final/qnaBoard?offset=0"
-                           >문의게시판</a>
-                           </li>
-                           </li>
-                           <li class="selected"><a class="submenu_title" href="http://localhost:9090/final/chatting"
-                           >채팅</a>
-                           </li>
-                        </ul>
-                     </div></li>
-               </ul>
-            </nav>
-            <div class="search">
-               <a href="검색"><img class="search_img"
-                  src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw="></a>
-            </div>
-            <div class="login">
-            <c:choose>
-                  <c:when test="${member.grade eq null }">
-                        <a href="javascript:popup()">로그인</a>
-                  </c:when>
-                  <c:when test="${member.grade eq 'z' }">
-                        <a href="#">로그아웃</a>
-                        <a href="admin">관리자 페이지</a>
-                  </c:when>
-                  <c:otherwise>
-                        <a href="#">로그아웃</a>
-                        <a href="myPage">마이페이지</a>
-                  </c:otherwise>
-            </c:choose>
-            </div>
-         </div>
-      </section>
-   </header>
-=======
 	<header class="header" style="position: fixed; z-index: 2; background-color: white;">
 		<section class="nav_wrap">
 			<div class="inner_wrap">
@@ -363,7 +302,7 @@ header.header .nav_wrap nav.main {
 									>문의게시판</a>
 									</li>
 									</li>
-									<li class="selected"><a class="submenu_title" href="http://localhost:9090/final/chatting"
+									<li class="selected"><a class="submenu_title" href="http://localhost:9090/final/new?name=${member.ID}"
 									>채팅</a>
 									</li>
 								</ul>
@@ -392,6 +331,69 @@ header.header .nav_wrap nav.main {
 			</div>
 		</section>
 	</header>
+=======
+   <header class="header" style="position: fixed; z-index: 2; background-color: white;">
+      <section class="nav_wrap">
+         <div class="inner_wrap">
+            <a href="main"><img class="logo"
+               src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile6.uf.tistory.com%2Fimage%2F277027375874594F095C54"></a>
+            <nav class="main">
+               <ul class="main_cate">
+                  <li id="main_auction" class="menu"><a class="menu_title"
+                     href="showAuctionNormal">경매</a>
+                     <div class="contextual">
+                        <ul class="depth_1">
+                           <li class="selected" style="margin: 0;"><a class="submenu_title"
+                              href="showAuctionNormal">온라인 경매</a>
+                              
+                           <li class="selected"><a class="submenu_title"
+                              href="showAuctionBlind">블라인드 경매</a>
+                           </li>
+                        </ul>
+                     </div></li>
+                  <li id="main_service" class="menu"><a class="menu_title"
+                     href="서비스소개페이지">서비스 소개</a>
+                     <div class="contextual">
+                        
+                     </div></li>
+                  <li id="main_customer" class="menu"><a class="menu_title"
+                     href="http://localhost:9090/final/notice?offset=0">고객센터</a>
+                     <div class="contextual">
+                        <ul class="depth_1">               
+                           <li class="selected"><a class="submenu_title" href="http://localhost:9090/final/notice?offset=0"
+                           >공지사항</a>
+                           <li class="selected"><a class="submenu_title" href="http://localhost:9090/final/qnaBoard?offset=0"
+                           >문의게시판</a>
+                           </li>
+                           </li>
+                           <li class="selected"><a href="http://localhost:9090/final/new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="link">채팅</a>
+                           </li>
+                        </ul>
+                     </div></li>
+               </ul>
+            </nav>
+            <div class="search">
+               <a href="검색"><img class="search_img"
+                  src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw="></a>
+            </div>
+            <div class="login">
+            <c:choose>
+                  <c:when test="${member.grade eq null }">
+                        <a href="javascript:popup()">로그인</a>
+                  </c:when>
+                  <c:when test="${member.grade eq 'z' }">
+                        <a href="logout">로그아웃</a>
+                        <a href="admin" style="margin-left: 20px;">관리자 페이지</a>
+                  </c:when>
+                  <c:otherwise>
+                        <a href="logout">로그아웃</a>
+                        <a href="myPage" style="margin-left: 20px;">마이페이지</a>
+                  </c:otherwise>
+            </c:choose>
+            </div>
+         </div>
+      </section>
+   </header>
 >>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 </body>
 </html>
