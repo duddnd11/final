@@ -29,6 +29,7 @@ public class ProductVo {
 	private int lastmoney;
 	private int moneyup;
 	private String grade;
+	private String getcustomer;
 	
 	public ProductVo() {}
 
@@ -89,6 +90,16 @@ public class ProductVo {
 	
 
 
+
+
+	public String getGetcustomer() {
+		return getcustomer;
+	}
+
+
+	public void setGetcustomer(String getcustomer) {
+		this.getcustomer = getcustomer;
+	}
 
 
 	public String getGrade() {

@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 </head>
 <style>
@@ -20,7 +21,7 @@
 	}
 </style>
 <body>
-<div id="container" style="width: -webkit-fill-available; margin-top: 200px;">
+<div id="container" style="width: -webkit-fill-available; margin-top:200px">
 	<h2 style="text-align: center; margin-left: -200px; font-size: 30px;">온라인 경매</h2>
 	<div style="width: 300px; height: 1000px; position: fixed;">
 	<c:forEach var="category" items="${category}">
@@ -39,7 +40,16 @@
 			<a href="showDetail?pno=${vo.pno }"><img src="${vo.image }"/></a>	
 		</c:if>
 		<c:if test="${vo.image eq null }">
-			<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img1 }"/></a> <br/>
+			<a href="showDetail?pno=${vo.pno }">
+			<c:choose>
+				<c:when test="${vo.img1 ne '(이름없음)' }">
+				<img src="resources/images/${vo.img1 }"/>
+				</c:when>
+				<c:otherwise>
+				<img src="resources/images/${vo.img2 }"/>
+				</c:otherwise>
+			</c:choose>
+			</a> <br/>
 		</c:if>
 		<p><b><a href="showDetail?pno=${vo.pno }">${vo.pname }</a></b></p>
 		<p>마감날: ${fn:substring(dead,0,10) }</p>

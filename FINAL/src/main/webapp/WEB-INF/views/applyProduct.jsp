@@ -15,14 +15,15 @@
 <script src="resources/js/plmi.js"></script>
 
 <style>
-	table{
+	body {
+	    margin-top: 200px;
 			
 	}
 
 	form {
     margin-left: 420px;
     margin-top: 20px;
-    height: 1100px;
+    height: 700px;
 }
 	th{
 		text-align: right;
@@ -67,9 +68,11 @@
 	<tr>
 		<th>사진</th> 
 			<td> 
-			 <input type="file" name="multiparts"/><br/>
-		     <input type="file" name="multiparts"/>
+			 <input type="file" name="multiparts" accept="image/*" onchange="setThumbnail(event);"/><br/>
+		     <input type="file" name="multiparts" accept="image/*" onchange="setThumbnail(event);"/>
+		    <div id="image_container"></div>
 		    </td>
+
 	</tr>
 	<tr>
 		<th>가격</th> 
@@ -109,9 +112,9 @@
 		<th>카테고리</th> 
 			<td>	
 			<select name="category" style="margin-left: 30px; vertical-align: middle; text-align-last: center;">
-					<option value="art">미술품</option>
-					<option value="toy">장난감</option>
-					<option value="doll">인형</option>										
+					<option value="미술품">미술품</option>
+					<option value="장난감">장난감</option>
+					<option value="인형">인형</option>										
 			</select>
 			</td>
 	</tr>
@@ -120,5 +123,16 @@
 	</form>
 </body>
 <script>
+function setThumbnail(event) { 
+	var reader = new FileReader(); 
+	reader.onload = function(event) {
+		var img = document.createElement("img"); 
+		img.setAttribute("src", event.target.result); 
+		document.querySelector("div#image_container").appendChild(img); 
+		}; 
+		reader.readAsDataURL(event.target.files[0]); 
+	}
+
+
 </script>
 </html>

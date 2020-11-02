@@ -65,17 +65,12 @@ public class ProductController {
 		int result = service.insertProduct(vo);
 		if(result == 1) {
 			System.out.println("등록됨!!!!");
+		}else {
+			System.out.println("등록...안됨..");
 		}
 		model.addAttribute("result", result);
-//		return "mypage";
+		return "myPage";
 		
-		vo.setImg1(vo.getFilenames().split("_!_")[0]);
-		vo.setImg2(vo.getFilenames().split("_!_")[1]);
-				
-		List<ProductVo> list = service.selectAuctionBlind();
-		list.add(vo);
-		model.addAttribute("vo", list);
-		return "showAuctionBlind";
 	}
 	
 	public void setImg(List<ProductVo> list) {
@@ -152,6 +147,7 @@ public class ProductController {
 		}
 		setImg(listShowBlind);
 		setImg(listCategory);
+		
 		model.addAttribute("category", categoryMenu);
 		if(category==null) {
 			model.addAttribute("voListShowBlind", listShowBlind);
@@ -183,20 +179,17 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/insertAuction")
-	public String insertAuction(HttpSession session, HttpServletResponse res, Model model, int pno, int myprice) throws IOException {
+	public String insertAuction(HttpSession session, HttpServletResponse res, Model model, int pno, int myprice, int moneyup) {
 		MemberVo ID =  (MemberVo) session.getAttribute("member");
 		if(ID==null) {
 			return "login";
 		}
 		String id = ID.getID();
-		AuctionVo vo = new AuctionVo(id, pno, myprice);
+		AuctionVo vo = new AuctionVo(id, pno, myprice+moneyup);
 		int result = service.insertAuction(vo);
 		if(result==2) {
 			System.out.println("입찰됨!!!");
 		}
-		res.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = res.getWriter();
-		out.println("<script>alert('입찰됨!!!');</script>");
 
 		return "redirect:/showDetail?pno="+pno;
 	}

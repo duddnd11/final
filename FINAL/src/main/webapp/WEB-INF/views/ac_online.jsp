@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-=======
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +9,7 @@
 </head>
 <body>
 	<hr>
-<<<<<<< HEAD
 	<div class="content">
-=======
 	<div class="auction_list_header">
 		<div class="wrapper">
 			<h2 id="auction_title">온라인 경매</h2>
@@ -34,17 +27,11 @@
 		</div>
 	</div>
 	<div class="content">
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 		<aside>
-<<<<<<< HEAD
-			<h3>ī�װ�</h3>
-			<div></div>
-=======
 			<h3>카테고리</h3>
 			<div>
 				
 			</div>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 		</aside>
 		<main>
 			<div id="product_list">
@@ -52,9 +39,6 @@
 					<li class="group">
 						<figure>
 							<div class="wrapper">
-<<<<<<< HEAD
-								<img src="��ǰ �̹���">
-=======
 								<img src="상품 이미지">
 								<div>
 									<span class="title">
@@ -63,7 +47,6 @@
 																				
 									</span>
 								</div>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 							</div>
 							<figcaption>
 								<span class="title"> 
