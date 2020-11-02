@@ -1,11 +1,12 @@
 package com.kk.controller;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,17 +65,12 @@ public class ProductController {
 		int result = service.insertProduct(vo);
 		if(result == 1) {
 			System.out.println("등록됨!!!!");
+		}else {
+			System.out.println("등록...안됨..");
 		}
 		model.addAttribute("result", result);
-//		return "mypage";
+		return "myPage";
 		
-		vo.setImg1(vo.getFilenames().split("_!_")[0]);
-		vo.setImg2(vo.getFilenames().split("_!_")[1]);
-				
-		List<ProductVo> list = service.selectAuctionBlind();
-		list.add(vo);
-		model.addAttribute("vo", list);
-		return "showAuctionBlind";
 	}
 	
 	public void setImg(List<ProductVo> list) {
@@ -151,6 +147,7 @@ public class ProductController {
 		}
 		setImg(listShowBlind);
 		setImg(listCategory);
+		
 		model.addAttribute("category", categoryMenu);
 		if(category==null) {
 			model.addAttribute("voListShowBlind", listShowBlind);
@@ -175,10 +172,6 @@ public class ProductController {
 			vo.setImg2(vo.getFilenames().split("_!_")[1]);
 			vo.setImage(null);
 		}
-		SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
-		Date time = new Date();
-		String time1 = format1.format(time);
-		vo.setToday(time1);
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
 		model.addAttribute("ID", ID);
@@ -186,18 +179,18 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/insertAuction")
-	public String insertAuction(HttpSession session, Model model, int pno, int myprice) {
+	public String insertAuction(HttpSession session, HttpServletResponse res, Model model, int pno, int myprice, int moneyup) {
 		MemberVo ID =  (MemberVo) session.getAttribute("member");
 		if(ID==null) {
 			return "login";
 		}
 		String id = ID.getID();
-		AuctionVo vo = new AuctionVo(id, pno, myprice);
+		AuctionVo vo = new AuctionVo(id, pno, myprice+moneyup);
 		int result = service.insertAuction(vo);
 		if(result==2) {
 			System.out.println("입찰됨!!!");
 		}
-		model.addAttribute("result", result);
+
 		return "redirect:/showDetail?pno="+pno;
 	}
 	

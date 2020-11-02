@@ -29,7 +29,7 @@ public class ProductVo {
 	private int lastmoney;
 	private int moneyup;
 	private String grade;
-	private String today;
+	private String getcustomer;
 	
 	public ProductVo() {}
 
@@ -90,13 +90,15 @@ public class ProductVo {
 	
 
 
-	public String getToday() {
-		return today;
+
+
+	public String getGetcustomer() {
+		return getcustomer;
 	}
 
 
-	public void setToday(String today) {
-		this.today = today;
+	public void setGetcustomer(String getcustomer) {
+		this.getcustomer = getcustomer;
 	}
 
 
