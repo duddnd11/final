@@ -49,7 +49,9 @@
                str+="</li>";
                $(".topUl").append(str);
             }else if(response.level==1){
-               var   str="<div class='reComment'>→"+response.comment+" "+response.date+"</div>";
+               var str="<div class='reComment'>"
+                   str+="<span style='font-size: 12px; color: #cccccc; margin-left: 20px;'>"+response.date+"</span><br/>";
+              		str+="<span style='margin-left: 20px;'>"+response.comment+"</span></div>";
                $(".reCommentMenu"+response.ref).append(str);
             }
          },

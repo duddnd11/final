@@ -15,17 +15,22 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class ChatRoom {
 	private String roomId; 
 	private String name; // 방이름
+	private String user; // 유저이름
+	private String userId; // 유저아이디
 	private Set<WebSocketSession> sessions = new HashSet<>(); // 접속 세션
 	
 	// 방생성
-	public static ChatRoom create(String name) {
+	public static ChatRoom create(String name,String user,String userId) {
 		ChatRoom chatRoom = new ChatRoom();
 		chatRoom.roomId=UUID.randomUUID().toString();
 		chatRoom.name=name;
+		chatRoom.user=user;
+		chatRoom.userId=userId;
 		return chatRoom;
 	}
 	
 	public void handleMessage(WebSocketSession session, ChatMessage chatMessage, ObjectMapper objectMapper) throws IOException {
+		System.out.println(chatMessage.getMessage());
 		if(chatMessage.getType() == MessageType.ENTER) {
 			sessions.add(session);
 			chatMessage.setMessage(chatMessage.getWriter()+"님 입장");
@@ -40,7 +45,7 @@ public class ChatRoom {
 	
 	public void send(ChatMessage chatMessage, ObjectMapper objectMapper) throws IOException {
 		TextMessage textMessage = new TextMessage(objectMapper.writeValueAsString(chatMessage.getMessage()));
-		
+		System.out.println(textMessage);
 		for(WebSocketSession sess : sessions) {
 			sess.sendMessage(textMessage);
 		}
@@ -68,6 +73,22 @@ public class ChatRoom {
 
 	public void setSessions(Set<WebSocketSession> sessions) {
 		this.sessions = sessions;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	
 }

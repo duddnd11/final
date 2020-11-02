@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>공지사항</title>
 <style>
 	form{
@@ -81,7 +82,7 @@
 				<div class="wrap-link">
 				<a href="http://localhost:9090/final/notice?offset=0" class="link">공지사항</a>
 				<a href="http://localhost:9090/final/qnaBoard?offset=0" class="link">문의게시판</a>
-				<a href="http://localhost:9090/final/new?name=${member.ID}" class="link">채팅</a>
+				<a href="http://localhost:9090/final/new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="link">채팅</a>
 				</div>
 			</div>
 		</div>
