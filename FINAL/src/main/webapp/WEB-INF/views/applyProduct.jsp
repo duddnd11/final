@@ -24,11 +24,7 @@
 	form {
     margin-left: 450px;
     margin-top: 20px;
-<<<<<<< HEAD
-    height: 800px;
-=======
     height: 700px;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 	th{
 		text-align: right;
@@ -117,17 +113,10 @@
 	<tr>
 		<th>카테고리</th> 
 			<td>	
-<<<<<<< HEAD
-			<select class="category" name="category" style="margin-left: 30px; vertical-align: middle; text-align-last: center;">
-					<option value="art">미술품</option>
-					<option value="toy">장난감</option>
-					<option value="doll">인형</option>										
-=======
-			<select name="category" style="margin-left: 30px; vertical-align: middle; text-align-last: center;">
+			<select class="category"; name="category" style="margin-left: 30px; vertical-align: middle; text-align-last: center;">
 					<option value="미술품">미술품</option>
 					<option value="장난감">장난감</option>
 					<option value="인형">인형</option>										
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 			</select>
 			</td>
 	</tr>
@@ -136,8 +125,6 @@
 	</form>
 </div>
 </body>
-<<<<<<< HEAD
-=======
 <script>
 function setThumbnail(event) { 
 	var reader = new FileReader(); 
@@ -151,5 +138,4 @@ function setThumbnail(event) {
 
 
 </script>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 </html>
