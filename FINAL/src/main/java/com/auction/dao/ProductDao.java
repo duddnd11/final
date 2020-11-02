@@ -15,4 +15,5 @@ public interface ProductDao {
 	int insertAuction(AuctionVo vo);
 	List<ProductVo> showNormalCategory(String category);
 	List<ProductVo> showBlindCategory(String category);
+	int dealChage(int pno);
 }

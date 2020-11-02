@@ -105,4 +105,12 @@ public class ProductDaoImpl implements ProductDao {
 		return sqlSession.selectList("com.auction.mapper.ProductMapper.blindCategory", category);
 	}
 
+	@Override
+	public int dealChage(int pno) {
+		return sqlSession.update("com.auction.mapper.ProductMapper.dealChange", pno);
+		
+	}
+	
+	
+
 }

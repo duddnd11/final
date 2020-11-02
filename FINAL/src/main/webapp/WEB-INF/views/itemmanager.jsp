@@ -225,6 +225,96 @@ $(document).on("click","#btn5",function(){
       <button id="btn2" onclick="location.href='item?offset=0&admin=1&deal=-1'">승인</button>      <!-- 1.0 -->
       <button id="btn3" onclick="location.href='item?offset=0&admin=2&deal=-1'">거부</button>   <!-- 2.0 -->
 <br/>
+<<<<<<< HEAD
+		<button id="btn4" onclick="location.href='item?offset=0&admin=1&deal=1'">경매중</button>	<!-- 1.1 -->
+		<button id="btn5"onclick="location.href='item?offset=0&admin=1&deal=2'">마감</button>	<!-- 1.2 -->
+		<button id="menuBtn" style="float: right;"onclick="location.href='../admin'">메뉴로</button>
+	<c:choose>
+		<c:when test="${admin eq 0 }">
+			<h2>승인요청</h2>
+		</c:when>
+		<c:when test="${admin eq 1 }">
+			<c:if test="${deal eq -1 }">
+				<h2>승인</h2>
+			</c:if>
+			<c:if test="${deal eq 1 }">
+				<h2>경매중</h2>
+			</c:if>
+			<c:if test="${deal eq 2 }">
+				<h2>마감</h2>
+			</c:if>
+		</c:when>
+		<c:when test="${admin eq 2 }">
+			<h2>거절</h2>
+		</c:when>
+		<c:otherwise>
+			<h2>전체</h2>
+		</c:otherwise>
+	</c:choose>
+	<div id="container">
+		<table id="theTable">
+			<tr id="trr">
+				<th>번호</th>
+				<th>상품이름</th>
+				<th>아이디</th>
+				<th>등급</th>
+				<th>업로드 날짜</th>
+				<th>승인여부</th>
+				<!-- 승인여부 완료시 -->
+		<!--	<th>승인여부</th>
+				<th>경매여부</th>	-->
+			</tr>
+			<c:forEach var="list" items="${list }">
+				<tr id="del">
+					<td>${list.pno }</td>
+					<td><a href="../showDetail?pno=${list.pno }">${list.pname }</a></td>
+					<td>${list.ID }</td>
+					<td>${list.grade }</td>
+					<td>${list.uploaddate }</td>
+					<td><button id="admin" class="admin" style="margin: 10px;" onclick="location.href='approveItem?pno=${list.pno}'">승인</button>
+					<button onclick="location.href='rejectItem?pno=${list.pno}'">거절</button></td>
+					<!-- 
+					승인시
+					<td><button id="admin" class="admin" style="margin: 10px;">승인됨</button></td>
+					 
+					거절시
+					 <td><button id="admin" class="admin" style="margin: 10px;">거절됨</button></td>
+					 
+					 경매중 일시
+					 <td><button id="admin" class="admin" style="margin: 10px;">경매중</button></td>
+					 
+					 마감시
+					 <td><button id="admin" class="admin" style="margin: 10px;">마감됨</button></td>
+					 -->
+					
+		<!-- 		<td>${list.admin }</td>
+					<td>${list.deal }</td> -->
+				</tr>
+			</c:forEach>
+		</table>
+		<div class="pageDiv" style="margin-top: 60px; margin-left: 600px;">
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+
+			<form action="item" class="pageForm" style="padding: 5px;">
+			<c:choose>
+				<c:when test="${(offset+10)/10 eq i}">
+					<input type="submit" style= "font-weight:bold;" value="${i}"/>
+				</c:when>
+				<c:otherwise>
+					<input type="submit" value="${i}"/>
+				</c:otherwise>
+
+			</c:choose>
+
+
+				<input type="hidden" value="${i*10-10}" name="offset" class="offset"/>
+				<input type="hidden" value="${deal}" name="deal"/>
+				<input type="hidden" value="${admin}" name="admin" id="admin"/>
+			</form>
+			</c:forEach>
+		</div>
+	</div>
+=======
       <button id="btn4" onclick="location.href='item?offset=0&admin=1&deal=1'">경매중</button>   <!-- 1.1 -->
       <button id="btn5"onclick="location.href='item?offset=0&admin=1&deal=2'">마감</button>   <!-- 1.2 -->
       <button id="menuBtn" style="float: right;"onclick="location.href='../admin'">메뉴로</button>
@@ -313,5 +403,6 @@ $(document).on("click","#btn5",function(){
          </c:forEach>
       </div>
    </div>
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 </body>
 </html>

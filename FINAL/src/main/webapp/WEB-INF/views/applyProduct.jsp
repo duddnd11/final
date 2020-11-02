@@ -19,17 +19,22 @@
 	    margin-top: 200px;
 			
 	}
-
+	.ui-datepicker{ font-size: 15px; width: 400px; height: 300px;}
+	
 	form {
-    margin-left: 420px;
+    margin-left: 450px;
     margin-top: 20px;
+<<<<<<< HEAD
+    height: 800px;
+=======
     height: 700px;
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 	th{
 		text-align: right;
-		padding: 10px;
-		margin-top: 20px;
-		font-size: 30px;
+		padding: 5px;
+		margin-top: 10px;
+		font-size: 25px;
 	}
 	input{
 		margin-left: 30px;
@@ -37,7 +42,7 @@
 		width: 300px;
 	}
 	
-	select{
+	.category{
 		font-size: 20px;
 		width: 300px;
 		height: 40px;
@@ -58,6 +63,7 @@
 </style>
 </head>
 <body>
+<div id="container" style="margin-top: 200px;"">
 	<h2 style="text-align: center;">상품등록</h2>
 	<form action="applyProductAction" method="post" enctype="multipart/form-data">
 	<table>
@@ -111,17 +117,27 @@
 	<tr>
 		<th>카테고리</th> 
 			<td>	
+<<<<<<< HEAD
+			<select class="category" name="category" style="margin-left: 30px; vertical-align: middle; text-align-last: center;">
+					<option value="art">미술품</option>
+					<option value="toy">장난감</option>
+					<option value="doll">인형</option>										
+=======
 			<select name="category" style="margin-left: 30px; vertical-align: middle; text-align-last: center;">
 					<option value="미술품">미술품</option>
 					<option value="장난감">장난감</option>
 					<option value="인형">인형</option>										
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 			</select>
 			</td>
 	</tr>
 		</table>
-		<input id="apply" type="submit" value="승인 요청" style="width: 260px;height: 60px;margin-top: 50px;margin-left: 200px;">
+		<input id="apply" type="submit" value="승인 요청" style="width: 260px;height: 60px;margin-top: 20px;margin-left: 180px;">
 	</form>
+</div>
 </body>
+<<<<<<< HEAD
+=======
 <script>
 function setThumbnail(event) { 
 	var reader = new FileReader(); 
@@ -135,4 +151,5 @@ function setThumbnail(event) {
 
 
 </script>
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 </html>
