@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 </head>
 <style>
@@ -27,6 +28,11 @@
 	</c:forEach>
 	카테고리 --왼쪽에
 	</div>
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 	<div style="width: 1100px;display: flex; margin-left: 200px; ">
 	<ul>
 	<c:forEach var="vo" items="${voListShowBlind }">
@@ -36,10 +42,24 @@
 			<a href="showDetail?pno=${vo.pno }"><img src="${vo.image }"/></a>		
 		</c:if>
 		<c:if test="${vo.image eq null }">
-			<a href="showDetail?pno=${vo.pno }"><img src="resources/images/${vo.img1 }"/></a> <br/>
+			<a href="showDetail?pno=${vo.pno }">
+			<c:choose>
+				<c:when test="${vo.img1 ne '(이름없음)' }">
+				<img src="resources/images/${vo.img1 }"/>
+				</c:when>
+				<c:otherwise>
+				<img src="resources/images/${vo.img2 }"/>
+				</c:otherwise>
+			</c:choose>
+			</a> <br/>
 		</c:if>
 		<p><b><a href="showDetail?pno=${vo.pno }">${vo.pname }</a></b></p>
+<<<<<<< HEAD
 		<p>마감날: ${vo.deadlinedate }</p>
+=======
+	<c:set var="dead" value="${vo.deadlinedate }"/>
+		<p>마감날: ${fn:substring(dead,0,10) } </p>
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 		조회수: ${vo.hitcount }<span>&nbsp</span><span>&nbsp</span><span>&nbsp</span><span>&nbsp</span><span>&nbsp</span>
 		입찰수 ${vo.count }<br/>
 	</div>

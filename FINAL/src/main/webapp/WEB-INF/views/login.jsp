@@ -16,37 +16,47 @@
     <script src="resources/js/jquery-3.5.1.min.js"></script>
   <script>
         // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
-        Kakao.init('37ce67905ce0fd50ce6c67104e979081');
+        //Kakao.init('37ce67905ce0fd50ce6c67104e979081');
+        Kakao.init('8ea6851c46139f72cfdeecdff1f58acf');
         
         function loginWithKakao() {
+        Kakao.Auth.authorize({
+           redirectUri: "http://localhost:9090/final/result",
+            scope: 'account_email,birthday'
+        });
+		/*
         Kakao.Auth.login({
+        	scope: 'account_email,birthday',
           success: function(authObj) {
             //alert(JSON.stringify(authObj))
-            alert("로그인 성공")
+            alert("로그인 성공");
             console.log(authObj);
+            console.log(authObj.id);
           },
           fail: function(err) {
             // alert(JSON.stringify(err))
             alert("로그인 실패")
           },
-        })
-      }
-        // SDK 초기화 여부를 판단합니다.
-        console.log(Kakao.isInitialized());
-        
+        })*/
+        /*
         Kakao.API.request({
             url: '/v2/user/me',
             success: function(res) {
                 console.log(res);
                 var id = res.id;
-               
-                console.log(id);
-                
+                var name =res.properties["nickname"];
+                var email = res.properties["email"];
+                var birthday = res.properties["birthday"]
+            	location.href="naverLogin?name="+name+"&email="+email+"&birthday="+birthday+"&api='kakao'";
             },
             fail: function(error) {
                 console.log(error);
             }
         });
+        */
+      }
+        // SDK 초기화 여부를 판단합니다.
+        console.log(Kakao.isInitialized());
     </script> 
     <script>
     
@@ -135,7 +145,6 @@
             //console.log("Email: " + profile.getAccountEmail());
             //console.log("birth: "+profile.getBirthDay())
             console.log("email: "+profile.getEmail())
-            //console.log("birth: "+profile.getEmailAddresses())
 
             // The ID token you need to pass to your backend:
             var id_token = googleUser.getAuthResponse().id_token;

@@ -1,5 +1,8 @@
 package com.auction.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,6 +37,19 @@ public class MemberDaoImpl implements MemberDao {
 	@Override		//회원 정보 수정
 	public void memberUpdate(MemberVo vo) {
 		sqlSession.update("com.auction.mapper.SignUpMapper.memberUpdate", vo);
+	}
+
+	@Override
+	public int apiLogin(String id, String api) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("api", api);
+		return sqlSession.selectOne("com.auction.mapper.SignUpMapper.apiLogin", map);
+	}
+
+	@Override
+	public void insertApi(MemberVo vo) {
+		sqlSession.insert("com.auction.mapper.SignUpMapper.insertApi", vo);
 	}
 
 }
