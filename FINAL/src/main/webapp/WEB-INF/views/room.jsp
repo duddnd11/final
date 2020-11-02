@@ -62,8 +62,7 @@
 </script>
 </head>
 <body>
-	<input type="text" value="${room.roomId}"/><br/>
-	<input type="text" value="${room.name}"/><br/>
+	
 	<textarea rows="10" cols="50" readonly="readonly" id="data"></textarea>
 	<br />
 	<input type="text" id="message" />

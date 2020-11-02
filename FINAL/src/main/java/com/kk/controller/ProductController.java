@@ -1,11 +1,12 @@
 package com.kk.controller;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -182,7 +183,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/insertAuction")
-	public String insertAuction(HttpSession session, Model model, int pno, int myprice) {
+	public String insertAuction(HttpSession session, HttpServletResponse res, Model model, int pno, int myprice) throws IOException {
 		MemberVo ID =  (MemberVo) session.getAttribute("member");
 		if(ID==null) {
 			return "login";
@@ -193,7 +194,10 @@ public class ProductController {
 		if(result==2) {
 			System.out.println("입찰됨!!!");
 		}
-		model.addAttribute("result", result);
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = res.getWriter();
+		out.println("<script>alert('입찰됨!!!');</script>");
+
 		return "redirect:/showDetail?pno="+pno;
 	}
 	

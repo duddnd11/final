@@ -226,7 +226,7 @@ $(document).on("click","#btn5",function(){
 <br/>
 		<button id="btn4" onclick="location.href='item?offset=0&admin=1&deal=1'">경매중</button>	<!-- 1.1 -->
 		<button id="btn5"onclick="location.href='item?offset=0&admin=1&deal=2'">마감</button>	<!-- 1.2 -->
-		
+		<button id="menuBtn" style="float: right;"onclick="location.href='../admin'">메뉴로</button>
 	<c:choose>
 		<c:when test="${admin eq 0 }">
 			<h2>승인요청</h2>
@@ -258,7 +258,7 @@ $(document).on("click","#btn5",function(){
 				<th>등급</th>
 				<th>업로드 날짜</th>
 				<th>승인여부</th>
-				
+				<!-- 승인여부 완료시 -->
 		<!--	<th>승인여부</th>
 				<th>경매여부</th>	-->
 			</tr>
@@ -271,7 +271,19 @@ $(document).on("click","#btn5",function(){
 					<td>${list.uploaddate }</td>
 					<td><button id="admin" class="admin" style="margin: 10px;" onclick="location.href='approveItem?pno=${list.pno}'">승인</button>
 					<button onclick="location.href='rejectItem?pno=${list.pno}'">거절</button></td>
-					
+					<!-- 
+					승인시
+					<td><button id="admin" class="admin" style="margin: 10px;">승인됨</button></td>
+					 
+					거절시
+					 <td><button id="admin" class="admin" style="margin: 10px;">거절됨</button></td>
+					 
+					 경매중 일시
+					 <td><button id="admin" class="admin" style="margin: 10px;">경매중</button></td>
+					 
+					 마감시
+					 <td><button id="admin" class="admin" style="margin: 10px;">마감됨</button></td>
+					 -->
 					
 		<!-- 		<td>${list.admin }</td>
 					<td>${list.deal }</td> -->

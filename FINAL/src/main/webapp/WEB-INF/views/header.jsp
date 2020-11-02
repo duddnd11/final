@@ -11,6 +11,8 @@ function popup(){
 		var name = "login popup";
 		var option = "width = 550, height = 500, top = 100, left = 200, location = no"
 		window.open(url, name, option);
+		
+
 	}
 </script>
 <style>
@@ -197,12 +199,12 @@ header.header .nav_wrap nav.main {
 								<a href="javascript:popup()">로그인</a>
 						</c:when>
 						<c:when test="${member.grade eq 'z' }">
-								<a href="#">로그아웃</a>
-								<a href="admin">관리자 페이지</a>
+								<a href="logout">로그아웃</a>
+								<a href="admin" style="margin-left: 20px;">관리자 페이지</a>
 						</c:when>
 						<c:otherwise>
 								<a href="logout">로그아웃</a>
-								<a href="myPage">마이페이지</a>
+								<a href="myPage" style="margin-left: 20px;">마이페이지</a>
 						</c:otherwise>
 				</c:choose>
 				</div>

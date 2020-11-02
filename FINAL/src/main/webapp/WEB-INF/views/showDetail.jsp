@@ -124,7 +124,7 @@
 
    <c:if test="${ID.ID eq 'admin' }">
 
-      <div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: -20px;">   
+      <div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: 200px;">   
 
       <canvas id="myChart"></canvas>
       </div>
