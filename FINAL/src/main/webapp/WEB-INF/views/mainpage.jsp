@@ -2,7 +2,8 @@
    pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!doctype html>
+<!Doctype html>
+<html>
 <head>
 <meta charset="UTF-8">
 <title>main page</title>
@@ -56,8 +57,8 @@ small {
     margin:80px 0 50px 30px;
 }
 img {
-	width: 200px;
-	height: 200px;
+   width: 200px;
+   height: 200px;
 }
 
 </style>
@@ -67,14 +68,14 @@ img {
       <div class="swiper-container swiper1">
          <div class="swiper-wrapper">
             <div class="swiper-slide">
-				<c:forEach begin="0" end="4" var="showPop" items="${showPop }">
-						<c:if test="${showPop.image ne null }">
-							<a href="showDetail?pno=${showPop.pno }"><img src="${showPop.image }"/></a>	
-						</c:if>
-						<c:if test="${showPop.image eq null }">
-							<a href="showDetail?pno=${showPop.pno }"><img src="resources/images/${showPop.img1 }"/></a> <br/>
-						</c:if>
-				</c:forEach>
+            <c:forEach begin="0" end="4" var="showPop" items="${showPop }">
+                  <c:if test="${showPop.image ne null }">
+                     <a href="showDetail?pno=${showPop.pno }"><img src="${showPop.image }"/></a>   
+                  </c:if>
+                  <c:if test="${showPop.image eq null }">
+                     <a href="showDetail?pno=${showPop.pno }"><img src="resources/images/${showPop.img1 }"/></a> <br/>
+                  </c:if>
+            </c:forEach>
             </div>
          </div>
 
@@ -92,14 +93,14 @@ img {
       <div class="swiper-container swiper2">
          <div class="swiper-wrapper">
             <div class="swiper-slide">
-				<c:forEach var="showHurry" items="${showHurry }">
-						<c:if test="${showHurry.image ne null }">
-							<a href="showDetail?pno=${showHurry.pno }"><img src="${showHurry.image }"/></a>	
-						</c:if>
-						<c:if test="${showHurry.image eq null }">
-							<a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img1 }"/></a> <br/>
-						</c:if>
-					</c:forEach>               
+            <c:forEach var="showHurry" items="${showHurry }">
+                  <c:if test="${showHurry.image ne null }">
+                     <a href="showDetail?pno=${showHurry.pno }"><img src="${showHurry.image }"/></a>   
+                  </c:if>
+                  <c:if test="${showHurry.image eq null }">
+                     <a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img1 }"/></a> <br/>
+                  </c:if>
+               </c:forEach>               
             </div>
          </div>
 

@@ -9,7 +9,7 @@
 <body>
 	<script>
 		alert("로그아웃 되셨습니다.");	
-		document.location.href="http://localhost:9090/final/main";
+		document.location.href="main";
 	</script>
 </body>
 </html>
