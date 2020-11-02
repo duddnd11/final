@@ -9,9 +9,9 @@
 <body>
 	<script>
 		function popup(){
-				var url = "login/";
-				var name = "login popup";
-				var option = "width = 550, height = 500, top = 100, left = 200, location = no"
+				var url = "chatting2/";
+				var name = "chatting popup";
+				var option = "width = 450, height = 570, top = 400, left = 400, location = no"
 				window.open(url, name, option);
 			}
 	</script>

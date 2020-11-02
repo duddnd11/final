@@ -27,6 +27,7 @@
 </style>
 </head>
 <body>
+	<button id="menuBtn" style="float: right" onclick="location.href='../admin'">메뉴로</button>	
 	<div id="container">
 		<table>
 			<tr>

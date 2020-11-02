@@ -83,4 +83,23 @@ public class MemberHomeController {
 	public String myPage() {
 		return "myPage";
 	}
+	@RequestMapping(value="/result/naverLogin")
+	public String naverLogin(String id,String name, String email,String birthday,String api,HttpSession session) {
+		MemberVo vo = new MemberVo(id, "111", name, "주소", "11111", email, birthday, "c");
+		vo.setApi(api);
+		int apiCheck=service.apiLogin(id, api);
+		System.out.println("api중복체크:"+apiCheck);
+		System.out.println(id);
+		System.out.println(api);
+		if(apiCheck==0) {
+			service.insertApi(vo);
+		}
+		session.setAttribute("member", vo);
+		return "loginaction";
+	}
 }
+
+
+
+
+

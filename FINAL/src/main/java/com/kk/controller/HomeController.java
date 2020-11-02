@@ -51,6 +51,11 @@ public class HomeController {
 		
 		return "popup";
 	}
+	@RequestMapping(value = "/chatting2")
+	public String chatting2() {
+		
+		return "chatting2";
+	}
 //	@RequestMapping(value = "/login")
 //	public String login() {
 //		return "login";

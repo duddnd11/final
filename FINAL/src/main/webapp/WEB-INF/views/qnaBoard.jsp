@@ -92,7 +92,7 @@
 				<div class="wrap-link" style="">
 				<a href="http://localhost:9090/final/notice?offset=0" class="link">공지사항</a>
 				<a href="http://localhost:9090/final/qnaBoard?offset=0" class="link">문의게시판</a>
-				<a href="http://localhost:9090/final/chatting" class="link">채팅</a>
+				<a href="http://localhost:9090/final/new?name=${member.ID}" class="link">채팅</a>
 				</div>
 			</div>
 		</div>
