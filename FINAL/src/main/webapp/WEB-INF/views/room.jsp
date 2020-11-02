@@ -60,8 +60,58 @@
 		$("#data").append(data+"\n");
 	}
 </script>
+
+<style>
+
+		.wrapper-customer .wrap-aside {
+    margin-top: 60px;
+}
+.wrap-aside .aside {
+    float: left;
+}
+
+.aside-customer {
+    width: 158px;
+}
+.aside-customer .title {
+    padding: 10px 20px 0;
+    font-size: 23px;
+    color: #fff;
+    line-height: 90px;
+    background-color: #222;
+    font-family: 'ssgBan', sans-serif;
+}
+.aside{
+	margin-left: 40px;
+}
+.aside-customer .wrap-link {
+    padding: 0 10px;
+    border: 1px solid #ddd;
+}
+.aside-customer .wrap-link .link:first-of-type {
+    border-top: 0;
+}
+.aside-customer .wrap-link .link {
+    display: block;
+    padding: 0 5px;
+    border-top: 1px solid #ddd;
+    line-height: 50px;
+}
+</style>
 </head>
 <body>
+<div style="margin-top: 200px;">
+<div class="wrap-aside" style="position: fixed;">
+			<div class="aside aside-customer">
+				<p class="title">고객센터</p>
+				<div class="wrap-link">
+				<a href="http://localhost:9090/final/notice?offset=0" class="link">공지사항</a>
+				<a href="http://localhost:9090/final/qnaBoard?offset=0" class="link">문의게시판</a>
+				<a href="http://localhost:9090/final/new?name=${member.ID}" class="link">채팅</a>
+				</div>
+			</div>
+		</div>
+<div style="margin-left: 400px;">
 	<input type="text" value="${room.roomId}"/><br/>
 	<input type="text" value="${room.name}"/><br/>
 	<textarea rows="10" cols="50" readonly="readonly" id="data"></textarea>
@@ -71,6 +121,8 @@
 	<input type="button" value="채팅참여" id="chatting" />
 	<input type="button" value="퇴장" id="exit" />
 	<input type="text" value="${member.ID}" id="userId" />
+</div>
+</div>
 </body>
 </html>
 <%@ include file="footer.jsp" %>

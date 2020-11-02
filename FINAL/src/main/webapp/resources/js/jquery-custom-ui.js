@@ -3,7 +3,8 @@ function init(){
     showButtonPanel: true,
     changeYear: true,
     closeText: "Close",
-    yearRange: 'c-100:c+10'
+    yearRange: 'c-100:c+10',
+    dateFormat: "yy-mm-dd"
   });
   $( "select" ).selectmenu({
     width: 240,

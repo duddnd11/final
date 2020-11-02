@@ -12,10 +12,10 @@
 </head>
 <body>
 	로그인성공
-<script type="text/javascript">
+<script >
   var naver_id_login = new naver_id_login("J9LhL5HfjKG4bDjLYBHL", "http://localhost:9090/final/result/");
   // 접근 토큰 값 출력
- console.log(naver_id_login.oauthParams.access_token);
+  console.log(naver_id_login.oauthParams.access_token);
   // 네이버 사용자 프로필 조회
   naver_id_login.get_naver_userprofile("naverSignInCallback()");
   // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
@@ -24,9 +24,26 @@
 	var id= naver_id_login.getProfileData('id');
 	var name= naver_id_login.getProfileData('name');
 	var birthday = naver_id_login.getProfileData('birthday');
-	// 폰넘버 ,주소
-	//location.href="naverLogin?name="+name+"&email="+email+"&birthday="+birthday;
+	location.href="naverLogin?id="+id+"&name="+name+"&email="+email+"&birthday="+birthday+"&api=naver";
   }
+
+   Kakao.init('8ea6851c46139f72cfdeecdff1f58acf');
+	// 카카오
+	 Kakao.API.request({
+            url: '/v2/user/me',
+            success: function(res) {
+                console.log(res);
+                var id = res.id;
+                var name =res.properties["nickname"];
+                var email = res.kakao_account["email"];
+                var birthday = res.kakao_account["birthday"];
+            	location.href="result/naverLogin?id="+id+"&name="+name+"&email="+email+"&birthday="+birthday+"&api=kakao";
+            },
+            fail: function(error) {
+                console.log(error);
+            }
+        });
+
   
 </script>
 </body>

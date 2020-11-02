@@ -6,6 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+footer {
+    border-top: 6px solid #000;
+    margin-top: 140px;
+    display: block;
+}
+
 footer .foot_wrap {
 	display: table;
 	font-size: 15px;
@@ -16,15 +22,70 @@ footer .foot_wrap {
 }
 
 footer .foot_wrap .group {
-	display: table-cell;
-	padding: 84px 0 90px;
-	vertical-align: top;
+    display: table-cell;
+    padding: 90px 0 90px;
+    vertical-align: top;
+}
+
+footer .foot_wrap .group:nth-child(1) ul {
+    margin: 25px 0 25px;
 }
 
 footer .foot_wrap .group:nth-child(1) ul.agreements li {
-	float: left;
-	margin-bottom: 15px;
-	margin-right: 13px;
+    float: left;
+    margin-bottom: 15px;
+    margin-right: 13px;
+}
+
+footer .foot_wrap .group:nth-child(1) ul.agreements li a {
+    color: #333;
+    font-size: 12px;
+    font-family: Roboto,"Malgun Gothic",sans-serif;
+    text-align: left;
+    text-decoration: none;
+}
+
+footer .foot_wrap .group:nth-child(1) ul.agreements li a:hover {
+	text-decoration:underline;
+}
+
+footer .foot_wrap .group:nth-child(1) ul.information {
+    margin-top: 35px;
+}
+
+footer .foot_wrap .group:nth-child(1) ul.information li {
+    color: #999;
+    font-size: 11px;
+    font-family: Roboto,"Malgun Gothic",sans-serif;
+    margin-bottom: 2px;
+}
+
+#copyright {
+    color: #333;
+    font-size: 11px;
+    font-family: Roboto,"Malgun Gothic",sans-serif;
+    margin-left:40px;
+}
+
+footer .foot_wrap .group h6 {
+    color: #000;
+    font-size: 11px;
+    font-family: Futura Medium,"Trebuchet MS",Arial,sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    margin-left:40px;
+}
+
+footer .foot_wrap .group:nth-child(2) address {
+    margin-bottom: 35px;
+}
+
+footer .foot_wrap .group:nth-child(2) ul {
+    color: #999;
+    font-size: 12px;
+    font-family: Roboto,"Malgun Gothic",sans-serif;
+    width: 300px;
 }
 </style>
 </head>

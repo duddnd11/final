@@ -23,6 +23,14 @@ public class MemberVo {
 		this.birth = birth;
 		this.grade = grade;
 	}
+	
+	
+	public String getApi() {
+		return api;
+	}
+	public void setApi(String api) {
+		this.api = api;
+	}
 	public String getID() {
 		return ID;
 	}
@@ -72,13 +80,5 @@ public class MemberVo {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-	public String getApi() {
-		return api;
-	}
-	public void setApi(String api) {
-		this.api = api;
-	}
-	
-	
 	
 }

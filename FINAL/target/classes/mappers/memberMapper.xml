@@ -23,4 +23,7 @@
 	<insert id ="insertApi">
 		INSERT INTO member(ID, pw, name, addr, phonenum, email, birth, grade,api) VALUES(#{ID},#{pw}, #{name}, #{addr}, #{phonenum}, #{email}, #{birth}, #{grade},#{api})
 	</insert>
+	<select id="loginApi" resultType="com.auction.vo.MemberVo">
+	
+	</select>
 </mapper>

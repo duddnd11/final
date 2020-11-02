@@ -15,39 +15,44 @@
 <script src="resources/js/plmi.js"></script>
 
 <style>
+	table{
+			
+	}
+
 	form {
-    margin-left: 480px;
-    margin-top: 50px;
+    margin-left: 420px;
+    margin-top: 20px;
     height: 1100px;
 }
 	th{
 		text-align: right;
 		padding: 10px;
 		margin-top: 20px;
-		font-size: 20px;
+		font-size: 30px;
 	}
 	input{
 		margin-left: 30px;
 		font-size: 20px;
+		width: 300px;
 	}
 	
 	select{
 		font-size: 20px;
-		width: 260px;
+		width: 300px;
 		height: 40px;
 		text-align: center;
 	}
 	td{
 		padding: 10px;
-		margin-top: 20px;
+		margin-top: 30px;
 	}
 	#radio{
 		font-size: 20px;
 	}	
 	select option { text-align: center; }
 	h2{
-		font-size: 30px;
-		margin-top: 100px;
+		font-size: 40px;
+		margin-top: 50px;
 	}
 </style>
 </head>
@@ -57,7 +62,7 @@
 	<table>
 	<tr>
 		<th>이름</th> 
-		<td><input type="text"	name="pname"/></td>	
+		<td><input type="text"	name="pname"/ style=""></td>	
 	</tr>
 	<tr>
 		<th>사진</th> 
@@ -76,11 +81,10 @@
 	</tr>
 	<tr>
 		<th>경매 종류</th> 
-			<td id="radio">	
-					<input type="radio" name="auctionmenu" value="nomal" checked="checked" 
+			<td id="radio">		
+					<input type="radio" name="auctionmenu" value="일반" checked="checked" 
 					style="width: 15px; height: 15px;">일반경매 <!-- 일반/블라인드 만 선택 가능하게  -->
-					<input type="radio" name="auctionmenu" value="blind" 
-					style="width: 15px; height: 15px;">블라인드경매
+					<input type="radio" name="auctionmenu" value="블라인드" style="width: 15px; height: 15px;">블라인드경매
 			</td>
 	</tr>
 	<tr>
@@ -90,7 +94,7 @@
 						<button type="button" class="sp-sub-minus" onclick="optnQtyMinus($(this));" style="width: 40px; height: 32px;">
 							<b>-</b>
 						</button>
-							<input style=" width: 160px;margin-left: 0px;" type="tel" class="num" value="0" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
+							<input style=" width: 220px;margin-left: 0px;" type="tel" class="num" value="0" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
 							<button type="button" class="sp-sub-plus" onclick="optnQtyPlus($(this), '3091');" style="width: 40px; height: 32px;">
 								<b>+</b>
 							</button>
@@ -112,7 +116,9 @@
 			</td>
 	</tr>
 		</table>
-		<input id="apply" type="submit" value="승인 요청" style="width: 260px;height: 60px;margin-top: 50px;margin-left: 150px;">
+		<input id="apply" type="submit" value="승인 요청" style="width: 260px;height: 60px;margin-top: 50px;margin-left: 200px;">
 	</form>
 </body>
+<script>
+</script>
 </html>
