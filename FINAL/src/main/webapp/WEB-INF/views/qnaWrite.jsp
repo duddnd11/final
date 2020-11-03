@@ -9,7 +9,14 @@
 <title>문의글 쓰기</title>
 </head>
 <body>
+	<c:choose>
+	<c:when test="${member.grade ne 'z' }">
 	<form action="qnaWriteAction" style="margin-left: 500px; margin-top: 150px; font-size: 20px">
+	</c:when>
+	<c:otherwise>
+	<form action="noticeWrite" style="margin-left:500px; margin-top:150px; font-size :20px">
+	</c:otherwise>
+	</c:choose>
 		제목<br/>
 		<input type="text" name="title" placeholder="제목을 입력하세요"/ style="width: 500px; font-size: 20px"><br/>
 		내용<br/>

@@ -23,14 +23,14 @@
 </style>
 <body>
 <div id="container" style="width: -webkit-fill-available; margin-top:200px">
-	<h2 style="text-align: center; margin-left: -200px; font-size: 30px;">온라인 경매</h2>
+	<h2 style="text-align: center; font-size: 30px;">온라인 경매</h2>
 	<div style="width: 300px; height: 1000px; position: fixed;">
 	<c:forEach var="category" items="${category}">
 		<a href="showAuctionNormal?category=${category}">${category}</a><br/>
 	</c:forEach>
 	카테고리 --왼쪽에
 	</div>
-	<div style="width: 1100px;display: flex; margin-left: 200px; ">
+	<div style="width: 1100px; margin: 0 auto; ">
 	<ul>
 	<c:forEach var="vo" items="${list }">
 	<li style="margin-top: 50px;">

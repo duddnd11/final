@@ -27,7 +27,7 @@
 	location.href="naverLogin?id="+id+"&name="+name+"&email="+email+"&birthday="+birthday+"&api=naver";
   }
 
-   Kakao.init('8ea6851c46139f72cfdeecdff1f58acf');
+  Kakao.init('8ea6851c46139f72cfdeecdff1f58acf');
 	// 카카오
 	 Kakao.API.request({
             url: '/v2/user/me',

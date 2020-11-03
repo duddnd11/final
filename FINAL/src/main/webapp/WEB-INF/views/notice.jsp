@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <title>공지사항</title>
 <style>
 	form{
@@ -17,7 +18,7 @@
 		color: black;
 	}
 	table{
-		margin-left: 300px;
+		margin: 0 auto;
 		margin-top: 100px;
 		width: 1000px;
 		border-top: 1px solid black;
@@ -75,7 +76,7 @@
 </head>
 <body>
 <div style="margin-top: 200px;">
-<h2 style="text-align: center; margin-left: 50px; font-size: 30px;">공지사항</h2>
+<h2 style="text-align: center;  font-size: 30px;">공지사항</h2>
 	<div class="wrap-aside" style="position: fixed;">
 			<div class="aside aside-customer">
 				<p class="title">고객센터</p>
@@ -102,7 +103,7 @@
 		</tr>
 	</c:forEach>
 	</table>
-	<div style="margin-left: 760px; margin-top: 30px;">
+	<div style="margin-left: 48%; margin-top: 30px;">
 		<c:if test="${sp ne 0 }">
 			<!-- <a href="notice?offset=${offset-100}&keyword=${keyword}&searchMenu=${searchMenu}"><<</a> -->
 			<form action="notice" class="number">
@@ -155,7 +156,7 @@
 	</c:otherwise>
 	</c:choose>
 	<br/>
-	<form action="notice" style="margin-top: 50px; margin-left: 550px;">
+	<form action="notice" style="margin-top: 50px; margin-left: 38%;">
 		<select name="searchMenu">
 			<option value="titleAndContent">제목+내용</option>	
 			<option value="title" >제목</option>		
@@ -166,7 +167,9 @@
 		<input name="keyword" value="${keyword}"/ style="width: 300px; font-size: 15px;">
 		<input type="submit" value="조회"/>
 	</form>
+	<c:if test="${member.grade eq 'z' }">
 	<input type="button" value="공지사항 작성" onclick="location.href='qnaWrite'"/ style="float: right; margin-right: 220px;">
+	</c:if>
 </div>
 </body>
 <%@ include file="footer.jsp" %>
