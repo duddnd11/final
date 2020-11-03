@@ -17,6 +17,7 @@
    href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+   <script src="../package/swiper-bundle.min.js"></script>
 <title>Insert title here</title>
 
 </head>
@@ -70,24 +71,43 @@ function msg_time() {
     RemainDate = RemainDate - 1000; // 남은시간 -1초
   }
 }
+$(document).ready(function(){
+    $('.minislider').bxSlider({
+      auto: false,
+      autoControls: false,
+      stopAutoOnClick: true,
+      pager: true,
+      slideWidth: 400,
+      
+      minSlides: 1,
+      maxSlides: 2,
+      moveSlides: 1,
+    });
+  });
 </script>
 <body>
 <div style="margin-left: 300px;  margin-top: 200px;">
    <span style="font-size: 20px;"><b>${vo.pno }</b></span>
    <span style="margin-left: 30px; font-size: 20px;">${vo.pname }</span>
-   <div style="margin-top: 10px;">
+   <div style="margin-top: 10px;" >
+   
    <c:if test="${vo.image ne null }">
       <img src="${vo.image }"/>      
-   </c:if>   
-   <c:if test="${vo.image eq null }">
-      <c:if test="${vo.img1 ne '(이름없음)' }">
-      <img src="resources/images/${vo.img1 }"/><br/>
-      </c:if>
-      <c:if test="${vo.img2 ne '(이름없음)' }">
-      <img src="resources/images/${vo.img2 }"/> <br/>
-      </c:if>
    </c:if>
-   <br/>
+   <ul class="minislider">
+   <c:if test="${vo.image eq null }">
+   	 <li>
+      <c:if test="${vo.img1 ne '(이름없음)' }">
+      <img src="resources/images/${vo.img1 }"/>
+      </c:if>
+      </li>
+      <li>
+      <c:if test="${vo.img2 ne '(이름없음)' }">
+      <img src="resources/images/${vo.img2 }"/>
+      </c:if> 
+      </li>     
+   </c:if>     
+   </ul>
    </div>
    
    
