@@ -115,6 +115,7 @@ public class ProductController {
 			if(check==true) {
 				categoryMenu.add(vo.getCategory());
 			}
+			
 		}
 		setImg(list);
 		setImg(listCategory);
