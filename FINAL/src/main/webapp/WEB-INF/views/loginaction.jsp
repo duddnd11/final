@@ -9,11 +9,7 @@
   <script src="resources/js/jquery-3.5.1.min.js"></script>
 <title>Insert title here</title>
 <script>
-<<<<<<< HEAD
-	opener.parent.location.reload();
-=======
 opener.parent.location.reload();
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 	window.close();
 </script>
 

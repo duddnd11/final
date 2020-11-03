@@ -19,7 +19,6 @@
    //<![CDATA[
    var roomId = "${room.roomId}";
    //]]>
-   
    $(function(){
       $("#sendBtn").click(function(){
          sendMessage();
@@ -29,7 +28,6 @@
          sock= new SockJS("<c:url value="/chat"/>");
          sock.onopen = onOpen;
          sock.onmessage = onMessage;
-<<<<<<< HEAD
          sock.onclose = onClose;
          //$("#data").append($("#userId").val()+"님 채팅 입장\n");
       });
@@ -46,7 +44,7 @@
    
    //sock.onclose = onClose;
    function onOpen(){
-       sock.send(JSON.stringify({chatRoomId : roomId,type:'ENTER',writer:$("#userId").val()}));
+       sock.send(JSON.stringify({chatRoomId : roomId,type:'ENTER',writer:$("#userId").val(),grade:"${member.grade}"}));
       }
    function sendMessage(){
       sock.send(JSON.stringify({chatRoomId : roomId, type :'CHAT', writer:$("#userId").val(), message:$("#message").val()}));
@@ -55,44 +53,20 @@
    function onClose(){
 	   sock.send(JSON.stringify({chatRoomId : roomId,type:'LEAVE',writer:$("#userId").val()}));
    }
+   function enter(){
+		sock.send("채팅입장");
+	}
    // evt : websocket이 보내준 데이터
    function onMessage(evt){
       var data = evt.data;
       var sessionid = data.split(":")[0];
       var message = data.split(":")[1];
-      alert(sessionid);
-=======
-         $("#data").append($("#userId").val()+"님 채팅 입장\n");
-      });
-      $("#message").keydown(function(key){
-         if(key.keyCode==13){
-            sendMessage();
-            $("#message").val('');
-            }
-         });
-      $("#exit").click(function(){
-         sock.onclose = onClose;
-      });
-   });
-   
-   //sock.onclose = onClose;
-   function onOpen(){
-       sock.send(JSON.stringify({chatRoomId : roomId,type:'ENTER',writer:$("#userId").val()}));
-      }
-   function sendMessage(){
-      sock.send(JSON.stringify({chatRoomId : roomId, type :'CHAT', writer:$("#userId").val(), message:$("#message").val()}));
-      }
-   
-   function onClose(evt){
-      $("#data").append("연결 끊김");
-   }
-   // evt : websocket이 보내준 데이터
-   function onMessage(evt){
-      var data = evt.data;
-      var sessionid = null;
-      var message = null;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
-      $("#data").append(data+"\n");
+      var userid = $("#userId").val();
+      if(sessionid == userid){
+      		$("#data").append("나:"+message+"\n");
+      }else{
+      		$("#data").append(data+"\n");
+          }
    }
 </script>
 
@@ -141,11 +115,7 @@
             <div class="wrap-link">
             <a href="http://localhost:9090/final/notice?offset=0" class="link">공지사항</a>
             <a href="http://localhost:9090/final/qnaBoard?offset=0" class="link">문의게시판</a>
-<<<<<<< HEAD
             <a href="http://localhost:9090/final/new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="link">채팅</a>
-=======
-            <a href="http://localhost:9090/final/chatting" class="link">채팅</a>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
             </div>
          </div>
       </div>

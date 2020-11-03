@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <title>공지사항</title>
 <style>
 	form{
@@ -166,7 +167,9 @@
 		<input name="keyword" value="${keyword}"/ style="width: 300px; font-size: 15px;">
 		<input type="submit" value="조회"/>
 	</form>
+	<c:if test="${member.grade eq 'z' }">
 	<input type="button" value="공지사항 작성" onclick="location.href='qnaWrite'"/ style="float: right; margin-right: 220px;">
+	</c:if>
 </div>
 </body>
 <%@ include file="footer.jsp" %>

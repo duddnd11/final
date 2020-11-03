@@ -6,6 +6,7 @@ public class NoticeVo {
 	private String content;
 	private String date;
 	private String category;
+	private String ID;
 	
 	public int getNbo() {
 		return nbo;
@@ -36,6 +37,12 @@ public class NoticeVo {
 	}
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	public String getID() {
+		return ID;
+	}
+	public void setID(String iD) {
+		ID = iD;
 	}
 	
 	

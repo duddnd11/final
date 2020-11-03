@@ -1,7 +1,9 @@
 package com.auction.handler;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -9,7 +11,6 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import com.auction.handler.ChatMessage.MessageType;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ChatRoom {
@@ -17,8 +18,9 @@ public class ChatRoom {
 	private String name; // 방이름
 	private String user; // 유저이름
 	private String userId; // 유저아이디
+	private String grade;	// 유저 등급
 	private Set<WebSocketSession> sessions = new HashSet<>(); // 접속 세션
-	
+
 	// 방생성
 	public static ChatRoom create(String name,String user,String userId) {
 		ChatRoom chatRoom = new ChatRoom();
@@ -30,7 +32,6 @@ public class ChatRoom {
 	}
 	
 	public void handleMessage(WebSocketSession session, ChatMessage chatMessage, ObjectMapper objectMapper) throws IOException {
-		System.out.println(chatMessage.getMessage());
 		if(chatMessage.getType() == MessageType.ENTER) {
 			sessions.add(session);
 			chatMessage.setMessage(chatMessage.getWriter()+"님 입장");
@@ -44,10 +45,11 @@ public class ChatRoom {
 	}
 	
 	public void send(ChatMessage chatMessage, ObjectMapper objectMapper) throws IOException {
-		TextMessage textMessage = new TextMessage(objectMapper.writeValueAsString(chatMessage.getMessage()));
-		System.out.println(textMessage);
+//		TextMessage textMessage = new TextMessage(objectMapper.writeValueAsString(chatMessage.getMessage()));
+		TextMessage textMessage = new TextMessage(chatMessage.getMessage());
+		System.out.println("메시지:"+textMessage);
 		for(WebSocketSession sess : sessions) {
-			sess.sendMessage(textMessage);
+				sess.sendMessage(textMessage);
 		}
 	}
 	
