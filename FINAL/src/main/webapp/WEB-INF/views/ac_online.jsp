@@ -8,10 +8,6 @@
 </head>
 <body>
 	<hr>
-<<<<<<< HEAD
-=======
-	<div class="content">
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 	<div class="auction_list_header">
 		<div class="wrapper">
 			<h2 id="auction_title">온라인 경매</h2>
