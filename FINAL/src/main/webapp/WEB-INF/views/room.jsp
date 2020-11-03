@@ -14,6 +14,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+/*
    var sock;
    //var nickname;
    //<![CDATA[
@@ -68,6 +69,7 @@
       		$("#data").append(data+"\n");
           }
    }
+   */
 </script>
 
 <style>

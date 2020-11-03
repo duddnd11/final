@@ -230,6 +230,10 @@ $(document).on("click","#btn5",function(){
       <button id="btn2" onclick="location.href='item?offset=0&admin=1&deal=-1'">승인</button>      <!-- 1.0 -->
       <button id="btn3" onclick="location.href='item?offset=0&admin=2&deal=-1'">거부</button>   <!-- 2.0 -->
 <br/>
+<<<<<<< HEAD
+
+=======
+>>>>>>> refs/remotes/origin/main
 		<button id="btn4" onclick="location.href='item?offset=0&admin=1&deal=1'">경매중</button>	<!-- 1.1 -->
 		<button id="btn5"onclick="location.href='item?offset=0&admin=1&deal=2'">마감</button>	<!-- 1.2 -->
 		<button id="menuBtn" style="float: right;"onclick="location.href='../admin'">메뉴로</button>
@@ -319,5 +323,9 @@ $(document).on("click","#btn5",function(){
 			</c:forEach>
 		</div>
 	</div>
+<<<<<<< HEAD
+
+=======
+>>>>>>> refs/remotes/origin/main
 </body>
 </html>
