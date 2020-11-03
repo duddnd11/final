@@ -96,7 +96,7 @@ $(document).ready(function(){
    </c:if>
    <ul class="minislider">
    <c:if test="${vo.image eq null }">
-   	 <li>
+       <li>
       <c:if test="${vo.img1 ne '(이름없음)' }">
       <img src="resources/images/${vo.img1 }"/>
       </c:if>
@@ -266,9 +266,9 @@ function alertMsgBlind(){
    if (confirm("입찰하겠?")) {
         // 확인 버튼 클릭 시 동작
         if($("#btnQtyC3_1000020518522").val() == 0){
-			alert("가격을 입력하세요!!");
+         alert("가격을 입력하세요!!");
         }else{
-      		location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val()+'&moneyup=0';
+            location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val()+'&moneyup=0';
         }
     } else {
         // 취소 버튼 클릭 시 동작
@@ -313,4 +313,3 @@ $(document).ready(function(){
 </body>
 </html>
    <%@ include file="footer.jsp" %>
-
