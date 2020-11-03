@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +35,6 @@
 	<c:forEach var="vo" items="${list }">
 	<li style="margin-top: 50px;">
 	<div style="margin-left: 50px; width: 200px; display: block;" >
-	
 	<c:if test="${vo.image ne null }">
 			<a href="showDetail?pno=${vo.pno }"><img src="${vo.image }"/></a>	
 		</c:if>
@@ -49,8 +50,21 @@
 			</c:choose>
 			</a> <br/>
 		</c:if>
-		<p><b><a href="showDetail?pno=${vo.pno }">${vo.pname }</a></b></p>
-		<p>마감날: ${vo.deadlinedate }</p>
+	<div style="width :189.13px; height :21.6px;">
+	<c:set var="name" value="${vo.pname }"/>
+		<p><b><a href="showDetail?pno=${vo.pno }">
+		<c:choose>
+	        <c:when test="${fn:length(name) gt 13}">
+	        	<c:out value="${fn:substring(name, 0, 12)}..."></c:out>
+	        </c:when>
+	        <c:otherwise>
+	        	<c:out value="${vo.pname }"></c:out>
+	        </c:otherwise>
+		</c:choose>
+		</a></b></p>
+	</div>
+	<c:set var="dead" value="${vo.deadlinedate }"/>
+		<p>마감날: ${fn:substring(dead,0,10) } </p>
 		조회수: ${vo.hitcount }<span>&nbsp</span><span>&nbsp</span><span>&nbsp</span><span>&nbsp</span><span>&nbsp</span>
 		입찰수 ${vo.count }<br/></p>
 	</div>

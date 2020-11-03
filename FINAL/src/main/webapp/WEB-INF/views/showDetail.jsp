@@ -63,7 +63,7 @@ function msg_time() {
   m = hours + ":" +  miniutes + ":" + seconds ; 
   document.all.timer.innerHTML = m;   
   
-  if (RemainDate < 0) {      //시간 종료
+  if (RemainDate == 0) {      //시간 종료
     location.href="rejectAction?pno=${vo.pno}&grade=${ID.grade}";
     clearInterval(tid);   // 타이머 해제
   }else{
@@ -81,7 +81,7 @@ function msg_time() {
    </c:if>   
    <c:if test="${vo.image eq null }">
       <c:if test="${vo.img1 ne '(이름없음)' }">
-      <img src="resources/images/${vo.img1 }"/>
+      <img src="resources/images/${vo.img1 }"/><br/>
       </c:if>
       <c:if test="${vo.img2 ne '(이름없음)' }">
       <img src="resources/images/${vo.img2 }"/> <br/>
@@ -200,7 +200,7 @@ function msg_time() {
          
          <c:otherwise>
             <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
-            <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="alertMsg()">입찰</button>
+            <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="alertMsgBlind()">입찰</button>
          </c:otherwise>
       </c:choose>
    </div>
@@ -223,18 +223,20 @@ function rejectAlert(){
 }
 
 var myprice2 = 0;
+var moneyup2 = 0;
 <c:choose>
    <c:when test="${vo.bestmoney == 0  }">
       myprice2 = ${vo.startmoney };
    </c:when>
    <c:otherwise>
       myprice2 = ${vo.bestmoney };
+      moneyup2 = ${vo.moneyup };
    </c:otherwise>
 </c:choose>   
 function alertMsg(){
    if (confirm("입찰하겠?")) {
         // 확인 버튼 클릭 시 동작
-      location.href='insertAuction?pno=${vo.pno}&myprice='+myprice2+'&moneyup=${vo.moneyup }';
+      location.href='insertAuction?pno=${vo.pno}&myprice='+myprice2+'&moneyup='+moneyup2;
     } else {
         // 취소 버튼 클릭 시 동작
     }
@@ -243,7 +245,11 @@ function alertMsg(){
 function alertMsgBlind(){
    if (confirm("입찰하겠?")) {
         // 확인 버튼 클릭 시 동작
-      location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val()+'&moneyup=0';
+        if($("#btnQtyC3_1000020518522").val() == 0){
+			alert("가격을 입력하세요!!");
+        }else{
+      		location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val()+'&moneyup=0';
+        }
     } else {
         // 취소 버튼 클릭 시 동작
     }

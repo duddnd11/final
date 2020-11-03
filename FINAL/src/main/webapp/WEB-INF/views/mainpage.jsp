@@ -74,12 +74,14 @@ img {
                      <a href="showDetail?pno=${showPop.pno }"><img src="${showPop.image }"/></a>   
                   </c:if>
                   <c:if test="${showPop.image eq null }">
-						<c:if test="${showPop.img1 ne '(이름없음)' }">
+                  	<c:choose>
+						<c:when test="${showPop.img1 ne '(이름없음)' }">
 							<a href="showDetail?pno=${showPop.pno }"><img src="resources/images/${showPop.img1 }"/></a> <br/>
-						</c:if>
-						<c:if test="${showPop.img2 ne '(이름없음)' }">
+						</c:when>
+						<c:otherwise>
 							<a href="showDetail?pno=${showPop.pno }"><img src="resources/images/${showPop.img2 }"/></a> <br/>
-						</c:if>
+						</c:otherwise>
+                  	</c:choose>
                   </c:if>
             </div>
             </c:forEach>
@@ -104,12 +106,14 @@ img {
                      <a href="showDetail?pno=${showHurry.pno }"><img src="${showHurry.image }"/></a>   
                   </c:if>
                   <c:if test="${showHurry.image eq null }">
-						<c:if test="${showHurry.img1 ne '(이름없음)' }">
+                  <c:choose>
+						<c:when test="${showHurry.img1 ne '(이름없음)' }">
 							<a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img1 }"/></a> <br/>
-						</c:if>
-						<c:if test="${showHurry.img2 ne '(이름없음)' }">
+						</c:when>
+						<c:otherwise>
 							<a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img2 }"/></a> <br/>
-						</c:if>
+						</c:otherwise>
+                  </c:choose>
                   </c:if>
             </div>
                </c:forEach>               
