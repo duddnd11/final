@@ -66,7 +66,7 @@ public class MemberHomeController {
 		String sha256_en = SHA256Util.encrypt(str);
 		System.out.println("SHA256 암호화 : "+sha256_en);
 		return sha256_en;
-}
+	}
 	
 	@RequestMapping(value = "/signupaction")	//등록처리
 	public String insertPost(RedirectAttributes redirectattributes, MemberVo vo) throws Exception{
@@ -84,6 +84,7 @@ public class MemberHomeController {
 	}
 	@RequestMapping(value = "/memberaction")
 	public String UpdateAction(MemberVo vo, HttpSession session) {
+		vo.setPw(util(vo.getPw()));
 		service.memberUpdate(vo);
 		session.invalidate();
 		
