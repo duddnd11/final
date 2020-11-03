@@ -115,6 +115,7 @@ public class ProductController {
 			if(check==true) {
 				categoryMenu.add(vo.getCategory());
 			}
+			
 		}
 		setImg(list);
 		setImg(listCategory);
@@ -172,6 +173,13 @@ public class ProductController {
 			vo.setImg2(vo.getFilenames().split("_!_")[1]);
 			vo.setImage(null);
 		}
+		if(vo.getBestmoney() >= vo.getLastmoney()) {
+			if(service.dealChage(pno)==1) {
+				vo.setDeal(2);
+				System.out.println("deal :"+vo.getDeal());
+				
+			}
+		}
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
 		model.addAttribute("ID", ID);
@@ -192,6 +200,16 @@ public class ProductController {
 		}
 
 		return "redirect:/showDetail?pno="+pno;
+	}
+	
+	@RequestMapping(value="/rejectAction")
+	public String rejectAction(int pno, String grade) {
+		if(grade.equals("z")) {
+			return "redirect:/showDetail?pno="+pno;
+		}
+		int result = service.dealChage(pno);
+		System.out.println("result: "+result);
+		return "redirect:/main";
 	}
 	
 }

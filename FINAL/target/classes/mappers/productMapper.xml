@@ -56,6 +56,11 @@
 	<select id="blindCategory" resultType="com.auction.vo.ProductVo">
 		SELECT * FROM product WHERE category=#{category} and auctionmenu='블라인드' and deal=1 ORDER BY uploaddate DESC;
 	</select>
+	
+	<!-- 마감 -->
+	<update id="dealChange">
+		update product set deal=2 where pno=#{pno};
+	</update>
 </mapper>
 
 

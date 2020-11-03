@@ -1,5 +1,10 @@
 package com.kk.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,8 +39,16 @@ public class ChatController {
 //	    }
 		//새로운 채팅방 생성
 		@RequestMapping(value = "/new")
-	    public String makeRoom(ChatRoomForm form,Model model){
-			ChatRoom room=chatRoomRepository.createChatRoom(form.getName());
+	    public String makeRoom(ChatRoomForm form,Model model,HttpServletResponse response) throws IOException{
+//			request.setCharacterEncoding("UTF-8");
+			PrintWriter out = response.getWriter();
+			response.setContentType("text/html; charset=UTF-8");
+			if(form.getUserId().equals("")) {
+				out.println("<script>alert('로그인이 필요합니다.'); location.href='notice?offset=0';</script>");
+				out.flush();
+//				return "redirect:/notice?offset=0";
+			}
+			ChatRoom room=chatRoomRepository.createChatRoom(form.getName(),form.getUser(),form.getUserId());
 	        model.addAttribute("room",room);
 	        return "room";
 	    }
