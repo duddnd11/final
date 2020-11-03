@@ -23,7 +23,7 @@
 </style>
 <body>
 <div id="container" style="width: 1700px; margin-top: 200px;">
-	<h2 style="text-align: center; margin-left: -200px; font-size: 30px;">블라인드 경매</h2>
+	<h2 style="text-align: center; font-size: 30px; margin-left: 10%">블라인드 경매</h2>
 	<div style="width: 300px; height: 1000px; position: fixed;">
 	<c:forEach var="category" items="${category}">
 		<a href="showAuctionBlind?category=${category}">${category}</a><br/>
@@ -32,7 +32,7 @@
 	</div>
 	
 	
-	<div style="width: 1100px;display: flex; margin-left: 200px; ">
+	<div style="width: 1100px; margin-left: 23%; ">
 	<ul>
 	<c:forEach var="vo" items="${voListShowBlind }">
 	<li style="margin-top: 50px;">

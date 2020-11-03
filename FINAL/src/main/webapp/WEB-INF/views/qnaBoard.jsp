@@ -14,7 +14,7 @@
 	}
 	
 	table{
-		margin-left: 300px;
+		margin: 0 auto;
 		margin-top: 100px;
 		width: 1000px;
 		border-top: 1px solid black;
@@ -86,7 +86,7 @@
 </head>
 <body>
 <div style="margin-top: 200px;">
-	<h2 style="text-align: center; margin-left: 50px; font-size: 30px;">문의게시판</h2>
+	<h2 style="text-align: center; font-size: 30px;">문의게시판</h2>
 	<div class="wrap-aside" style="position: fixed;">
 			<div class="aside aside-customer">
 				<p class="title">고객센터</p>
@@ -170,7 +170,7 @@
 	</c:otherwise>
 	</c:choose>
 	<br/>
-	<form action="qnaBoard" class="search2">
+	<form action="qnaBoard" class="search2" style="margin-left: 38%">
 		<select name="searchMenu">
 			<option value="titleAndContent">제목+내용</option>	
 			<option value="title" >제목</option>		

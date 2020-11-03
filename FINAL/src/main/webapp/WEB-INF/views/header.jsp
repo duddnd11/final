@@ -19,20 +19,90 @@ function popup(){
       window.open(url, name, option);
    }
 var sock;
-
+//var nickname;
+//<![CDATA[
+var roomId = "${room.roomId}";
+//]]>
 $(function(){
-       sock= new SockJS("<c:url value="/chat"/>");
-       sock.onopen = onOpen;
-       sock.onmessage = onMessage;
-       sock.onclose = onClose;
- });
- function onOpen(){ 
-	   sock.send(JSON.stringify({type:'ENTER',writer:"${member.ID}",grade:"${member.grade}"}));
- }
-function onMessage(evt){
-	alert(evt.data);
-	console.log(evt.data);
+	if(${member.grade !='z'}){
+		   $("#chatting").click(function(){
+			   alert("사용자");
+		      sock= new SockJS("<c:url value="/chat"/>");
+		      sock.onopen = onOpen;
+		      sock.onmessage = onMessage;
+		      sock.onclose = onClose;
+		      //$("#data").append($("#userId").val()+"님 채팅 입장\n");
+		   });
+		}else{
+				alert("관리자");
+		      sock= new SockJS("<c:url value="/chat"/>");
+		      sock.onopen = onOpen;
+		      sock.onmessage = onMessage;
+		      sock.onclose = onClose;
+			}
+   $("#sendBtn").click(function(){
+	  alert("ㅇㅇ");
+      sendMessage();
+      $("#message").val('');
+   });
+   $("#message").keydown(function(key){
+      if(key.keyCode==13){
+         sendMessage();
+         $("#message").val('');
+         }
+      });
+   $("#exit").click(function(){
+       onClose();
+   });
+});
+
+//sock.onclose = onClose;
+function onOpen(){
+    sock.send(JSON.stringify({chatRoomId : roomId,type:'ENTER',writer:$("#userId").val(),grade:"${member.grade}"}));
+   }
+function sendMessage(){
+   sock.send(JSON.stringify({chatRoomId : roomId, type :'CHAT', writer:$("#userId").val(), message:$("#message").val()}));
+   }
+
+function onClose(){
+	   sock.send(JSON.stringify({chatRoomId : roomId,type:'LEAVE',writer:$("#userId").val()}));
 }
+function enter(){
+		sock.send("채팅입장");
+	}
+// evt : websocket이 보내준 데이터
+function onMessage(evt){
+   var data = evt.data;
+   var sessionid = data.split(":")[0];
+   var message = data.split(":")[1];
+   var userid = $("#userId").val();
+   if(sessionid == userid){
+   		$("#data").append("나:"+message+"\n");
+   }else{
+   		$("#data").append(data+"\n");
+       }
+}
+
+
+
+   /*
+if(${member.grade == 'z'}){
+	var sock;
+	alert("관리자 입장");
+	$(function(){
+	       sock= new SockJS("<c:url value="/chat"/>");
+	       sock.onopen = onOpen;
+	       sock.onmessage = onMessage;
+	       sock.onclose = onClose;
+	 });
+		 function onOpen(){ 
+			   sock.send(JSON.stringify({type:'ENTER',writer:"${member.ID}",grade:"${member.grade}"}));
+		 }
+		function onMessage(evt){
+			alert(evt.data);
+			console.log(evt.data);
+		}
+}*/
 </script>
 <style>
 * {
@@ -40,6 +110,7 @@ function onMessage(evt){
 }
 header{
    top: 0px;
+   width: 100%;
 }
 .main {
    height: 30px;

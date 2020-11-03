@@ -18,7 +18,7 @@
 		color: black;
 	}
 	table{
-		margin-left: 300px;
+		margin: 0 auto;
 		margin-top: 100px;
 		width: 1000px;
 		border-top: 1px solid black;
@@ -76,7 +76,7 @@
 </head>
 <body>
 <div style="margin-top: 200px;">
-<h2 style="text-align: center; margin-left: 50px; font-size: 30px;">공지사항</h2>
+<h2 style="text-align: center;  font-size: 30px;">공지사항</h2>
 	<div class="wrap-aside" style="position: fixed;">
 			<div class="aside aside-customer">
 				<p class="title">고객센터</p>
@@ -103,7 +103,7 @@
 		</tr>
 	</c:forEach>
 	</table>
-	<div style="margin-left: 760px; margin-top: 30px;">
+	<div style="margin-left: 48%; margin-top: 30px;">
 		<c:if test="${sp ne 0 }">
 			<!-- <a href="notice?offset=${offset-100}&keyword=${keyword}&searchMenu=${searchMenu}"><<</a> -->
 			<form action="notice" class="number">
@@ -156,7 +156,7 @@
 	</c:otherwise>
 	</c:choose>
 	<br/>
-	<form action="notice" style="margin-top: 50px; margin-left: 550px;">
+	<form action="notice" style="margin-top: 50px; margin-left: 38%;">
 		<select name="searchMenu">
 			<option value="titleAndContent">제목+내용</option>	
 			<option value="title" >제목</option>		
