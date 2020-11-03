@@ -83,6 +83,10 @@ public class MemberHomeController {
 	public String myPage() {
 		return "myPage";
 	}
+	@RequestMapping(value="/deallist")
+	public String deallist() {
+		return "deallist";
+	}
 	@RequestMapping(value="/result/naverLogin")
 	public String naverLogin(String id,String name, String email,String birthday,String api,HttpSession session) {
 		MemberVo vo = new MemberVo(id, "111", name, "주소", "11111", email, birthday, "c");

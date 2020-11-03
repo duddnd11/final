@@ -5,15 +5,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>>채팅방</title>
+<style>
+	th{
+		border-bottom: 1px solid #cccccc;
+		padding: 10px;
+	}
+	td{
+		padding: 10px;
+	}
+	table{
+		text-align: center;
+		
+	}
+</style>
 </head>
 <body>
-	<div id="chatRooms">
+	<div id="chatRooms" style="margin-left: 400px; margin-top: 200px;">
+	<table style="width: 700px;">
+			<tr>
+				<th style="width: 150px;">방제목</th>
+				<th>방번호</th>
+				<th style="width: 60px;">방입장</th>
+			</tr>
 		<c:forEach items="${rooms}" var="rooms">
-			방제목 : ${rooms.name}<br/>
-			방번호(id) :${rooms.roomId}<br/>
-			<input type="button" onclick="location.href='room?id=${rooms.roomId}'" value="방입장"/>
+			<tr>
+			<td>${rooms.name}</td>
+			<td>${rooms.roomId}</td>
+			<td><input type="button" onclick="location.href='room?id=${rooms.roomId}'" value="방입장"/></td>
+			</tr>
+			
 		</c:forEach>
+		</table>
 	</div>
 </body>
 </html>

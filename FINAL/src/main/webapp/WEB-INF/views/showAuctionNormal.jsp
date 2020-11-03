@@ -20,11 +20,7 @@
 	}
 </style>
 <body>
-<<<<<<< HEAD
-<div id="container" style="width: 1700px; margin-top: 200px;">
-=======
 <div id="container" style="width: -webkit-fill-available; margin-top:200px">
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 	<h2 style="text-align: center; margin-left: -200px; font-size: 30px;">온라인 경매</h2>
 	<div style="width: 300px; height: 1000px; position: fixed;">
 	<c:forEach var="category" items="${category}">
