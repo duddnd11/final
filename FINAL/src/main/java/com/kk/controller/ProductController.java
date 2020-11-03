@@ -202,7 +202,10 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/rejectAction")
-	public String rejectAction(int pno) {
+	public String rejectAction(int pno, String grade) {
+		if(grade.equals("z")) {
+			return "redirect:/showDetail?pno="+pno;
+		}
 		int result = service.dealChage(pno);
 		System.out.println("result: "+result);
 		return "redirect:/main";

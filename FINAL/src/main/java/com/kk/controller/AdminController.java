@@ -120,6 +120,7 @@ public class AdminController {
 		model.addAttribute("result", result);
 		return "redirect:/admin/item?offset=0&admin=1&deal=-1";
 	}
+	
 	@RequestMapping(value="/admin/rejectItem")
 	public String rejectItem(int pno, Model model) {
 		ProductVo vo = new ProductVo(pno, 2, 0);
