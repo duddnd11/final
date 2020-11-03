@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.auction.service.MemberService;
+import com.auction.sha256.SHA256Util;
 import com.auction.vo.MemberVo;
 
 
@@ -29,7 +30,6 @@ public class MemberHomeController {
 //	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)	//로그인
 	public String login(Locale locale, Model model) {
-		
 		return "login";
 	}
 	
@@ -37,6 +37,7 @@ public class MemberHomeController {
 	public String LoginCheck(MemberVo vo, HttpServletRequest req, HttpSession session, RedirectAttributes redirectattributes) throws Exception {
 		session = req.getSession();
 		//System.out.println(dto.getID());
+		vo.setPw(util(vo.getPw()));
 		MemberVo memberdto = service.loginCheck(vo);
 		if(memberdto == null) {
 			session.setAttribute("member", null);
@@ -57,15 +58,24 @@ public class MemberHomeController {
 	
 	@RequestMapping(value = "/singup", method = RequestMethod.GET)	//회원가입
 	public String singup(Locale locale, Model model) {
-		
 		return "singup";
 	}
+	
+	public String util(String pw) {
+		String str = pw;
+		String sha256_en = SHA256Util.encrypt(str);
+		System.out.println("SHA256 암호화 : "+sha256_en);
+		return sha256_en;
+}
+	
 	@RequestMapping(value = "/signupaction")	//등록처리
 	public String insertPost(RedirectAttributes redirectattributes, MemberVo vo) throws Exception{
 	//	model.addAttribute("mvo", vo);
 	//	redirectattributes.addFlashAttribute("msg", "regSuccess");
+		vo.setPw(util(vo.getPw()));
+		
 		service.writeSignUp(vo);
-		return "redirect:login";
+		return "redirect:/main";
 	}
 	
 	@RequestMapping(value = "/memberupdate")

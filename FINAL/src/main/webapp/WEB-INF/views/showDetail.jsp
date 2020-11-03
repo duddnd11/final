@@ -64,7 +64,7 @@ function msg_time() {
   m = hours + ":" +  miniutes + ":" + seconds ; 
   document.all.timer.innerHTML = m;   
   
-  if (RemainDate == 0) {      //시간 종료
+  if (RemainDate <= 0) {      //시간 종료
     location.href="rejectAction?pno=${vo.pno}&grade=${ID.grade}";
     clearInterval(tid);   // 타이머 해제
   }else{
