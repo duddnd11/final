@@ -53,6 +53,7 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public ProductVo selectOne(int pno) {
+		sqlSession.update("com.auction.mapper.ProductMapper.timeout");
 		sqlSession.update("com.auction.mapper.ProductMapper.hitcountUp", pno);
 		return sqlSession.selectOne("com.auction.mapper.ProductMapper.selectOne", pno);
 	}

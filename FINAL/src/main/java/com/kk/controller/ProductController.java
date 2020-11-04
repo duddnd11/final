@@ -176,7 +176,7 @@ public class ProductController {
 		if(vo.getBestmoney() >= vo.getLastmoney()) {
 			if(service.dealChage(pno)==1) {
 				vo.setDeal(2);
-				System.out.println("deal :"+vo.getDeal());
+				System.out.println("상한가 마감 deal :"+vo.getDeal());
 				
 			}
 		}
@@ -208,8 +208,14 @@ public class ProductController {
 			return "redirect:/showDetail?pno="+pno;
 		}
 		int result = service.dealChage(pno);
-		System.out.println("result: "+result);
+		System.out.println("시간 마감: "+result);
 		return "redirect:/main";
+	}
+	
+	@RequestMapping(value="/blindSuccess")
+	public String blindSuccess() {
+		
+		return "";
 	}
 	
 }

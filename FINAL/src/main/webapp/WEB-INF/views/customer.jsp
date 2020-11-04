@@ -28,12 +28,11 @@
 </style>
 </head>
 <body>
-	<button id="menuBtn" style="float: right" onclick="location.href='../admin'">메뉴로</button>	
+	<button id="menuBtn" onclick="location.href='../admin'">메뉴로</button>	
 	<div id="container">
 		<table>
 			<tr>
 				<th>아이디</th>
-				<th>비밀번호</th>
 				<th>이름</th>
 				<th>주소</th>
 				<th>전화번호</th>
@@ -42,9 +41,9 @@
 				<th>등급</th>
 			</tr>
 			<c:forEach var="list" items="${list }">
+			<c:if test="${list.grade ne 'z' }">
 			<tr>
-				<td>${list.ID }</td>
-				<td>${list.pw }</td>
+				<td><a href="customer/info?id=${list.ID }" style="color: black;">${list.ID }</a></td>
 				<td><a href="customer/info?id=${list.ID }" style="color: black;">${list.name }</a></td>
 				<td>${list.addr }</td>
 				<td>${list.phonenum }</td>
@@ -52,6 +51,7 @@
 				<td>${list.birth }</td>
 				<td>${list.grade }</td>
 			</tr>
+			</c:if>
 			</c:forEach>
 		</table>
 	</div>

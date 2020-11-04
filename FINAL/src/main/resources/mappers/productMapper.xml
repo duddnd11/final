@@ -34,7 +34,10 @@
 	<update id="hitcountUp">
 		update product set hitcount= hitcount+1 where pno=#{pno};
 	</update>
-
+	<update id="timeout">
+		update product set timeout=(TIMESTAMPDIFF(day, NOW(), deadlinedate)+1);
+	</update>
+	
 	<!-- 입찰 -->
 	<select id="showAuction" resultType="int">
 		SELECT count(*) FROM auction where pno=#{pno};
@@ -61,6 +64,9 @@
 	<update id="dealChange">
 		update product set deal=2 where pno=#{pno};
 	</update>
+	<select id="selectAuction" resultType="com.auction.vo.AuctionVo">
+		SELECT * FROM auction WHERE pno=#{pno};
+	</select>
 </mapper>
 
 
