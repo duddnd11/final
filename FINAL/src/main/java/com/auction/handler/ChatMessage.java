@@ -7,6 +7,7 @@ public class ChatMessage {
 	private String writer;
 	private String message;
 	private MessageType type;
+	private String grade;
 	
 	public String getChatRoomId() {
 		return chatRoomId;
@@ -31,6 +32,12 @@ public class ChatMessage {
 	}
 	public void setType(MessageType type) {
 		this.type = type;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 	// 메세지 타입 
 	public enum MessageType{

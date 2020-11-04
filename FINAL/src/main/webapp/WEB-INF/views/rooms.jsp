@@ -35,7 +35,6 @@
 			<td>${rooms.roomId}</td>
 			<td><input type="button" onclick="location.href='room?id=${rooms.roomId}'" value="방입장"/></td>
 			</tr>
-			
 		</c:forEach>
 		</table>
 	</div>

@@ -24,7 +24,7 @@
 	form {
     margin-left: 450px;
     margin-top: 20px;
-    height: 800px;
+    height: 700px;
 }
 	th{
 		text-align: right;
@@ -113,7 +113,7 @@
 	<tr>
 		<th>카테고리</th> 
 			<td>	
-			<select class="category" name="category" style="margin-left: 30px; vertical-align: middle; text-align-last: center;">
+				<select class="category" name="category" style="margin-left: 30px; vertical-align: middle; text-align-last: center;">
 					<option value="미술품">미술품</option>
 					<option value="장난감">장난감</option>
 					<option value="인형">인형</option>										

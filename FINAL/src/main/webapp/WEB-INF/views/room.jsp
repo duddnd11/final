@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   pageEncoding="UTF-8"%>
+   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -14,57 +14,67 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-	var sock;
-	//var nickname;
-	//<![CDATA[
-	var roomId = "${room.roomId}";
-	//]]>
-	
-	$(function(){
-		$("#sendBtn").click(function(){
-			sendMessage();
-			$("#message").val('');
-		});
-		$("#chatting").click(function(){
-			sock= new SockJS("<c:url value="/chat"/>");
-			sock.onopen = onOpen;
-			sock.onmessage = onMessage;
-			$("#data").append($("#userId").val()+"님 채팅 입장\n");
-		});
-		$("#message").keydown(function(key){
-			if(key.keyCode==13){
-				sendMessage();
-				$("#message").val('');
-				}
-			});
-		$("#exit").click(function(){
-			sock.onclose = onClose;
-		});
-	});
-	
-	//sock.onclose = onClose;
-	function onOpen(){
-		 sock.send(JSON.stringify({chatRoomId : roomId,type:'ENTER',writer:$("#userId").val()}));
-		}
-	function sendMessage(){
-		sock.send(JSON.stringify({chatRoomId : roomId, type :'CHAT', writer:$("#userId").val(), message:$("#message").val()}));
-		}
-	
-	function onClose(evt){
-		$("#data").append("연결 끊김");
+/*
+   var sock;
+   //var nickname;
+   //<![CDATA[
+   var roomId = "${room.roomId}";
+   //]]>
+   $(function(){
+      $("#sendBtn").click(function(){
+         sendMessage();
+         $("#message").val('');
+      });
+      $("#chatting").click(function(){
+         sock= new SockJS("<c:url value="/chat"/>");
+         sock.onopen = onOpen;
+         sock.onmessage = onMessage;
+         sock.onclose = onClose;
+         //$("#data").append($("#userId").val()+"님 채팅 입장\n");
+      });
+      $("#message").keydown(function(key){
+         if(key.keyCode==13){
+            sendMessage();
+            $("#message").val('');
+            }
+         });
+      $("#exit").click(function(){
+          onClose();
+      });
+   });
+   
+   //sock.onclose = onClose;
+   function onOpen(){
+       sock.send(JSON.stringify({chatRoomId : roomId,type:'ENTER',writer:$("#userId").val(),grade:"${member.grade}"}));
+      }
+   function sendMessage(){
+      sock.send(JSON.stringify({chatRoomId : roomId, type :'CHAT', writer:$("#userId").val(), message:$("#message").val()}));
+      }
+   
+   function onClose(){
+	   sock.send(JSON.stringify({chatRoomId : roomId,type:'LEAVE',writer:$("#userId").val()}));
+   }
+   function enter(){
+		sock.send("채팅입장");
 	}
-	// evt : websocket이 보내준 데이터
-	function onMessage(evt){
-		var data = evt.data;
-		var sessionid = null;
-		var message = null;
-		$("#data").append(data+"\n");
-	}
+   // evt : websocket이 보내준 데이터
+   function onMessage(evt){
+      var data = evt.data;
+      var sessionid = data.split(":")[0];
+      var message = data.split(":")[1];
+      var userid = $("#userId").val();
+      if(sessionid == userid){
+      		$("#data").append("나:"+message+"\n");
+      }else{
+      		$("#data").append(data+"\n");
+          }
+   }
+   */
 </script>
 
 <style>
 
-		.wrapper-customer .wrap-aside {
+      .wrapper-customer .wrap-aside {
     margin-top: 60px;
 }
 .wrap-aside .aside {
@@ -83,7 +93,7 @@
     font-family: 'ssgBan', sans-serif;
 }
 .aside{
-	margin-left: 40px;
+   margin-left: 40px;
 }
 .aside-customer .wrap-link {
     padding: 0 10px;
@@ -129,7 +139,7 @@
 	style="position: absolute; top: 250px; left: 708px; width: 100px; height: 50px;"/>
 	<input type="text" value="${member.ID}" id="userId"
 	style="position: absolute; top: 250px; left: 808px; width: 200px; height: 50px; text-align: center;"/>
-</div>
+      </div>
 </div>
 </body>
 </html>

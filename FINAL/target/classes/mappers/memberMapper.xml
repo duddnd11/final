@@ -5,7 +5,7 @@
   
 <mapper namespace = "com.auction.mapper.SignUpMapper">
 	<insert id = "insert"><!-- 회원가입 -->
-		INSERT INTO member(ID, pw, name, addr, phonenum, email, birth, grade) VALUES(#{ID},#{pw}, #{name}, #{addr}, #{phonenum}, #{email}, #{birth}, #{grade})
+		INSERT INTO member(ID, pw, name, addr, phonenum, email, birth) VALUES(#{ID},#{pw}, #{name}, #{addr}, #{phonenum}, #{email}, #{birth})
 	</insert>
 	
 	<select id="login" resultType = "com.auction.vo.MemberVo"><!-- 로그인 -->

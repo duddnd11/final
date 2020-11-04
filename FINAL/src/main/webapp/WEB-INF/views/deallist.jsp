@@ -8,9 +8,9 @@
 <title>거래내역</title>
 </head>
 <body>
-	<div id="container" style="margin-top: 200px; margin-left: 400px;">
+	<div id="container" style="margin-top: 200px; margin-left: 40%;">
 	
-<h2>--판매--</h2><br/>
+<h2>판매</h2><br/>
 		<table id="salestable">
 			<tr>
 				<th>번호</th>
@@ -30,7 +30,7 @@
 		</c:forEach>
 		</table>
 <br/>
-<h2>--구매--</h2>
+<h2>구매</h2>
 <br/>
 		<table id="purchasetable">
 			<tr>

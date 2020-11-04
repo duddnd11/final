@@ -58,4 +58,9 @@ public class ProductServiceImpl implements ProductService {
 		return dao.insertAuction(vo);
 	}
 
+	@Override
+	public int dealChage(int pno) {
+		return dao.dealChage(pno);
+	}
+
 }

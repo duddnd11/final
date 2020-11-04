@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -31,6 +32,11 @@
 		float: right;
 		
 	}
+   h2 {
+	    text-align: center;
+	    margin: 0 auto;
+	    margin-top: 20px;
+   }
 </style>
 <script>
 function ajax_admin(admin,offset) {
@@ -269,24 +275,25 @@ $(document).on("click","#btn5",function(){
 					<td>${list.ID }</td>
 					<td>${list.grade }</td>
 					<td>${list.uploaddate }</td>
-					<td><button id="admin" class="admin" style="margin: 10px;" onclick="location.href='approveItem?pno=${list.pno}'">승인</button>
-					<button onclick="location.href='rejectItem?pno=${list.pno}'">거절</button></td>
-					<!-- 
-					승인시
-					<td><button id="admin" class="admin" style="margin: 10px;">승인됨</button></td>
-					 
-					거절시
-					 <td><button id="admin" class="admin" style="margin: 10px;">거절됨</button></td>
-					 
-					 경매중 일시
-					 <td><button id="admin" class="admin" style="margin: 10px;">경매중</button></td>
-					 
-					 마감시
-					 <td><button id="admin" class="admin" style="margin: 10px;">마감됨</button></td>
-					 -->
 					
-		<!-- 		<td>${list.admin }</td>
-					<td>${list.deal }</td> -->
+				<c:choose>
+					<c:when test="${list.admin == 1 && list.deal == 1 }">
+						<td><button id="admin" class="admin" style="margin: 10px;">경매중</button></td>
+					</c:when>
+					<c:when test="${list.admin == 1 && list.deal ==2 }">
+						<td><button id="admin" class="admin" style="margin: 10px;">마감됨</button></td>
+					</c:when>
+					<c:when test="${list.admin == 2 }">
+						<td><button id="admin" class="admin" style="margin: 10px;">거절됨</button></td>
+					</c:when>
+					<c:otherwise>
+						<td>
+							<button id="admin" class="admin" style="margin: 10px;" onclick="location.href='approveItem?pno=${list.pno}'">승인</button>
+							<button onclick="location.href='rejectItem?pno=${list.pno}'">거절</button>
+						</td>
+					</c:otherwise>
+				</c:choose>
+					
 				</tr>
 			</c:forEach>
 		</table>

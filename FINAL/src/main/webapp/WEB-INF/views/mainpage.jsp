@@ -68,16 +68,23 @@ img {
    <div id="content">
       <div class="swiper-container swiper1">
          <div class="swiper-wrapper">
-            <div class="swiper-slide">
             <c:forEach begin="0" end="4" var="showPop" items="${showPop }">
+            <div class="swiper-slide" id="pop">
                   <c:if test="${showPop.image ne null }">
                      <a href="showDetail?pno=${showPop.pno }"><img src="${showPop.image }"/></a>   
                   </c:if>
                   <c:if test="${showPop.image eq null }">
+                     <c:choose>
+                  <c:when test="${showPop.img1 ne '(이름없음)' }">
                      <a href="showDetail?pno=${showPop.pno }"><img src="resources/images/${showPop.img1 }"/></a> <br/>
+                  </c:when>
+                  <c:otherwise>
+                     <a href="showDetail?pno=${showPop.pno }"><img src="resources/images/${showPop.img2 }"/></a> <br/>
+                  </c:otherwise>
+                     </c:choose>
                   </c:if>
-            </c:forEach>
             </div>
+            </c:forEach>
          </div>
 
          <!-- 네비게이션 버튼 -->
@@ -93,16 +100,23 @@ img {
       <small>옥션이 선정한 경매 작품들을 소개합니다.</small>
       <div class="swiper-container swiper2">
          <div class="swiper-wrapper">
-            <div class="swiper-slide">
             <c:forEach var="showHurry" items="${showHurry }">
+            <div class="swiper-slide">
                   <c:if test="${showHurry.image ne null }">
                      <a href="showDetail?pno=${showHurry.pno }"><img src="${showHurry.image }"/></a>   
                   </c:if>
                   <c:if test="${showHurry.image eq null }">
+                  <c:choose>
+                  <c:when test="${showHurry.img1 ne '(이름없음)' }">
                      <a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img1 }"/></a> <br/>
+                  </c:when>
+                  <c:otherwise>
+                     <a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img2 }"/></a> <br/>
+                  </c:otherwise>
+                  </c:choose>
                   </c:if>
-               </c:forEach>               
             </div>
+               </c:forEach>               
          </div>
 
          <!-- 네비게이션 -->

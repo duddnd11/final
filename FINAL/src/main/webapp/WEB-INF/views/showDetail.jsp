@@ -17,6 +17,8 @@
    href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+   <script src="../package/swiper-bundle.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <title>Insert title here</title>
 
 </head>
@@ -35,6 +37,7 @@
    th{
       text-align: left;
    }
+   
 </style>
 <script>
 $(document).ready(function(){
@@ -63,46 +66,56 @@ function msg_time() {
   m = hours + ":" +  miniutes + ":" + seconds ; 
   document.all.timer.innerHTML = m;   
   
-  if (RemainDate < 0) {      //시간 종료
-    location.href="rejectAction?pno=${vo.pno}";
+  if (RemainDate <= 0) {      //시간 종료
+    location.href="rejectAction?pno=${vo.pno}&grade=${ID.grade}";
     clearInterval(tid);   // 타이머 해제
   }else{
     RemainDate = RemainDate - 1000; // 남은시간 -1초
   }
 }
-/* $(document).ready(function(){
-	  $('.minislider').bxSlider({
-	    auto: false,
-	    autoControls: false,
-	    stopAutoOnClick: true,
-	    pager: true,
-	    slideWidth: 400,
-	    
-	    minSlides: 1,
-	    maxSlides: 2,
-	    moveSlides: 1,
-	  });
-	}); */
+$(document).ready(function(){
+    $('.minislider').bxSlider({
+      auto: false,
+      autoControls: false,
+      stopAutoOnClick: true,
+      pager: false,
+      slideWidth: 400,
+      
+      minSlides: 1,
+      maxSlides: 1,
+      moveSlides: 1,
+    });
+  });
 </script>
 <body>
 <div style="margin-left: 300px;  margin-top: 200px;">
    <span style="font-size: 20px;"><b>${vo.pno }</b></span>
    <span style="margin-left: 30px; font-size: 20px;">${vo.pname }</span>
-   <div style="margin-top: 10px;">
+   <div style="margin-top: 10px;" >
+   
    <c:if test="${vo.image ne null }">
       <img src="${vo.image }"/>      
-   </c:if>   
+   </c:if>
+   <div>
+   <ul class="minislider">
    <c:if test="${vo.image eq null }">
-   <div class="minislider">
+       <li>
+       <div>
       <c:if test="${vo.img1 ne '(이름없음)' }">
       <img src="resources/images/${vo.img1 }"/>
       </c:if>
+      </div>
+      </li>
+      <li>
+      <div>
       <c:if test="${vo.img2 ne '(이름없음)' }">
-      <img src="resources/images/${vo.img2 }"/> <br/>
+      <img src="resources/images/${vo.img2 }"/>
       </c:if>
-    </div>
-   </c:if>
-   <br/>
+      </div>
+      </li>     
+   </c:if>     
+   </ul>
+   </div>
    </div>
    
    
@@ -215,7 +228,7 @@ function msg_time() {
          
          <c:otherwise>
             <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
-            <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="alertMsg()">입찰</button>
+            <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="alertMsgBlind()">입찰</button>
          </c:otherwise>
       </c:choose>
    </div>
@@ -238,18 +251,20 @@ function rejectAlert(){
 }
 
 var myprice2 = 0;
+var moneyup2 = 0;
 <c:choose>
    <c:when test="${vo.bestmoney == 0  }">
       myprice2 = ${vo.startmoney };
    </c:when>
    <c:otherwise>
       myprice2 = ${vo.bestmoney };
+      moneyup2 = ${vo.moneyup };
    </c:otherwise>
 </c:choose>   
 function alertMsg(){
    if (confirm("입찰하겠?")) {
         // 확인 버튼 클릭 시 동작
-      location.href='insertAuction?pno=${vo.pno}&myprice='+myprice2+'&moneyup=${vo.moneyup }';
+      location.href='insertAuction?pno=${vo.pno}&myprice='+myprice2+'&moneyup='+moneyup2;
     } else {
         // 취소 버튼 클릭 시 동작
     }
@@ -258,7 +273,11 @@ function alertMsg(){
 function alertMsgBlind(){
    if (confirm("입찰하겠?")) {
         // 확인 버튼 클릭 시 동작
-      location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val()+'&moneyup=0';
+        if($("#btnQtyC3_1000020518522").val() == 0){
+         alert("가격을 입력하세요!!");
+        }else{
+            location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val()+'&moneyup=0';
+        }
     } else {
         // 취소 버튼 클릭 시 동작
     }
@@ -302,4 +321,3 @@ $(document).ready(function(){
 </body>
 </html>
    <%@ include file="footer.jsp" %>
-
