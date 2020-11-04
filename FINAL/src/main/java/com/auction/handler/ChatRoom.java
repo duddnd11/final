@@ -47,7 +47,6 @@ public class ChatRoom {
 	public void send(ChatMessage chatMessage, ObjectMapper objectMapper) throws IOException {
 //		TextMessage textMessage = new TextMessage(objectMapper.writeValueAsString(chatMessage.getMessage()));
 		TextMessage textMessage = new TextMessage(chatMessage.getMessage());
-		System.out.println("메시지:"+textMessage);
 		for(WebSocketSession sess : sessions) {
 				sess.sendMessage(textMessage);
 		}

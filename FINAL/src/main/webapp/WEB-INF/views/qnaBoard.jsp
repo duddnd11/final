@@ -91,9 +91,9 @@
 			<div class="aside aside-customer">
 				<p class="title">고객센터</p>
 				<div class="wrap-link" style="">
-				<a href="http://localhost:9090/final/notice?offset=0" class="link">공지사항</a>
-				<a href="http://localhost:9090/final/qnaBoard?offset=0" class="link">문의게시판</a>
-				<a href="http://localhost:9090/final/new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="link">채팅</a>
+				<a href="notice?offset=0" class="link">공지사항</a>
+				<a href="qnaBoard?offset=0" class="link">문의게시판</a>
+				<a href="new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="link">채팅</a>
 				</div>
 			</div>
 		</div>

@@ -25,21 +25,24 @@ public class WebSocketHandler extends TextWebSocketHandler{
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		String msg = message.getPayload();
-		System.out.println("핸들러:"+msg);
 		ChatMessage chatMessage = objectMapper.readValue(msg, ChatMessage.class);
 		if(chatMessage.getType() == MessageType.ENTER ) {
-			if(chatMessage.getGrade().equals("z")) {
+			if(chatMessage.getChatRoomId()==null && chatMessage.getGrade().equals("z")) {
+				System.out.println("관리자 세션추가:"+chatMessage.getChatRoomId());
 				sessionList.add(session);
-				for(WebSocketSession sess : sessionList) {
-					sess.sendMessage(new TextMessage("입장"));
-				}
+				System.out.println("세션확인:"+sessionList);
 			}else {
 				for(WebSocketSession sess : sessionList) {
-					sess.sendMessage(new TextMessage("입장"));
+					System.out.println("사용자 채팅요청");
+					System.out.println("세션확인:"+sessionList);
+					if(sess.isOpen()) {
+						sess.sendMessage(new TextMessage(chatMessage.getWriter()+"님 채팅요청"));
+					}
 				}
 			}
 		}
 		if(chatMessage.getChatRoomId()!=null) {
+			System.out.println("방찾아 들어감");
 			ChatRoom chatRoom = chatRoomRepository.findRoomById(chatMessage.getChatRoomId());
 			chatRoom.handleMessage(session, chatMessage, objectMapper);
 		}
