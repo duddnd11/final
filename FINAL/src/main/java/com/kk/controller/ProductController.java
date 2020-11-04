@@ -212,4 +212,10 @@ public class ProductController {
 		return "redirect:/main";
 	}
 	
+	@RequestMapping(value="/blindSuccess")
+	public String blindSuccess() {
+		
+		return "";
+	}
+	
 }

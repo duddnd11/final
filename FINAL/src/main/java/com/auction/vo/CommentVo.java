@@ -4,7 +4,7 @@ public class CommentVo {
 	private int cno;
 	private int qbno;
 	private String comment;
-	private String ID;
+	private String userid;
 	private int level;
 	private int ref;
 	private int step;
@@ -14,7 +14,7 @@ public class CommentVo {
 	public CommentVo(int qbno, String comment, String iD,int ref, int level, int step) {
 		this.qbno = qbno;
 		this.comment = comment;
-		ID = iD;
+		userid = iD;
 		this.ref=ref;
 		this.level=level;
 		this.step=step;
@@ -43,14 +43,14 @@ public class CommentVo {
 		this.comment = comment;
 	}
 
-	public String getID() {
-		return ID;
+	public String getUserid() {
+		return userid;
 	}
-
-	public void setID(String iD) {
-		ID = iD;
+	
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
-
+	
 	public int getLevel() {
 		return level;
 	}
@@ -80,7 +80,10 @@ public class CommentVo {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "CommentVo [cno=" + cno + ", qbno=" + qbno + ", comment=" + comment + ", userid=" + userid + ", level="
+				+ level + ", ref=" + ref + ", step=" + step + ", date=" + date + "]";
+	}
 	
 }
