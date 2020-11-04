@@ -63,7 +63,7 @@
 		
 		<div style=" width: 900px; margin-left: 350px;  margin-top: 100px; width: 600px; display: block;">
 			<h2 style="font-weight: 700; font-size: 35px;">거래내역</h2>
-			<button style="float: right;width: 50px;hegiht: 40px;margin-right: -250px; margin-top: -60px;"><a href="">이동</a></button>				
+			<button style="float: right;width: 50px;hegiht: 40px;margin-right: -250px; margin-top: -60px;"><a href="">조회</a></button>				
 		</div>
 		
 		<div style=" width: 600px; margin-left: 350px;  margin-top: 100px; width: 600px; display: block;">
@@ -85,7 +85,7 @@
 		<div style=" width: 900px; margin-left: 350px;  margin-top: 100px; width: 600px; display: block;">
 			<h2 style="font-weight: 700; font-size: 35px;">상품등록</h2>
 			<p style="margin-top: 20px;">판매할 상품을 등록하세요.
-			<button style="float: right;width: 50px;hegiht: 40px;margin-right: -250px;"><a href="http://localhost:9090/final/applyProduct">이동</a></button>				
+			<button style="float: right;width: 50px;hegiht: 40px;margin-right: -250px;"><a href="http://localhost:9090/final/applyProduct">등록</a></button>				
 		</div>
 </div>
 	

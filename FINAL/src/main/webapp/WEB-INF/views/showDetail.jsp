@@ -64,6 +64,7 @@ function msg_time() {
   m = hours + ":" +  miniutes + ":" + seconds ; 
   document.all.timer.innerHTML = m;   
   
+<<<<<<< HEAD
   if (RemainDate == 0) {      //시간 종료
 	  if(일반){
 		    location.href="rejectAction?pno=${vo.pno}&grade=${ID.grade}";
@@ -71,6 +72,11 @@ function msg_time() {
 		  }else{
 			  location.href="blindSuccess";
 			  }
+=======
+  if (RemainDate <= 0) {      //시간 종료
+    location.href="rejectAction?pno=${vo.pno}&grade=${ID.grade}";
+    clearInterval(tid);   // 타이머 해제
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
   }else{
     RemainDate = RemainDate - 1000; // 남은시간 -1초
   }
