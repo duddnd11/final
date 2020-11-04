@@ -13,8 +13,10 @@ public interface ProductService {
 	List<ProductVo> selectPop();
 	List<ProductVo> selectHurry();
 //	List<ProductVo> showCategory(String category, String auctionmenu);
-	int insertAuction(AuctionVo vo);
+	int insertAuction(AuctionVo vo,String auctionmenu,int diff, int myDiff);
 	List<ProductVo> showNormalCategory(String category);
 	List<ProductVo> showBlindCategory(String category);
 	int dealChage(int pno);
+	
+	AuctionVo blincCharge(int pno);
 }
