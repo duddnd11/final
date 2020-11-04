@@ -64,9 +64,16 @@
 	<update id="dealChange">
 		update product set deal=2 where pno=#{pno};
 	</update>
-	<select id="selectAuction" resultType="com.auction.vo.AuctionVo">
-		SELECT * FROM auction WHERE pno=#{pno};
+	
+	<!-- 
+	<select id="blindCharge" resultType="com.auction.vo.AuctionVo">
+		SELECT ID FROM final.auction WHERE pno=#{pno} and ABS(myprice-(SELECT price FROM product WHERE pno=#{pno})) order by buydate limit 1;
 	</select>
+	 -->
+	
+	<update id="updateCustomer">
+		UPDATE product SET count =count+1, getcustomer=#{getcustomer} , bestmoney=#{bestmoney} WHERE pno =#{pno};
+	</update>
 </mapper>
 
 
