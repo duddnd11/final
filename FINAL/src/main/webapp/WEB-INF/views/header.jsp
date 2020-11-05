@@ -28,7 +28,7 @@ $(function(){
    if(${member.grade !='z'}){
          $("#chatting").click(function(){
             sock= new SockJS("<c:url value="/chat"/>");
-            sock.onopen = onOpen;
+            sock.onopen=onOpen2;
             sock.onmessage = onMessage;
             sock.onclose = onClose;
            check=1;
@@ -38,7 +38,9 @@ $(function(){
             sock= new SockJS("<c:url value="/chat"/>");
             sock.onopen = onOpen2;
             $("#chatting").click(function(){
-               onOpen();
+                if(check==0){
+                  onOpen();
+               }
                check=1;
                });
             sock.onmessage = onMessage;
@@ -80,20 +82,36 @@ function enter(){
 // evt : websocket이 보내준 데이터
 function onMessage(evt){
    var data = evt.data;
-   var sessionid = data.split(":")[0];
-   var message = data.split(":")[1];
+   var userRoomId = data.split(":")[0];
+   var sessionid = data.split(":")[1];
+   var message = data.split(":")[2];
+   var person = data.split(":")[0];
    var userid = $("#userId").val();
    if(check==0){
       alert(data);
    }
    if(check==1){
-      if(sessionid == userid){
-            $("#data").append("나:"+message+"\n");
+     if(userRoomId==roomId){
+         if(sessionid == userid){
+               $("#data").append("나:"+message+"\n");
+         }else{
+            if(message!=undefined){
+               $("#data").append(sessionid+":"+message+"\n");
+               }else{
+               $("#data").append(sessionid+"\n");
+                  }
+             }
       }else{
-            $("#data").append(data+"\n");
+         alert(data);
           }
    }
 }
+
+function onMessage2(evt){
+   var data = evt.data;
+   alert(data);
+}
+
 
    /*
 if(${member.grade == 'z'}){
@@ -112,7 +130,6 @@ if(${member.grade == 'z'}){
          alert(evt.data);
          console.log(evt.data);
       }
->>>>>>> refs/remotes/origin/main
 }*/
 </script>
 <style>
@@ -304,7 +321,7 @@ header.header .nav_wrap nav.main .main_cate>li {
                            >문의게시판</a>
                            </li>
                            </li>
-                           <li class="selected"><a href="new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="link">채팅</a>
+                           <li class="selected"><a href="new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="submenu_title">채팅</a>
                            </li>
                         </ul>
                      </div></li>

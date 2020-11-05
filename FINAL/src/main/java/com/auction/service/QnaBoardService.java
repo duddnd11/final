@@ -9,8 +9,9 @@ public interface QnaBoardService {
 	public List<QnaBoardVo> selectBoard(int offset);
 	public QnaBoardVo selectContent(int qbno);
 	public void updateHitcount(int qbno);
-	
 	public List<QnaBoardVo> selectBoardAll();
+	public List<QnaBoardVo> selectFromId(String id);
+	
 	public List<QnaBoardVo> searchTitleSize(String keyword);
 	public List<QnaBoardVo> searchContentSize(String keyword);
 	public List<QnaBoardVo> searchWriterSize(String keyword);

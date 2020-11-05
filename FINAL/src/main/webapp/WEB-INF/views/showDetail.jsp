@@ -38,7 +38,14 @@
    th{
       text-align: left;
    }
+<<<<<<< HEAD
    
+=======
+   .bx-next{
+   		float: right;
+   		
+   }
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 </style>
 <script>
 $(document).ready(function(){
