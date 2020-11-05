@@ -32,7 +32,7 @@
 </style>
 </head>
 <body>
-	<form id="search" style="margin-left: 500px; margin-top: 100px; height: 500px;">
+	<form action = "IDfind" id="search" style="margin-left: 500px; margin-top: 100px; height: 500px;">
 	<h1 style="margin-left: 150px; margin-top: 100px;">아이디 찾기</h1>
 	<div style="margin-top: 20px;">
 		<label style="margin-left: 150px;">이름</label> <br/>

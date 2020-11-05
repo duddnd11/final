@@ -51,5 +51,19 @@ public class MemberDaoImpl implements MemberDao {
 	public void insertApi(MemberVo vo) {
 		sqlSession.insert("com.auction.mapper.SignUpMapper.insertApi", vo);
 	}
-
+	
+	@Override
+	public MemberVo IdCheck(MemberVo vo) {
+		return sqlSession.selectOne("com.auction.mapper.SignUpMapper.IDcheck", vo);
+	}
+	
+	@Override
+	public MemberVo PwCheck(MemberVo vo) {
+		return sqlSession.selectOne("com.auction.mapper.SignUpMapper.PWcheck", vo);
+	}
+	
+	@Override
+	public void newPW(MemberVo vo) {
+		sqlSession.update("com.auction.mapper.SignUpMapper.newPW", vo);
+	}
 }
