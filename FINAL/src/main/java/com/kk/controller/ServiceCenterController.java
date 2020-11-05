@@ -57,7 +57,6 @@ public class ServiceCenterController {
 	
 	@RequestMapping(value="/qnaBoard")
 	public String qnaBoard(Model model,int offset,String keyword,String searchMenu,HttpServletRequest request,HttpServletResponse response) {
-<<<<<<< HEAD
 		Cookie[] cookies = request.getCookies();
 		for(int i=0; i<cookies.length;i++) {
 			if(cookies[i].getName().equals("qnaWrite") || cookies[i].getName().contains("qnaDetail")) {
@@ -65,16 +64,6 @@ public class ServiceCenterController {
 				response.addCookie(cookies[i]);
 			}
 		}
-=======
-		   Cookie[] cookies = request.getCookies();
-	      for(int i=0; i<cookies.length;i++) {
-	          if(cookies[i].getName().equals("qnaWrite") || cookies[i].getName().contains("qnaDetail")) {
-	             System.out.println("쿠키이름 확인:"+cookies[i].getName());
-	             cookies[i].setMaxAge(0);
-	             response.addCookie(cookies[i]);
-	          }
-	       }
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 		
 		if(offset<0) {
 			offset=0;
