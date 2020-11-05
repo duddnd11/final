@@ -34,12 +34,12 @@ public class ChatRoom {
 	public void handleMessage(WebSocketSession session, ChatMessage chatMessage, ObjectMapper objectMapper) throws IOException {
 		if(chatMessage.getType() == MessageType.ENTER) {
 			sessions.add(session);
-			chatMessage.setMessage(chatMessage.getWriter()+"님 입장");
+			chatMessage.setMessage(roomId+":"+chatMessage.getWriter()+"님 입장");
 		}else if(chatMessage.getType()==MessageType.LEAVE) {
 			sessions.remove(session);
-			chatMessage.setMessage(chatMessage.getWriter()+"님 퇴장");
+			chatMessage.setMessage(roomId+":"+chatMessage.getWriter()+"님 퇴장");
 		}else {
-			chatMessage.setMessage(chatMessage.getWriter()+":"+chatMessage.getMessage());
+			chatMessage.setMessage(roomId+":"+chatMessage.getWriter()+":"+chatMessage.getMessage());
 		}
 		send(chatMessage,objectMapper);
 	}
