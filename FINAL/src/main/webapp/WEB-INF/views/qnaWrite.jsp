@@ -10,21 +10,30 @@
 <script src="//cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
 <!-- <script type="text/javascript" src="/ckeditor/ckeditor.js"></script> -->
 <style>
+<<<<<<< HEAD
+   .cke_chrome{
+      width: 600px;
+   }
+   .writebtn{
+      float: right;
+   }
+=======
 	.cke_chrome{
 		width: 600px;
 	}
 	.writebtn{
 		float: right;
 	}
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 </style>
 </head>
 <body>
    <c:choose>
    <c:when test="${member.grade ne 'z' }">
-   <form action="qnaWriteAction" style="margin-left: 500px; margin-top: 250px; font-size: 20px; width: 600px;">
+   <form action="qnaWriteAction" style="margin-left: 35%; margin-top: 250px; font-size: 20px; width: 600px;">
    </c:when>
    <c:otherwise>
-   <form action="noticeWrite" style="margin-left:500px; margin-top:250px; font-size :20px">
+   <form action="noticeWrite" style="margin-left: 35%; margin-top:250px; font-size :20px">
    </c:otherwise>
    </c:choose>
       제목<br/>

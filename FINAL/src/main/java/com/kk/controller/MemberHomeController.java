@@ -108,12 +108,21 @@ public class MemberHomeController {
 		String likeProduct = pService.selectLike(member.getID());
 		String[] pno = likeProduct.split("_!_"); // 1016 1022
 		for(int i=0; i<=pno.length-1; i++) { //2
+<<<<<<< HEAD
 			if(!(pno[i].equals(""))) {
 				ProductVo vo = pService.selectOne(Integer.parseInt(pno[i]));
 				System.out.println(vo);
 				list1.add(vo);
 			}
 		}
+=======
+	         if(!(pno[i].equals(""))) {
+	            ProductVo vo = pService.selectOne(Integer.parseInt(pno[i]));
+	            System.out.println(vo);
+	            list1.add(vo);
+	         }
+	      }
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 		
 		String id = member.getID();
 		List<QnaBoardVo> list2 =qnaService.selectFromId(id);

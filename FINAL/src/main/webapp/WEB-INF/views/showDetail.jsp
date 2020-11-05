@@ -39,7 +39,15 @@
       text-align: left;
    }
    .bx-next{
+<<<<<<< HEAD
          margin-left:330px;
+=======
+<<<<<<< HEAD
+         margin-left: 330px;
+=======
+         margin-left:330px;
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
          
    }
 </style>
@@ -96,7 +104,11 @@ $(document).ready(function(){
   });
 </script>
 <body>
+<<<<<<< HEAD
+<div style="margin-left: 30%;  margin-top: 200px;">
+=======
 <div style="margin-left: 35%;  margin-top: 200px;">
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
    <span style="font-size: 20px;"><b>${vo.pno }</b></span>
    <span style="margin-left: 30px; font-size: 20px;">${vo.pname }</span>
    <div style="margin-top: 10px;" >
