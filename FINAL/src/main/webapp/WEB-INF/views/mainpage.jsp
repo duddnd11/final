@@ -74,14 +74,14 @@ img {
                      <a href="showDetail?pno=${showPop.pno }"><img src="${showPop.image }"/></a>   
                   </c:if>
                   <c:if test="${showPop.image eq null }">
-                  	<c:choose>
-						<c:when test="${showPop.img1 ne '(이름없음)' }">
-							<a href="showDetail?pno=${showPop.pno }"><img src="resources/images/${showPop.img1 }"/></a> <br/>
-						</c:when>
-						<c:otherwise>
-							<a href="showDetail?pno=${showPop.pno }"><img src="resources/images/${showPop.img2 }"/></a> <br/>
-						</c:otherwise>
-                  	</c:choose>
+                     <c:choose>
+                  <c:when test="${showPop.img1 ne '(이름없음)' }">
+                     <a href="showDetail?pno=${showPop.pno }"><img src="resources/images/${showPop.img1 }"/></a> <br/>
+                  </c:when>
+                  <c:otherwise>
+                     <a href="showDetail?pno=${showPop.pno }"><img src="resources/images/${showPop.img2 }"/></a> <br/>
+                  </c:otherwise>
+                     </c:choose>
                   </c:if>
             </div>
             </c:forEach>
@@ -107,12 +107,12 @@ img {
                   </c:if>
                   <c:if test="${showHurry.image eq null }">
                   <c:choose>
-						<c:when test="${showHurry.img1 ne '(이름없음)' }">
-							<a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img1 }"/></a> <br/>
-						</c:when>
-						<c:otherwise>
-							<a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img2 }"/></a> <br/>
-						</c:otherwise>
+                  <c:when test="${showHurry.img1 ne '(이름없음)' }">
+                     <a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img1 }"/></a> <br/>
+                  </c:when>
+                  <c:otherwise>
+                     <a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img2 }"/></a> <br/>
+                  </c:otherwise>
                   </c:choose>
                   </c:if>
             </div>

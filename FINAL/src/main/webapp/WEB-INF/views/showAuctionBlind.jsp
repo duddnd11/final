@@ -12,16 +12,17 @@
 <title>Insert title here</title>
 </head>
 <style>
-	img {
-		width: 200px;
-    	height: 200px;
-	}
-	li{
-		display: inline-block;
-		list-style: none;
-	}
+   img {
+      width: 200px;
+       height: 200px;
+   }
+   li{
+      display: inline-block;
+      list-style: none;
+   }
 </style>
 <body>
+
 <div id="container" style="width: 1700px; margin-top: 200px;">
 	<h2 style="text-align: center; font-size: 30px; margin-left: 10%">블라인드 경매</h2>
 	<div style="width: 300px; height: 1000px; position: fixed;">
@@ -68,7 +69,7 @@
 	</div>
 	<c:set var="dead" value="${vo.deadlinedate }"/>
 		<p>마감날: ${fn:substring(dead,0,10) } </p>
-		조회수: ${vo.hitcount }<span>&nbsp</span><span>&nbsp</span><span>&nbsp</span><span>&nbsp</span><span>&nbsp</span>
+		조회수: ${vo.hitcount }<span>&nbsp</span><span>&nbsp</span>
 		입찰수 ${vo.count }<br/>
 	</div>
 	</li>
@@ -79,5 +80,3 @@
 </body>
 </html>
 <%@ include file="footer.jsp" %>
-
-

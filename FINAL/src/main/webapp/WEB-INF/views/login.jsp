@@ -135,7 +135,7 @@
 	  </div>
     </form>
     
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">dfd</div>
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style=" margin-left: 50px; margin-top: 7px; width: 277px; height: 60px;">dfd</div>
     <script>
         function onSignIn(googleUser) {
             // Useful data for your client-side scripts:

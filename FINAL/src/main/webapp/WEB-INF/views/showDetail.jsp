@@ -12,12 +12,14 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script src="resources/js/jquery-3.5.1.min.js"></script>
 <script src="resources/js/plmi.js"></script>
+  <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
 
 <link rel="stylesheet"
    href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
    <script src="../package/swiper-bundle.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <title>Insert title here</title>
 
 </head>
@@ -35,6 +37,14 @@
    }
    th{
       text-align: left;
+   }
+   .bx-next{
+<<<<<<< HEAD
+         margin-left: 330px;
+=======
+         margin-left:330px;
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
+         
    }
 </style>
 <script>
@@ -65,11 +75,11 @@ function msg_time() {
   document.all.timer.innerHTML = m;   
   
   if (RemainDate <= 0) {      //시간 종료
-	  if(${vo.auctionmenu == "일반"}){
-    	location.href="showAuctionNormal";
-		  }else{
-    	location.href="showAuctionBlind";
-			  }
+     if(${vo.auctionmenu == "일반"}){
+       location.href="showAuctionNormal";
+        }else{
+       location.href="showAuctionBlind";
+           }
     clearInterval(tid);   // 타이머 해제
   }else{
     RemainDate = RemainDate - 1000; // 남은시간 -1초
@@ -80,17 +90,21 @@ $(document).ready(function(){
       auto: false,
       autoControls: false,
       stopAutoOnClick: true,
-      pager: true,
+      pager: false,
       slideWidth: 400,
       
       minSlides: 1,
-      maxSlides: 2,
+      maxSlides: 1,
       moveSlides: 1,
     });
   });
 </script>
 <body>
-<div style="margin-left: 300px;  margin-top: 200px;">
+<<<<<<< HEAD
+<div style="margin-left: 30%;  margin-top: 200px;">
+=======
+<div style="margin-left: 35%;  margin-top: 200px;">
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
    <span style="font-size: 20px;"><b>${vo.pno }</b></span>
    <span style="margin-left: 30px; font-size: 20px;">${vo.pname }</span>
    <div style="margin-top: 10px;" >
@@ -98,20 +112,26 @@ $(document).ready(function(){
    <c:if test="${vo.image ne null }">
       <img src="${vo.image }"/>      
    </c:if>
+   <div>
    <ul class="minislider">
    <c:if test="${vo.image eq null }">
        <li>
+       <div>
       <c:if test="${vo.img1 ne '(이름없음)' }">
       <img src="resources/images/${vo.img1 }"/>
       </c:if>
+      </div>
       </li>
       <li>
+      <div>
       <c:if test="${vo.img2 ne '(이름없음)' }">
       <img src="resources/images/${vo.img2 }"/>
-      </c:if> 
+      </c:if>
+      </div>
       </li>     
    </c:if>     
    </ul>
+   </div>
    </div>
    
    
@@ -161,17 +181,17 @@ $(document).ready(function(){
    <div style="display: flex;">
       <c:choose>
          <c:when test="${vo.deal == 2 }">
-            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;" >관심상품</button>
+            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;" onclick="deadline()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;"  onclick="deadline()">마감</button>
          </c:when>
          
          <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer}">
-            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
+            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>
          
          <c:otherwise>
-            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
+            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="alertMsg()">입찰</button>
          </c:otherwise>
       </c:choose>
@@ -213,17 +233,17 @@ $(document).ready(function(){
       
       <c:choose>
          <c:when test="${vo.deal == 2 }">
-            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;" >관심상품</button>
+            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;" onclick="deadline()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;"  onclick="deadline()">마감</button>
          </c:when>
          
          <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer}">
-            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
+            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>
          
          <c:otherwise>
-            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
+            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="alertMsgBlind()">입찰</button>
          </c:otherwise>
       </c:choose>
@@ -239,6 +259,13 @@ $(document).ready(function(){
    </c:if>
 
 <script>
+function addLike(){
+   if (confirm("관심상품으로 등록하겠?")) {
+      location.href="addLike?pno=${vo.pno}";
+    } else {
+    }
+}
+
 function deadline(){
    alert("=====마감=====");
 }

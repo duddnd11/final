@@ -162,7 +162,7 @@ public class ProductController {
 	public String showDetail(Model model, int pno, HttpSession session) {
 //		session.setAttribute("member", "admin");				//수정
 		MemberVo ID =  (MemberVo) session.getAttribute("member");
-		
+		service.hitcountUp(pno);
 		ProductVo vo = service.selectOne(pno);
 		List<AuctionVo> list = adminService.chart(pno);	
 		if(vo.getFilenames()==null || vo.getFilenames().equals("")) {
@@ -221,4 +221,12 @@ public class ProductController {
 		return "redirect:/main";
 	}*/
 	
+	@RequestMapping(value="/addLike")
+	public String addLike(int pno, HttpSession session) {
+		MemberVo member =  (MemberVo) session.getAttribute("member");
+		String ID = member.getID();
+		String str = pno+"_!_";
+		int result = service.addLike(str, ID);
+		return "redirect:/showDetail?pno="+pno;
+	}
 }

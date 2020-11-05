@@ -16,6 +16,9 @@ public interface ProductDao {
 	List<ProductVo> showNormalCategory(String category);
 	List<ProductVo> showBlindCategory(String category);
 	int dealChage(int pno);
+	int hitcountUp(int pno);
 	
 	public AuctionVo blindCharge(int pno);
+	int addLike(String str, String ID);
+	String selectLike(String ID);
 }

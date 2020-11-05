@@ -31,11 +31,6 @@ $(function(){
             sock.onopen=onOpen2;
             sock.onmessage = onMessage;
             sock.onclose = onClose;
-            if(check==0){
-                alert("확인");
-            onOpen();
-                alert("확인2");
-            }
            check=1;
             //$("#data").append($("#userId").val()+"님 채팅 입장\n");
          });
@@ -44,7 +39,7 @@ $(function(){
             sock.onopen = onOpen2;
             $("#chatting").click(function(){
                 if(check==0){
-	               onOpen();
+                  onOpen();
                }
                check=1;
                });
@@ -96,25 +91,25 @@ function onMessage(evt){
       alert(data);
    }
    if(check==1){
-	  if(userRoomId==roomId){
-	      if(sessionid == userid){
-	            $("#data").append("나:"+message+"\n");
-	      }else{
-		      if(message!=undefined){
-	            $("#data").append(sessionid+":"+message+"\n");
-			      }else{
-	            $("#data").append(sessionid+"\n");
-				      }
-	          }
-		}else{
-			alert(data);
-			 }
+     if(userRoomId==roomId){
+         if(sessionid == userid){
+               $("#data").append("나:"+message+"\n");
+         }else{
+            if(message!=undefined){
+               $("#data").append(sessionid+":"+message+"\n");
+               }else{
+               $("#data").append(sessionid+"\n");
+                  }
+             }
+      }else{
+         alert(data);
+          }
    }
 }
 
 function onMessage2(evt){
-	var data = evt.data;
-	alert(data);
+   var data = evt.data;
+   alert(data);
 }
 
 
@@ -135,7 +130,6 @@ if(${member.grade == 'z'}){
          alert(evt.data);
          console.log(evt.data);
       }
->>>>>>> refs/remotes/origin/main
 }*/
 </script>
 <style>
