@@ -74,6 +74,14 @@
 	<update id="updateCustomer">
 		UPDATE product SET count =count+1, getcustomer=#{getcustomer} , bestmoney=#{bestmoney} WHERE pno =#{pno};
 	</update>
+	
+	<!-- 관심상품 -->
+	<update id="addLike">
+		update member set likeproduct=concat(likeproduct, #{likeproduct})  where ID=#{ID};
+	</update>
+	<select id="selectLike" resultType="String">
+		select likeproduct from member where ID=#{ID};
+	</select>
 </mapper>
 
 

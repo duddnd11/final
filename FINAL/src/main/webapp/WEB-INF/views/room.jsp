@@ -112,34 +112,34 @@
 </head>
 <div style="margin-top: 250px; margin-bottom: 200px;">
 <div class="wrap-aside" style="position: fixed;">
-         <div class="aside aside-customer">
-            <p class="title">고객센터</p>
-            <div class="wrap-link">
-            <a href="http://localhost:9090/final/notice?offset=0" class="link">공지사항</a>
-            <a href="http://localhost:9090/final/qnaBoard?offset=0" class="link">문의게시판</a>
-            <a href="http://localhost:9090/final/new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="link">채팅</a>
-            </div>
-         </div>
-      </div>
+			<div class="aside aside-customer">
+				<p class="title">고객센터</p>
+				<div class="wrap-link">
+				<a href="http://localhost:9090/final/notice?offset=0" class="link">공지사항</a>
+				<a href="http://localhost:9090/final/qnaBoard?offset=0" class="link">문의게시판</a>
+				<a href="http://localhost:9090/final/chatting" class="link">채팅</a>
+				</div>
+			</div>
+		</div>
 <div style="margin-left: 600px;">
-   <input type="text" value="${room.roomId}"/ style="position: absolute; top: 200px; left: 705px; width: 302px; height: 50px;"><br/>
-   <input type="text" value="${room.name}" style="position: absolute; top: 200px; width: 100px; height: 50px;"/><br/>
-   <textarea rows="10" cols="50" readonly="readonly" id="data" 
-   style="width: 400px; height: 500px; z-index:1; background-color: #F2F2F2;"></textarea><br/>
-   <div style="position: absolute; top: 700px; width: 400px; height: 100px; background-color: white;
-   border: 1px solid #cccccc;">
-   <input type="text" id="message"/ style="width: 300px; height: 70px; margin-top: 15px; margin-left: 20px;">
-   <input type="button" value="보내기" id="sendBtn" 
-   style="width: 60px; height: 68px; margin-left: 4px; background-color: #CECEF6; color: white; 
-   font-weight: 700; font-size: 16px; border: none; border-radius: 2px 2px 2px 2px;"/>
-   </div>
-   <input type="button" value="채팅참여" id="chatting" 
-   style="position: absolute; top: 250px; width: 100px; height: 50px;"/>
-   <input type="button" value="퇴장" id="exit"
-   style="position: absolute; top: 250px; left: 708px; width: 100px; height: 50px;"/>
-   <input type="text" value="${member.ID}" id="userId"
-   style="position: absolute; top: 250px; left: 808px; width: 200px; height: 50px; text-align: center;"/>
-</div>
+	<input type="text" value="${room.roomId}"/ style="position: absolute; top: 200px; left: 705px; width: 302px; height: 50px;"><br/>
+	<input type="text" value="${room.name}" style="position: absolute; top: 200px; width: 100px; height: 50px;"/><br/>
+	<textarea rows="10" cols="50" readonly="readonly" id="data" 
+	style="width: 400px; height: 500px; z-index:1; background-color: #F2F2F2;"></textarea><br/>
+	<div style="position: absolute; top: 700px; width: 400px; height: 100px; background-color: white;
+	border: 1px solid #cccccc;">
+	<input type="text" id="message"/ style="width: 300px; height: 70px; margin-top: 15px; margin-left: 20px;">
+	<input type="button" value="보내기" id="sendBtn" 
+	style="width: 60px; height: 68px; margin-left: 4px; background-color: #CECEF6; color: white; 
+	font-weight: 700; font-size: 16px; border: none; border-radius: 2px 2px 2px 2px;"/>
+	</div>
+	<input type="button" value="채팅참여" id="chatting" 
+	style="position: absolute; top: 250px; width: 100px; height: 50px;"/>
+	<input type="button" value="퇴장" id="exit"
+	style="position: absolute; top: 250px; left: 708px; width: 100px; height: 50px;"/>
+	<input type="text" value="${member.ID}" id="userId"
+	style="position: absolute; top: 250px; left: 808px; width: 200px; height: 50px; text-align: center;"/>
+      </div>
 </div>
 </body>
 </html>

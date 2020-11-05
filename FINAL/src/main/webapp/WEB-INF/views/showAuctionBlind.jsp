@@ -12,16 +12,17 @@
 <title>Insert title here</title>
 </head>
 <style>
-	img {
-		width: 200px;
-    	height: 200px;
-	}
-	li{
-		display: inline-block;
-		list-style: none;
-	}
+   img {
+      width: 200px;
+       height: 200px;
+   }
+   li{
+      display: inline-block;
+      list-style: none;
+   }
 </style>
 <body>
+
 <div id="container" style="width: 1700px; margin-top: 200px;">
 	<h2 style="text-align: center; font-size: 30px; margin-left: 10%">블라인드 경매</h2>
 	<div style="width: 300px; height: 1000px; position: fixed;">
@@ -79,5 +80,3 @@
 </body>
 </html>
 <%@ include file="footer.jsp" %>
-
-

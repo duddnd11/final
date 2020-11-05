@@ -68,4 +68,19 @@ public class ProductServiceImpl implements ProductService {
 		return dao.blindCharge(pno);
 	}
 
+	@Override
+	public int addLike(String str, String ID) {
+		return dao.addLike(str, ID);
+	}
+
+	@Override
+	public int hitcountUp(int pno) {
+		return dao.hitcountUp(pno);
+	}
+
+	@Override
+	public String selectLike(String ID) {
+		return dao.selectLike(ID);
+	}
+
 }
