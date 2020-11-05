@@ -12,12 +12,14 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script src="resources/js/jquery-3.5.1.min.js"></script>
 <script src="resources/js/plmi.js"></script>
+  <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
 
 <link rel="stylesheet"
    href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
    <script src="../package/swiper-bundle.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <title>Insert title here</title>
 
 </head>
@@ -36,6 +38,7 @@
    th{
       text-align: left;
    }
+   
 </style>
 <script>
 $(document).ready(function(){
@@ -76,11 +79,11 @@ $(document).ready(function(){
       auto: false,
       autoControls: false,
       stopAutoOnClick: true,
-      pager: true,
+      pager: false,
       slideWidth: 400,
       
       minSlides: 1,
-      maxSlides: 2,
+      maxSlides: 1,
       moveSlides: 1,
     });
   });
@@ -94,20 +97,26 @@ $(document).ready(function(){
    <c:if test="${vo.image ne null }">
       <img src="${vo.image }"/>      
    </c:if>
+   <div>
    <ul class="minislider">
    <c:if test="${vo.image eq null }">
        <li>
+       <div>
       <c:if test="${vo.img1 ne '(이름없음)' }">
       <img src="resources/images/${vo.img1 }"/>
       </c:if>
+      </div>
       </li>
       <li>
+      <div>
       <c:if test="${vo.img2 ne '(이름없음)' }">
       <img src="resources/images/${vo.img2 }"/>
-      </c:if> 
+      </c:if>
+      </div>
       </li>     
    </c:if>     
    </ul>
+   </div>
    </div>
    
    
