@@ -12,4 +12,10 @@ public interface MemberDao {
 	public int apiLogin(String id,String api);
 	
 	public void insertApi(MemberVo vo);
+	
+	MemberVo IdCheck(MemberVo vo);	//아이디 찾기
+	
+	MemberVo PwCheck(MemberVo vo);	//비밀번호 찾기
+	
+	void newPW(MemberVo vo);
 }

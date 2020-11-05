@@ -1,5 +1,6 @@
 package com.kk.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.auction.service.MemberService;
+import com.auction.service.ProductService;
 import com.auction.service.QnaBoardService;
 import com.auction.sha256.SHA256Util;
 import com.auction.vo.MemberVo;
+import com.auction.vo.ProductVo;
 import com.auction.vo.QnaBoardVo;
 
 
@@ -24,6 +27,8 @@ import com.auction.vo.QnaBoardVo;
 public class MemberHomeController {
 	@Autowired
 	MemberService service;
+	@Autowired
+	ProductService pService;
 	@Autowired
 	QnaBoardService qnaService;
 	
@@ -96,11 +101,23 @@ public class MemberHomeController {
 		return "redirect:/main";
 	}
 	@RequestMapping(value="/myPage")
-	public String myPage(Model model,HttpSession session) {
-		MemberVo vo = (MemberVo) session.getAttribute("member");
-		String id = vo.getID();
-		List<QnaBoardVo> list =qnaService.selectFromId(id);
-		model.addAttribute("list", list);
+	public String myPage(HttpSession session, Model model) {
+		MemberVo member = (MemberVo) session.getAttribute("member");
+		List<ProductVo> list1 = new ArrayList<ProductVo>();
+		String likeProduct = pService.selectLike(member.getID());
+		String[] pno = likeProduct.split("_!_"); // 1016 1022
+		for(int i=0; i<=pno.length-1; i++) { //2
+	         if(!(pno[i].equals(""))) {
+	            ProductVo vo = pService.selectOne(Integer.parseInt(pno[i]));
+	            System.out.println(vo);
+	            list1.add(vo);
+	         }
+	      }
+		
+		String id = member.getID();
+		List<QnaBoardVo> list2 =qnaService.selectFromId(id);
+		model.addAttribute("list1", list1);
+		model.addAttribute("list2", list2);
 		return "myPage";
 	}
 	@RequestMapping(value="/deallist")
@@ -121,6 +138,50 @@ public class MemberHomeController {
 		session.setAttribute("member", vo);
 		return "loginaction";
 	}
+	
+	@RequestMapping(value = "/idcheck")
+	public String idfind(){
+		return "idcheck";
+	}
+	
+	@RequestMapping(value = "/IDfind")
+	public String IDfing(MemberVo vo, Model model, HttpSession session) throws Exception {
+		MemberVo result = service.IdCheck(vo);
+		if(result==null) {
+			model.addAttribute("msg", "회원정보가 틀립니다.");
+			session.setAttribute("memebr", result);
+			return "idcheck";
+		}else {
+			session.setAttribute("memebr", result);
+			return "IDfind";
+		}
+	}
+	
+	@RequestMapping(value = "/pwcheck")
+	public String pwcheck() {
+		
+		return "pwcheck";
+	}
+	
+	@RequestMapping(value = "/PWfind")
+	public String PWfind(MemberVo vo, Model model, HttpSession session)throws Exception {
+		MemberVo result = service.PwCheck(vo);
+		if(result==null) {
+			model.addAttribute("msg", "회원정보가 틀립니다.");
+			session.setAttribute("memebr", result);
+			return "pwcheck";
+		}else {
+			session.setAttribute("memebr", result);
+			return "PWfind";
+		}
+	}	
+	
+	@RequestMapping(value = "/newPWaction")
+	public String PWaction(MemberVo vo, HttpSession session) {
+		service.newPW(vo);
+		return "redirect:/main";
+	}
+	
 }
 
 

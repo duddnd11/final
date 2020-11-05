@@ -54,7 +54,6 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public ProductVo selectOne(int pno) {
 		sqlSession.update("com.auction.mapper.ProductMapper.timeout");
-		sqlSession.update("com.auction.mapper.ProductMapper.hitcountUp", pno);
 		return sqlSession.selectOne("com.auction.mapper.ProductMapper.selectOne", pno);
 	}
 
@@ -89,6 +88,7 @@ public class ProductDaoImpl implements ProductDao {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("getcustomer", vo.getID());
 		map.put("pno", vo.getPno());
+		
 		HashMap<String, Object> map2 = new HashMap<String, Object>();
 		map2.put("getcustomer", vo.getID());
 		map2.put("pno", vo.getPno());
@@ -126,6 +126,24 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public AuctionVo blindCharge(int pno) {
 		return sqlSession.selectOne("com.auction.mapper.ProductMapper.blindCharge", pno);
+	}
+
+	@Override
+	public int addLike(String str, String ID) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("likeproduct", str);
+		map.put("ID", ID);
+		return sqlSession.update("com.auction.mapper.ProductMapper.addLike", map); 
+	}
+
+	@Override
+	public int hitcountUp(int pno) {
+		return sqlSession.update("com.auction.mapper.ProductMapper.hitcountUp", pno);
+	}
+
+	@Override
+	public String selectLike(String ID) {
+		return sqlSession.selectOne("com.auction.mapper.ProductMapper.selectLike", ID);
 	}
 
 }

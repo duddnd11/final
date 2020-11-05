@@ -17,6 +17,8 @@ public interface ProductService {
 	List<ProductVo> showNormalCategory(String category);
 	List<ProductVo> showBlindCategory(String category);
 	int dealChage(int pno);
-	
+	int hitcountUp(int pno);
 	AuctionVo blincCharge(int pno);
+	int addLike(String str, String ID);
+	String selectLike(String ID);
 }
