@@ -12,26 +12,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style>
-   th{
-      border: 1px solid #cccccc;
-      
-   }
-   td{
-      border: 1px solid #cccccc;
-   }
-   table{
-      width: 1200px;
-      margin-top: 50px;
-      margin-left: 200px;
-      font-size: 18px;
-      text-align: center;
-   }
-   #searchtable{
-      width: 200px;
-      margin-top: -100px;;
-      float: right;
-      
-   }
+	th{
+		border: 1px solid #cccccc;
+		
+	}
+	td{
+		border: 1px solid #cccccc;
+	}
+	table{
+		width: 1200px;
+		margin-top: 150px;
+		margin-left: 200px;
+		font-size: 18px;
+		text-align: center;
+	}
+	#searchtable{
+		width: 200px;
+		margin-top: -100px;;
+		float: right;
+		
+	}
    h2 {
 	    text-align: center;
 	    margin: 0 auto;
@@ -40,200 +40,196 @@
 </style>
 <script>
 function ajax_admin(admin,offset) {
-   var data = {
-      admin: admin,
-      offset : offset
-      }
-   $.ajax({
-      url: 'http://localhost:9090/final/rest/admin/itemadmin',
-      type: 'post',
-      data: JSON.stringify(data),
-      dataType: 'json',
-      contentType: 'application/json',
-      success: function(response){
-         list = response;
-         for(var i=0; i<=list.length-1; i++){
-            var str="";
-            str += "<tr>";
-            str += "<td>" +list[i].pno + "</td>";
-            str += "<td><a href='../showDetail?pno="+ list[i].pno +"'>"  +list[i].pname +"</a></td>";
-            str += "<td>" +list[i].id +"</td>";
-            str += "<td>" +list[i].grade +"</td>";
-            str += "<td>" +list[i].uploaddate +"</td>";
-            str += "<td>" +list[i].admin +"</td>";
-            str += "<td>" +list[i].deal +"</td>";
-            str += "</tr>";
-            $("#theTable").append(str);
-            }
-         },
-      error: function() {
-         alert("에러!admin");
-         }
-      })
-   }
+	var data = {
+		admin: admin,
+		offset : offset
+		}
+	$.ajax({
+		url: 'http://localhost:9090/final/rest/admin/itemadmin',
+		type: 'post',
+		data: JSON.stringify(data),
+		dataType: 'json',
+		contentType: 'application/json',
+		success: function(response){
+			list = response;
+			for(var i=0; i<=list.length-1; i++){
+				var str="";
+				str += "<tr>";
+				str += "<td>" +list[i].pno + "</td>";
+				str += "<td><a href='../showDetail?pno="+ list[i].pno +"'>"  +list[i].pname +"</a></td>";
+				str += "<td>" +list[i].id +"</td>";
+				str += "<td>" +list[i].grade +"</td>";
+				str += "<td>" +list[i].uploaddate +"</td>";
+				str += "<td>" +list[i].admin +"</td>";
+				str += "<td>" +list[i].deal +"</td>";
+				str += "</tr>";
+				$("#theTable").append(str);
+				}
+			},
+		error: function() {
+			alert("에러!admin");
+			}
+		})
+	}
 function ajax(admin,offset,deal) {
-   var data = {
-      admin: admin,
-      offset:offset,
-      deal: deal
-      }
-   $.ajax({
-      url: 'http://localhost:9090/final/rest/admin/itemmanager',
-      type: 'post',
-      data: JSON.stringify(data),
-      dataType: 'json',
-      contentType: 'application/json',
-      success: function(response){
-         list = response;
-         
-         for(var i=0; i<=list.length-1; i++){
+	var data = {
+		admin: admin,
+		offset:offset,
+		deal: deal
+		}
+	$.ajax({
+		url: 'http://localhost:9090/final/rest/admin/itemmanager',
+		type: 'post',
+		data: JSON.stringify(data),
+		dataType: 'json',
+		contentType: 'application/json',
+		success: function(response){
+			list = response;
+			
+			for(var i=0; i<=list.length-1; i++){
 
-            var str="";
-            str += "<tr>";
-            str += "<td>" +list[i].pno + "</td>";
-            str += "<td><a href='../showDetail?pno="+ list[i].pno +"'>" +list[i].pname +"</a></td>";
-            str += "<td>" +list[i].id +"</td>";
-            str += "<td>" +list[i].grade +"</td>";
-            str += "<td>" +list[i].uploaddate +"</td>";
-            str += "<td>" +list[i].admin +"</td>";
-            str += "<td>" +list[i].deal +"</td>";
-            str += "</tr>";
-            $("#theTable").append(str);
-         }
-      },
-      error: function() {
-         alert("에러!");
-         }
-      })
-   }
+				var str="";
+				str += "<tr>";
+				str += "<td>" +list[i].pno + "</td>";
+				str += "<td><a href='../showDetail?pno="+ list[i].pno +"'>" +list[i].pname +"</a></td>";
+				str += "<td>" +list[i].id +"</td>";
+				str += "<td>" +list[i].grade +"</td>";
+				str += "<td>" +list[i].uploaddate +"</td>";
+				str += "<td>" +list[i].admin +"</td>";
+				str += "<td>" +list[i].deal +"</td>";
+				str += "</tr>";
+				$("#theTable").append(str);
+			}
+		},
+		error: function() {
+			alert("에러!");
+			}
+		})
+	}
 
 function ajax_page(admin,offset,deal){
-   var data = {
-         admin: admin,
-         offset : offset,
-         deal : deal
-         }
-   $.ajax({
-      url: 'http://localhost:9090/final/rest/admin/page',
-      type: 'post',
-      data: JSON.stringify(data),
-      dataType: 'json',
-      contentType: 'application/json',
-      success:function(response){
-         var sp = response["startPage"];
-         var ep = response["endPage"];
-         var admin = response["admin"];
-         var str="";
-         for(var i=sp; i<=ep ;i++){
-         str+="<form class='pageForm'>";
-         str+="<input type='button' id='btn"+(admin+1)+"' class='btn"+(admin+1)+"' value='"+i+"'/>";
-         str+="<input type='hidden' value="+(i*10-10)+" name='offset' class='offset'/>";
-         str+="</form>";
-         }
-         $(".pageDiv").append(str);
-         
-         },
-      error : function(){
-         alert("페이지에러!");
-         }
-      })
+	var data = {
+			admin: admin,
+			offset : offset,
+			deal : deal
+			}
+	$.ajax({
+		url: 'http://localhost:9090/final/rest/admin/page',
+		type: 'post',
+		data: JSON.stringify(data),
+		dataType: 'json',
+		contentType: 'application/json',
+		success:function(response){
+			var sp = response["startPage"];
+			var ep = response["endPage"];
+			var admin = response["admin"];
+			var str="";
+			for(var i=sp; i<=ep ;i++){
+			str+="<form class='pageForm'>";
+			str+="<input type='button' id='btn"+(admin+1)+"' class='btn"+(admin+1)+"' value='"+i+"'/>";
+			str+="<input type='hidden' value="+(i*10-10)+" name='offset' class='offset'/>";
+			str+="</form>";
+			}
+			$(".pageDiv").append(str);
+			
+			},
+		error : function(){
+			alert("페이지에러!");
+			}
+		})
 }
 $(document).ready(function() {
-   $(".admin").click(function(){
-         
-      });
+	$(".admin").click(function(){
+			
+		});
 /*
-   $("#btn1").click(function() {
-      $("#trr").nextAll().remove();
-      $(".pageForm").remove();
-      ajax_admin(0,0);
-      ajax_page(0,0);
-      })
-   $("#btn2").click(function() {
-      $("#trr").nextAll().remove();
-      ajax_admin(1);
-      })
-   $("#btn3").click(function() {
-      $("#trr").nextAll().remove();
-      ajax_admin(2);
-      })
-   $("#btn4").click(function() {
-      $("#trr").nextAll().remove();
-      ajax(1,1,0);
-      })
-   $("#btn5").click(function() {
-      $("#trr").nextAll().remove();
-      ajax(1,2,0);
-      })
-   */
+	$("#btn1").click(function() {
+		$("#trr").nextAll().remove();
+		$(".pageForm").remove();
+		ajax_admin(0,0);
+		ajax_page(0,0);
+		})
+	$("#btn2").click(function() {
+		$("#trr").nextAll().remove();
+		ajax_admin(1);
+		})
+	$("#btn3").click(function() {
+		$("#trr").nextAll().remove();
+		ajax_admin(2);
+		})
+	$("#btn4").click(function() {
+		$("#trr").nextAll().remove();
+		ajax(1,1,0);
+		})
+	$("#btn5").click(function() {
+		$("#trr").nextAll().remove();
+		ajax(1,2,0);
+		})
+	*/
 });
 $(document).on("click","#btn1",function(){
-   /*
-   var offset=$(this).parent().find("input.offset").val();
-   $("#trr").nextAll().remove();
-   $(".pageForm").remove();
-   ajax_admin(0,offset);
-   ajax_page(0,offset,-1);
-   */
+	/*
+	var offset=$(this).parent().find("input.offset").val();
+	$("#trr").nextAll().remove();
+	$(".pageForm").remove();
+	ajax_admin(0,offset);
+	ajax_page(0,offset,-1);
+	*/
 });
 $(document).on("click","#btn2",function(){
-   /*
-   var offset=$(this).parent().find("input.offset").val();
-   $("#trr").nextAll().remove();
-   $(".pageForm").remove();
-   ajax_admin(1,offset);
-   ajax_page(1,offset,-1);
-   */
+	/*
+	var offset=$(this).parent().find("input.offset").val();
+	$("#trr").nextAll().remove();
+	$(".pageForm").remove();
+	ajax_admin(1,offset);
+	ajax_page(1,offset,-1);
+	*/
 });
 $(document).on("click","#btn3",function(){
-   /*
-   var offset=$(this).parent().find("input.offset").val();
-   $("#trr").nextAll().remove();
-   $(".pageForm").remove();
-   ajax_admin(2,offset);
-   ajax_page(2,offset,-1);
-   */
+	/*
+	var offset=$(this).parent().find("input.offset").val();
+	$("#trr").nextAll().remove();
+	$(".pageForm").remove();
+	ajax_admin(2,offset);
+	ajax_page(2,offset,-1);
+	*/
 });
 /*
 $(document).on("click","#btn4",function(){
-   var offset=$(this).parent().find("input.offset").val();
-   $("#trr").nextAll().remove();
-   $(".pageForm").remove();
-   ajax(1,offset,1);
-   ajax_page(1,offset,1);
+	var offset=$(this).parent().find("input.offset").val();
+	$("#trr").nextAll().remove();
+	$(".pageForm").remove();
+	ajax(1,offset,1);
+	ajax_page(1,offset,1);
 });
 $(document).on("click","#btn5",function(){
-   var offset=$(this).parent().find("input.offset").val();
-   $("#trr").nextAll().remove();
-   $(".pageForm").remove();
-   ajax(1,offset,2);
-   ajax_page(1,offset,2);
+	var offset=$(this).parent().find("input.offset").val();
+	$("#trr").nextAll().remove();
+	$(".pageForm").remove();
+	ajax(1,offset,2);
+	ajax_page(1,offset,2);
 });*/
 
 </script>
 <style>
-   form{
-      display: inline;
-   }
-   a{
-      text-decoration: none;
-      color: black;
-   }
-   th{
-      background-color: #F9E198;
-   }
+	form{
+		display: inline;
+	}
+	a{
+		text-decoration: none;
+		color: black;
+	}
+	th{
+		background-color: #F9E198;
+	}
 </style>
 </head>
 <body>
-      
-      <button id="btn1" onclick="location.href='item?offset=0&admin=0&deal=-1'">승인요청</button>   <!-- => 옵션으루  0.0 -->
-      <button id="btn2" onclick="location.href='item?offset=0&admin=1&deal=-1'">승인</button>      <!-- 1.0 -->
-      <button id="btn3" onclick="location.href='item?offset=0&admin=2&deal=-1'">거부</button>   <!-- 2.0 -->
+		
+		<button id="btn1" onclick="location.href='item?offset=0&admin=0&deal=-1'">승인요청</button>	<!-- => 옵션으루  0.0 -->
+		<button id="btn2" onclick="location.href='item?offset=0&admin=1&deal=-1'">승인</button>		<!-- 1.0 -->
+		<button id="btn3" onclick="location.href='item?offset=0&admin=2&deal=-1'">거부</button>	<!-- 2.0 -->
 <br/>
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/main
 		<button id="btn4" onclick="location.href='item?offset=0&admin=1&deal=1'">경매중</button>	<!-- 1.1 -->
 		<button id="btn5"onclick="location.href='item?offset=0&admin=1&deal=2'">마감</button>	<!-- 1.2 -->
 		<button id="menuBtn" style="float: right;"onclick="location.href='../admin'">메뉴로</button>
@@ -323,9 +319,5 @@ $(document).on("click","#btn5",function(){
 			</c:forEach>
 		</div>
 	</div>
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/main
 </body>
 </html>

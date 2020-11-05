@@ -42,5 +42,7 @@
 		<websocket:sockjs/>
 	</websocket:handlers>
 	
+	<!-- 에디터 -->
+	<resources location="/WEB-INF/views/ckeditor/" mapping="/ckeditor/**"></resources>
 	
 </beans:beans>

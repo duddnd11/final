@@ -28,15 +28,14 @@ public class MyRestController {
 	@RequestMapping(value="/writecomment")
 	@ResponseBody
 	public CommentVo writeComment(@RequestBody Map<String,String> param) {
-		String ID = "아이디";
+		String userid = param.get("userid");
 		String comment  = param.get("comment");
 		String qbno =param.get("qbno");
-		
 		int ref=Integer.parseInt(param.get("ref"));
 		int level=Integer.parseInt(param.get("level"));
 		int step=Integer.parseInt(param.get("step"));
 		
-		CommentVo vo = new CommentVo(Integer.parseInt(qbno),comment, ID,ref,level,step);
+		CommentVo vo = new CommentVo(Integer.parseInt(qbno),comment, userid,ref,level,step);
 		commentService.writeCommentService(vo);
 		int maxCno =commentService.selectMaxCnoService();
 		if(ref==0) {

@@ -18,6 +18,10 @@ function popup(){
       var option = "width = 550, height = 500, top = 100, left = 200, location = no"
       window.open(url, name, option);
    }
+<<<<<<< HEAD
+=======
+var check =0;
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 var sock;
 //var nickname;
 //<![CDATA[
@@ -26,22 +30,34 @@ var roomId = "${room.roomId}";
 $(function(){
    if(${member.grade !='z'}){
          $("#chatting").click(function(){
+<<<<<<< HEAD
             //alert("사용자");
+=======
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
             sock= new SockJS("<c:url value="/chat"/>");
-            sock.onopen = onOpen;
+            sock.onopen=onOpen2;
             sock.onmessage = onMessage;
             sock.onclose = onClose;
+           check=1;
             //$("#data").append($("#userId").val()+"님 채팅 입장\n");
          });
       }else{
+<<<<<<< HEAD
             //alert("관리자");
+=======
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
             sock= new SockJS("<c:url value="/chat"/>");
-            sock.onopen = onOpen;
+            sock.onopen = onOpen2;
+            $("#chatting").click(function(){
+                if(check==0){
+                  onOpen();
+               }
+               check=1;
+               });
             sock.onmessage = onMessage;
             sock.onclose = onClose;
       }
    $("#sendBtn").click(function(){
-     alert("ㅇㅇ");
       sendMessage();
       $("#message").val('');
    });
@@ -60,12 +76,16 @@ $(function(){
 function onOpen(){
     sock.send(JSON.stringify({chatRoomId : roomId,type:'ENTER',writer:$("#userId").val(),grade:"${member.grade}"}));
    }
+function onOpen2(){
+    sock.send(JSON.stringify({type:'ENTER',writer:$("#userId").val(),grade:"${member.grade}"}));
+   }
 function sendMessage(){
    sock.send(JSON.stringify({chatRoomId : roomId, type :'CHAT', writer:$("#userId").val(), message:$("#message").val()}));
    }
 
 function onClose(){
       sock.send(JSON.stringify({chatRoomId : roomId,type:'LEAVE',writer:$("#userId").val()}));
+       check=0;
 }
 function enter(){
       sock.send("채팅입장");
@@ -73,16 +93,35 @@ function enter(){
 // evt : websocket이 보내준 데이터
 function onMessage(evt){
    var data = evt.data;
-   var sessionid = data.split(":")[0];
-   var message = data.split(":")[1];
+   var userRoomId = data.split(":")[0];
+   var sessionid = data.split(":")[1];
+   var message = data.split(":")[2];
+   var person = data.split(":")[0];
    var userid = $("#userId").val();
-   if(sessionid == userid){
-         $("#data").append("나:"+message+"\n");
-   }else{
-         $("#data").append(data+"\n");
-       }
+   if(check==0){
+      alert(data);
+   }
+   if(check==1){
+     if(userRoomId==roomId){
+         if(sessionid == userid){
+               $("#data").append("나:"+message+"\n");
+         }else{
+            if(message!=undefined){
+               $("#data").append(sessionid+":"+message+"\n");
+               }else{
+               $("#data").append(sessionid+"\n");
+                  }
+             }
+      }else{
+         alert(data);
+          }
+   }
 }
 
+function onMessage2(evt){
+   var data = evt.data;
+   alert(data);
+}
 
 
    /*
@@ -284,16 +323,20 @@ header.header .nav_wrap nav.main .main_cate>li {
                         
                      </div></li>
                   <li id="main_customer" class="menu"><a class="menu_title"
-                     href="http://localhost:9090/final/notice?offset=0">고객센터</a>
+                     href="notice?offset=0">고객센터</a>
                      <div class="contextual">
                         <ul class="depth_1">               
-                           <li class="selected"><a class="submenu_title" href="http://localhost:9090/final/notice?offset=0"
+                           <li class="selected"><a class="submenu_title" href="notice?offset=0"
                            >공지사항</a>
-                           <li class="selected"><a class="submenu_title" href="http://localhost:9090/final/qnaBoard?offset=0"
+                           <li class="selected"><a class="submenu_title" href="qnaBoard?offset=0"
                            >문의게시판</a>
                            </li>
                            </li>
+<<<<<<< HEAD
                            <li class="selected"><a href="http://localhost:9090/final/new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="link">채팅</a>
+=======
+                           <li class="selected"><a href="new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="submenu_title">채팅</a>
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
                            </li>
                         </ul>
                      </div></li>

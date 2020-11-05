@@ -34,7 +34,10 @@
 	<update id="hitcountUp">
 		update product set hitcount= hitcount+1 where pno=#{pno};
 	</update>
-
+	<update id="timeout">
+		update product set timeout=(TIMESTAMPDIFF(day, NOW(), deadlinedate)+1);
+	</update>
+	
 	<!-- 입찰 -->
 	<select id="showAuction" resultType="int">
 		SELECT count(*) FROM auction where pno=#{pno};
@@ -61,6 +64,24 @@
 	<update id="dealChange">
 		update product set deal=2 where pno=#{pno};
 	</update>
+	
+	<!-- 
+	<select id="blindCharge" resultType="com.auction.vo.AuctionVo">
+		SELECT ID FROM final.auction WHERE pno=#{pno} and ABS(myprice-(SELECT price FROM product WHERE pno=#{pno})) order by buydate limit 1;
+	</select>
+	 -->
+	
+	<update id="updateCustomer">
+		UPDATE product SET count =count+1, getcustomer=#{getcustomer} , bestmoney=#{bestmoney} WHERE pno =#{pno};
+	</update>
+	
+	<!-- 관심상품 -->
+	<update id="addLike">
+		update member set likeproduct=concat(likeproduct, #{likeproduct})  where ID=#{ID};
+	</update>
+	<select id="selectLike" resultType="String">
+		select likeproduct from member where ID=#{ID};
+	</select>
 </mapper>
 
 

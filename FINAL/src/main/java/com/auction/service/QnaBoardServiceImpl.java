@@ -89,4 +89,9 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 	public void updateBoard(int qbno, String content) {
 		dao.updateBoard(qbno, content);
 	}
+
+	@Override
+	public List<QnaBoardVo> selectFromId(String id) {
+		return dao.selectFromId(id);
+	}
 }
