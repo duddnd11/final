@@ -17,33 +17,32 @@ function popup(){
 * {
 	box-sizing: border-box;
 }
-<<<<<<< HEAD
 
 .header {
 	margin-bottom:45px;
 }
 
 #topMenu {
-=======
-header{
+{
 	top: 0px;
 }
+
 .main {
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 	height: 30px;
 	width: 1600px; 
 	position: relative;
 }
-<<<<<<< HEAD
 
 #topMenu ul { /* 메인 메뉴 안의 ul을 설정함: 상위메뉴의 ul+하위 메뉴의 ul */
 	list-style-type: none;
-=======
+
+}
+
 .menu_title{
 	margin-top:20px;
 }
+
 .main ul {
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 	margin: 0px;
 	padding: 0px;
 }
@@ -62,16 +61,12 @@ header{
 	text-decoration: none;
 	display: block;
 	width: 150px;
-<<<<<<< HEAD
 	font-size: 20px;
     color: #000;
     font-weight: 700;
     font-family: "Nanum Barun Gothic", sans-serif;
-=======
 	font-size: 12px;
 	font-weight: bold;
-	
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .menuLink { /* 상위 메뉴의 글씨색을 흰색으로 설정 */
@@ -83,16 +78,14 @@ header{
 	text-decoration:underline;
 }
 
-<<<<<<< HEAD
 .longLink { /* 좀 더 긴 메뉴 스타일 설정 */
 	width: 190px;
-=======
-.contextual {
-	padding-top: 20px;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
-<<<<<<< HEAD
+.contextual {
+	padding-top: 20px;
+}
+
 .submenuLink { /* 하위 메뉴의 a 태그 스타일 설정 */
 	color: gray;
 	background-color: black; /* [변경] 배경색 변경 */
@@ -105,11 +98,11 @@ header{
 
 .submenu { /* 하위 메뉴 스타일 설정 */
 	position: absolute;
-=======
+}
+
 .depth_1 {
 	position: absolute;	
 	background-color: 2d2d2d;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 	height: 0px;
 	overflow: hidden;
 	transition: height .2s;
@@ -119,15 +112,14 @@ header{
 	background-color: black; /* [추가] 하위 메뉴 전체에 배경색 설정 */
 }
 
-<<<<<<< HEAD
 .submenu li {
 	display: inline-block;
 	margin:10px;
 	text-align:center;
-=======
+}
+
 .depth_1 li {
 	margin-left: 20px;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .topMenuLi:hover .submenu {
@@ -136,8 +128,6 @@ header{
 
 .submenuLink:hover {
 	color: blue;
-<<<<<<< HEAD
-=======
 }
 
 header.header .login {
@@ -154,7 +144,6 @@ header.header .nav_wrap nav.main .main_cate>li.menu>.menu_title {
 	color: #000;
 	font-weight: 700;
 	font-family: "Nanum Barun Gothic", sans-serif;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .login a {
@@ -182,20 +171,18 @@ ul, li {
 	margin-top: -5px;
 }
 
-<<<<<<< HEAD
 .inner_wrap {
 	margin-top:60px;
-=======
+}
+
 header.header .nav_wrap nav.main .main_cate> li {
 	float: left;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .search {
 	float:right;
 	margin-left:40px;
 }
-<<<<<<< HEAD
 
 .login {
 	float:right;
@@ -211,11 +198,11 @@ header.header .nav_wrap nav.main .main_cate> li {
 
 .logo {
 	float:left;
-=======
+}
+
 .inner_wrap div {
 	float: right;
 	margin-top: 45px;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 </style>
 
@@ -224,7 +211,6 @@ header.header .nav_wrap nav.main .main_cate> li {
 	<header class="header" style="position: fixed; z-index: 2; background-color: white;">
 		<section class="nav_wrap">
 			<div class="inner_wrap">
-<<<<<<< HEAD
 				<nav id="topMenu">
 					<ul>
 						<div class="logo">
@@ -258,7 +244,6 @@ header.header .nav_wrap nav.main .main_cate> li {
 						<div class="login">
 							<a href="http://unikys.tistory.com/guestbook">로그인</a>
 						</div>
-=======
 				<a href="main"><img class="logo"
 					src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile6.uf.tistory.com%2Fimage%2F277027375874594F095C54"></a>
 				<nav class="main">
@@ -295,11 +280,8 @@ header.header .nav_wrap nav.main .main_cate> li {
 									</li>
 								</ul>
 							</div></li>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 					</ul>
 				</nav>
-<<<<<<< HEAD
-=======
 				<div class="search">
 					<a href="검색"><img class="search_img"
 						src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw="></a>
@@ -319,7 +301,6 @@ header.header .nav_wrap nav.main .main_cate> li {
 						</c:otherwise>
 				</c:choose>
 				</div>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 			</div>
 		</section>
 	</header>
