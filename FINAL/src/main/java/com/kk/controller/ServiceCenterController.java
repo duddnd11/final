@@ -57,13 +57,13 @@ public class ServiceCenterController {
 	
 	@RequestMapping(value="/qnaBoard")
 	public String qnaBoard(Model model,int offset,String keyword,String searchMenu,HttpServletRequest request,HttpServletResponse response) {
-//		Cookie[] cookies = request.getCookies();
-//		for(int i=0; i<cookies.length;i++) {
-//			System.out.println(cookies[i].getName());
-//			System.out.println("쿠키삭제");
-//			cookies[i].setMaxAge(0);
-//			response.addCookie(cookies[i]);
-//		}
+		Cookie[] cookies = request.getCookies();
+		for(int i=0; i<cookies.length;i++) {
+			if(cookies[i].getName().equals("qnaWrite") || cookies[i].getName().contains("qnaDetail")) {
+				cookies[i].setMaxAge(0);
+				response.addCookie(cookies[i]);
+			}
+		}
 		
 		if(offset<0) {
 			offset=0;

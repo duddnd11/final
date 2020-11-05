@@ -40,7 +40,7 @@
 	
 	<!-- 입찰 -->
 	<select id="showAuction" resultType="int">
-		SELECT count(*) FROM auction where pno=#{pno};
+		SELECT count(*) FROM auction where pno=#{pno};	
 	</select>
 	<insert id="insertAuction">
 		insert into auction(ID, pno, myprice) values(#{ID}, #{pno}, #{myprice});

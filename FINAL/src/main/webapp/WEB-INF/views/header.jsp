@@ -31,11 +31,6 @@ $(function(){
             sock.onopen=onOpen2;
             sock.onmessage = onMessage;
             sock.onclose = onClose;
-            if(check==0){
-                alert("확인");
-            onOpen();
-                alert("확인2");
-            }
            check=1;
             //$("#data").append($("#userId").val()+"님 채팅 입장\n");
          });
@@ -135,7 +130,6 @@ if(${member.grade == 'z'}){
          alert(evt.data);
          console.log(evt.data);
       }
->>>>>>> refs/remotes/origin/main
 }*/
 </script>
 <style>
