@@ -1,5 +1,6 @@
 package com.kk.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,15 +14,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.auction.service.MemberService;
+import com.auction.service.QnaBoardService;
 import com.auction.sha256.SHA256Util;
 import com.auction.vo.MemberVo;
+import com.auction.vo.QnaBoardVo;
 
 
 @Controller
 public class MemberHomeController {
 	@Autowired
 	MemberService service;
-//	
+	@Autowired
+	QnaBoardService qnaService;
+	
 //	@RequestMapping(value = "/", method = RequestMethod.GET)
 //	public String home(Locale locale, Model model) {
 //
@@ -91,7 +96,11 @@ public class MemberHomeController {
 		return "redirect:/main";
 	}
 	@RequestMapping(value="/myPage")
-	public String myPage() {
+	public String myPage(Model model,HttpSession session) {
+		MemberVo vo = (MemberVo) session.getAttribute("member");
+		String id = vo.getID();
+		List<QnaBoardVo> list =qnaService.selectFromId(id);
+		model.addAttribute("list", list);
 		return "myPage";
 	}
 	@RequestMapping(value="/result/naverLogin")

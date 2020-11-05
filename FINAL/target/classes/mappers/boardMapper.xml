@@ -16,6 +16,9 @@
  	<select id="selectContent" resultType="com.auction.vo.QnaBoardVo">
  		SELECT * FROM qnaboard WHERE qbno=#{qbno}
  	</select>
+ 	<select id="selectFromId" resultType="com.auction.vo.QnaBoardVo">
+ 		SELECT * FROM qnaboard WHERE id=#{id}
+ 	</select>
  	<update id="updateHitcount">
  		UPDATE qnaboard SET hitcount=hitcount+1 WHERE qbno=#{qbno}
  	</update>
