@@ -12,6 +12,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script src="resources/js/jquery-3.5.1.min.js"></script>
 <script src="resources/js/plmi.js"></script>
+  <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
 
 <link rel="stylesheet"
    href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
@@ -38,8 +39,8 @@
       text-align: left;
    }
    .bx-next{
-   		float: right;
-   		
+         margin-left:330px;
+         
    }
 </style>
 <script>
@@ -70,11 +71,11 @@ function msg_time() {
   document.all.timer.innerHTML = m;   
   
   if (RemainDate <= 0) {      //시간 종료
-	  if(${vo.auctionmenu == "일반"}){
-    	location.href="showAuctionNormal";
-		  }else{
-    	location.href="showAuctionBlind";
-			  }
+     if(${vo.auctionmenu == "일반"}){
+       location.href="showAuctionNormal";
+        }else{
+       location.href="showAuctionBlind";
+           }
     clearInterval(tid);   // 타이머 해제
   }else{
     RemainDate = RemainDate - 1000; // 남은시간 -1초
@@ -95,7 +96,7 @@ $(document).ready(function(){
   });
 </script>
 <body>
-<div style="margin-left: 300px;  margin-top: 200px;">
+<div style="margin-left: 35%;  margin-top: 200px;">
    <span style="font-size: 20px;"><b>${vo.pno }</b></span>
    <span style="margin-left: 30px; font-size: 20px;">${vo.pname }</span>
    <div style="margin-top: 10px;" >
@@ -172,17 +173,17 @@ $(document).ready(function(){
    <div style="display: flex;">
       <c:choose>
          <c:when test="${vo.deal == 2 }">
-            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;" >관심상품</button>
+            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;" onclick="deadline()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;"  onclick="deadline()">마감</button>
          </c:when>
          
          <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer}">
-            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
+            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>
          
          <c:otherwise>
-            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
+            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="alertMsg()">입찰</button>
          </c:otherwise>
       </c:choose>
@@ -224,17 +225,17 @@ $(document).ready(function(){
       
       <c:choose>
          <c:when test="${vo.deal == 2 }">
-            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;" >관심상품</button>
+            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;" onclick="deadline()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;"  onclick="deadline()">마감</button>
          </c:when>
          
          <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer}">
-            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
+            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>
          
          <c:otherwise>
-            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
+            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="alertMsgBlind()">입찰</button>
          </c:otherwise>
       </c:choose>
@@ -250,6 +251,13 @@ $(document).ready(function(){
    </c:if>
 
 <script>
+function addLike(){
+   if (confirm("관심상품으로 등록하겠?")) {
+      location.href="addLike?pno=${vo.pno}";
+    } else {
+    }
+}
+
 function deadline(){
    alert("=====마감=====");
 }
