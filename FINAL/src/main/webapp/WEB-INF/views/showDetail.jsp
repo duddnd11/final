@@ -39,7 +39,11 @@
       text-align: left;
    }
    .bx-next{
+<<<<<<< HEAD
          margin-left: 330px;
+=======
+         margin-left:330px;
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
    }
 </style>
 <script>
@@ -177,7 +181,7 @@ $(document).ready(function(){
          </c:when>
          
          <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer}">
-            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="rejectLike()">관심상품</button>
+            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>
          
@@ -228,7 +232,7 @@ $(document).ready(function(){
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;"  onclick="deadline()">마감</button>
          </c:when>
          
-         <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer}">
+         <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer || rejectBlind >= 1}">
             <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" onclick="rejectLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>
@@ -257,14 +261,14 @@ function addLike(){
     }
 }
 function rejectLike(){
-   alert("관심상품으루 등록 못하심..ㅎㅅㅎ");
+   alert("관심상품 등록 못하심..ㅎㅅㅎ");
 }
 
 function deadline(){
    alert("=====마감=====");
 }
 function rejectAlert(){
-   alert("입찰 못하심ㅎㅅㅎ");
+   alert("입찰 못하심8ㅅ8");
 }
 
 var myprice2 = 0;
@@ -279,7 +283,7 @@ var moneyup2 = 0;
    </c:otherwise>
 </c:choose>   
 function alertMsg(){
-   if (confirm("입찰하겠?")) {
+   if (confirm("입찰하겠? (수정/철회 불가.)")) {
         // 확인 버튼 클릭 시 동작
       location.href='insertAuction?pno=${vo.pno}&myprice='+myprice2+'&moneyup='+moneyup2+"&auctionmenu=${vo.auctionmenu}";
     } else {
@@ -288,7 +292,7 @@ function alertMsg(){
 }
 
 function alertMsgBlind(){
-   if (confirm("입찰하겠?")) {
+   if (confirm("입찰하겠? (수정/철회 불가.)")) {
         // 확인 버튼 클릭 시 동작
         if($("#btnQtyC3_1000020518522").val() == 0){
          alert("가격을 입력하세요!!");

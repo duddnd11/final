@@ -51,7 +51,10 @@
 	<update id="updateMoney">
 		update product set count =count+1, bestmoney =bestmoney+moneyup, getcustomer=#{getcustomer} where pno=#{pno};
 	</update>
-	
+	<select id="rejectBlind" resultType="int">
+		select count(*) from auction a left outer join product p on a.pno=p.pno where a.ID=#{ID} and p.auctionmenu='블라인드' and a.pno=#{pno};
+	</select>
+
 	<!-- 카테고리 -->
 	<select id="normalCategory" resultType="com.auction.vo.ProductVo">
 		select * from product where category=#{category} and auctionmenu='일반' and deal=1 order by uploaddate desc;
@@ -70,7 +73,6 @@
 		SELECT ID FROM final.auction WHERE pno=#{pno} and ABS(myprice-(SELECT price FROM product WHERE pno=#{pno})) order by buydate limit 1;
 	</select>
 	 -->
-	
 	<update id="updateCustomer">
 		UPDATE product SET count =count+1, getcustomer=#{getcustomer} , bestmoney=#{bestmoney} WHERE pno =#{pno};
 	</update>
@@ -82,11 +84,13 @@
 	<select id="selectLike" resultType="String">
 		select likeproduct from member where ID=#{ID};
 	</select>
+	
+	<!-- 마이페이지.구매 -->
 	<select id="auctionPno" resultType="int">
 		SELECT distinct pno from auction where id =#{ID}; 
 	</select>
 	<select id="maxPrice" resultType="com.auction.vo.AuctionVo">
-		select idx,p.pname, p.ID,a.pno,max(myprice) as myprice,buydate from auction a left outer join product p on p.pno=a.pno where a.pno=#{pno} and a.id=#{id};
+		select idx,p.pname, p.ID,a.pno,max(myprice) as myprice,buydate,p.payment from auction a left outer join product p on p.pno=a.pno where a.pno=#{pno} and a.id=#{id};
 	</select>
 </mapper>
 
