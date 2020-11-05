@@ -116,16 +116,12 @@ public class HomeController {
 //		
 //		return "signup";
 //	}
-	@RequestMapping(value = "/idcheck")
-	public String idcheck() {
-		
-		return "idcheck";
-	}
-	@RequestMapping(value = "/pwcheck")
-	public String pwcheck() {
-		
-		return "pwcheck";
-	}
+//	@RequestMapping(value = "/idcheck")
+//	public String idcheck() {
+//		
+//		return "idcheck";
+//	}
+
 
 	@RequestMapping(value = "/admin/chat")
 	public String chat() {

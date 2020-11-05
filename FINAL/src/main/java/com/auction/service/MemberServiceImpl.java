@@ -36,4 +36,19 @@ public class MemberServiceImpl implements MemberService {
 	public void insertApi(MemberVo vo) {
 		dao.insertApi(vo);
 	}
+	
+	@Override
+	public MemberVo IdCheck(MemberVo vo)throws Exception{
+		return dao.IdCheck(vo);
+	}
+	
+	@Override
+	public MemberVo PwCheck(MemberVo vo)throws Exception{
+		return dao.PwCheck(vo);
+	}
+	
+	@Override
+	public void newPW(MemberVo vo) {
+		dao.newPW(vo);
+	}
 }

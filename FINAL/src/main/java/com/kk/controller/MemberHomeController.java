@@ -97,6 +97,50 @@ public class MemberHomeController {
 		session.setAttribute("member", vo);
 		return "loginaction";
 	}
+	
+	@RequestMapping(value = "/idcheck")
+	public String idfind(){
+		return "idcheck";
+	}
+	
+	@RequestMapping(value = "/IDfind")
+	public String IDfing(MemberVo vo, Model model, HttpSession session) throws Exception {
+		MemberVo result = service.IdCheck(vo);
+		if(result==null) {
+			model.addAttribute("msg", "회원정보가 틀립니다.");
+			session.setAttribute("memebr", result);
+			return "idcheck";
+		}else {
+			session.setAttribute("memebr", result);
+			return "IDfind";
+		}
+	}
+	
+	@RequestMapping(value = "/pwcheck")
+	public String pwcheck() {
+		
+		return "pwcheck";
+	}
+	
+	@RequestMapping(value = "/PWfind")
+	public String PWfind(MemberVo vo, Model model, HttpSession session)throws Exception {
+		MemberVo result = service.PwCheck(vo);
+		if(result==null) {
+			model.addAttribute("msg", "회원정보가 틀립니다.");
+			session.setAttribute("memebr", result);
+			return "pwcheck";
+		}else {
+			session.setAttribute("memebr", result);
+			return "PWfind";
+		}
+	}	
+	
+	@RequestMapping(value = "/newPWaction")
+	public String PWaction(MemberVo vo, HttpSession session) {
+		service.newPW(vo);
+		return "redirect:/main";
+	}
+	
 }
 
 
