@@ -19,10 +19,7 @@
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
    <script src="../package/swiper-bundle.min.js"></script>
-<<<<<<< HEAD
-=======
    <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.12/jquery.bxslider.min.js"></script>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 <title>Insert title here</title>
 
 </head>
@@ -42,8 +39,8 @@
       text-align: left;
    }
    .bx-next{
-   		margin-left:330px;
-   		
+         margin-left:330px;
+         
    }
 </style>
 <script>
@@ -74,11 +71,11 @@ function msg_time() {
   document.all.timer.innerHTML = m;   
   
   if (RemainDate <= 0) {      //시간 종료
-	  if(${vo.auctionmenu == "일반"}){
-    	location.href="showAuctionNormal";
-		  }else{
-    	location.href="showAuctionBlind";
-			  }
+     if(${vo.auctionmenu == "일반"}){
+       location.href="showAuctionNormal";
+        }else{
+       location.href="showAuctionBlind";
+           }
     clearInterval(tid);   // 타이머 해제
   }else{
     RemainDate = RemainDate - 1000; // 남은시간 -1초
@@ -89,19 +86,11 @@ $(document).ready(function(){
       auto: false,
       autoControls: false,
       stopAutoOnClick: true,
-<<<<<<< HEAD
-      pager: true,
-      slideWidth: 400,
-      
-      minSlides: 1,
-      maxSlides: 2,
-=======
       pager: false,
       slideWidth: 400,
       
       minSlides: 1,
       maxSlides: 1,
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
       moveSlides: 1,
     });
   });
@@ -115,22 +104,6 @@ $(document).ready(function(){
    <c:if test="${vo.image ne null }">
       <img src="${vo.image }"/>      
    </c:if>
-<<<<<<< HEAD
-   <ul class="minislider">
-   <c:if test="${vo.image eq null }">
-       <li>
-      <c:if test="${vo.img1 ne '(이름없음)' }">
-      <img src="resources/images/${vo.img1 }"/>
-      </c:if>
-      </li>
-      <li>
-      <c:if test="${vo.img2 ne '(이름없음)' }">
-      <img src="resources/images/${vo.img2 }"/>
-      </c:if> 
-      </li>     
-   </c:if>     
-   </ul>
-=======
    <div>
    <ul class="minislider">
    <c:if test="${vo.image eq null }">
@@ -151,7 +124,6 @@ $(document).ready(function(){
    </c:if>     
    </ul>
    </div>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
    </div>
    
    
@@ -206,7 +178,7 @@ $(document).ready(function(){
          </c:when>
          
          <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer}">
-            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
+            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="rejectLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>
          
@@ -258,7 +230,7 @@ $(document).ready(function(){
          </c:when>
          
          <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer}">
-            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
+            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" onclick="rejectLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>
          
@@ -279,16 +251,16 @@ $(document).ready(function(){
    </c:if>
 
 <script>
-<<<<<<< HEAD
-=======
 function addLike(){
-	if (confirm("관심상품으로 등록하겠?")) {
-		location.href="addLike?pno=${vo.pno}";
+   if (confirm("관심상품으로 등록하겠?")) {
+      location.href="addLike?pno=${vo.pno}";
     } else {
     }
 }
+function rejectLike(){
+   alert("관심상품으루 등록 못하심..ㅎㅅㅎ");
+}
 
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 function deadline(){
    alert("=====마감=====");
 }
@@ -310,11 +282,7 @@ var moneyup2 = 0;
 function alertMsg(){
    if (confirm("입찰하겠?")) {
         // 확인 버튼 클릭 시 동작
-<<<<<<< HEAD
-      location.href='insertAuction?pno=${vo.pno}&myprice='+myprice2+'&moneyup='+moneyup2;
-=======
       location.href='insertAuction?pno=${vo.pno}&myprice='+myprice2+'&moneyup='+moneyup2+"&auctionmenu=${vo.auctionmenu}";
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
     } else {
         // 취소 버튼 클릭 시 동작
     }
@@ -326,11 +294,7 @@ function alertMsgBlind(){
         if($("#btnQtyC3_1000020518522").val() == 0){
          alert("가격을 입력하세요!!");
         }else{
-<<<<<<< HEAD
-            location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val()+'&moneyup=0';
-=======
             location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val()+'&moneyup=0&auctionmenu=${vo.auctionmenu}';
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
         }
     } else {
         // 취소 버튼 클릭 시 동작
@@ -374,8 +338,4 @@ $(document).ready(function(){
 </script>
 </body>
 </html>
-<<<<<<< HEAD
    <%@ include file="footer.jsp" %>
-=======
-   <%@ include file="footer.jsp" %>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git

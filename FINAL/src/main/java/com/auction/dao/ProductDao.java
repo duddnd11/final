@@ -21,4 +21,7 @@ public interface ProductDao {
 	public AuctionVo blindCharge(int pno);
 	int addLike(String str, String ID);
 	String selectLike(String ID);
+	
+	List<Integer> auctionPno(String id);
+	AuctionVo maxPrice(int pno,String id);
 }

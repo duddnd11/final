@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -144,6 +145,19 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public String selectLike(String ID) {
 		return sqlSession.selectOne("com.auction.mapper.ProductMapper.selectLike", ID);
+	}
+
+	@Override
+	public List<Integer> auctionPno(String id) {
+		return sqlSession.selectList("com.auction.mapper.ProductMapper.auctionPno", id);
+	}
+
+	@Override
+	public AuctionVo maxPrice(int pno,String id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pno", pno);
+		map.put("id", id);
+		return sqlSession.selectOne("com.auction.mapper.ProductMapper.maxPrice", map);
 	}
 
 }

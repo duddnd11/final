@@ -18,10 +18,7 @@ function popup(){
       var option = "width = 550, height = 500, top = 100, left = 200, location = no"
       window.open(url, name, option);
    }
-<<<<<<< HEAD
-=======
 var check =0;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 var sock;
 //var nickname;
 //<![CDATA[
@@ -30,10 +27,6 @@ var roomId = "${room.roomId}";
 $(function(){
    if(${member.grade !='z'}){
          $("#chatting").click(function(){
-<<<<<<< HEAD
-            //alert("사용자");
-=======
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
             sock= new SockJS("<c:url value="/chat"/>");
             sock.onopen=onOpen2;
             sock.onmessage = onMessage;
@@ -42,10 +35,6 @@ $(function(){
             //$("#data").append($("#userId").val()+"님 채팅 입장\n");
          });
       }else{
-<<<<<<< HEAD
-            //alert("관리자");
-=======
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
             sock= new SockJS("<c:url value="/chat"/>");
             sock.onopen = onOpen2;
             $("#chatting").click(function(){
@@ -332,11 +321,7 @@ header.header .nav_wrap nav.main .main_cate>li {
                            >문의게시판</a>
                            </li>
                            </li>
-<<<<<<< HEAD
-                           <li class="selected"><a href="http://localhost:9090/final/new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="link">채팅</a>
-=======
                            <li class="selected"><a href="new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="submenu_title">채팅</a>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
                            </li>
                         </ul>
                      </div></li>

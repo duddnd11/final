@@ -18,6 +18,7 @@ import com.auction.service.MemberService;
 import com.auction.service.ProductService;
 import com.auction.service.QnaBoardService;
 import com.auction.sha256.SHA256Util;
+import com.auction.vo.AuctionVo;
 import com.auction.vo.MemberVo;
 import com.auction.vo.ProductVo;
 import com.auction.vo.QnaBoardVo;
@@ -74,7 +75,7 @@ public class MemberHomeController {
 	public String util(String pw) {
 		String str = pw;
 		String sha256_en = SHA256Util.encrypt(str);
-		System.out.println("SHA256 암호화 : "+sha256_en);
+//		System.out.println("SHA256 암호화 : "+sha256_en);
 		return sha256_en;
 	}
 	
@@ -107,8 +108,11 @@ public class MemberHomeController {
 		String likeProduct = pService.selectLike(member.getID());
 		String[] pno = likeProduct.split("_!_"); // 1016 1022
 		for(int i=0; i<=pno.length-1; i++) { //2
-			ProductVo vo = pService.selectOne(Integer.parseInt(pno[i]));
-			list1.add(vo);
+			if(!(pno[i].equals(""))) {
+				ProductVo vo = pService.selectOne(Integer.parseInt(pno[i]));
+				System.out.println(vo);
+				list1.add(vo);
+			}
 		}
 		
 		String id = member.getID();
@@ -118,7 +122,17 @@ public class MemberHomeController {
 		return "myPage";
 	}
 	@RequestMapping(value="/deallist")
-	public String deallist() {
+	public String deallist(HttpSession session,Model model) {
+		MemberVo vo =(MemberVo) session.getAttribute("member");
+		String id =vo.getID();
+		List<Integer> pnoList=pService.auctionPno(id);
+		System.out.println("리스트:"+pnoList);
+		List<AuctionVo> auctionList = new ArrayList<AuctionVo>();
+		for(Integer pno : pnoList) {
+			auctionList.add(pService.maxPrice(pno,id));
+		}
+		System.out.println("입찰리스트:"+auctionList);
+		model.addAttribute("purchase",auctionList);
 		return "deallist";
 	}
 	@RequestMapping(value="/result/naverLogin")
