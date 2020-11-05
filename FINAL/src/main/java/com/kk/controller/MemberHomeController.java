@@ -1,9 +1,6 @@
 package com.kk.controller;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
-=======
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 import java.util.List;
 import java.util.Locale;
 
@@ -18,18 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.auction.service.MemberService;
-<<<<<<< HEAD
 import com.auction.service.ProductService;
-=======
 import com.auction.service.QnaBoardService;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 import com.auction.sha256.SHA256Util;
 import com.auction.vo.MemberVo;
-<<<<<<< HEAD
 import com.auction.vo.ProductVo;
-=======
 import com.auction.vo.QnaBoardVo;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 
 
 @Controller
@@ -37,13 +28,10 @@ public class MemberHomeController {
 	@Autowired
 	MemberService service;
 	@Autowired
-<<<<<<< HEAD
 	ProductService pService;
-//	
-=======
+	@Autowired
 	QnaBoardService qnaService;
 	
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 //	@RequestMapping(value = "/", method = RequestMethod.GET)
 //	public String home(Locale locale, Model model) {
 //
@@ -113,23 +101,20 @@ public class MemberHomeController {
 		return "redirect:/main";
 	}
 	@RequestMapping(value="/myPage")
-<<<<<<< HEAD
 	public String myPage(HttpSession session, Model model) {
 		MemberVo member = (MemberVo) session.getAttribute("member");
-		List<ProductVo> list = new ArrayList<ProductVo>();
+		List<ProductVo> list1 = new ArrayList<ProductVo>();
 		String likeProduct = pService.selectLike(member.getID());
 		String[] pno = likeProduct.split("_!_"); // 1016 1022
 		for(int i=0; i<=pno.length-1; i++) { //2
-				ProductVo vo = pService.selectOne(Integer.parseInt(pno[i]));
-				list.add(vo);
+			ProductVo vo = pService.selectOne(Integer.parseInt(pno[i]));
+			list1.add(vo);
 		}
-=======
-	public String myPage(Model model,HttpSession session) {
-		MemberVo vo = (MemberVo) session.getAttribute("member");
-		String id = vo.getID();
-		List<QnaBoardVo> list =qnaService.selectFromId(id);
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
-		model.addAttribute("list", list);
+		
+		String id = member.getID();
+		List<QnaBoardVo> list2 =qnaService.selectFromId(id);
+		model.addAttribute("list1", list1);
+		model.addAttribute("list2", list2);
 		return "myPage";
 	}
 	@RequestMapping(value="/deallist")

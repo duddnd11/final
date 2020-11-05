@@ -38,14 +38,10 @@
    th{
       text-align: left;
    }
-<<<<<<< HEAD
-   
-=======
    .bx-next{
-   		float: right;
+   		margin-left:330px;
    		
    }
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 </style>
 <script>
 $(document).ready(function(){
@@ -100,7 +96,7 @@ $(document).ready(function(){
   });
 </script>
 <body>
-<div style="margin-left: 300px;  margin-top: 200px;">
+<div style="margin-left: 35%;  margin-top: 200px;">
    <span style="font-size: 20px;"><b>${vo.pno }</b></span>
    <span style="margin-left: 30px; font-size: 20px;">${vo.pname }</span>
    <div style="margin-top: 10px;" >
