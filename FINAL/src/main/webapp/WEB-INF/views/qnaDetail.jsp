@@ -13,18 +13,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-   function ajax_write(ref,level,step,comment){
+   function ajax_write(ref,level,step,comment,userid){
       var commentData={
             qbno : $("#qbno").val(),
             comment : comment,
             /*ref : $("#ref").val(),*/
             ref : ref,
             level :level,
-            step: step
+            step: step,
+            userid : $("#userid").val()
       };
       
       $.ajax({
-         url:'http://localhost:9090/final/rest/writecomment',
+         url:'rest/writecomment',
          type:'post',
          data :JSON.stringify(commentData),
          //dataType:'json', 200에러일때 빼야함.. 400에러 url 405에러 post/get 415에러 contentType 필수속성
@@ -35,6 +36,7 @@
             if(response.level==0){
                var str="<li class='topLi'>";
                str+="<div class='commentDiv' style='margin-left: 330px;'>";
+               str+="<span style='float: left;'>"+response.userid+"</span><br/>"
                str+="<span style='float: left; font-size: 12px; color: #cccccc;'>"+response.date+"</span><br/>";
                str+="<span style='float: left;'>"+response.comment+"</span><br/></div>";
                str+="<div class='reCommentWrite' style='margin-top: 5px; margin-left :330px;'><span id='more' class='more'>답글작성</span></div><br/>";
@@ -50,6 +52,7 @@
                $(".topUl").append(str);
             }else if(response.level==1){
                var str="<div class='reComment'>"
+              		str+="<span style='margin-left: 20px;'>"+response.userid+"</span></div>";
                    str+="<span style='font-size: 12px; color: #cccccc; margin-left: 20px;'>"+response.date+"</span><br/>";
               		str+="<span style='margin-left: 20px;'>"+response.comment+"</span></div>";
                $(".reCommentMenu"+response.ref).append(str);
@@ -102,7 +105,7 @@
          var   level =$(this).parent().find("input#level").val();
          var   step= $(this).parent().find("input#step").val();
          var comment = $(this).parent().find("textarea#comment").val();
-         ajax_write(ref,level,step,comment);
+         ajax_write(ref,level,step,comment,userid);
          $('#comment').val('');
    });
     $(document).on("keydown","textarea.comment",function(key){
@@ -112,7 +115,7 @@
             var   level =$(this).parent().find("input#level").val();
             var   step= $(this).parent().find("input#step").val();
             var comment = $(this).parent().find("textarea#comment").val();
-            ajax_write(ref,level,step,comment);
+            ajax_write(ref,level,step,comment,userid);
          $('.comment').val('');
        }
    });
@@ -183,6 +186,7 @@
       <input type="hidden" value="0" id="ref"/>
       <input type="hidden" value="0" id="level"/>
       <input type="hidden" value="0" id="step"/>
+      
    </div>
    
    <ul class="topUl">
@@ -190,6 +194,7 @@
          <li class="topLi">
             <c:if test="${comment.level eq 0 }">
                <div class="commentDiv" style="margin-left: 330px;">
+                  <span style="float: left;">${comment.userid}</span><br/>         
                   <span style="float: left; font-size: 12px; color: #cccccc;">${comment.date }</span><br/>
                   <span style="float: left;">${comment.comment}</span><br/>         
                </div>
@@ -201,6 +206,7 @@
                      <c:forEach items="${reComment}" var="reComment">
                         <c:if test="${comment.cno eq reComment.ref}">
                            <div class="reComment"><!--  → -->
+                           <span style="margin-left: 20px;">${reComment.userid}</span><br/>
                            <span style="font-size: 12px; color: #cccccc; margin-left: 20px;">${reComment.date}</span><br/>
                            <span style="margin-left: 20px;">${reComment.comment}</span>
                            
@@ -220,7 +226,7 @@
          </li>
       </c:forEach>
    </ul>
-   	  
+   	<input type="hidden" value="${member.ID}" id="userid"/>
     <input type="hidden" value="${detail.qbno}" id="qbno"/>
 </body>
 <%@ include file="footer.jsp" %>

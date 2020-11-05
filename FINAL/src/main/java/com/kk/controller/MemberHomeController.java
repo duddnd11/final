@@ -1,5 +1,7 @@
 package com.kk.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,14 +15,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.auction.service.MemberService;
+import com.auction.service.ProductService;
 import com.auction.sha256.SHA256Util;
 import com.auction.vo.MemberVo;
+import com.auction.vo.ProductVo;
 
 
 @Controller
 public class MemberHomeController {
 	@Autowired
 	MemberService service;
+	@Autowired
+	ProductService pService;
 //	
 //	@RequestMapping(value = "/", method = RequestMethod.GET)
 //	public String home(Locale locale, Model model) {
@@ -91,7 +97,16 @@ public class MemberHomeController {
 		return "redirect:/main";
 	}
 	@RequestMapping(value="/myPage")
-	public String myPage() {
+	public String myPage(HttpSession session, Model model) {
+		MemberVo member = (MemberVo) session.getAttribute("member");
+		List<ProductVo> list = new ArrayList<ProductVo>();
+		String likeProduct = pService.selectLike(member.getID());
+		String[] pno = likeProduct.split("_!_"); // 1016 1022
+		for(int i=0; i<=pno.length-1; i++) { //2
+				ProductVo vo = pService.selectOne(Integer.parseInt(pno[i]));
+				list.add(vo);
+		}
+		model.addAttribute("list", list);
 		return "myPage";
 	}
 	@RequestMapping(value="/result/naverLogin")

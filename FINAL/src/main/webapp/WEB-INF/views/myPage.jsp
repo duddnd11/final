@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,8 +76,9 @@
 							<td style="width: 150px; height: 100px; border-bottom: 1px solid black;"><img src="" alt="Image Alt Text" 
 							style="width: 100px; height: 100px; margin-left: 0px;  margin-top: 20px; margin-bottom: 20px;"/>					
 							</td>
-							<td style="width: 420px; border-bottom: 1px solid black;"><p style="margin-left: 20px; font-size: 15px;"><b>상품이름</b></p></td>
-							<td style="border-bottom: 1px solid black;"><p style="margin-left: 20px; font-size: 15px;"><b>원 </b></p></td>											
+							<c:forEach var="list" items="${list }">
+							<td style="width: 420px; border-bottom: 1px solid black;"><p style="margin-left: 20px; font-size: 15px;"><b>${list.pname }</b></p></td>
+							</c:forEach>
 						</tr>
 					</table>		
 				</div>

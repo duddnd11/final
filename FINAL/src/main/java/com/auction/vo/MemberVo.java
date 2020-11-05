@@ -10,6 +10,7 @@ public class MemberVo {
 	private String birth;
 	private String grade;
 	private String api;
+	private String likeproduct;
 	
 	public MemberVo() {}
 	public MemberVo(String iD, String pw, String name, String addr, String phonenum, String email, String birth,
@@ -25,6 +26,12 @@ public class MemberVo {
 	}
 	
 	
+	public String getLikeproduct() {
+		return likeproduct;
+	}
+	public void setLikeproduct(String likeproduct) {
+		this.likeproduct = likeproduct;
+	}
 	public String getApi() {
 		return api;
 	}

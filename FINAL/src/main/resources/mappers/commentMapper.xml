@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.auction.mapper.CommentMapper">
   	<insert id="writeComment">
-		INSERT INTO comment(qbno,comment,ID,ref,level,step) VALUES (#{qbno},#{comment},#{ID},#{ref},#{level},#{step})
+		INSERT INTO comment(qbno,comment,userid,ref,level,step) VALUES (#{qbno},#{comment},#{userid},#{ref},#{level},#{step})
   	</insert>
   	<select id="selectComment" resultType="com.auction.vo.CommentVo">
   		SELECT * FROM comment WHERE qbno=#{qbno}

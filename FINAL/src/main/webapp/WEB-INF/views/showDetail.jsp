@@ -68,7 +68,11 @@ function msg_time() {
   document.all.timer.innerHTML = m;   
   
   if (RemainDate <= 0) {      //시간 종료
-    location.href="rejectAction?pno=${vo.pno}&grade=${ID.grade}";
+	  if(${vo.auctionmenu == "일반"}){
+    	location.href="showAuctionNormal";
+		  }else{
+    	location.href="showAuctionBlind";
+			  }
     clearInterval(tid);   // 타이머 해제
   }else{
     RemainDate = RemainDate - 1000; // 남은시간 -1초
@@ -166,17 +170,17 @@ $(document).ready(function(){
    <div style="display: flex;">
       <c:choose>
          <c:when test="${vo.deal == 2 }">
-            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;" >관심상품</button>
+            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;" onclick="deadline()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;"  onclick="deadline()">마감</button>
          </c:when>
          
          <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer}">
-            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
+            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>
          
          <c:otherwise>
-            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
+            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="alertMsg()">입찰</button>
          </c:otherwise>
       </c:choose>
@@ -218,17 +222,17 @@ $(document).ready(function(){
       
       <c:choose>
          <c:when test="${vo.deal == 2 }">
-            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;" >관심상품</button>
+            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;" onclick="deadline()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;"  onclick="deadline()">마감</button>
          </c:when>
          
          <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer}">
-            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
+            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>
          
          <c:otherwise>
-            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" >관심상품</button>
+            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="alertMsgBlind()">입찰</button>
          </c:otherwise>
       </c:choose>
@@ -244,6 +248,13 @@ $(document).ready(function(){
    </c:if>
 
 <script>
+function addLike(){
+	if (confirm("관심상품으로 등록하겠?")) {
+		location.href="addLike?pno=${vo.pno}";
+    } else {
+    }
+}
+
 function deadline(){
    alert("=====마감=====");
 }
@@ -265,7 +276,7 @@ var moneyup2 = 0;
 function alertMsg(){
    if (confirm("입찰하겠?")) {
         // 확인 버튼 클릭 시 동작
-      location.href='insertAuction?pno=${vo.pno}&myprice='+myprice2+'&moneyup='+moneyup2;
+      location.href='insertAuction?pno=${vo.pno}&myprice='+myprice2+'&moneyup='+moneyup2+"&auctionmenu=${vo.auctionmenu}";
     } else {
         // 취소 버튼 클릭 시 동작
     }
@@ -277,7 +288,7 @@ function alertMsgBlind(){
         if($("#btnQtyC3_1000020518522").val() == 0){
          alert("가격을 입력하세요!!");
         }else{
-            location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val()+'&moneyup=0';
+            location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val()+'&moneyup=0&auctionmenu=${vo.auctionmenu}';
         }
     } else {
         // 취소 버튼 클릭 시 동작
