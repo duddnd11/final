@@ -84,15 +84,26 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public int insertAuction(AuctionVo vo) {
+	public int insertAuction(AuctionVo vo,String auctionmenu,int diff, int myDiff) {
 		int result=0;
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("getcustomer", vo.getID());
 		map.put("pno", vo.getPno());
+		HashMap<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("getcustomer", vo.getID());
+		map2.put("pno", vo.getPno());
+		map2.put("bestmoney", vo.getMyprice());
 		int select = sqlSession.selectOne("com.auction.mapper.ProductMapper.showAuction", vo.getPno());
 		if(select>0) {
-			result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
-			result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoney", map);
+			if(auctionmenu.equals("일반")) {
+				result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
+				result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoney", map);
+			}else {
+				result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
+				if(myDiff<diff) {
+					sqlSession.update("com.auction.mapper.ProductMapper.updateCustomer", map2);
+				}
+			}
 		}else {
 			result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
 			result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoneyFirst", map);
@@ -111,7 +122,10 @@ public class ProductDaoImpl implements ProductDao {
 		return sqlSession.update("com.auction.mapper.ProductMapper.dealChange", pno);
 		
 	}
-	
-	
+
+	@Override
+	public AuctionVo blindCharge(int pno) {
+		return sqlSession.selectOne("com.auction.mapper.ProductMapper.blindCharge", pno);
+	}
 
 }

@@ -54,13 +54,18 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public int insertAuction(AuctionVo vo) {
-		return dao.insertAuction(vo);
+	public int insertAuction(AuctionVo vo,String auctionmenu,int diff, int myDiff) {
+		return dao.insertAuction(vo,auctionmenu,diff,myDiff);
 	}
 
 	@Override
 	public int dealChage(int pno) {
 		return dao.dealChage(pno);
+	}
+
+	@Override
+	public AuctionVo blincCharge(int pno) {
+		return dao.blindCharge(pno);
 	}
 
 }

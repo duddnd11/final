@@ -11,6 +11,7 @@ public interface QnaBoardDao {
 	public QnaBoardVo selectContent(int qbno);
 	public void updateHitCount(int qbno);
 	public List<QnaBoardVo> selectBoardAll();
+	public List<QnaBoardVo> selectFromId(String id);
 	
 	public List<QnaBoardVo> searchTitleSize(String keyword);
 	public List<QnaBoardVo> searchContentSize(String keyword);

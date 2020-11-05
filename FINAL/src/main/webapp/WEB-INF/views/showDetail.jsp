@@ -70,7 +70,11 @@ function msg_time() {
   document.all.timer.innerHTML = m;   
   
   if (RemainDate <= 0) {      //시간 종료
-    location.href="rejectAction?pno=${vo.pno}&grade=${ID.grade}";
+	  if(${vo.auctionmenu == "일반"}){
+    	location.href="showAuctionNormal";
+		  }else{
+    	location.href="showAuctionBlind";
+			  }
     clearInterval(tid);   // 타이머 해제
   }else{
     RemainDate = RemainDate - 1000; // 남은시간 -1초
@@ -267,7 +271,7 @@ var moneyup2 = 0;
 function alertMsg(){
    if (confirm("입찰하겠?")) {
         // 확인 버튼 클릭 시 동작
-      location.href='insertAuction?pno=${vo.pno}&myprice='+myprice2+'&moneyup='+moneyup2;
+      location.href='insertAuction?pno=${vo.pno}&myprice='+myprice2+'&moneyup='+moneyup2+"&auctionmenu=${vo.auctionmenu}";
     } else {
         // 취소 버튼 클릭 시 동작
     }
@@ -279,7 +283,7 @@ function alertMsgBlind(){
         if($("#btnQtyC3_1000020518522").val() == 0){
          alert("가격을 입력하세요!!");
         }else{
-            location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val()+'&moneyup=0';
+            location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val()+'&moneyup=0&auctionmenu=${vo.auctionmenu}';
         }
     } else {
         // 취소 버튼 클릭 시 동작
