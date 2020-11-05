@@ -98,4 +98,9 @@ public class ProductServiceImpl implements ProductService {
 		return dao.rejectBlind(id, pno);
 	}
 
+	@Override
+	public void payment(int pno) {
+		dao.payment(pno);
+	}
+
 }

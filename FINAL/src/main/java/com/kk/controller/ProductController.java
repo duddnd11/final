@@ -180,7 +180,10 @@ public class ProductController {
 				
 			}
 		}
-		int rejectBlind = service.rejectBlind(ID.getID(), pno);
+		int rejectBlind=0;
+		if(ID!=null) {
+			rejectBlind = service.rejectBlind(ID.getID(), pno);
+		}
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
 		model.addAttribute("ID", ID);
@@ -254,8 +257,9 @@ public class ProductController {
 	}
 	@RequestMapping(value="paymentAction")
 	public String paymentAction(int pno,Model model) {
-		model.addAttribute("pno", pno);
-		return "paymentAction";
+		System.out.println("결제완료 확인");
+		service.payment(pno);
+		return "redirect:/main";
 	}
 }
 

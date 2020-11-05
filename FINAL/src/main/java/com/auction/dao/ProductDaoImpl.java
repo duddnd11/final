@@ -168,4 +168,8 @@ public class ProductDaoImpl implements ProductDao {
 		return sqlSession.selectOne("com.auction.mapper.ProductMapper.rejectBlind", map);
 	}
 
+	@Override
+	public void payment(int pno) {
+		sqlSession.update("com.auction.mapper.ProductMapper.payment",pno);
+	}
 }
