@@ -83,4 +83,15 @@ public class ProductServiceImpl implements ProductService {
 		return dao.selectLike(ID);
 	}
 
+	@Override
+	public List<Integer> auctionPno(String id) {
+		return dao.auctionPno(id);
+	}
+
+	@Override
+	public AuctionVo maxPrice(int pno,String id) {
+		// TODO Auto-generated method stub
+		return dao.maxPrice(pno,id);
+	}
+
 }

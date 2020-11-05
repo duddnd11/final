@@ -69,7 +69,7 @@
 	</div>
 	<c:set var="dead" value="${vo.deadlinedate }"/>
 		<p>마감날: ${fn:substring(dead,0,10) } </p>
-		조회수: ${vo.hitcount }<span>&nbsp</span><span>&nbsp</span><span>&nbsp</span><span>&nbsp</span><span>&nbsp</span>
+		조회수: ${vo.hitcount }<span>&nbsp</span><span>&nbsp</span>
 		입찰수 ${vo.count }<br/>
 	</div>
 	</li>

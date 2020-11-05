@@ -40,7 +40,7 @@
 	
 	<!-- 입찰 -->
 	<select id="showAuction" resultType="int">
-		SELECT count(*) FROM auction where pno=#{pno};
+		SELECT count(*) FROM auction where pno=#{pno};	
 	</select>
 	<insert id="insertAuction">
 		insert into auction(ID, pno, myprice) values(#{ID}, #{pno}, #{myprice});
@@ -81,6 +81,12 @@
 	</update>
 	<select id="selectLike" resultType="String">
 		select likeproduct from member where ID=#{ID};
+	</select>
+	<select id="auctionPno" resultType="int">
+		SELECT distinct pno from auction where id =#{ID}; 
+	</select>
+	<select id="maxPrice" resultType="com.auction.vo.AuctionVo">
+		select idx,p.pname, p.ID,a.pno,max(myprice) as myprice,buydate from auction a left outer join product p on p.pno=a.pno where a.pno=#{pno} and a.id=#{id};
 	</select>
 </mapper>
 

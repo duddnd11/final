@@ -225,8 +225,20 @@ public class ProductController {
 	public String addLike(int pno, HttpSession session) {
 		MemberVo member =  (MemberVo) session.getAttribute("member");
 		String ID = member.getID();
-		String str = pno+"_!_";
-		int result = service.addLike(str, ID);
+		String str = pno+"_!_";	//1137_!_
+		String likeArr[]=member.getLikeproduct().split("_!_");
+		int check=0;
+		for(int i=0; i<likeArr.length ;i++) {
+			if(likeArr[i].equals(String.valueOf(pno))) {
+				check=1;
+				System.out.println("비교문: "+check);
+				break;
+			}
+		}
+		if(check ==0) {
+			int result = service.addLike(str, ID);
+			System.out.println("관심상품: "+result);
+		}
 		return "redirect:/showDetail?pno="+pno;
 	}
 }
