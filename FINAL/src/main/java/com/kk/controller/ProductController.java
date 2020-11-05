@@ -226,9 +226,10 @@ public class ProductController {
 		MemberVo member =  (MemberVo) session.getAttribute("member");
 		String ID = member.getID();
 		String str = pno+"_!_";	//1137_!_
-		String likeArr[]=member.getLikeproduct().split("_!_");
+		String likeArr[]=service.selectLike(ID).split("_!_");
 		int check=0;
 		for(int i=0; i<likeArr.length ;i++) {
+			System.out.println(likeArr[i]+"="+pno);
 			if(likeArr[i].equals(String.valueOf(pno))) {
 				check=1;
 				System.out.println("비교문: "+check);
@@ -241,4 +242,21 @@ public class ProductController {
 		}
 		return "redirect:/showDetail?pno="+pno;
 	}
+	@RequestMapping(value="payment")
+	public String payment(HttpSession session,int pno,Model model) {
+		MemberVo member =  (MemberVo) session.getAttribute("member");
+		String ID = member.getID();
+		ProductVo vo =service.selectOne(pno);
+		model.addAttribute("vo", vo);
+		return "payment";
+	}
+	@RequestMapping(value="paymentAction")
+	public String paymentAction(int pno,Model model) {
+		model.addAttribute("pno", pno);
+		return "paymentAction";
+	}
 }
+
+
+
+
