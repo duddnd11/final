@@ -180,9 +180,11 @@ public class ProductController {
 				
 			}
 		}
+		int rejectBlind = service.rejectBlind(ID.getID(), pno);
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
 		model.addAttribute("ID", ID);
+		model.addAttribute("rejectBlind", rejectBlind);
 		return "showDetail";
 	}
 	
@@ -226,7 +228,7 @@ public class ProductController {
 		MemberVo member =  (MemberVo) session.getAttribute("member");
 		String ID = member.getID();
 		String str = pno+"_!_";	//1137_!_
-		String likeArr[]=member.getLikeproduct().split("_!_");
+		String likeArr[]=service.selectLike(ID).split("_!_");
 		int check=0;
 		for(int i=0; i<likeArr.length ;i++) {
 			if(likeArr[i].equals(String.valueOf(pno))) {
