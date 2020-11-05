@@ -37,7 +37,10 @@
    th{
       text-align: left;
    }
-   
+   .bx-next{
+   		float: right;
+   		
+   }
 </style>
 <script>
 $(document).ready(function(){

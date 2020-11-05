@@ -99,7 +99,7 @@
 						<button type="button" class="sp-sub-minus" onclick="optnQtyMinus($(this));" style="width: 40px; height: 32px;">
 							<b>-</b>
 						</button>
-							<input style=" width: 220px;margin-left: 0px;" type="tel" class="num" value="0" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
+							<input style=" width: 220px;margin-left: 0px;" type="tel" class="num" placeholder="0" value="" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
 							<button type="button" class="sp-sub-plus" onclick="optnQtyPlus($(this), '3091');" style="width: 40px; height: 32px;">
 								<b>+</b>
 							</button>
