@@ -115,7 +115,7 @@ li {
 		   	   	   <ul>
 		   	   	   	   <li>
 		   	   	   	   	   <input type="radio" id="kraken" name="monster">
-    					   <label for="kraken">Kraken</label><br/>
+    					   <label for="kraken">Krakedddn</label><br/>
 						   <c:forEach var="category" items="${category}">
 						      <a href="showAuctionNormal?category=${category}">${category}</a>
 						      <br/>
