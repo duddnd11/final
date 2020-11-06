@@ -33,9 +33,21 @@
           <td><input type="text" name="name" placeholder="이름"/></td>
         </tr>
         <tr>
+          <th>우편번호</th>
+          <td>
+            <input type="text" name="zonecode" placeholder="우편번호"/>
+          </td>
+        </tr>
+        <tr>
           <th>주소</th>
           <td>
             <input type="text" name="addr" placeholder="주소"/>
+          </td>
+        </tr>
+        <tr>
+          <th>상세주소</th>
+          <td>
+            <input type="text" name="addrdetail" placeholder="상세주소"/>
           </td>
         </tr>
         <tr>

@@ -85,7 +85,7 @@
 		select likeproduct from member where ID=#{ID};
 	</select>
 
-<!-- 검색기능 -->	
+	<!-- 검색기능 -->	
 	<select id = "searchProduct" resultType = "com.auction.vo.ProductVo">
 		SELECT * FROM product WHERE pname LIKE CONCAT('%', #{keyword},'%') ORDER BY pno desc;
 	</select>

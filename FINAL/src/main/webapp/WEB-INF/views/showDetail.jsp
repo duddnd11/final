@@ -39,7 +39,11 @@
       text-align: left;
    }
    .bx-next{
+<<<<<<< HEAD
          margin-left:330px;
+=======
+         margin-left: 330px;
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
    }
 </style>
 <script>
@@ -95,7 +99,7 @@ $(document).ready(function(){
   });
 </script>
 <body>
-<div style="margin-left: 35%;  margin-top: 200px;">
+<div style="margin-left: 28%;  margin-top: 200px;">
    <span style="font-size: 20px;"><b>${vo.pno }</b></span>
    <span style="margin-left: 30px; font-size: 20px;">${vo.pname }</span>
    <div style="margin-top: 10px;" >
@@ -217,7 +221,7 @@ $(document).ready(function(){
       <button type="button" class="sp-sub-minus"  style="width: 40px; height: 32px;">
          <b>-</b>
       </button>
-         <input style=" width: 200px; height: 30px;margin-left: 0px;" type="tel" class="num" value="0" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
+         <input style=" width: 200px; height: 30px;margin-left: 0px;" type="tel" class="num" value="" placeholder="0" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
          <button type="button" class="sp-sub-plus" style="width: 40px; height: 32px;">
             <b>+</b>
          </button><br/>
@@ -244,7 +248,7 @@ $(document).ready(function(){
 </div>
 
    <c:if test="${ID.ID eq 'admin' }">
-      <div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: 200px;">   
+      <div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: 25%;">   
       <canvas id="myChart"></canvas>
       </div>
    </c:if>
@@ -337,4 +341,8 @@ $(document).ready(function(){
 </script>
 </body>
 </html>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
    <%@ include file="footer.jsp" %>
