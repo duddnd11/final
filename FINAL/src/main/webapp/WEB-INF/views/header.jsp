@@ -4,16 +4,137 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
+<script src = "https://cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
 function popup(){
-		var url = "login/";
-		var name = "login popup";
-		var option = "width = 550, height = 500, top = 100, left = 200, location = no"
-		window.open(url, name, option);
-	}
+      var url = "login/";
+      var name = "login popup";
+      var option = "width = 550, height = 500, top = 100, left = 200, location = no"
+      window.open(url, name, option);
+   }
+var check =0;
+var sock;
+//var nickname;
+//<![CDATA[
+var roomId = "${room.roomId}";
+//]]>
+$(function(){
+   if(${member.grade !='z'}){
+         $("#chatting").click(function(){
+            sock= new SockJS("<c:url value="/chat"/>");
+            sock.onopen=onOpen2;
+            sock.onmessage = onMessage;
+            sock.onclose = onClose;
+           check=1;
+            //$("#data").append($("#userId").val()+"님 채팅 입장\n");
+         });
+      }else{
+            sock= new SockJS("<c:url value="/chat"/>");
+            sock.onopen = onOpen2;
+            $("#chatting").click(function(){
+                if(check==0){
+                  onOpen();
+               }
+               check=1;
+               });
+            sock.onmessage = onMessage;
+            sock.onclose = onClose;
+      }
+   $("#sendBtn").click(function(){
+      sendMessage();
+      $("#message").val('');
+   });
+   $("#message").keydown(function(key){
+      if(key.keyCode==13){
+         sendMessage();
+         $("#message").val('');
+         }
+      });
+   $("#exit").click(function(){
+       onClose();
+   });
+});
+
+//sock.onclose = onClose;
+function onOpen(){
+    sock.send(JSON.stringify({chatRoomId : roomId,type:'ENTER',writer:$("#userId").val(),grade:"${member.grade}"}));
+   }
+function onOpen2(){
+    sock.send(JSON.stringify({type:'ENTER',writer:$("#userId").val(),grade:"${member.grade}"}));
+   }
+function sendMessage(){
+   sock.send(JSON.stringify({chatRoomId : roomId, type :'CHAT', writer:$("#userId").val(), message:$("#message").val()}));
+   }
+
+function onClose(){
+      sock.send(JSON.stringify({chatRoomId : roomId,type:'LEAVE',writer:$("#userId").val()}));
+       check=0;
+}
+function enter(){
+      sock.send("채팅입장");
+   }
+// evt : websocket이 보내준 데이터
+function onMessage(evt){
+   var data = evt.data;
+   var userRoomId = data.split(":")[0];
+   var sessionid = data.split(":")[1];
+   var message = data.split(":")[2];
+   var person = data.split(":")[0];
+   var userid = $("#userId").val();
+   if(check==0){
+      alert(data);
+   }
+   if(check==1){
+     if(userRoomId==roomId){
+         if(sessionid == userid){
+               $("#data").append("나:"+message+"\n");
+         }else{
+            if(message!=undefined){
+               $("#data").append(sessionid+":"+message+"\n");
+               }else{
+               $("#data").append(sessionid+"\n");
+                  }
+             }
+      }else{
+         alert(data);
+          }
+   }
+}
+
+function onMessage2(evt){
+   var data = evt.data;
+   alert(data);
+}
+   /*
+if(${member.grade == 'z'}){
+   var sock;
+   alert("관리자 입장");
+   $(function(){
+          sock= new SockJS("<c:url value="/chat"/>");
+          sock.onopen = onOpen;
+          sock.onmessage = onMessage;
+          sock.onclose = onClose;
+    });
+       function onOpen(){ 
+            sock.send(JSON.stringify({type:'ENTER',writer:"${member.ID}",grade:"${member.grade}"}));
+       }
+      function onMessage(evt){
+         alert(evt.data);
+         console.log(evt.data);
+      }
+}*/
 </script>
 <style>
+html, body {
+	margin:0px;
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -23,11 +144,6 @@ function popup(){
 }
 
 #topMenu {
-{
-	top: 0px;
-}
-
-.main {
 	height: 30px;
 	width: 1600px; 
 	position: relative;
@@ -35,14 +151,6 @@ function popup(){
 
 #topMenu ul { /* 메인 메뉴 안의 ul을 설정함: 상위메뉴의 ul+하위 메뉴의 ul */
 	list-style-type: none;
-
-}
-
-.menu_title{
-	margin-top:20px;
-}
-
-.main ul {
 	margin: 0px;
 	padding: 0px;
 }
@@ -65,8 +173,6 @@ function popup(){
     color: #000;
     font-weight: 700;
     font-family: "Nanum Barun Gothic", sans-serif;
-	font-size: 12px;
-	font-weight: bold;
 }
 
 .menuLink { /* 상위 메뉴의 글씨색을 흰색으로 설정 */
@@ -74,16 +180,12 @@ function popup(){
 }
 
 .topMenuLi:hover .menuLink { /* 상위 메뉴의 li에 마우스오버 되었을 때 스타일 설정 */
-	color: blue;
+	color: #1691ce;
 	text-decoration:underline;
 }
 
 .longLink { /* 좀 더 긴 메뉴 스타일 설정 */
 	width: 190px;
-}
-
-.contextual {
-	padding-top: 20px;
 }
 
 .submenuLink { /* 하위 메뉴의 a 태그 스타일 설정 */
@@ -98,17 +200,12 @@ function popup(){
 
 .submenu { /* 하위 메뉴 스타일 설정 */
 	position: absolute;
-}
-
-.depth_1 {
-	position: absolute;	
-	background-color: 2d2d2d;
 	height: 0px;
 	overflow: hidden;
 	transition: height .2s;
 	width: 1600px;
 	left: 38px;
-	top:70px;
+	top: 80px;
 	background-color: black; /* [추가] 하위 메뉴 전체에 배경색 설정 */
 }
 
@@ -118,41 +215,22 @@ function popup(){
 	text-align:center;
 }
 
-.depth_1 li {
-	margin-left: 20px;
-}
-
 .topMenuLi:hover .submenu {
 	height: 55px;
 }
 
 .submenuLink:hover {
-	color: blue;
+	color: #3dbfff;
 }
 
-header.header .login {
-	position: absolute;
-	display: inline-block;
-	right: 114px;
-}
-
-header.header .nav_wrap nav.main .main_cate>li.menu>.menu_title {
-	position: relative;
-	display: inline-block;
-	padding: 0 49px 55px;
-	font-size: 25px;
-	color: #000;
-	font-weight: 700;
-	font-family: "Nanum Barun Gothic", sans-serif;
+a {
+	text-decoration: none;
 }
 
 .login a {
 	font-size: 12px;
 }
-a {
-	text-decoration: none;
-	color: black;
-}
+
 ul, li {
 	list-style: none;
 }
@@ -173,10 +251,6 @@ ul, li {
 
 .inner_wrap {
 	margin-top:60px;
-}
-
-header.header .nav_wrap nav.main .main_cate> li {
-	float: left;
 }
 
 .search {
@@ -200,109 +274,73 @@ header.header .nav_wrap nav.main .main_cate> li {
 	float:left;
 }
 
-.inner_wrap div {
-	float: right;
-	margin-top: 45px;
+hr {
+	width:100%;
+	height:10px;
+	border:3px;
+	box-shadow:0 10px 10px -15px #000 inset;
 }
 </style>
-
 </head>
 <body>
-	<header class="header" style="position: fixed; z-index: 2; background-color: white;">
+	<header class="header">
 		<section class="nav_wrap">
 			<div class="inner_wrap">
 				<nav id="topMenu">
 					<ul>
 						<div class="logo">
-							<a href="메인 페이지">
+							<a href="main">
 								<img class="logo_img" src="https://cdn.clien.net/web/api/file/F01/9396867/5ccb776a9703.jpg">
 							</a>
 						</div>
-						<li class="topMenuLi"><a class="menuLink"
-							href="http://unikys.tistory.com/category/Programming%20Lecture">경매</a>
+						<li class="topMenuLi">
+							<a class="menuLink" href="showAuctionNormal">경매</a>
 							<ul class="submenu">
-								<li><a href="#" class="submenuLink longLink">일반 경매</a></li>
-								<li><a href="#" class="submenuLink longLink">블라인드 경매</a></li>
-							</ul></li>
+								<li><a href="showAuctionNormal" class="submenuLink longLink">온라인 경매</a></li>
+								<li><a href="showAuctionBlind" class="submenuLink longLink">블라인드 경매</a></li>
+							</ul>
+						</li>
 						<li>|</li>
-						<li class="topMenuLi"><a class="menuLink"
-							href="http://unikys.tistory.com/guestbook">서비스 소개</a></li>
-						<li>|</li>
-						<li class="topMenuLi"><a class="menuLink"
-							href="http://unikys.tistory.com/tag">고객센터</a>
+						<li class="topMenuLi">
+							<a class="menuLink" href="서비스소개페이지">서비스 소개</a>
 							<ul class="submenu">
-								<li><a href="#" class="submenuLink">FAQ</a></li>
-								<li><a href="#" class="submenuLink">1:1 문의</a></li>
-								<li><a href="#" class="submenuLink">공지사항</a></li>
-								<li><a href="#" class="submenuLink">문의 게시판</a></li>
-							</ul></li>
+								<li><a href="showAuctionNormal" class="submenuLink longLink">경매 응찰</a></li>
+								<li><a href="showAuctionBlind" class="submenuLink longLink">작품 위탁</a></li>
+							</ul>
+						</li>
+						<li>|</li>
+						<li class="topMenuLi"><a class="menuLink" href="notice?offset=0">고객센터</a>
+							<ul class="submenu">
+								<li><a href="notice?offset=0" class="submenuLink">공지사항</a></li>
+								<li><a href="qnaBoard?offset=0" class="submenuLink">문의 게시판</a></li>
+								<li><a href="new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="submenuLink">1:1 문의</a></li>
+							</ul>
+						</li>
 						<div class="search">
 							<a href="http://unikys.tistory.com/guestbook">
 								<img class="search_img" src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw=">
 							</a>
 						</div>
 						<div class="login">
-							<a href="http://unikys.tistory.com/guestbook">로그인</a>
-						</div>
-				<a href="main"><img class="logo"
-					src="https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile6.uf.tistory.com%2Fimage%2F277027375874594F095C54"></a>
-				<nav class="main">
-					<ul class="main_cate">
-						<li id="main_auction" class="menu"><a class="menu_title"
-							href="showAuctionNormal">경매</a>
-							<div class="contextual">
-								<ul class="depth_1">
-									<li class="selected" style="margin: 0;"><a class="submenu_title"
-										href="showAuctionNormal">온라인 경매</a>
-										
-									<li class="selected"><a class="submenu_title"
-										href="showAuctionBlind">블라인드 경매</a>
-									</li>
-								</ul>
-							</div></li>
-						<li id="main_service" class="menu"><a class="menu_title"
-							href="서비스소개페이지">서비스 소개</a>
-							<div class="contextual">
-								
-							</div></li>
-						<li id="main_customer" class="menu"><a class="menu_title"
-							href="http://localhost:9090/final/notice?offset=0">고객센터</a>
-							<div class="contextual">
-								<ul class="depth_1">					
-									<li class="selected"><a class="submenu_title" href="http://localhost:9090/final/notice?offset=0"
-									>공지사항</a>
-									<li class="selected"><a class="submenu_title" href="http://localhost:9090/final/qnaBoard?offset=0"
-									>문의게시판</a>
-									</li>
-									</li>
-									<li class="selected"><a class="submenu_title" href="http://localhost:9090/final/chatting"
-									>채팅</a>
-									</li>
-								</ul>
-							</div></li>
+				            <c:choose>
+				                  <c:when test="${member.grade eq null }">
+				                        <a href="javascript:popup()">로그인</a>
+				                  </c:when>
+				                  <c:when test="${member.grade eq 'z' }">
+				                        <a href="logout">로그아웃</a>
+				                        <a href="admin" style="margin-left: 20px;">관리자 페이지</a>
+				                  </c:when>
+				                  <c:otherwise>
+				                        <a href="logout">로그아웃</a>
+				                        <a href="myPage" style="margin-left: 20px;">마이페이지</a>
+				                  </c:otherwise>
+				            </c:choose>
+			            </div>
 					</ul>
 				</nav>
-				<div class="search">
-					<a href="검색"><img class="search_img"
-						src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw="></a>
-				</div>
-				<div class="login">
-				<c:choose>
-						<c:when test="${member.grade eq null }">
-								<a href="javascript:popup()">로그인</a>
-						</c:when>
-						<c:when test="${member.grade eq 'z' }">
-								<a href="#">로그아웃</a>
-								<a href="admin">관리자 페이지</a>
-						</c:when>
-						<c:otherwise>
-								<a href="logout">로그아웃</a>
-								<a href="myPage">마이페이지</a>
-						</c:otherwise>
-				</c:choose>
-				</div>
 			</div>
 		</section>
 	</header>
+	<hr>
 </body>
 </html>
