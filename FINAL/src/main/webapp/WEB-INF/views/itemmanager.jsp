@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -31,6 +32,11 @@
 		float: right;
 		
 	}
+   h2 {
+	    text-align: center;
+	    margin: 0 auto;
+	    margin-top: 20px;
+   }
 </style>
 <script>
 function ajax_admin(admin,offset) {
@@ -226,7 +232,7 @@ $(document).on("click","#btn5",function(){
 <br/>
 		<button id="btn4" onclick="location.href='item?offset=0&admin=1&deal=1'">경매중</button>	<!-- 1.1 -->
 		<button id="btn5"onclick="location.href='item?offset=0&admin=1&deal=2'">마감</button>	<!-- 1.2 -->
-		
+		<button id="menuBtn" style="float: right;"onclick="location.href='../admin'">메뉴로</button>
 	<c:choose>
 		<c:when test="${admin eq 0 }">
 			<h2>승인요청</h2>
@@ -258,7 +264,7 @@ $(document).on("click","#btn5",function(){
 				<th>등급</th>
 				<th>업로드 날짜</th>
 				<th>승인여부</th>
-				
+				<!-- 승인여부 완료시 -->
 		<!--	<th>승인여부</th>
 				<th>경매여부</th>	-->
 			</tr>
@@ -269,12 +275,25 @@ $(document).on("click","#btn5",function(){
 					<td>${list.ID }</td>
 					<td>${list.grade }</td>
 					<td>${list.uploaddate }</td>
-					<td><button id="admin" class="admin" style="margin: 10px;" onclick="location.href='approveItem?pno=${list.pno}'">승인</button>
-					<button onclick="location.href='rejectItem?pno=${list.pno}'">거절</button></td>
 					
+				<c:choose>
+					<c:when test="${list.admin == 1 && list.deal == 1 }">
+						<td><button id="admin" class="admin" style="margin: 10px;">경매중</button></td>
+					</c:when>
+					<c:when test="${list.admin == 1 && list.deal ==2 }">
+						<td><button id="admin" class="admin" style="margin: 10px;">마감됨</button></td>
+					</c:when>
+					<c:when test="${list.admin == 2 }">
+						<td><button id="admin" class="admin" style="margin: 10px;">거절됨</button></td>
+					</c:when>
+					<c:otherwise>
+						<td>
+							<button id="admin" class="admin" style="margin: 10px;" onclick="location.href='approveItem?pno=${list.pno}'">승인</button>
+							<button onclick="location.href='rejectItem?pno=${list.pno}'">거절</button>
+						</td>
+					</c:otherwise>
+				</c:choose>
 					
-		<!-- 		<td>${list.admin }</td>
-					<td>${list.deal }</td> -->
 				</tr>
 			</c:forEach>
 		</table>

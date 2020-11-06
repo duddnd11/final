@@ -65,17 +65,12 @@ public class ProductController {
 		int result = service.insertProduct(vo);
 		if(result == 1) {
 			System.out.println("등록됨!!!!");
+		}else {
+			System.out.println("등록...안됨..");
 		}
 		model.addAttribute("result", result);
-//		return "mypage";
+		return "myPage";
 		
-		vo.setImg1(vo.getFilenames().split("_!_")[0]);
-		vo.setImg2(vo.getFilenames().split("_!_")[1]);
-				
-		List<ProductVo> list = service.selectAuctionBlind();
-		list.add(vo);
-		model.addAttribute("vo", list);
-		return "showAuctionBlind";
 	}
 	
 	public void setImg(List<ProductVo> list) {
@@ -120,6 +115,7 @@ public class ProductController {
 			if(check==true) {
 				categoryMenu.add(vo.getCategory());
 			}
+			
 		}
 		setImg(list);
 		setImg(listCategory);
@@ -152,6 +148,7 @@ public class ProductController {
 		}
 		setImg(listShowBlind);
 		setImg(listCategory);
+		
 		model.addAttribute("category", categoryMenu);
 		if(category==null) {
 			model.addAttribute("voListShowBlind", listShowBlind);
@@ -165,7 +162,7 @@ public class ProductController {
 	public String showDetail(Model model, int pno, HttpSession session) {
 //		session.setAttribute("member", "admin");				//수정
 		MemberVo ID =  (MemberVo) session.getAttribute("member");
-		
+		service.hitcountUp(pno);
 		ProductVo vo = service.selectOne(pno);
 		List<AuctionVo> list = adminService.chart(pno);	
 		if(vo.getFilenames()==null || vo.getFilenames().equals("")) {
@@ -176,6 +173,13 @@ public class ProductController {
 			vo.setImg2(vo.getFilenames().split("_!_")[1]);
 			vo.setImage(null);
 		}
+		if(vo.getBestmoney() >= vo.getLastmoney()) {
+			if(service.dealChage(pno)==1) {
+				vo.setDeal(2);
+				System.out.println("상한가 마감 deal :"+vo.getDeal());
+				
+			}
+		}
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
 		model.addAttribute("ID", ID);
@@ -183,22 +187,46 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/insertAuction")
-	public String insertAuction(HttpSession session, HttpServletResponse res, Model model, int pno, int myprice) throws IOException {
+	public String insertAuction(HttpSession session, HttpServletResponse res, Model model, int pno, int myprice, int moneyup,String auctionmenu) {
 		MemberVo ID =  (MemberVo) session.getAttribute("member");
+		ProductVo pVo  = service.selectOne(pno);
+		int diff=0, myDiff=0;
 		if(ID==null) {
 			return "login";
 		}
 		String id = ID.getID();
-		AuctionVo vo = new AuctionVo(id, pno, myprice);
-		int result = service.insertAuction(vo);
-		if(result==2) {
-			System.out.println("입찰됨!!!");
+		AuctionVo vo = new AuctionVo(id, pno, myprice+moneyup);	// yg,1012,1000
+		int result=0;
+		if(auctionmenu.equals("일반")) {
+			result = service.insertAuction(vo,auctionmenu,diff,myDiff);
+			if(result==2) {
+				System.out.println("입찰됨!!!");
+			}
+		}else { //블라인드
+			diff =Math.abs(pVo.getBestmoney()-pVo.getPrice());
+			myDiff = Math.abs(pVo.getPrice()-myprice);
+			service.insertAuction(vo,auctionmenu,diff,myDiff);
 		}
-		res.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = res.getWriter();
-		out.println("<script>alert('입찰됨!!!');</script>");
 
 		return "redirect:/showDetail?pno="+pno;
 	}
+	/*
+	@RequestMapping(value="/rejectAction")
+	public String rejectAction(int pno, String grade) {
+		if(grade.equals("z")) {
+			return "redirect:/showDetail?pno="+pno;
+		}
+		int result = service.dealChage(pno);
+		System.out.println("시간 마감: "+result);
+		return "redirect:/main";
+	}*/
 	
+	@RequestMapping(value="/addLike")
+	public String addLike(int pno, HttpSession session) {
+		MemberVo member =  (MemberVo) session.getAttribute("member");
+		String ID = member.getID();
+		String str = pno+"_!_";
+		int result = service.addLike(str, ID);
+		return "redirect:/showDetail?pno="+pno;
+	}
 }

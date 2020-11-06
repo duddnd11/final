@@ -1,5 +1,7 @@
 package com.kk.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,10 +58,11 @@ public class ServiceCenterController {
 	@RequestMapping(value="/qnaBoard")
 	public String qnaBoard(Model model,int offset,String keyword,String searchMenu,HttpServletRequest request,HttpServletResponse response) {
 		Cookie[] cookies = request.getCookies();
-		for(int i=1; i<cookies.length;i++) {
-			System.out.println(cookies[i].getName());
-			cookies[i].setMaxAge(0);
-			response.addCookie(cookies[i]);
+		for(int i=0; i<cookies.length;i++) {
+			if(cookies[i].getName().equals("qnaWrite") || cookies[i].getName().contains("qnaDetail")) {
+				cookies[i].setMaxAge(0);
+				response.addCookie(cookies[i]);
+			}
 		}
 		
 		if(offset<0) {
@@ -158,6 +161,7 @@ public class ServiceCenterController {
 				viewCookie=cookies[i];
 			}
 		}
+		System.out.println("확인");
 		if(viewCookie==null) {
 			Cookie newCookie = new Cookie("qnaWrite","write");
 			response.addCookie(newCookie);
@@ -247,28 +251,53 @@ public class ServiceCenterController {
 		model.addAttribute("detail", vo);
 		return "noticeDetail";
 	}
+	@RequestMapping(value="/noticeWrite")
+	public String noticeWrite(NoticeVo vo,Model model,HttpServletRequest request,HttpServletResponse response) {
+		Cookie[] cookies = request.getCookies();
+		Cookie viewCookie = null;
+		
+		for(int i=0 ;i<cookies.length;i++) {
+			if(cookies[i].getName().equals("noticeWrite")) {
+				viewCookie=cookies[i];
+			}
+		}
+		if(viewCookie==null) {
+			Cookie newCookie = new Cookie("noticeWrite","write");
+			response.addCookie(newCookie);
+			noticeService.wirteBoardService(vo);
+		}
+		List<NoticeVo> list = noticeService.selectBoardAll();
+		int nbo = list.get(0).getNbo();
+		NoticeVo detail = noticeService.selectContent(nbo);
+		model.addAttribute("detail", detail);
+		
+		return "noticeDetail";
+	}
 	
 	@RequestMapping(value="/deleteBoard")
-	public String deleteBoard(int qbno,String id) {
+	public String deleteBoard(int qbno,String id,HttpServletResponse response) throws IOException {
 		QnaBoardVo vo = qnaBoardService.selectContent(qbno);
+		PrintWriter out =response.getWriter();
+		response.setContentType("text/html; charset=UTF-8");
 		if(id.equals(vo.getID())) {
 			qnaBoardService.deleteBoard(qbno);
 		}else {
-			System.out.println("아이디가 다릅니다. 삭제불가");
+			out.println("<script>alert('작성자가 아닙니다.'); location.href='qnaBoard?offset=0';</script>");
+			out.flush();
+			return "qnaBoard";
 		}
 		return "redirect:/qnaBoard?offset=0";
 	}
 	
 	@RequestMapping(value="/modifyBoard")
-	public String modifyBoard(Model model,int qbno, String id) {
+	public String modifyBoard(Model model,int qbno, String id,HttpServletResponse response) throws IOException  {
 		QnaBoardVo vo = qnaBoardService.selectContent(qbno);
-		System.out.println(vo.getID());
-		System.out.println(id);
-		if(id.equals(vo.getID())) {
-			System.out.println("수정가능");
-		}else {
-			System.out.println("아이디가 다릅니다. 수정불가");
-			return "redirect:/qnaBoard?offset=0";
+		PrintWriter out =response.getWriter();
+		response.setContentType("text/html; charset=UTF-8");
+		if(!(id.equals(vo.getID()))) {
+			out.println("<script>alert('작성자가 아닙니다.'); location.href='qnaBoard?offset=0';</script>");
+			out.flush();
+//			return "redirect:/qnaBoard?offset=0";
 		}
 		model.addAttribute("detail", vo);
 		return "modifyBoard";

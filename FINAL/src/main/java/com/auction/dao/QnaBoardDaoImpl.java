@@ -101,4 +101,9 @@ public class QnaBoardDaoImpl implements QnaBoardDao {
 		map.put("content", content);
 		sqlSession.update("com.auction.mapper.QnaBoardMapper.updateBoard", map);
 	}
+
+	@Override
+	public List<QnaBoardVo> selectFromId(String id) {
+		return sqlSession.selectList("com.auction.mapper.QnaBoardMapper.selectFromId", id);
+	}
 }

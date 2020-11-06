@@ -15,20 +15,22 @@
 <script src="resources/js/plmi.js"></script>
 
 <style>
-	table{
+	body {
+	    margin-top: 200px;
 			
 	}
-
+	.ui-datepicker{ font-size: 15px; width: 400px; height: 300px;}
+	
 	form {
-    margin-left: 420px;
+    margin-left: 450px;
     margin-top: 20px;
-    height: 1100px;
+    height: 700px;
 }
 	th{
 		text-align: right;
-		padding: 10px;
-		margin-top: 20px;
-		font-size: 30px;
+		padding: 5px;
+		margin-top: 10px;
+		font-size: 25px;
 	}
 	input{
 		margin-left: 30px;
@@ -36,7 +38,7 @@
 		width: 300px;
 	}
 	
-	select{
+	.category{
 		font-size: 20px;
 		width: 300px;
 		height: 40px;
@@ -57,6 +59,7 @@
 </style>
 </head>
 <body>
+<div id="container" style="margin-top: 200px;"">
 	<h2 style="text-align: center;">상품등록</h2>
 	<form action="applyProductAction" method="post" enctype="multipart/form-data">
 	<table>
@@ -67,9 +70,11 @@
 	<tr>
 		<th>사진</th> 
 			<td> 
-			 <input type="file" name="multiparts"/><br/>
-		     <input type="file" name="multiparts"/>
+			 <input type="file" name="multiparts" accept="image/*" onchange="setThumbnail(event);"/><br/>
+		     <input type="file" name="multiparts" accept="image/*" onchange="setThumbnail(event);"/>
+		    <div id="image_container"></div>
 		    </td>
+
 	</tr>
 	<tr>
 		<th>가격</th> 
@@ -94,7 +99,7 @@
 						<button type="button" class="sp-sub-minus" onclick="optnQtyMinus($(this));" style="width: 40px; height: 32px;">
 							<b>-</b>
 						</button>
-							<input style=" width: 220px;margin-left: 0px;" type="tel" class="num" value="0" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
+							<input style=" width: 220px;margin-left: 0px;" type="tel" class="num" placeholder="0" value="" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
 							<button type="button" class="sp-sub-plus" onclick="optnQtyPlus($(this), '3091');" style="width: 40px; height: 32px;">
 								<b>+</b>
 							</button>
@@ -108,17 +113,29 @@
 	<tr>
 		<th>카테고리</th> 
 			<td>	
-			<select name="category" style="margin-left: 30px; vertical-align: middle; text-align-last: center;">
-					<option value="art">미술품</option>
-					<option value="toy">장난감</option>
-					<option value="doll">인형</option>										
+				<select class="category" name="category" style="margin-left: 30px; vertical-align: middle; text-align-last: center;">
+					<option value="미술품">미술품</option>
+					<option value="장난감">장난감</option>
+					<option value="인형">인형</option>										
 			</select>
 			</td>
 	</tr>
 		</table>
-		<input id="apply" type="submit" value="승인 요청" style="width: 260px;height: 60px;margin-top: 50px;margin-left: 200px;">
+		<input id="apply" type="submit" value="승인 요청" style="width: 260px;height: 60px;margin-top: 20px;margin-left: 180px;">
 	</form>
+</div>
 </body>
 <script>
+function setThumbnail(event) { 
+	var reader = new FileReader(); 
+	reader.onload = function(event) {
+		var img = document.createElement("img"); 
+		img.setAttribute("src", event.target.result); 
+		document.querySelector("div#image_container").appendChild(img); 
+		}; 
+		reader.readAsDataURL(event.target.files[0]); 
+	}
+
+
 </script>
 </html>

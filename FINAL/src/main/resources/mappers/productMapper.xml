@@ -4,8 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.auction.mapper.ProductMapper">
+	
+	<!-- 등록 -->
 	<insert id="insertProduct">
-		INSERT INTO product(pname, image, filenames, price, deadlinedate, hitcount, ID, bestmoney, admin, category, auctionmenu, deal, moneyup) VALUES(#{pname},#{image},#{filenames},#{price},#{deadlinedate},#{hitcount},#{ID},#{bestmoney},#{admin},#{category},#{auctionmenu},#{deal},#{moneyup});
+		INSERT INTO product(pname, image, filenames, price, deadlinedate, hitcount, ID, bestmoney, admin, category, auctionmenu, deal, timeout, startmoney, lastmoney, moneyup) VALUES(#{pname},#{image},#{filenames},#{price},#{deadlinedate},#{hitcount},#{ID},#{bestmoney},#{admin},#{category},#{auctionmenu},#{deal},#{timeout},#{startmoney},#{lastmoney},#{moneyup});
 	</insert>
 	
 	<!-- 전체 -->
@@ -32,38 +34,53 @@
 	<update id="hitcountUp">
 		update product set hitcount= hitcount+1 where pno=#{pno};
 	</update>
-	
-	<!-- 등록 -->
 	<update id="timeout">
 		update product set timeout=(TIMESTAMPDIFF(day, NOW(), deadlinedate)+1);
-	</update>
-	<update id="startmoney">
-		update product set startmoney=price*0.6 where pno=#{pno};
-	</update>
-	<update id="lastmoney">
-		update product set lastmoney=price*1.4 where pno=#{pno};
 	</update>
 	
 	<!-- 입찰 -->
 	<select id="showAuction" resultType="int">
-		SELECT count(*) FROM auction where pno=#{pno};
+		SELECT count(*) FROM auction where pno=#{pno};	
 	</select>
 	<insert id="insertAuction">
 		insert into auction(ID, pno, myprice) values(#{ID}, #{pno}, #{myprice});
 	</insert>
 	<update id="updateMoneyFirst">
-		update product set count =count+1 where pno=#{pno};
+		update product set count =count+1, bestmoney =bestmoney+startmoney, getcustomer=#{getcustomer} where pno=#{pno};
 	</update>
 	<update id="updateMoney">
-		update product set count =count+1, bestmoney =bestmoney+moneyup where pno=#{pno};
+		update product set count =count+1, bestmoney =bestmoney+moneyup, getcustomer=#{getcustomer} where pno=#{pno};
 	</update>
 	
 	<!-- 카테고리 -->
 	<select id="normalCategory" resultType="com.auction.vo.ProductVo">
-		select * from product where category=#{category} and auctionmenu='일반' order by uploaddate desc;
+		select * from product where category=#{category} and auctionmenu='일반' and deal=1 order by uploaddate desc;
 	</select>
 	<select id="blindCategory" resultType="com.auction.vo.ProductVo">
-		SELECT * FROM product WHERE category=#{category} and auctionmenu='블라인드' ORDER BY uploaddate DESC;
+		SELECT * FROM product WHERE category=#{category} and auctionmenu='블라인드' and deal=1 ORDER BY uploaddate DESC;
+	</select>
+	
+	<!-- 마감 -->
+	<update id="dealChange">
+		update product set deal=2 where pno=#{pno};
+	</update>
+	
+	<!-- 
+	<select id="blindCharge" resultType="com.auction.vo.AuctionVo">
+		SELECT ID FROM final.auction WHERE pno=#{pno} and ABS(myprice-(SELECT price FROM product WHERE pno=#{pno})) order by buydate limit 1;
+	</select>
+	 -->
+	
+	<update id="updateCustomer">
+		UPDATE product SET count =count+1, getcustomer=#{getcustomer} , bestmoney=#{bestmoney} WHERE pno =#{pno};
+	</update>
+	
+	<!-- 관심상품 -->
+	<update id="addLike">
+		update member set likeproduct=concat(likeproduct, #{likeproduct})  where ID=#{ID};
+	</update>
+	<select id="selectLike" resultType="String">
+		select likeproduct from member where ID=#{ID};
 	</select>
 </mapper>
 

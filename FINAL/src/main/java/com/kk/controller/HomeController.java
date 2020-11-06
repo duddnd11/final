@@ -51,6 +51,11 @@ public class HomeController {
 		
 		return "popup";
 	}
+	@RequestMapping(value = "/chatting2")
+	public String chatting2() {
+		
+		return "chatting2";
+	}
 //	@RequestMapping(value = "/login")
 //	public String login() {
 //		return "login";
@@ -111,16 +116,12 @@ public class HomeController {
 //		
 //		return "signup";
 //	}
-	@RequestMapping(value = "/idcheck")
-	public String idcheck() {
-		
-		return "idcheck";
-	}
-	@RequestMapping(value = "/pwcheck")
-	public String pwcheck() {
-		
-		return "pwcheck";
-	}
+//	@RequestMapping(value = "/idcheck")
+//	public String idcheck() {
+//		
+//		return "idcheck";
+//	}
+
 
 	@RequestMapping(value = "/admin/chat")
 	public String chat() {
@@ -136,6 +137,12 @@ public class HomeController {
 	public String auction() {
 		
 		return "showAuctionNormal";
+	}
+	
+	@RequestMapping(value = "/Search")
+	public String search() {
+		
+		return "Search";
 	}
 	
 }
