@@ -24,7 +24,7 @@
 </style>
 </head>
 <body>
-	<div id="container" style="margin-top: 200px; margin-left: 400px;">
+	<div id="container" style="margin-top: 200px; margin-left: 20%;">
 	
 <h2>--판매--</h2><br/>
 		<table id="salestable">

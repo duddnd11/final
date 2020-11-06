@@ -95,7 +95,7 @@ $(document).ready(function(){
   });
 </script>
 <body>
-<div style="margin-left: 35%;  margin-top: 200px;">
+<div style="margin-left: 28%;  margin-top: 200px;">
    <span style="font-size: 20px;"><b>${vo.pno }</b></span>
    <span style="margin-left: 30px; font-size: 20px;">${vo.pname }</span>
    <div style="margin-top: 10px;" >
@@ -244,7 +244,7 @@ $(document).ready(function(){
 </div>
 
    <c:if test="${ID.ID eq 'admin' }">
-      <div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: 200px;">   
+      <div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: 25%;">   
       <canvas id="myChart"></canvas>
       </div>
    </c:if>
@@ -337,9 +337,5 @@ $(document).ready(function(){
 </script>
 </body>
 </html>
-<<<<<<< HEAD
 
    <%@ include file="footer.jsp" %>
-=======
-   <%@ include file="footer.jsp" %>
->>>>>>> refs/remotes/origin/main
