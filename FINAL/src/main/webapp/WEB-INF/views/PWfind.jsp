@@ -12,6 +12,7 @@
 		<div class="form-group has-feedback">
 			<label class="control-label" for="pw">패스워드</label> <input
 				class="form-control" type="password" id="pw" name="pw" />
+				<input type="text" value="${member.ID}" name="ID"/>
 		</div>
 		<div class="form-group has-feedback">
 			<button class="btn btn-success" type="submit" id="submit">확인</button>

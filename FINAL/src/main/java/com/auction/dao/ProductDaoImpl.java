@@ -145,5 +145,10 @@ public class ProductDaoImpl implements ProductDao {
 	public String selectLike(String ID) {
 		return sqlSession.selectOne("com.auction.mapper.ProductMapper.selectLike", ID);
 	}
+	
+	@Override		//검색 기능
+	public List<ProductVo> searchProduct(String keyword){
+		return sqlSession.selectList("com.auction.mapper.ProductMapper.searchProduct", keyword);
+	}
 
 }

@@ -21,4 +21,5 @@ public interface ProductService {
 	AuctionVo blincCharge(int pno);
 	int addLike(String str, String ID);
 	String selectLike(String ID);
+	List<ProductVo> searchProduct(String keyword);
 }

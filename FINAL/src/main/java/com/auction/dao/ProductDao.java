@@ -21,4 +21,6 @@ public interface ProductDao {
 	public AuctionVo blindCharge(int pno);
 	int addLike(String str, String ID);
 	String selectLike(String ID);
+	
+	List<ProductVo> searchProduct(String keyword);
 }

@@ -378,8 +378,5 @@ $(document).ready(function(){
 </script>
 </body>
 </html>
-<<<<<<< HEAD
+
    <%@ include file="footer.jsp" %>
-=======
-   <%@ include file="footer.jsp" %>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
