@@ -17,7 +17,7 @@
 </head>
 <body>
   <div id="container">
-  <form action="signupaction" method="post" style="height: 700px;">
+  <form action="signupaction" method="post" style="height: 800px;">
  
     <table id="signup-table" style="margin-top: 20px;">
         <tr>
@@ -41,7 +41,7 @@
         <tr>
           <th>주소</th>
           <td>
-            <input type="text" name="addr" placeholder="주소"/>
+            <input type="text" name="addr" placeholder="주소" />
           </td>
         </tr>
         <tr>
@@ -59,13 +59,13 @@
         <tr>
           <th>이메일</th>
           <td>
-            <input title="정확한 메일 주소를 작성해주세요" type="email" name="email">
+            <input title="정확한 메일 주소를 작성해주세요" type="email" name="email" placeholder="이메일">
           </td>
         </tr>
         <tr>
           <th>생년월일</th>
           <td>
-            <input type="text" name="birth" placeholder="생년월일"/>
+            <input type="text" name="birth" placeholder="생년월일" autocomplete="off"/>
           </td>
         </tr>
         <tr>
