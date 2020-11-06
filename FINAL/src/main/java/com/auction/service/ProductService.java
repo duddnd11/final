@@ -21,6 +21,7 @@ public interface ProductService {
 	AuctionVo blincCharge(int pno);
 	int addLike(String str, String ID);
 	String selectLike(String ID);
+	List<ProductVo> searchProduct(String keyword);
 	
 	List<Integer> auctionPno(String id);
 	AuctionVo maxPrice(int pno,String id);

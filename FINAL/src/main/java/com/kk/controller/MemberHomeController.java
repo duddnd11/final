@@ -207,6 +207,9 @@ public class MemberHomeController {
 	
 	@RequestMapping(value = "/newPWaction")
 	public String PWaction(MemberVo vo, HttpSession session) {
+//		System.out.println(vo.getID());
+//		System.out.println(vo.getPw());
+		vo.setPw(util(vo.getPw()));
 		service.newPW(vo);
 		session.invalidate();
 		return "redirect:/main";
