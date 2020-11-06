@@ -102,8 +102,7 @@ public class MemberHomeController {
 		
 		return "redirect:/main";
 	}
-	   
-	
+
 	public void setImg(List<ProductVo> list) {
 		for(ProductVo vo : list) {
 			if(vo.getFilenames()==null || vo.getFilenames().equals("")) {
@@ -178,10 +177,10 @@ public class MemberHomeController {
 		MemberVo result = service.IdCheck(vo);
 		if(result==null) {
 			model.addAttribute("msg", "회원정보가 틀립니다.");
-			session.setAttribute("memebr", result);
+			session.setAttribute("member", result);
 			return "idcheck";
 		}else {
-			session.setAttribute("memebr", result);
+			session.setAttribute("member", result);
 			return "IDfind";
 		}
 	}

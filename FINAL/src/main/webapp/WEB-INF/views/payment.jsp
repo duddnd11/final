@@ -78,26 +78,80 @@ $("#check_module").click(function () {
 	
 })
 </script>
+<style>
+	img{
+		width: 150px;
+		height: 200px;
+	}
+	table{
+		margin-left: 35%;
+		margin-top: 10%;
+		text-align: center;
+	}
+	td{
+		padding: 10px;
+		font-size: 20px;
+	}
+	input{
+		width: 300px;
+		height: 30px;
+		text-align: center;
+	}
+	select{
+		width: 310px;
+		height: 35px;
+		font-size: 16px;
+		text-align-last: center;
+	}
+	#check_module{
+		margin-left:44.3%;
+		margin-top: 2%;
+		height: 50px;
+		margin-bottom: 3%;
+	}
+</style>
 </head>
 <body>
-	받는사람 <input type="text" value="${member.name }"/><br/>
-	주소 <input type="text" value="${member.addr}"/><br/>
-	전화번호<input type="text" value="${member.phonenum}"/><br/>
-	배송시 요청사항 <input type="text"/><br/>
-	<br/>
-	주문상품
+	
 	<table>
 	<tr>
-	<td>이미지</td>
-	<td>상품명</td>
-	<td>결제금액</td>
+	
+	<th colspan="2">상품명</th>	
+	<th>결제금액</th>
 	</tr>
 	<c:forEach items="${vo}" var="vo">
 		<td><img src="${vo.image}"/></td>
 		<td>${vo.pname}</td>
-		<td>${vo.bestmoney}</td>
+		<td style="width: 30%;">${vo.bestmoney}</td>
 	</c:forEach>
 	</table>
+	<div style="border-top: 1px solid #cccccc;">
+	<table style=" margin-left: 35%; margin-top: 2%;">
+	<tr>
+	<th>받는사람</th> <td><input type="text" value="${member.name }"/></td>
+	</tr>
+	<tr>
+	<th>주소</th> <td><input type="text" value="${member.addr}"/></td>
+	</tr>
+	<tr>
+	<th>전화번호</th><td><input type="text" value="${member.phonenum}"/></td>
+	</tr>
+	<tr>
+	<th>배송시 요청사항</th> 
+	<td>
+		<select>
+              <option value="">배송 전 연락바랍니다.</option>
+              <option value="">부재 시 문앞에 놔주세요</option>
+              <option value="">무인택배햠에 넣어주세요</option>
+              <option value="">경비실에 맡겨주세요</option>
+              <option value="">부재 시 연락주세요</option>
+        </select>
+	</td>
+	</tr>
+	
+	</table>
+	</div>
+	
 	<input type="hidden" value="${vo.pno}"/>
 	<input type="submit" value="결제" id="check_module"/>
 </body>

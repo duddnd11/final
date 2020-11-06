@@ -8,10 +8,10 @@
 <title>Insert title here</title>
 <style>
 footer {
-    border-top: 6px solid #000;
+    border-top: 3px solid #000;
     margin-top: 140px;
     display: block;
-}
+ }
 
 footer .foot_wrap {
     display: table;
@@ -47,7 +47,7 @@ footer .foot_wrap .group:nth-child(1) ul.agreements li a {
 }
 
 footer .foot_wrap .group:nth-child(1) ul.agreements li a:hover {
-   text-decoration:underline;
+	text-decoration:underline;
 }
 
 footer .foot_wrap .group:nth-child(1) ul.information {

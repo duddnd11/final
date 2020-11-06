@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="container" style="margin-top: 200px; margin-left: 40%;">
-	
+	<button onclick="myPage">뒤로가기</button>
 <h2>판매</h2><br/>
 		<table id="salestable">
 			<tr>

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<%@ include file="header.jsp"%>
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!Doctype html>
+<%@ include file="header.jsp"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -57,10 +57,10 @@ small {
     text-transform: uppercase;
     margin:80px 0 50px 30px;
 }
-img {
-   width: 200px;
-   height: 200px;
-}
+	img {
+		width: 200px;
+    	height: 200px;
+	}
 
 </style>
 <script>
