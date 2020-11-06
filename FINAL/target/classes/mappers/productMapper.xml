@@ -40,7 +40,7 @@
 	
 	<!-- 입찰 -->
 	<select id="showAuction" resultType="int">
-		SELECT count(*) FROM auction where pno=#{pno};
+		SELECT count(*) FROM auction where pno=#{pno};	
 	</select>
 	<insert id="insertAuction">
 		insert into auction(ID, pno, myprice) values(#{ID}, #{pno}, #{myprice});
@@ -51,7 +51,10 @@
 	<update id="updateMoney">
 		update product set count =count+1, bestmoney =bestmoney+moneyup, getcustomer=#{getcustomer} where pno=#{pno};
 	</update>
-	
+	<select id="rejectBlind" resultType="int">
+		select count(*) from auction a left outer join product p on a.pno=p.pno where a.ID=#{ID} and p.auctionmenu='블라인드' and a.pno=#{pno};
+	</select>
+
 	<!-- 카테고리 -->
 	<select id="normalCategory" resultType="com.auction.vo.ProductVo">
 		select * from product where category=#{category} and auctionmenu='일반' and deal=1 order by uploaddate desc;
@@ -70,7 +73,6 @@
 		SELECT ID FROM final.auction WHERE pno=#{pno} and ABS(myprice-(SELECT price FROM product WHERE pno=#{pno})) order by buydate limit 1;
 	</select>
 	 -->
-	
 	<update id="updateCustomer">
 		UPDATE product SET count =count+1, getcustomer=#{getcustomer} , bestmoney=#{bestmoney} WHERE pno =#{pno};
 	</update>
@@ -82,11 +84,25 @@
 	<select id="selectLike" resultType="String">
 		select likeproduct from member where ID=#{ID};
 	</select>
+<<<<<<< HEAD
 
 <!-- 검색기능 -->	
 	<select id = "searchProduct" resultType = "com.auction.vo.ProductVo">
 		SELECT * FROM product WHERE pname LIKE CONCAT('%', #{keyword},'%') ORDER BY pno desc;
 	</select>
+=======
+	
+	<!-- 마이페이지.구매 -->
+	<select id="auctionPno" resultType="int">
+		SELECT distinct pno from auction where id =#{ID}; 
+	</select>
+	<select id="maxPrice" resultType="com.auction.vo.AuctionVo">
+		select idx,p.pname, p.ID,a.pno,max(myprice) as myprice,buydate,p.payment from auction a left outer join product p on p.pno=a.pno where a.pno=#{pno} and a.id=#{id};
+	</select>
+	<update id="payment">
+		UPDATE product SET payment=1 WHERE pno=#{pno};
+	</update>
+>>>>>>> refs/remotes/origin/main
 </mapper>
 
 

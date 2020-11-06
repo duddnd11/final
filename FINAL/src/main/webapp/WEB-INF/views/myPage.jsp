@@ -54,7 +54,7 @@
          <p style=" margin-left: 15px;font-weight: 700; font-size: 35px; float: left;"><span>${member.name}님</span></p>
          </div>
          <div style="width: 300px;margin-left: 600px;text-align: left;">
-         <p style="font-size: 18px;">이름: ${member.name} </p>
+         
          <p style="font-size: 18px;">전화번호: ${member.phonenum}</p>
          <p style="font-size: 18px;">이메일: ${member.email}</p>
          <p style="font-size: 18px;">주소: ${member.addr}</p>
@@ -76,7 +76,7 @@
          <h2 style="font-weight: 700; font-size: 35px;" class="myQnaButton">문의내역</h2>
          <div style="margin-top: 20px; width: 700px;">
             <div class="myQna">
-               <table style="width: 900px;">
+               <table style="width: 900px; text-align: center;">
                   <tr>
                      <td style="width: 150px; height: 100px; border-bottom: 1px solid black;">
                         <p style="font-size: 15px;"><b>제목</b></p>               
@@ -99,6 +99,7 @@
          </div>            
       </div>
       <div style=" width: 600px; margin-left: 350px;  margin-top: 100px; width: 600px; display: block;">
+<<<<<<< HEAD
          <h2 style="font-weight: 700; font-size: 35px;" class="likeButton">관심상품</h2>
          <div class="like" style="margin-top: 20px; width: 700px;">
             <div>
@@ -137,6 +138,54 @@
          <p style="margin-top: 20px;">판매할 상품을 등록하세요.
          <button style="float: right;width: 50px;hegiht: 40px;margin-right: -250px;"><a href="http://localhost:9090/final/applyProduct">등록</a></button>            
       </div>
+=======
+			<h2 style="font-weight: 700; font-size: 35px;" class="likeButton">관심상품</h2>
+			<div class="like" style="margin-top: 20px; width: 700px;">
+				<div>
+					<table style="width: 900px;">
+						<c:choose>
+						<c:when test="${list1 ne '' }">
+						<c:forEach var="list1" items="${list1 }">
+						<tr>
+							<td style="width: 150px; height: 100px; border-bottom: 1px solid black;">
+							<c:if test="${list1.image ne null }">
+								<a href="showDetail?pno=${list1.pno }"><img src="${list1.image }" style="width: 100px; height: 100px; margin-left: 0px;  margin-top: 20px; margin-bottom: 20px;"/></a>	
+							</c:if>
+							<c:if test="${list1.image eq null }">
+								<a href="showDetail?pno=${list1.pno }">
+								<c:choose>
+									<c:when test="${list1.img1 ne '(이름없음)' }">
+									<img src="resources/images/${list1.img1 }" style="width: 100px; height: 100px; margin-left: 0px;  margin-top: 20px; margin-bottom: 20px;"/>
+									</c:when>
+									<c:otherwise>
+									<img src="resources/images/${list1.img2 }" style="width: 100px; height: 100px; margin-left: 0px;  margin-top: 20px; margin-bottom: 20px;"/>
+									</c:otherwise>
+								</c:choose>
+								</a> <br/>
+							</c:if>
+							</td>
+							<td style="width: 420px; border-bottom: 1px solid black;"><p style="margin-left: 20px; font-size: 15px;"><a href="showDetail?pno=${list1.pno }"><b>${list1.pname }</b></a></p></td>
+							<c:set var="dead" value="${list1.deadlinedate }"/>
+							<td style="width: 420px; border-bottom: 1px solid black;"><p style="margin-left: 20px; font-size: 15px;"><b>${fn:substring(dead,0,10) }</b></p></td>
+						</tr>
+						</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td>관심상품을 등록하시오</td>
+							</tr>
+						</c:otherwise>
+						</c:choose>
+					</table>		
+				</div>
+			</div>				
+		</div>
+		<div style=" width: 900px; margin-left: 350px;  margin-top: 100px; width: 600px; display: block;">
+			<h2 style="font-weight: 700; font-size: 35px;">상품등록</h2>
+			<p style="margin-top: 20px;">판매할 상품을 등록하세요.
+			<button style="float: right;width: 50px;hegiht: 40px;margin-right: -250px;"><a href="http://localhost:9090/final/applyProduct">등록</a></button>				
+		</div>
+>>>>>>> refs/remotes/origin/main
 </div>
 </body>
 </html>

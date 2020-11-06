@@ -18,4 +18,5 @@ public interface AdminDao {
 	List<AuctionVo> buyItem(String ID);
 	int updateAdmin(ProductVo vo);
 	List<AuctionVo> chart(int pno);
+	
 }

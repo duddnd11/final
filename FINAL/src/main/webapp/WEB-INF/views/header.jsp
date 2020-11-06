@@ -27,10 +27,19 @@ var roomId = "${room.roomId}";
 $(function(){
    if(${member.grade !='z'}){
          $("#chatting").click(function(){
+<<<<<<< HEAD
             sock= new SockJS("<c:url value="/chat"/>");
             sock.onopen=onOpen2;
             sock.onmessage = onMessage;
             sock.onclose = onClose;
+=======
+            if(check==0){
+	            sock= new SockJS("<c:url value="/chat"/>");
+	            sock.onopen=onOpen;
+	            sock.onmessage = onMessage;
+	            sock.onclose = onClose;
+	               }
+>>>>>>> refs/remotes/origin/main
            check=1;
             //$("#data").append($("#userId").val()+"님 채팅 입장\n");
          });

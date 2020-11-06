@@ -180,9 +180,14 @@ public class ProductController {
 				
 			}
 		}
+		int rejectBlind=0;
+		if(ID!=null) {
+			rejectBlind = service.rejectBlind(ID.getID(), pno);
+		}
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
 		model.addAttribute("ID", ID);
+		model.addAttribute("rejectBlind", rejectBlind);
 		return "showDetail";
 	}
 	
@@ -225,8 +230,39 @@ public class ProductController {
 	public String addLike(int pno, HttpSession session) {
 		MemberVo member =  (MemberVo) session.getAttribute("member");
 		String ID = member.getID();
-		String str = pno+"_!_";
-		int result = service.addLike(str, ID);
+		String str = pno+"_!_";	//1137_!_
+		String likeArr[]=service.selectLike(ID).split("_!_");
+		int check=0;
+		for(int i=0; i<likeArr.length ;i++) {
+			System.out.println(likeArr[i]+"="+pno);
+			if(likeArr[i].equals(String.valueOf(pno))) {
+				check=1;
+				System.out.println("비교문: "+check);
+				break;
+			}
+		}
+		if(check ==0) {
+			int result = service.addLike(str, ID);
+			System.out.println("관심상품: "+result);
+		}
 		return "redirect:/showDetail?pno="+pno;
 	}
+	@RequestMapping(value="payment")
+	public String payment(HttpSession session,int pno,Model model) {
+		MemberVo member =  (MemberVo) session.getAttribute("member");
+		String ID = member.getID();
+		ProductVo vo =service.selectOne(pno);
+		model.addAttribute("vo", vo);
+		return "payment";
+	}
+	@RequestMapping(value="paymentAction")
+	public String paymentAction(int pno,Model model) {
+		System.out.println("결제완료 확인");
+		service.payment(pno);
+		return "redirect:/main";
+	}
 }
+
+
+
+

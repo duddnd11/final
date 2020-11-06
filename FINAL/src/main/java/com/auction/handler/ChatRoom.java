@@ -3,6 +3,7 @@ package com.auction.handler;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -35,13 +36,27 @@ public class ChatRoom {
 		if(chatMessage.getType() == MessageType.ENTER) {
 			sessions.add(session);
 			chatMessage.setMessage(roomId+":"+chatMessage.getWriter()+"님 입장");
-		}else if(chatMessage.getType()==MessageType.LEAVE) {
+		}
+		
+		boolean check=false;
+		Iterator<WebSocketSession> iterator = sessions.iterator();
+		while(iterator.hasNext()) {
+			if((iterator.next().getId()).equals(session.getId())) {
+				check=true;
+				break;
+			}
+		}
+		
+		if(chatMessage.getType()==MessageType.LEAVE) {
 			sessions.remove(session);
 			chatMessage.setMessage(roomId+":"+chatMessage.getWriter()+"님 퇴장");
-		}else {
+		}else if(chatMessage.getType()==MessageType.CHAT){
 			chatMessage.setMessage(roomId+":"+chatMessage.getWriter()+":"+chatMessage.getMessage());
 		}
-		send(chatMessage,objectMapper);
+		
+		if(check) {
+			send(chatMessage,objectMapper);
+		}
 	}
 	
 	public void send(ChatMessage chatMessage, ObjectMapper objectMapper) throws IOException {

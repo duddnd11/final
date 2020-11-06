@@ -23,8 +23,13 @@
 </style>
 <body>
 <div id="container" style="width: -webkit-fill-available; margin-top:200px">
+<<<<<<< HEAD
 	<h2 style="text-align: center; margin-left: -200px; font-size: 30px;">온라인 경매</h2>
 
+=======
+	
+	<h2 style="text-align: center; font-size: 30px;">온라인 경매</h2>
+>>>>>>> refs/remotes/origin/main
 	<div style="width: 300px; height: 1000px; position: fixed;">
 	<c:forEach var="category" items="${category}">
 		<a href="showAuctionNormal?category=${category}">${category}</a><br/>
@@ -66,7 +71,7 @@
 	</div>
 	<c:set var="dead" value="${vo.deadlinedate }"/>
 		<p>마감날: ${fn:substring(dead,0,10) } </p>
-		조회수: ${vo.hitcount }<span>&nbsp</span><span>&nbsp</span><span>&nbsp</span><span>&nbsp</span><span>&nbsp</span>
+		조회수: ${vo.hitcount }<span>&nbsp</span><span>&nbsp</span>
 		입찰수 ${vo.count }<br/></p>
 	</div>
 	</li>
