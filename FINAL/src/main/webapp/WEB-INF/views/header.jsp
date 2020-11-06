@@ -17,7 +17,7 @@ function popup(){
       var name = "login popup";
       var option = "width = 550, height = 500, top = 100, left = 200, location = no"
       window.open(url, name, option);
-    }
+}
 var check =0;
 var sock;
 //var nickname;
