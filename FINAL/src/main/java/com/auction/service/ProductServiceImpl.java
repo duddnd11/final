@@ -82,5 +82,29 @@ public class ProductServiceImpl implements ProductService {
 	public String selectLike(String ID) {
 		return dao.selectLike(ID);
 	}
+	@Override
+	public List<ProductVo> searchProduct(String keyword){
+		return dao.searchProduct(keyword);
+	}
+
+	@Override
+	public List<Integer> auctionPno(String id) {
+		return dao.auctionPno(id);
+	}
+
+	@Override
+	public AuctionVo maxPrice(int pno,String id) {
+		return dao.maxPrice(pno,id);
+	}
+
+	@Override
+	public int rejectBlind(String id, int pno) {
+		return dao.rejectBlind(id, pno);
+	}
+
+	@Override
+	public void payment(int pno) {
+		dao.payment(pno);
+	}
 
 }

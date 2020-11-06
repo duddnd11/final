@@ -31,7 +31,7 @@ public class WebSocketHandler extends TextWebSocketHandler{
 				System.out.println("관리자 세션추가:"+chatMessage.getChatRoomId());
 				sessionList.add(session);
 				System.out.println("세션확인:"+sessionList);
-			}else if(!(chatMessage.getGrade().equals("z")) && chatMessage.getChatRoomId()==null ){
+			}else if(!(chatMessage.getGrade().equals("z"))){
 				for(WebSocketSession sess : sessionList) {
 					System.out.println("사용자 채팅요청");
 					System.out.println("세션확인:"+sessionList);

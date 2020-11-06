@@ -63,6 +63,43 @@ small {
 	}
 
 </style>
+<script>
+$(document).ready(function(){
+     msg_time();
+     tid=setInterval('msg_time()',1000); // 타이머 1초간격으로 수행
+   });
+   
+var stDate = new Date().getTime();
+
+<c:forEach var="showHurry" items="${showHurry }">
+var edDate = new Date('${showHurry.deadlinedate}').getTime(); // 종료날짜
+</c:forEach>
+var RemainDate = edDate-stDate;
+// 86400000 ==>24시간
+
+function msg_time() {
+  var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000*60*60));
+  var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000*60));
+  var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
+  if(hours <10){
+   hours = '0'+hours;
+     }
+  if(miniutes < 10){
+     miniutes = '0'+miniutes;
+   }
+  if(seconds <10){
+   seconds = '0'+seconds;
+   }
+  m = hours + ":" +  miniutes + ":" + seconds ; 
+  document.all.timer.innerHTML = m;   
+  
+  if (RemainDate <= 0) {      //시간 종료
+    clearInterval(tid);   // 타이머 해제
+  }else{
+    RemainDate = RemainDate - 1000; // 남은시간 -1초
+  }
+}
+</script>
 </head>
 <body>
    <div id="content">
@@ -115,6 +152,15 @@ small {
                   </c:otherwise>
                   </c:choose>
                   </c:if>
+            	<br/> D-day: 
+            	<c:choose>
+			         <c:when test="${showHurry.timeout >1}">
+			            <td>${showHurry.timeout }</td>
+			         </c:when>
+			         <c:otherwise>
+			            <td><span id="timer"></span></td>
+			         </c:otherwise>
+		         </c:choose>
             </div>
                </c:forEach>               
          </div>

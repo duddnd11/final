@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +40,8 @@
 				<th>판매자</th>
 				<th>가격</th>
 				<th>날짜</th>
+				<th>결과</th>
+				<th>결제</th>
 			</tr>
 		<c:forEach var="purchase" items="${purchase }">
 			<tr>
@@ -47,6 +50,15 @@
 				<td>${purchase.ID }</td>
 				<td>${purchase.myprice }</td>
 				<td>${purchase.buydate }</td>
+				<td>${purchase.buydate }</td>
+				<td>
+				<c:if test="${purchase.payment == 0}">
+					<button style="margin: 10px;" onclick="location.href='payment?pno=${purchase.pno}'">결제</button>
+				</c:if>
+				<c:if test="${purchase.payment ==1 }">
+					<button>결제완료</button>
+				</c:if>
+				</td>
 			</tr>
 		</c:forEach>
 		</table>

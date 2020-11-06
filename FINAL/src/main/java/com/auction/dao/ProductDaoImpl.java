@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class ProductDaoImpl implements ProductDao {
 	        
 	        // Date.getTime() 은 해당날짜를 기준으로1970년 00:00:00 부터 몇 초가 흘렀는지를 반환해준다. 
 	        // 이제 24*60*60*1000(각 시간값에 따른 차이점) 을 나눠주면 일수가 나온다.
-	        calDateDays = calDate / ( 24*60*60*1000); 
+	        calDateDays = calDate / (24*60*60*1000); 
 	        calDateDays = Math.abs(calDateDays);
 	        
 	        } catch(ParseException e) {
@@ -145,5 +146,35 @@ public class ProductDaoImpl implements ProductDao {
 	public String selectLike(String ID) {
 		return sqlSession.selectOne("com.auction.mapper.ProductMapper.selectLike", ID);
 	}
+	
+	@Override		//검색 기능
+	public List<ProductVo> searchProduct(String keyword){
+		return sqlSession.selectList("com.auction.mapper.ProductMapper.searchProduct", keyword);
+	}
 
+	@Override
+	public List<Integer> auctionPno(String id) {
+		return sqlSession.selectList("com.auction.mapper.ProductMapper.auctionPno", id);
+	}
+
+	@Override
+	public AuctionVo maxPrice(int pno,String id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pno", pno);
+		map.put("id", id);
+		return sqlSession.selectOne("com.auction.mapper.ProductMapper.maxPrice", map);
+	}
+
+	@Override
+	public int rejectBlind(String id, int pno) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("ID", id);
+		map.put("pno", pno);
+		return sqlSession.selectOne("com.auction.mapper.ProductMapper.rejectBlind", map);
+	}
+
+	@Override
+	public void payment(int pno) {
+		sqlSession.update("com.auction.mapper.ProductMapper.payment",pno);
+	}
 }

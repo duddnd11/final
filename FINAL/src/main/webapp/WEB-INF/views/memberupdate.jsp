@@ -5,6 +5,14 @@
 <head>
 <meta charset="UTF-8">	
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="resources/js/jquery-3.5.1.min.js"></script>
+  <script src="resources/js/jquery-ui.min.js"></script>
+  <script src="resources/js/memberupdate/data.js"></script>
+<script src="resources/js/memberupdate/jquery-custom-ui.js"></script>
+<script src="resources/js/memberupdate/main.js"></script>
+<script src="resources/js/memberupdate/utilities.js"></script>
+
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <title>회원정보 수정</title>
 </head>
    <script type="text/javascript">
@@ -32,6 +40,7 @@
             
          
       })
+      searchPostcode();
    </script>
 <style>
 	th{

@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.auction.service.AdminService;
 import com.auction.service.MemberService;
 import com.auction.service.ProductService;
 import com.auction.service.QnaBoardService;
 import com.auction.sha256.SHA256Util;
+import com.auction.vo.AuctionVo;
 import com.auction.vo.MemberVo;
 import com.auction.vo.ProductVo;
 import com.auction.vo.QnaBoardVo;
@@ -29,6 +31,8 @@ public class MemberHomeController {
 	MemberService service;
 	@Autowired
 	ProductService pService;
+	@Autowired
+	AdminService adminService;
 	@Autowired
 	QnaBoardService qnaService;
 	
@@ -74,7 +78,7 @@ public class MemberHomeController {
 	public String util(String pw) {
 		String str = pw;
 		String sha256_en = SHA256Util.encrypt(str);
-		System.out.println("SHA256 암호화 : "+sha256_en);
+//		System.out.println("SHA256 암호화 : "+sha256_en);
 		return sha256_en;
 	}
 	
@@ -100,6 +104,19 @@ public class MemberHomeController {
 		
 		return "redirect:/main";
 	}
+	
+	public void setImg(List<ProductVo> list) {
+		for(ProductVo vo : list) {
+			if(vo.getFilenames()==null || vo.getFilenames().equals("")) {
+				vo.setImg1(null);
+				vo.setImg2(null);
+			} else {
+				vo.setImg1(vo.getFilenames().split("_!_")[0]);
+				vo.setImg2(vo.getFilenames().split("_!_")[1]);
+				vo.setImage(null);
+			}
+		}
+	}
 	@RequestMapping(value="/myPage")
 	public String myPage(HttpSession session, Model model) {
 		MemberVo member = (MemberVo) session.getAttribute("member");
@@ -107,23 +124,35 @@ public class MemberHomeController {
 		String likeProduct = pService.selectLike(member.getID());
 		String[] pno = likeProduct.split("_!_"); // 1016 1022
 		for(int i=0; i<=pno.length-1; i++) { //2
-	         if(!(pno[i].equals(""))) {
-	            ProductVo vo = pService.selectOne(Integer.parseInt(pno[i]));
-	            System.out.println(vo);
-	            list1.add(vo);
-	         }
+			if(!(pno[i].equals(""))) {
+				ProductVo vo = pService.selectOne(Integer.parseInt(pno[i]));
+				System.out.println(vo);
+				list1.add(vo);
+			}
 	      }
-		
+		setImg(list1);
 		String id = member.getID();
 		List<QnaBoardVo> list2 =qnaService.selectFromId(id);
 		model.addAttribute("list1", list1);
 		model.addAttribute("list2", list2);
 		return "myPage";
 	}
+	
 	@RequestMapping(value="/deallist")
-	public String deallist() {
+	public String deallist(HttpSession session,Model model) {
+		MemberVo vo =(MemberVo) session.getAttribute("member");
+		String id =vo.getID();
+		List<Integer> pnoList=pService.auctionPno(id);
+		List<AuctionVo> auctionList = new ArrayList<AuctionVo>();
+		for(Integer pno : pnoList) {
+			auctionList.add(pService.maxPrice(pno,id));
+		}
+		List<AuctionVo> salesList = adminService.saleItem(id);
+		model.addAttribute("sales", salesList);
+		model.addAttribute("purchase",auctionList);
 		return "deallist";
 	}
+	
 	@RequestMapping(value="/result/naverLogin")
 	public String naverLogin(String id,String name, String email,String birthday,String api,HttpSession session) {
 		MemberVo vo = new MemberVo(id, "111", name, "주소", "11111", email, birthday, "c");
@@ -168,17 +197,21 @@ public class MemberHomeController {
 		MemberVo result = service.PwCheck(vo);
 		if(result==null) {
 			model.addAttribute("msg", "회원정보가 틀립니다.");
-			session.setAttribute("memebr", result);
+			session.setAttribute("member", result);
 			return "pwcheck";
 		}else {
-			session.setAttribute("memebr", result);
+			session.setAttribute("member", result);
 			return "PWfind";
 		}
 	}	
 	
 	@RequestMapping(value = "/newPWaction")
 	public String PWaction(MemberVo vo, HttpSession session) {
+//		System.out.println(vo.getID());
+//		System.out.println(vo.getPw());
+		vo.setPw(util(vo.getPw()));
 		service.newPW(vo);
+		session.invalidate();
 		return "redirect:/main";
 	}
 	
