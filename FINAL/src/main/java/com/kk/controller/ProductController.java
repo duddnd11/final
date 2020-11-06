@@ -259,7 +259,7 @@ public class ProductController {
 	public String paymentAction(int pno,Model model) {
 		System.out.println("결제완료 확인");
 		service.payment(pno);
-		return "redirect:/main";
+		return "paymentAction";
 	}
 }
 
