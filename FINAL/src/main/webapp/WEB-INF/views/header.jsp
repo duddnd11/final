@@ -330,7 +330,7 @@ header.header .nav_wrap nav.main .main_cate>li {
                </ul>
             </nav>
             <div class="search">
-               <a href="검색"><img class="search_img"
+               <a href="Search"><img class="search_img"
                   src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw="></a>
             </div>
             <div class="login">

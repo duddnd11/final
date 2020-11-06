@@ -84,6 +84,11 @@
 	<select id="selectLike" resultType="String">
 		select likeproduct from member where ID=#{ID};
 	</select>
+
+	<!-- 검색기능 -->	
+	<select id = "searchProduct" resultType = "com.auction.vo.ProductVo">
+		SELECT * FROM product WHERE pname LIKE CONCAT('%', #{keyword},'%') ORDER BY pno desc;
+	</select>
 	
 	<!-- 마이페이지.구매 -->
 	<select id="auctionPno" resultType="int">
