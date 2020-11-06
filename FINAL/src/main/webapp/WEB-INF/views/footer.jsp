@@ -11,7 +11,7 @@ footer {
     border-top: 3px solid #000;
     margin-top: 140px;
     display: block;
-}
+ }
 
 footer .foot_wrap {
     display: table;
