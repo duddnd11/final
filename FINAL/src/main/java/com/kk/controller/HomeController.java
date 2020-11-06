@@ -133,10 +133,5 @@ public class HomeController {
 		
 		return "test";
 	}
-	@RequestMapping(value = "/Search")
-	public String search() {
-		
-		return "Search";
-	}
 	
 }

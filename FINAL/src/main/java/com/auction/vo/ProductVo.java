@@ -310,6 +310,6 @@ public class ProductVo {
 		this.deal = deal;
 	}
 
-
+	
 	
 }

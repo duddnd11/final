@@ -178,10 +178,10 @@ public class MemberHomeController {
 		MemberVo result = service.IdCheck(vo);
 		if(result==null) {
 			model.addAttribute("msg", "회원정보가 틀립니다.");
-			session.setAttribute("memebr", result);
+			session.setAttribute("member", result);
 			return "idcheck";
 		}else {
-			session.setAttribute("memebr", result);
+			session.setAttribute("member", result);
 			return "IDfind";
 		}
 	}
@@ -197,17 +197,21 @@ public class MemberHomeController {
 		MemberVo result = service.PwCheck(vo);
 		if(result==null) {
 			model.addAttribute("msg", "회원정보가 틀립니다.");
-			session.setAttribute("memebr", result);
+			session.setAttribute("member", result);
 			return "pwcheck";
 		}else {
-			session.setAttribute("memebr", result);
+			session.setAttribute("member", result);
 			return "PWfind";
 		}
 	}	
 	
 	@RequestMapping(value = "/newPWaction")
 	public String PWaction(MemberVo vo, HttpSession session) {
+//		System.out.println(vo.getID());
+//		System.out.println(vo.getPw());
+		vo.setPw(util(vo.getPw()));
 		service.newPW(vo);
+		session.invalidate();
 		return "redirect:/main";
 	}
 	

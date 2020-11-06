@@ -22,7 +22,7 @@
 	table{
 		width: 1200px;
 		margin-top: 150px;
-		margin-left: 200px;
+		margin-left: 18%;
 		font-size: 18px;
 		text-align: center;
 	}
@@ -297,7 +297,7 @@ $(document).on("click","#btn5",function(){
 				</tr>
 			</c:forEach>
 		</table>
-		<div class="pageDiv" style="margin-top: 60px; margin-left: 600px;">
+		<div class="pageDiv" style="margin-top: 60px; margin-left: 40%;">
 			<c:forEach var="i" begin="${startPage}" end="${endPage}">
 
 			<form action="item" class="pageForm" style="padding: 5px;">

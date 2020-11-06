@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="header.jsp" %>
+   <%@ include file="header.jsp" %>
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,12 +74,16 @@
 </script>
 
 <style>
-
+a{
+	text-decoration: none;
+	color: black;
+}
       .wrapper-customer .wrap-aside {
     margin-top: 60px;
 }
 .wrap-aside .aside {
     float: left;
+    
 }
 
 .aside-customer {
@@ -122,11 +127,11 @@
 			</div>
 		</div>
 <div style="margin-left: 600px;">
-	<input type="text" value="${room.roomId}"/ style="position: absolute; top: 200px; left: 705px; width: 302px; height: 50px;"><br/>
-	<input type="text" value="${room.name}" style="position: absolute; top: 200px; width: 100px; height: 50px;"/><br/>
+	<input type="hidden" value="${room.roomId}"/ style="position: absolute; top: 350px; left: 700px; width: 302px; height: 50px;"><br/>
+	<input type="hidden" value="${room.name}" style="position: absolute; top: 350px; width: 100px; height: 50px;"/><br/>
 	<textarea rows="10" cols="50" readonly="readonly" id="data" 
 	style="width: 400px; height: 500px; z-index:1; background-color: #F2F2F2;"></textarea><br/>
-	<div style="position: absolute; top: 700px; width: 400px; height: 100px; background-color: white;
+	<div style="position: absolute; top: 842px; width: 400px; height: 100px; background-color: white;
 	border: 1px solid #cccccc;">
 	<input type="text" id="message"/ style="width: 300px; height: 70px; margin-top: 15px; margin-left: 20px;">
 	<input type="button" value="보내기" id="sendBtn" 
@@ -134,11 +139,11 @@
 	font-weight: 700; font-size: 16px; border: none; border-radius: 2px 2px 2px 2px;"/>
 	</div>
 	<input type="button" value="채팅참여" id="chatting" 
-	style="position: absolute; top: 250px; width: 100px; height: 50px;"/>
+	style="position: absolute; top: 393px; width: 100px; height: 50px;"/>
 	<input type="button" value="퇴장" id="exit"
-	style="position: absolute; top: 250px; left: 708px; width: 100px; height: 50px;"/>
+	style="position: absolute; top: 393px; left: 700px; width: 100px; height: 50px;"/>
 	<input type="text" value="${member.ID}" id="userId"
-	style="position: absolute; top: 250px; left: 808px; width: 200px; height: 50px; text-align: center;"/>
+	style="position: absolute; top: 393px; left: 800px; width: 200px; height: 50px; text-align: center;"/>
       </div>
 </div>
 </body>

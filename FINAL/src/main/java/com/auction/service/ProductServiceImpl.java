@@ -82,6 +82,10 @@ public class ProductServiceImpl implements ProductService {
 	public String selectLike(String ID) {
 		return dao.selectLike(ID);
 	}
+	@Override
+	public List<ProductVo> searchProduct(String keyword){
+		return dao.searchProduct(keyword);
+	}
 
 	@Override
 	public List<Integer> auctionPno(String id) {
