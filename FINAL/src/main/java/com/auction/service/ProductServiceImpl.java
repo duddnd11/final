@@ -90,8 +90,17 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public AuctionVo maxPrice(int pno,String id) {
-		// TODO Auto-generated method stub
 		return dao.maxPrice(pno,id);
+	}
+
+	@Override
+	public int rejectBlind(String id, int pno) {
+		return dao.rejectBlind(id, pno);
+	}
+
+	@Override
+	public void payment(int pno) {
+		dao.payment(pno);
 	}
 
 }

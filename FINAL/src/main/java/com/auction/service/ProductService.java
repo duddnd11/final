@@ -24,4 +24,7 @@ public interface ProductService {
 	
 	List<Integer> auctionPno(String id);
 	AuctionVo maxPrice(int pno,String id);
+	int rejectBlind(String id, int pno);
+	
+	public void payment(int pno);
 }

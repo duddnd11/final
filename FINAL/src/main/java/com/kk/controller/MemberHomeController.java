@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.auction.service.AdminService;
 import com.auction.service.MemberService;
 import com.auction.service.ProductService;
 import com.auction.service.QnaBoardService;
@@ -30,6 +31,8 @@ public class MemberHomeController {
 	MemberService service;
 	@Autowired
 	ProductService pService;
+	@Autowired
+	AdminService adminService;
 	@Autowired
 	QnaBoardService qnaService;
 	
@@ -101,6 +104,19 @@ public class MemberHomeController {
 		
 		return "redirect:/main";
 	}
+	
+	public void setImg(List<ProductVo> list) {
+		for(ProductVo vo : list) {
+			if(vo.getFilenames()==null || vo.getFilenames().equals("")) {
+				vo.setImg1(null);
+				vo.setImg2(null);
+			} else {
+				vo.setImg1(vo.getFilenames().split("_!_")[0]);
+				vo.setImg2(vo.getFilenames().split("_!_")[1]);
+				vo.setImage(null);
+			}
+		}
+	}
 	@RequestMapping(value="/myPage")
 	public String myPage(HttpSession session, Model model) {
 		MemberVo member = (MemberVo) session.getAttribute("member");
@@ -114,27 +130,29 @@ public class MemberHomeController {
 				list1.add(vo);
 			}
 	      }
-		
+		setImg(list1);
 		String id = member.getID();
 		List<QnaBoardVo> list2 =qnaService.selectFromId(id);
 		model.addAttribute("list1", list1);
 		model.addAttribute("list2", list2);
 		return "myPage";
 	}
+	
 	@RequestMapping(value="/deallist")
 	public String deallist(HttpSession session,Model model) {
 		MemberVo vo =(MemberVo) session.getAttribute("member");
 		String id =vo.getID();
 		List<Integer> pnoList=pService.auctionPno(id);
-		System.out.println("리스트:"+pnoList);
 		List<AuctionVo> auctionList = new ArrayList<AuctionVo>();
 		for(Integer pno : pnoList) {
 			auctionList.add(pService.maxPrice(pno,id));
 		}
-		System.out.println("입찰리스트:"+auctionList);
+		List<AuctionVo> salesList = adminService.saleItem(id);
+		model.addAttribute("sales", salesList);
 		model.addAttribute("purchase",auctionList);
 		return "deallist";
 	}
+	
 	@RequestMapping(value="/result/naverLogin")
 	public String naverLogin(String id,String name, String email,String birthday,String api,HttpSession session) {
 		MemberVo vo = new MemberVo(id, "111", name, "주소", "11111", email, birthday, "c");
@@ -160,10 +178,10 @@ public class MemberHomeController {
 		MemberVo result = service.IdCheck(vo);
 		if(result==null) {
 			model.addAttribute("msg", "회원정보가 틀립니다.");
-			session.setAttribute("memebr", result);
+			session.setAttribute("member", result);
 			return "idcheck";
 		}else {
-			session.setAttribute("memebr", result);
+			session.setAttribute("member", result);
 			return "IDfind";
 		}
 	}
@@ -179,10 +197,10 @@ public class MemberHomeController {
 		MemberVo result = service.PwCheck(vo);
 		if(result==null) {
 			model.addAttribute("msg", "회원정보가 틀립니다.");
-			session.setAttribute("memebr", result);
+			session.setAttribute("member", result);
 			return "pwcheck";
 		}else {
-			session.setAttribute("memebr", result);
+			session.setAttribute("member", result);
 			return "PWfind";
 		}
 	}	
@@ -190,6 +208,7 @@ public class MemberHomeController {
 	@RequestMapping(value = "/newPWaction")
 	public String PWaction(MemberVo vo, HttpSession session) {
 		service.newPW(vo);
+		session.invalidate();
 		return "redirect:/main";
 	}
 	
