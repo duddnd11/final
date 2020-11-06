@@ -82,6 +82,10 @@ public class ProductServiceImpl implements ProductService {
 	public String selectLike(String ID) {
 		return dao.selectLike(ID);
 	}
+	@Override
+	public List<ProductVo> searchProduct(String keyword){
+		return dao.searchProduct(keyword);
+	}
 
 	@Override
 	public List<Integer> auctionPno(String id) {
@@ -96,6 +100,16 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int rejectBlind(String id, int pno) {
 		return dao.rejectBlind(id, pno);
+	}
+
+	@Override
+	public void payment(int pno) {
+		dao.payment(pno);
+	}
+
+	@Override
+	public List<ProductVo> selectSales(String ID) {
+		return dao.selectSales(ID);
 	}
 
 }

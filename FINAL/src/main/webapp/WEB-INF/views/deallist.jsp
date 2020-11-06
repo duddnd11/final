@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,18 +18,37 @@
 			<tr>
 				<th>번호</th>
 				<th>상품이름</th>
-				<th>구매자</th>
-				<th>가격</th>
-				<th>날짜</th>
+				<th>입찰자</th>
+				<th>기준가</th>
+				<th>마감</th>
 				<th>승인여부</th>
 			</tr>
 		<c:forEach var="sales" items="${sales }">
 			<tr>
 				<td>${sales.pno }</td>
 				<td>${sales.pname }</td>
-				<td>${sales.ID }</td>
-				<td>${sales.bestmoney }</td>
-				<td>${sales.buydate }</td>
+				<td>
+				<c:choose>
+				<c:when test="${sales.admin == 1 }">
+					<c:if test="${sales.deal == 1 }">
+						경매 진행중
+					</c:if>
+					<c:if test="${sales.deal == 2 }">
+						${sales.getcustomer }
+					</c:if>
+				</c:when>
+				<c:when test="${sales.admin ==2 }">
+					-
+				</c:when>
+				<c:otherwise>
+					-
+				</c:otherwise>
+				</c:choose>
+				</td>
+				<td>${sales.price }</td>
+				<td>
+				<c:set var="dead" value="${sales.deadlinedate }"/>
+					 ${fn:substring(dead,0,10) }</td>
 				<td>
 				<c:choose>
 				<c:when test="${sales.admin == 1 }">
@@ -59,7 +80,7 @@
 				<th>판매자</th>
 				<th>가격</th>
 				<th>날짜</th>
-				<th>결과</th>
+				<th>경매결과</th>
 				<th>결제</th>
 			</tr>
 		<c:forEach var="purchase" items="${purchase }">

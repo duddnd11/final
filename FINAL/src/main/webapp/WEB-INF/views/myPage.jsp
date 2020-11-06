@@ -103,8 +103,7 @@
 			<div class="like" style="margin-top: 20px; width: 700px;">
 				<div>
 					<table style="width: 900px;">
-						<c:choose>
-						<c:when test="${list1 ne '' }">
+						<c:if test="${list1 ne '' }">
 						<c:forEach var="list1" items="${list1 }">
 						<tr>
 							<td style="width: 150px; height: 100px; border-bottom: 1px solid black;">
@@ -129,13 +128,12 @@
 							<td style="width: 420px; border-bottom: 1px solid black;"><p style="margin-left: 20px; font-size: 15px;"><b>${fn:substring(dead,0,10) }</b></p></td>
 						</tr>
 						</c:forEach>
-						</c:when>
-						<c:otherwise>
+						</c:if>
+						<c:if test="${list1 eq '' }">
 							<tr>
-								<td>관심상품을 등록하시오</td>
+								<td><a>관심상품을 등록하시오</a></td>
 							</tr>
-						</c:otherwise>
-						</c:choose>
+						</c:if>
 					</table>		
 				</div>
 			</div>				

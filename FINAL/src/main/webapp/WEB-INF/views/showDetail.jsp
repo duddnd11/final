@@ -39,7 +39,7 @@
       text-align: left;
    }
    .bx-next{
-         margin-left:330px;
+         margin-left: 330px;
    }
 </style>
 <script>

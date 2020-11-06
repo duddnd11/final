@@ -32,8 +32,6 @@ public class MemberHomeController {
 	@Autowired
 	ProductService pService;
 	@Autowired
-	AdminService adminService;
-	@Autowired
 	QnaBoardService qnaService;
 	
 //	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -104,6 +102,7 @@ public class MemberHomeController {
 		
 		return "redirect:/main";
 	}
+	   
 	
 	public void setImg(List<ProductVo> list) {
 		for(ProductVo vo : list) {
@@ -147,7 +146,7 @@ public class MemberHomeController {
 		for(Integer pno : pnoList) {
 			auctionList.add(pService.maxPrice(pno,id));
 		}
-		List<AuctionVo> salesList = adminService.saleItem(id);
+		List<ProductVo> salesList = pService.selectSales(id);
 		model.addAttribute("sales", salesList);
 		model.addAttribute("purchase", auctionList);
 		model.addAttribute("id", id);
@@ -198,17 +197,21 @@ public class MemberHomeController {
 		MemberVo result = service.PwCheck(vo);
 		if(result==null) {
 			model.addAttribute("msg", "회원정보가 틀립니다.");
-			session.setAttribute("memebr", result);
+			session.setAttribute("member", result);
 			return "pwcheck";
 		}else {
-			session.setAttribute("memebr", result);
+			session.setAttribute("member", result);
 			return "PWfind";
 		}
 	}	
 	
 	@RequestMapping(value = "/newPWaction")
 	public String PWaction(MemberVo vo, HttpSession session) {
+//		System.out.println(vo.getID());
+//		System.out.println(vo.getPw());
+		vo.setPw(util(vo.getPw()));
 		service.newPW(vo);
+		session.invalidate();
 		return "redirect:/main";
 	}
 	

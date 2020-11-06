@@ -146,6 +146,11 @@ public class ProductDaoImpl implements ProductDao {
 	public String selectLike(String ID) {
 		return sqlSession.selectOne("com.auction.mapper.ProductMapper.selectLike", ID);
 	}
+	
+	@Override		//검색 기능
+	public List<ProductVo> searchProduct(String keyword){
+		return sqlSession.selectList("com.auction.mapper.ProductMapper.searchProduct", keyword);
+	}
 
 	@Override
 	public List<Integer> auctionPno(String id) {
@@ -168,4 +173,13 @@ public class ProductDaoImpl implements ProductDao {
 		return sqlSession.selectOne("com.auction.mapper.ProductMapper.rejectBlind", map);
 	}
 
+	@Override
+	public void payment(int pno) {
+		sqlSession.update("com.auction.mapper.ProductMapper.payment",pno);
+	}
+
+	@Override
+	public List<ProductVo> selectSales(String ID) {
+		return sqlSession.selectList("com.auction.mapper.ProductMapper.selectSales", ID);
+	}
 }
