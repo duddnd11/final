@@ -155,10 +155,10 @@ function msg_time() {
             	<br/> D-day: 
             	<c:choose>
 			         <c:when test="${showHurry.timeout >1}">
-			            <td>${showHurry.timeout }</td>
+			            ${showHurry.timeout }
 			         </c:when>
 			         <c:otherwise>
-			            <td><span id="timer"></span></td>
+			            <span id="timer"></span>
 			         </c:otherwise>
 		         </c:choose>
             </div>

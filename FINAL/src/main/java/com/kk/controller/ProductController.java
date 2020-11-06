@@ -180,7 +180,10 @@ public class ProductController {
 				
 			}
 		}
-		int rejectBlind = service.rejectBlind(ID.getID(), pno);
+		int rejectBlind=0;
+		if(ID != null) {
+			rejectBlind = service.rejectBlind(ID.getID(), pno);
+		}
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
 		model.addAttribute("ID", ID);

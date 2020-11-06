@@ -19,6 +19,7 @@
 				<th>구매자</th>
 				<th>가격</th>
 				<th>날짜</th>
+				<th>승인여부</th>
 			</tr>
 		<c:forEach var="sales" items="${sales }">
 			<tr>
@@ -27,6 +28,24 @@
 				<td>${sales.ID }</td>
 				<td>${sales.bestmoney }</td>
 				<td>${sales.buydate }</td>
+				<td>
+				<c:choose>
+				<c:when test="${sales.admin == 1 }">
+					<c:if test="${sales.deal == 1 }">
+						<button>판매중</button>
+					</c:if>
+					<c:if test="${sales.deal == 2 }">
+						<button>마감됨</button>
+					</c:if>
+				</c:when>
+				<c:when test="${sales.admin ==2 }">
+					<button>거부됨</button>
+				</c:when>
+				<c:otherwise>
+					<button>승인중</button>
+				</c:otherwise>
+				</c:choose>
+				</td>
 			</tr>
 		</c:forEach>
 		</table>
@@ -50,14 +69,28 @@
 				<td>${purchase.ID }</td>
 				<td>${purchase.myprice }</td>
 				<td>${purchase.buydate }</td>
-				<td>${purchase.buydate }</td>
 				<td>
-				<c:if test="${purchase.payment == 0}">
+				<c:choose>
+					<c:when test="${purchase.getcustomer eq id }">
+						<b>WINNER</b>
+					</c:when>
+					<c:otherwise>
+						<b>LOSER</b>
+					</c:otherwise>
+				</c:choose>
+				</td>
+				<td>
+				<c:choose>
+				<c:when test="${purchase.payment == 0 && purchase.getcustomer eq id }">
 					<button style="margin: 10px;" onclick="location.href='payment?pno=${purchase.pno}'">결제</button>
-				</c:if>
-				<c:if test="${purchase.payment ==1 }">
+				</c:when>
+				<c:when test="${purchase.payment == 0 && purchase.getcustomer ne id }">
+					<button>낙찰 실패</button>
+				</c:when>
+				<c:when test="${purchase.payment ==1 }">
 					<button>결제완료</button>
-				</c:if>
+				</c:when>
+				</c:choose>
 				</td>
 			</tr>
 		</c:forEach>
