@@ -46,7 +46,7 @@
          <h1 style="text-align: center;">마이페이지</h1>       
       </div>
       
-         <div id="" style="margin-left: 350px;margin-top: 100px;width: 850px;boader: 1px solid black;display: block;">
+         <div id="" style="margin-left: 30%;margin-top: 100px;width: 850px;boader: 1px solid black;display: block;">
          <h2 style="font-weight: 700; font-size: 35px;">내정보</h2><hr>
          <img src="http://placehold.it/600x600" alt="Image Alt Text" style="width: 160px; height: 160px; float: left;">
          <div style="width: 400px;margin-left: 150px;">
@@ -61,18 +61,18 @@
          </div>
       </div>
       </main>
-         
-      <div style=" width: 900px; margin-left: 350px;  margin-top: 100px; width: 600px; display: block;">
+     
+      <div style=" width: 900px; margin-left: 30%;  margin-top: 100px; width: 600px; display: block;">
          <h2 style="font-weight: 700; font-size: 35px;">기본정보</h2>
          <p style="margin-top: 20px;">프로필사진, 이름, 이메일, 주소, 휴대전화 등의 정보를 수정합니다.
          <button style="float: right;width: 50px;hegiht: 40px;margin-right: -250px;"><a href="memberupdate">수정</a></button>            
       </div>
       
-      <div style=" width: 900px; margin-left: 350px;  margin-top: 100px; width: 600px; display: block;">
+      <div style=" width: 900px; margin-left: 30%;  margin-top: 100px; width: 600px; display: block;">
          <h2 style="font-weight: 700; font-size: 35px;">거래내역</h2>
          <button style="float: right;width: 50px;hegiht: 40px;margin-right: -250px; margin-top: -60px;"><a href="http://localhost:9090/final/deallist">이동</a></button>            
       </div>
-      <div style=" width: 600px; margin-left: 350px;  margin-top: 100px; width: 600px; display: block;">
+      <div style=" width: 600px; margin-left: 30%;  margin-top: 100px; width: 600px; display: block;">
          <h2 style="font-weight: 700; font-size: 35px;" class="myQnaButton">문의내역</h2>
          <div style="margin-top: 20px; width: 700px;">
             <div class="myQna">
@@ -98,7 +98,7 @@
             </div>
          </div>            
       </div>
-      <div style=" width: 600px; margin-left: 350px;  margin-top: 100px; width: 600px; display: block;">
+      <div style=" width: 600px; margin-left: 30%;  margin-top: 100px; width: 600px; display: block;">
 			<h2 style="font-weight: 700; font-size: 35px;" class="likeButton">관심상품</h2>
 			<div class="like" style="margin-top: 20px; width: 700px;">
 				<div>
@@ -138,10 +138,11 @@
 				</div>
 			</div>				
 		</div>
-		<div style=" width: 900px; margin-left: 350px;  margin-top: 100px; width: 600px; display: block;">
+		<div style=" width: 900px; margin-left: 30%;  margin-top: 100px; width: 600px; display: block;">
 			<h2 style="font-weight: 700; font-size: 35px;">상품등록</h2>
 			<p style="margin-top: 20px;">판매할 상품을 등록하세요.
 			<button style="float: right;width: 50px;hegiht: 40px;margin-right: -250px;"><a href="http://localhost:9090/final/applyProduct">등록</a></button>				
+		</div>
 		</div>
 </div>
 </body>

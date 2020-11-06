@@ -29,7 +29,7 @@
 </head>
 <body>
 	<button id="menuBtn" onclick="location.href='../admin'">메뉴로</button>	
-	<div id="container">
+	<div id="container" style="margin-left: 10%;">
 		<table>
 			<tr>
 				<th>아이디</th>
