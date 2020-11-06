@@ -261,6 +261,16 @@ public class ProductController {
 		service.payment(pno);
 		return "redirect:/main";
 	}
+	
+	@RequestMapping(value = "/Search")	//검색
+	public String search(Model model,String keyword) {
+		List<ProductVo> list = service.searchProduct(keyword);
+
+		model.addAttribute("list", list);
+		model.addAttribute("keyword", keyword);
+		return "Search";
+	}
+	
 }
 
 

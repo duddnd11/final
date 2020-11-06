@@ -32,11 +32,8 @@ public class MemberHomeController {
 	@Autowired
 	ProductService pService;
 	@Autowired
-<<<<<<< HEAD
-=======
 	AdminService adminService;
 	@Autowired
->>>>>>> refs/remotes/origin/main
 	QnaBoardService qnaService;
 	
 //	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -107,29 +104,6 @@ public class MemberHomeController {
 		
 		return "redirect:/main";
 	}
-<<<<<<< HEAD
-	   @RequestMapping(value="/myPage")
-	   public String myPage(HttpSession session, Model model) {
-	      MemberVo member = (MemberVo) session.getAttribute("member");
-	      List<ProductVo> list1 = new ArrayList<ProductVo>();
-	      String likeProduct = pService.selectLike(member.getID());
-	      String[] pno = likeProduct.split("_!_"); // 1016 1022
-	      for(int i=0; i<=pno.length-1; i++) { //2
-	          if(!(pno[i].equals(""))) {
-	             ProductVo vo = pService.selectOne(Integer.parseInt(pno[i]));
-	             System.out.println(vo);
-	             list1.add(vo);
-	          }
-	       }
-	      
-	      String id = member.getID();
-	      List<QnaBoardVo> list2 =qnaService.selectFromId(id);
-	      model.addAttribute("list1", list1);
-	      model.addAttribute("list2", list2);
-	      return "myPage";
-	   }
-	   
-=======
 	
 	public void setImg(List<ProductVo> list) {
 		for(ProductVo vo : list) {
@@ -164,7 +138,6 @@ public class MemberHomeController {
 		return "myPage";
 	}
 	
->>>>>>> refs/remotes/origin/main
 	@RequestMapping(value="/deallist")
 	public String deallist(HttpSession session,Model model) {
 		MemberVo vo =(MemberVo) session.getAttribute("member");
