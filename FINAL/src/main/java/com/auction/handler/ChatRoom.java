@@ -35,7 +35,7 @@ public class ChatRoom {
 	public void handleMessage(WebSocketSession session, ChatMessage chatMessage, ObjectMapper objectMapper) throws IOException {
 		if(chatMessage.getType() == MessageType.ENTER) {
 			sessions.add(session);
-			chatMessage.setMessage(roomId+":"+chatMessage.getWriter()+"님 입장");
+			chatMessage.setMessage(roomId+":"+chatMessage.getWriter()+"님 입장"+"<br/>");
 		}
 		
 		boolean check=false;
@@ -51,7 +51,7 @@ public class ChatRoom {
 			sessions.remove(session);
 			chatMessage.setMessage(roomId+":"+chatMessage.getWriter()+"님 퇴장");
 		}else if(chatMessage.getType()==MessageType.CHAT){
-			chatMessage.setMessage(roomId+":"+chatMessage.getWriter()+":"+chatMessage.getMessage());
+			chatMessage.setMessage(roomId+":<span class='chat'>"+chatMessage.getWriter()+":"+chatMessage.getMessage()+"</span><br/>");
 		}
 		
 		if(check) {
