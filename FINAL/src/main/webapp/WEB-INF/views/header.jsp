@@ -204,7 +204,7 @@ html, body {
     font-family: "Nanum Barun Gothic", sans-serif;
 }
 
-.submenu { /* 하위 메뉴 스타일 설정 */
+ .submenu { /* 하위 메뉴 스타일 설정 */
    position: absolute;
    height: 0px;
    overflow: hidden;
