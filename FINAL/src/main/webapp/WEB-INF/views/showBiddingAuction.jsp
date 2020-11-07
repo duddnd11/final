@@ -15,7 +15,7 @@ html, body, div, header, section, article, span, object, iframe, h1, h2, h3, h4,
     -o-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
- s}
+ }
 *, :after, :before {
     box-sizing: border-box;
     outline: 0;
