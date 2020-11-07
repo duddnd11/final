@@ -1,5 +1,6 @@
 function init(){
   $("input[name='birth']").datepicker({
+  	
     showButtonPanel: true,
     changeYear: true,
     closeText: "Close",

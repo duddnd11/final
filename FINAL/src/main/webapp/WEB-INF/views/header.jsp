@@ -231,7 +231,12 @@ html, body {
 }
 
 a {
+<<<<<<< HEAD
    text-decoration: none;
+=======
+	text-decoration: none;
+	color: black;
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .login a {

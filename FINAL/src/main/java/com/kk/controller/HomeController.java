@@ -133,16 +133,5 @@ public class HomeController {
 		
 		return "test";
 	}
-	@RequestMapping(value = "/auction")
-	public String auction() {
-		
-		return "showAuctionNormal";
-	}
-	
-	@RequestMapping(value = "/Search")
-	public String search() {
-		
-		return "Search";
-	}
 	
 }

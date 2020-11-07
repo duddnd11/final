@@ -13,7 +13,7 @@
 </style>
 </head>
 <body>
-	<div id="container">
+	<div id="container" style="margin-left: 10%;">
 		<div style="height: 100px; margin-right: 20px;">
 
 
