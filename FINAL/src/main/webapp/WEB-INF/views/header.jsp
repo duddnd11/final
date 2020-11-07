@@ -314,10 +314,9 @@ hr {
                   </li>
                   <li>|</li>
                   <li class="topMenuLi">
-                     <a class="menuLink" href="서비스소개페이지">서비스 소개</a>
+                     <a class="menuLink" href="showBiddingAuction">서비스 소개</a>
                      <ul class="submenu">
-                        <li><a href="showAuctionNormal" class="submenuLink longLink">경매 응찰</a></li>
-                        <li><a href="showAuctionBlind" class="submenuLink longLink">작품 위탁</a></li>
+                        <li><a href="showBiddingAuction" class="submenuLink longLink">경매 응찰</a></li>
                      </ul>
                   </li>
                   <li>|</li>
