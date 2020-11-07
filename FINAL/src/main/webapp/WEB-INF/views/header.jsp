@@ -28,11 +28,11 @@ $(function(){
    if(${member.grade !='z'}){
          $("#chatting").click(function(){
             if(check==0){
-	            sock= new SockJS("<c:url value="/chat"/>");
-	            sock.onopen=onOpen;
-	            sock.onmessage = onMessage;
-	            sock.onclose = onClose;
-	               }
+               sock= new SockJS("<c:url value="/chat"/>");
+               sock.onopen=onOpen;
+               sock.onmessage = onMessage;
+               sock.onclose = onClose;
+                  }
            check=1;
             //$("#data").append($("#userId").val()+"님 채팅 입장\n");
          });
@@ -159,7 +159,7 @@ html, body {
 
 #topMenu ul li { /* 메인 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용(상위/하위메뉴 모두) */
    color: black;
-   float: left;
+   display:inline-block;
    line-height: 30px;
    vertical-align: middle;
    text-align: center;
@@ -167,9 +167,13 @@ html, body {
    padding: 0 40px 50px;
 }
 
+.topMenuLi {
+	text-align:center;
+}
+
 .menuLink { /* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */
    text-decoration: none;
-   display: block;
+   display: inline-block;
    width: 150px;
    font-size: 20px;
     color: #000;
@@ -200,15 +204,16 @@ html, body {
     font-family: "Nanum Barun Gothic", sans-serif;
 }
 
-.submenu { /* 하위 메뉴 스타일 설정 */
+ .submenu { /* 하위 메뉴 스타일 설정 */
    position: absolute;
    height: 0px;
    overflow: hidden;
    transition: height .2s;
    width: 1600px;
    left: 38px;
-   top: 80px;
+   top: 75px;
    background-color: black; /* [추가] 하위 메뉴 전체에 배경색 설정 */
+   display:inline-block;
 }
 
 .submenu li {
@@ -226,8 +231,8 @@ html, body {
 }
 
 a {
-	color: black;
    text-decoration: none;
+	color: black;
 }
 
 .login a {
@@ -283,67 +288,68 @@ hr {
    border:3px;
    box-shadow:0 10px 10px -15px #000 inset;
 }
+.chat{
+	float: right;
+}
 </style>
 </head>
 <body>
-   <header class="header">
-      <section class="nav_wrap">
-         <div class="inner_wrap">
-            <nav id="topMenu">
-               <ul>
-                  <div class="logo">
-                     <a href="main">
-                        <img class="logo_img" src="https://cdn.clien.net/web/api/file/F01/9396867/5ccb776a9703.jpg">
-                     </a>
-                  </div>
-                  <li class="topMenuLi">
-                     <a class="menuLink" href="showAuctionNormal">경매</a>
-                     <ul class="submenu">
-                        <li><a href="showAuctionNormal" class="submenuLink longLink">온라인 경매</a></li>
-                        <li><a href="showAuctionBlind" class="submenuLink longLink">블라인드 경매</a></li>
-                     </ul>
-                  </li>
-                  <li>|</li>
-                  <li class="topMenuLi">
-                     <a class="menuLink" href="서비스소개페이지">서비스 소개</a>
-                     <ul class="submenu">
-                        <li><a href="showAuctionNormal" class="submenuLink longLink">경매 응찰</a></li>
-                        <li><a href="showAuctionBlind" class="submenuLink longLink">작품 위탁</a></li>
-                     </ul>
-                  </li>
-                  <li>|</li>
-                  <li class="topMenuLi"><a class="menuLink" href="notice?offset=0">고객센터</a>
-                     <ul class="submenu">
-                        <li><a href="notice?offset=0" class="submenuLink">공지사항</a></li>
-                        <li><a href="qnaBoard?offset=0" class="submenuLink">문의 게시판</a></li>
-                        <li><a href="new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="submenuLink">1:1 문의</a></li>
-                     </ul>
-                  </li>
-                  <div class="search">
-                     <a href="http://unikys.tistory.com/guestbook">
-                        <img class="search_img" src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw=">
-                     </a>
-                  </div>
-                  <div class="login">
-                        <c:choose>
-                              <c:when test="${member.grade eq null }">
-                                    <a href="javascript:popup()">로그인</a>
-                              </c:when>
-                              <c:when test="${member.grade eq 'z' }">
-                                    <a href="logout">로그아웃</a>
-                                    <a href="admin" style="margin-left: 20px;">관리자 페이지</a>
-                              </c:when>
-                              <c:otherwise>
-                                    <a href="logout">로그아웃</a>
-                                    <a href="myPage" style="margin-left: 20px;">마이페이지</a>
-                              </c:otherwise>
-                        </c:choose>
-                     </div>
-               </ul>
-            </nav>
-         </div>
-      </section>
-   </header>
-   <hr>
+	<header class="header">
+		<section class="nav_wrap">
+			<div class="inner_wrap">
+				<nav id="topMenu">
+					<ul>
+						<div class="logo">
+							<a href="main">
+								<img class="logo_img" src="https://cdn.clien.net/web/api/file/F01/9396867/5ccb776a9703.jpg">
+							</a>
+						</div>
+						<li class="topMenuLi">
+							<a class="menuLink" href="showAuctionNormal">경매</a>
+							<ul class="submenu">
+								<li><a href="showAuctionNormal" class="submenuLink longLink">온라인 경매</a></li>
+								<li><a href="showAuctionBlind" class="submenuLink longLink">블라인드 경매</a></li>
+							</ul>
+						</li>
+						<li>|</li>
+						<li class="topMenuLi">
+							<a class="menuLink" href="http://localhost:9090/final/showBiddingAuction">서비스 소개</a>
+							
+						</li>
+						<li>|</li>
+						<li class="topMenuLi"><a class="menuLink" href="notice?offset=0">고객센터</a>
+							<ul class="submenu">
+								<li><a href="notice?offset=0" class="submenuLink">공지사항</a></li>
+								<li><a href="qnaBoard?offset=0" class="submenuLink">문의 게시판</a></li>
+								<li><a href="new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="submenuLink">1:1 문의</a></li>
+							</ul>
+						</li>
+						<div class="search">
+							 <a href="Search">
+								<img class="search_img" src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw=">
+							</a>
+						</div>
+						<div class="login">
+				            <c:choose>
+				                  <c:when test="${member.grade eq null }">
+				                        <a href="javascript:popup()">로그인</a>
+				                  </c:when>
+				                  <c:when test="${member.grade eq 'z' }">
+				                        <a href="logout">로그아웃</a>
+				                        <a href="admin" style="margin-left: 20px;">관리자 페이지</a>
+				                  </c:when>
+				                  <c:otherwise>
+				                        <a href="logout">로그아웃</a>
+				                        <a href="myPage" style="margin-left: 20px;">마이페이지</a>
+				                  </c:otherwise>
+				            </c:choose>
+			            </div>
+					</ul>
+				</nav>
+			</div>
+		</section>
+	</header>
+	<hr>
+
 </body>
 </html>

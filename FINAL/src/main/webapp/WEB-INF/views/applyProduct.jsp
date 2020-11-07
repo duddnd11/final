@@ -92,7 +92,7 @@
 					<input type="radio" name="auctionmenu" value="블라인드" style="width: 15px; height: 15px;">블라인드경매
 			</td>
 	</tr>
-	<tr>
+	<tr class="sptable">
 		<th>응찰 단위</th>  
 			<td>	
 				<div class="spinner" style="margin-left: 30px; margin-top: 0px;">
@@ -135,6 +135,17 @@ function setThumbnail(event) {
 		}; 
 		reader.readAsDataURL(event.target.files[0]); 
 	}
+$(document).ready(function(){
+	$("input[name=auctionmenu]").change(function() {
+		var radioValue = $(this).val();
+		if(radioValue == "블라인드"){
+				$(".sptable").hide();
+			} else if(radioValue == "일반"){
+					$(".sptable").show();
+				}
+	});
+});
+	
 
 
 </script>
