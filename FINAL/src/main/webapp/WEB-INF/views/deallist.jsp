@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="container" style="margin-top: 200px; margin-left: 40%;">
-	<button onclick="myPage">뒤로가기</button>
+	<button onclick="location.href='myPage'">뒤로가기</button>
 <h2>판매</h2><br/>
 		<table id="salestable">
 			<tr>
@@ -78,7 +78,7 @@
 				<th>번호</th>
 				<th>상품이름</th>
 				<th>판매자</th>
-				<th>가격</th>
+				<th>내 가격</th>
 				<th>날짜</th>
 				<th>경매결과</th>
 				<th>결제</th>

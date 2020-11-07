@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="utf-8"%>
+   pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="header.jsp"%>
 <!DOCTYPE html>
@@ -22,51 +22,52 @@
 }
 
 .swiper1 {
-   width:900px;
-   height:800px;
+   margin-top:30px;
+   width: 900px;
+   height: 750px;
 }
 
 #content {
-   margin:0 80px 80px 80px;
+   margin: 0 80px 80px 80px;
 }
 
 h2, small {
-   display:inline-block;
+   display: inline-block;
 }
 
 h2 {
-    color: #000;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 1;
-    vertical-align: middle;
-    font-family: "Nanum Barun Gothic", sans-serif;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-top:80px;
-    margin-bottom:50px;
+   color: #000;
+   font-size: 20px;
+   font-weight: 700;
+   line-height: 1;
+   vertical-align: middle;
+   font-family: "Nanum Barun Gothic", sans-serif;
+   letter-spacing: 1px;
+   text-transform: uppercase;
+   margin-top: 80px;
+   margin-bottom: 50px;
 }
 
 small {
    color: gray;
-    font-size: 15px;
-    line-height: 1;
-    vertical-align: middle;
-    font-family: "Nanum Barun Gothic", sans-serif;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin:80px 0 50px 30px;
+   font-size: 15px;
+   line-height: 1;
+   vertical-align: middle;
+   font-family: "Nanum Barun Gothic", sans-serif;
+   letter-spacing: 1px;
+   text-transform: uppercase;
+   margin: 80px 0 50px 30px;
 }
-	img {
-		width: 200px;
-    	height: 200px;
-	}
 
+img {
+   width: 200px;
+   height: 200px;
+}
 </style>
 <script>
 $(document).ready(function(){
-	show_all_times();
-	tid = setInterval('show_all_times()',1000);
+   show_all_times();
+   tid = setInterval('show_all_times()',1000);
 //     msg_time();
  //    tid=setInterval('msg_time()',1000); // 타이머 1초간격으로 수행
    });
@@ -83,17 +84,17 @@ var showHurrySize = ${showHurry.size()};
 //alert("showHurrySize : " + showHurrySize);
 
 function show_all_times() {
-	for(var i=0; i<=showHurrySize-1; i++) {
-		show_time(i);
-	}
+   for(var i=0; i<=showHurrySize-1; i++) {
+      show_time(i);
+   }
 }
 function show_time(index) {
-	stDate = new Date().getTime();
-	RemainDate = edDate[index]-stDate;
-	//console.log("["+index+"] RemainDate = ... : " + RemainDate);
-	// 86400000 ==>24시간
-	//if(index<3) console.log("#spanDday"+index+",str:"+make_time_str(index, RemainDate));
-	$("#spanDday"+index).text(make_time_str(index, RemainDate));
+   stDate = new Date().getTime();
+   RemainDate = edDate[index]-stDate;
+   //console.log("["+index+"] RemainDate = ... : " + RemainDate);
+   // 86400000 ==>24시간
+   //if(index<3) console.log("#spanDday"+index+",str:"+make_time_str(index, RemainDate));
+   $("#spanDday"+index).text(make_time_str(index, RemainDate));
 }
 
 function make_time_str(index, Remain) {
@@ -111,44 +112,44 @@ function make_time_str(index, Remain) {
    seconds = '0'+seconds;
    }
 //  console.log("days:"+days+",hours:"+hours+",minutes:"+minutes+",seconds:"+seconds);
-	var m;
-	if(days<=1)
-		m = hours + ":" +  minutes + ":" + seconds ;
-	else
-		m = days; 
+   var m;
+   if(days<=1)
+      m = hours + ":" +  minutes + ":" + seconds ;
+   else
+      m = days; 
   //document.all.timer.innerHTML = m;   
   return m;
   /* if (Remain <= 0) {      //시간 종료
     clearInterval(tid);   // 타이머 해제
   }else{
-	  Remain = Remain - 1000; // 남은시간 -1초
+     Remain = Remain - 1000; // 남은시간 -1초
   } */
 }
 
 /*
 function msg_time() {
-	  var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000*60*60));
-	  var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000*60));
-	  var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
-	  if(hours <10){
-	   hours = '0'+hours;
-	     }
-	  if(miniutes < 10){
-	     miniutes = '0'+miniutes;
-	   }
-	  if(seconds <10){
-	   seconds = '0'+seconds;
-	   }
-	  m = hours + ":" +  miniutes + ":" + seconds ; 
-	  //document.all.timer.innerHTML = m;   
-	  return m;
-	   if (RemainDate <= 0) {      //시간 종료
-	    clearInterval(tid);   // 타이머 해제
-	  }else{
-	    RemainDate = RemainDate - 1000; // 남은시간 -1초
-	  } 
-	}
-	*/
+     var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000*60*60));
+     var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000*60));
+     var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
+     if(hours <10){
+      hours = '0'+hours;
+        }
+     if(miniutes < 10){
+        miniutes = '0'+miniutes;
+      }
+     if(seconds <10){
+      seconds = '0'+seconds;
+      }
+     m = hours + ":" +  miniutes + ":" + seconds ; 
+     //document.all.timer.innerHTML = m;   
+     return m;
+      if (RemainDate <= 0) {      //시간 종료
+       clearInterval(tid);   // 타이머 해제
+     }else{
+       RemainDate = RemainDate - 1000; // 남은시간 -1초
+     } 
+   }
+   */
 </script>
 </head>
 <body>
@@ -202,18 +203,18 @@ function msg_time() {
                   </c:otherwise>
                   </c:choose>
                   </c:if>
-            	<br/> D-day: <br/>
-            	<span id="spanDday<c:out value='${status.index}'/>"></span> 
-            	<%--
-            	<c:choose>
-			         <c:when test="${showHurry.timeout >1}">
-			            ${showHurry.timeout }
-			         </c:when>
-			         <c:otherwise>
-			            <span id="timer"></span>
-			         </c:otherwise>
-		         </c:choose>
-		         --%>
+               <br/> D-day: <br/>
+               <span id="spanDday<c:out value='${status.index}'/>"></span> 
+               <%--
+               <c:choose>
+                  <c:when test="${showHurry.timeout >1}">
+                     ${showHurry.timeout }
+                  </c:when>
+                  <c:otherwise>
+                     <span id="timer"></span>
+                  </c:otherwise>
+               </c:choose>
+               --%>
             </div>
                </c:forEach>               
          </div>

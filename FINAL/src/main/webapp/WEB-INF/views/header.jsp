@@ -226,12 +226,8 @@ html, body {
 }
 
 a {
-<<<<<<< HEAD
 	text-decoration: none;
 	color: black;
-=======
-   text-decoration: none;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 }
 
 .login a {
@@ -324,7 +320,7 @@ hr {
                      </ul>
                   </li>
                   <div class="search">
-                     <a href="http://unikys.tistory.com/guestbook">
+                      <a href="Search">
                         <img class="search_img" src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw=">
                      </a>
                   </div>
@@ -338,6 +334,7 @@ hr {
                                     <a href="admin" style="margin-left: 20px;">관리자 페이지</a>
                               </c:when>
                               <c:otherwise>
+                              		${member.ID }님 <br/>
                                     <a href="logout">로그아웃</a>
                                     <a href="myPage" style="margin-left: 20px;">마이페이지</a>
                               </c:otherwise>

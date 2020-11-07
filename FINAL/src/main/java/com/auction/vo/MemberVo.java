@@ -4,7 +4,9 @@ public class MemberVo {
 	private String ID;
 	private String pw;
 	private String name;
+	private String zonecode;
 	private String addr;
+	private String addrdetail;
 	private String phonenum;
 	private String email;
 	private String birth;
@@ -26,6 +28,36 @@ public class MemberVo {
 	}
 	
 	
+	public MemberVo(String iD, String pw, String name, String zonecode, String addr, String addrdetail, String phonenum,
+			String email, String birth, String grade, String api, String likeproduct) {
+		super();
+		ID = iD;
+		this.pw = pw;
+		this.name = name;
+		this.zonecode = zonecode;
+		this.addr = addr;
+		this.addrdetail = addrdetail;
+		this.phonenum = phonenum;
+		this.email = email;
+		this.birth = birth;
+		this.grade = grade;
+		this.api = api;
+		this.likeproduct = likeproduct;
+	}
+	
+	
+	public String getZonecode() {
+		return zonecode;
+	}
+	public void setZonecode(String zonecode) {
+		this.zonecode = zonecode;
+	}
+	public String getAddrdetail() {
+		return addrdetail;
+	}
+	public void setAddrdetail(String addrdetail) {
+		this.addrdetail = addrdetail;
+	}
 	public String getLikeproduct() {
 		return likeproduct;
 	}

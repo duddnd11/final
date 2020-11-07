@@ -85,7 +85,7 @@ public class MemberHomeController {
 	//	model.addAttribute("mvo", vo);
 	//	redirectattributes.addFlashAttribute("msg", "regSuccess");
 		vo.setPw(util(vo.getPw()));
-		
+//		System.out.println(vo.getName()+", "+vo.getZonecode()+", "+vo.getAddrdetail());
 		service.writeSignUp(vo);
 		return "redirect:/main";
 	}
@@ -213,6 +213,7 @@ public class MemberHomeController {
 		session.invalidate();
 		return "redirect:/main";
 	}
+	
 	
 }
 
