@@ -107,10 +107,10 @@ public class HomeController {
 	  return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/result")
-	public String result() {
-		return "result";
-	}
+//	@RequestMapping(value = "/result")
+//	public String result() {
+//		return "result";
+//	}
 //	@RequestMapping(value = "/signup")
 //	public String singup() {
 //		

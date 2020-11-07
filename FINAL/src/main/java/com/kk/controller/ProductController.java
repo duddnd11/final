@@ -258,7 +258,7 @@ public class ProductController {
 	@RequestMapping(value="paymentAction")
 	public String paymentAction(int pno,Model model) {
 		System.out.println("결제완료 확인");
-		service.payment(pno);
+		//service.payment(pno);
 		return "paymentAction";
 	}
 	

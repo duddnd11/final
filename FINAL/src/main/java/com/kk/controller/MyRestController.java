@@ -143,4 +143,24 @@ public class MyRestController {
 		return map;
 	}
 	
+	@RequestMapping(value="/complete")
+	@ResponseBody
+	public List<String> complete(@RequestBody Map<String,String> param) {
+		System.out.println("컨트롤러확인");
+		 String imp_uid = param.get("imp_uid"); 
+         String merchant_uid= param.get("merchant_uid");
+         System.out.println("imp:"+imp_uid);
+         System.out.println("merchant:"+merchant_uid);
+         List<String> list = new ArrayList<String>();
+         list.add(imp_uid);
+         list.add(merchant_uid);
+         return list;
+	}
 }
+
+
+
+
+
+
+

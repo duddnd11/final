@@ -39,11 +39,7 @@
       text-align: left;
    }
    .bx-next{
-<<<<<<< HEAD
-         margin-left:330px;
-=======
          margin-left: 330px;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
    }
 </style>
 <script>
@@ -341,8 +337,4 @@ $(document).ready(function(){
 </script>
 </body>
 </html>
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
    <%@ include file="footer.jsp" %>
