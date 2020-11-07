@@ -193,7 +193,7 @@ function msg_time() {
                   <c:if test="${showHurry.image ne null }">
                      <a href="showDetail?pno=${showHurry.pno }"><img src="${showHurry.image }"/></a>   
                   </c:if>
-                  <c:if test="${showHurry.image eq null }">
+                  <c:if test="${showHurry.image eq null }">`
                   <c:choose>
                   <c:when test="${showHurry.img1 ne '(이름없음)' }">
                      <a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img1 }"/></a> <br/>
@@ -203,8 +203,10 @@ function msg_time() {
                   </c:otherwise>
                   </c:choose>
                   </c:if>
-               <br/> D-day: <br/>
-               <span id="spanDday<c:out value='${status.index}'/>"></span> 
+                  <div>
+	                	<span>D-day</span> 
+	               		<span id="spanDday<c:out value='${status.index}'/>"></span> 
+	               </div>
                <%--
                <c:choose>
                   <c:when test="${showHurry.timeout >1}">

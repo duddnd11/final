@@ -95,7 +95,7 @@
 		SELECT distinct pno from auction where id =#{ID}; 
 	</select>
 	<select id="maxPrice" resultType="com.auction.vo.AuctionVo">
-		select idx,p.pname, p.ID,a.pno,max(myprice) as myprice,buydate,p.payment,p.getcustomer from auction a left outer join product p on p.pno=a.pno where a.pno=#{pno} and a.id=#{id};
+		select idx,p.pname, p.ID,a.pno,max(myprice) as myprice,buydate,p.payment,p.getcustomer,p.deal from auction a left outer join product p on p.pno=a.pno where a.pno=#{pno} and a.id=#{id};
 	</select>
 	<update id="payment">
 		UPDATE product SET payment=1 WHERE pno=#{pno};

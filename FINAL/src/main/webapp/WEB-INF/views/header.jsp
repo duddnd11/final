@@ -159,7 +159,7 @@ html, body {
 
 #topMenu ul li { /* 메인 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용(상위/하위메뉴 모두) */
    color: black;
-   float: left;
+   display:inline-block;
    line-height: 30px;
    vertical-align: middle;
    text-align: center;
@@ -167,9 +167,13 @@ html, body {
    padding: 0 40px 50px;
 }
 
+.topMenuLi {
+	text-align:center;
+}
+
 .menuLink { /* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */
    text-decoration: none;
-   display: block;
+   display: inline-block;
    width: 150px;
    font-size: 20px;
     color: #000;
@@ -200,15 +204,16 @@ html, body {
     font-family: "Nanum Barun Gothic", sans-serif;
 }
 
-.submenu { /* 하위 메뉴 스타일 설정 */
+ .submenu { /* 하위 메뉴 스타일 설정 */
    position: absolute;
    height: 0px;
    overflow: hidden;
    transition: height .2s;
    width: 1600px;
    left: 38px;
-   top: 80px;
+   top: 75px;
    background-color: black; /* [추가] 하위 메뉴 전체에 배경색 설정 */
+   display:inline-block;
 }
 
 .submenu li {
@@ -226,7 +231,7 @@ html, body {
 }
 
 a {
-	text-decoration: none;
+   text-decoration: none;
 	color: black;
 }
 
@@ -282,6 +287,9 @@ hr {
    height:10px;
    border:3px;
    box-shadow:0 10px 10px -15px #000 inset;
+}
+.chat{
+	float: right;
 }
 </style>
 </head>

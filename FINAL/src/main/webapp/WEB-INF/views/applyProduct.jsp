@@ -147,6 +147,17 @@ function setThumbnail(event) {
 		}; 
 		reader.readAsDataURL(event.target.files[0]); 
 	}
+$(document).ready(function(){
+	$("input[name=auctionmenu]").change(function() {
+		var radioValue = $(this).val();
+		if(radioValue == "블라인드"){
+				$(".sptable").hide();
+			} else if(radioValue == "일반"){
+					$(".sptable").show();
+				}
+	});
+});
+	
 
 
 </script>

@@ -91,6 +91,7 @@
 				<td>${purchase.myprice }</td>
 				<td>${purchase.buydate }</td>
 				<td>
+				<c:if test="${purchase.deal == 2 }">
 				<c:choose>
 					<c:when test="${purchase.getcustomer eq id }">
 						<b>WINNER</b>
@@ -99,8 +100,13 @@
 						<b>LOSER</b>
 					</c:otherwise>
 				</c:choose>
+				</c:if>
+				<c:if test="${purchase.deal == 1 }">
+					<b>경매 진행중</b>
+				</c:if>
 				</td>
 				<td>
+				<c:if test="${purchase.deal == 2 }">
 				<c:choose>
 				<c:when test="${purchase.payment == 0 && purchase.getcustomer eq id }">
 					<button style="margin: 10px;" onclick="location.href='payment?pno=${purchase.pno}'">결제</button>
@@ -112,6 +118,10 @@
 					<button>결제완료</button>
 				</c:when>
 				</c:choose>
+				</c:if>
+				<c:if test="${purchase.deal == 1 }">
+					-
+				</c:if>
 				</td>
 			</tr>
 		</c:forEach>

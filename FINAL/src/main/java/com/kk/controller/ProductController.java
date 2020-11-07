@@ -265,8 +265,23 @@ public class ProductController {
 	@RequestMapping(value="paymentAction")
 	public String paymentAction(int pno,Model model) {
 		System.out.println("결제완료 확인");
-		service.payment(pno);
+		//service.payment(pno);
 		return "paymentAction";
+	}
+	
+	@RequestMapping(value = "/Search")	//검색
+	public String search(Model model,String keyword) {
+		List<ProductVo> list = service.searchProduct(keyword);
+
+		model.addAttribute("list", list);
+		model.addAttribute("keyword", keyword);
+		return "Search";
+	}
+	@RequestMapping(value = "/showBiddingAuction")	//검색
+	public String showBiddingAuction() {
+		
+
+		return "showBiddingAuction";
 	}
 }
 

@@ -107,10 +107,10 @@ public class HomeController {
 	  return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/result")
-	public String result() {
-		return "result";
-	}
+//	@RequestMapping(value = "/result")
+//	public String result() {
+//		return "result";
+//	}
 //	@RequestMapping(value = "/signup")
 //	public String singup() {
 //		
@@ -121,8 +121,7 @@ public class HomeController {
 //		
 //		return "idcheck";
 //	}
-
-
+	
 	@RequestMapping(value = "/admin/chat")
 	public String chat() {
 		
@@ -132,17 +131,6 @@ public class HomeController {
 	public String test() {
 		
 		return "test";
-	}
-	@RequestMapping(value = "/auction")
-	public String auction() {
-		
-		return "showAuctionNormal";
-	}
-	
-	@RequestMapping(value = "/Search")
-	public String search() {
-		
-		return "Search";
 	}
 	
 }
