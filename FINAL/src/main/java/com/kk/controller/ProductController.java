@@ -270,7 +270,12 @@ public class ProductController {
 		model.addAttribute("keyword", keyword);
 		return "Search";
 	}
-	
+	@RequestMapping(value = "/showBiddingAuction")	//검색
+	public String showBiddingAuction() {
+		
+
+		return "showBiddingAuction";
+	}
 }
 
 

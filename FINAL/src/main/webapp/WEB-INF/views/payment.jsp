@@ -130,9 +130,15 @@ $("#check_module").click(function () {
    <tr>
    <th>받는사람</th> <td><input type="text" value="${member.name }"/></td>
    </tr>
+   <%-- <tr>
+   <th>우편번호</th> <td><input type="text" value="${member.zonecode}"/></td>
+   </tr> --%>
    <tr>
    <th>주소</th> <td><input type="text" value="${member.addr}"/></td>
    </tr>
+   <%-- <tr>
+   <th>상세주소</th> <td><input type="text" value="${member.addrdetail}"/></td>
+   </tr> --%>
    <tr>
    <th>전화번호</th><td><input type="text" value="${member.phonenum}"/></td>
    </tr>
