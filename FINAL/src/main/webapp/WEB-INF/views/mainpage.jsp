@@ -15,91 +15,55 @@
    src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <style type="text/css">
 .swiper-slide {
-   text-align: center;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .swiper1 {
-   width:900px;
-   height:800px;
+	margin-top:30px;
+	width: 900px;
+	height: 750px;
 }
 
 #content {
-   margin:0 80px 80px 80px;
+	margin: 0 80px 80px 80px;
 }
 
 h2, small {
-   display:inline-block;
+	display: inline-block;
 }
 
 h2 {
-    color: #000;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 1;
-    vertical-align: middle;
-    font-family: "Nanum Barun Gothic", sans-serif;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-top:80px;
-    margin-bottom:50px;
+	color: #000;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 1;
+	vertical-align: middle;
+	font-family: "Nanum Barun Gothic", sans-serif;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	margin-top: 80px;
+	margin-bottom: 50px;
 }
 
 small {
-   color: gray;
-    font-size: 15px;
-    line-height: 1;
-    vertical-align: middle;
-    font-family: "Nanum Barun Gothic", sans-serif;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin:80px 0 50px 30px;
+	color: gray;
+	font-size: 15px;
+	line-height: 1;
+	vertical-align: middle;
+	font-family: "Nanum Barun Gothic", sans-serif;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	margin: 80px 0 50px 30px;
 }
-	img {
-		width: 200px;
-    	height: 200px;
-	}
 
+img {
+	width: 200px;
+	height: 200px;
+}
 </style>
-<script>
-$(document).ready(function(){
-     msg_time();
-     tid=setInterval('msg_time()',1000); // 타이머 1초간격으로 수행
-   });
-   
-var stDate = new Date().getTime();
-
-<c:forEach var="showHurry" items="${showHurry }">
-var edDate = new Date('${showHurry.deadlinedate}').getTime(); // 종료날짜
-</c:forEach>
-var RemainDate = edDate-stDate;
-// 86400000 ==>24시간
-
-function msg_time() {
-  var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000*60*60));
-  var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000*60));
-  var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
-  if(hours <10){
-   hours = '0'+hours;
-     }
-  if(miniutes < 10){
-     miniutes = '0'+miniutes;
-   }
-  if(seconds <10){
-   seconds = '0'+seconds;
-   }
-  m = hours + ":" +  miniutes + ":" + seconds ; 
-  document.all.timer.innerHTML = m;   
-  
-  if (RemainDate <= 0) {      //시간 종료
-    clearInterval(tid);   // 타이머 해제
-  }else{
-    RemainDate = RemainDate - 1000; // 남은시간 -1초
-  }
-}
-</script>
 </head>
 <body>
    <div id="content">
@@ -152,15 +116,6 @@ function msg_time() {
                   </c:otherwise>
                   </c:choose>
                   </c:if>
-            	<br/> D-day: 
-            	<c:choose>
-			         <c:when test="${showHurry.timeout >1}">
-			            <td>${showHurry.timeout }</td>
-			         </c:when>
-			         <c:otherwise>
-			            <td><span id="timer"></span></td>
-			         </c:otherwise>
-		         </c:choose>
             </div>
                </c:forEach>               
          </div>
