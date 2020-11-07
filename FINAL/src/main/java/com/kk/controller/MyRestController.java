@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.auction.service.AdminService;
 import com.auction.service.CommentService;
+import com.auction.service.MemberService;
 import com.auction.vo.CommentVo;
 import com.auction.vo.MemberVo;
 import com.auction.vo.ProductVo;
@@ -24,6 +25,8 @@ public class MyRestController {
 	CommentService commentService;
 	@Autowired
 	AdminService adminService;
+	@Autowired
+	MemberService memberservice;
 	
 	@RequestMapping(value="/writecomment")
 	@ResponseBody
@@ -143,4 +146,16 @@ public class MyRestController {
 		return map;
 	}
 	
+	@RequestMapping(value = "/Idcheck")
+	@ResponseBody
+	public String Idcheck(MemberVo vo) {
+		String str = "";
+		int idCheck = memberservice.sameID(vo);
+		if(idCheck == 1) {	//이미 존재하는 아이디
+			str = "NO";
+		}else {	//존재하지 않아서 사용 가능한 아이디
+			str = "YES";
+		}
+		return str;
+	}
 }

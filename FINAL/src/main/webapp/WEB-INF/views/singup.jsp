@@ -14,6 +14,45 @@
   <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   
   <title>회원가입 페이지</title>
+<script>
+$(function(){	/* 비밀번호 같은지 확인 */
+	$('#pw2').blur(function(){
+		if($('#pw').val() != $('#pw2').val()){
+			if($('#pw2').val()!=''){
+				alert("비밀번호가 일치하지 않습니다.");
+				$('#pw2').val('');
+				$('#pw2').focus();
+				}
+			}
+		})
+});
+/* 
+$(fuction(){
+	$('#ID').blur(function(){
+		$.ajax({
+			type : 'POST',
+			url : 'rest/Idcheck';
+			data : {
+					"ID":$('#ID').val()
+				},
+				success:function(data){
+					if($.trim(data)=="YES"){
+						if($('#ID').val()!=''){
+							alert("사용 가능한 아이디 입니다.");
+							}
+						}else {
+						if($('#ID').val()!=''){
+							alert("중복된 아이디 입니다.");
+							$('#ID').val('');
+							$('#ID').focus();
+							}
+						}
+					}
+			})
+		})
+}); */
+
+</script>
 </head>
 <body>
   <div id="container">
@@ -26,7 +65,12 @@
         </tr>
         <tr>
           <th>비밀번호</th>
-          <td><input type="password" name="pw" placeholder="비밀번호"/></td>
+          <td><input type="password" id = "pw" name="pw" placeholder="비밀번호"/></td>
+        </tr>
+        <tr>
+        <tr>
+          <th>비밀번호 확인</th>
+          <td><input type="password" id ="pw2" placeholder="비밀번호확인"/></td>
         </tr>
         <tr>
           <th>이름</th>
