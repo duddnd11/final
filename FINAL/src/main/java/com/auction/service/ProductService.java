@@ -27,4 +27,5 @@ public interface ProductService {
 	int rejectBlind(String id, int pno);
 	
 	public void payment(int pno);
+	List<ProductVo> selectSales(String ID);
 }

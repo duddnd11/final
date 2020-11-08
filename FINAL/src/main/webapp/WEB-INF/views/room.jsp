@@ -73,7 +73,7 @@
    */
    $('#data')
    .stop()
-   .animate({ scrollTop: $('#data')[0].scrollHeight }, 1000);
+   .animate({ scrollTop: $('#data')[0].scrollHeight }, 1000);	
 </script>
 
 <style>
@@ -123,6 +123,7 @@ textarea{
     /* 채팅창 높이 */
     height: 300px;
     overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 .chat{
 	float: right;

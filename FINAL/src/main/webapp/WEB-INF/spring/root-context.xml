@@ -57,5 +57,7 @@
 	<bean id= "memberDao" class = "com.auction.dao.MemberDaoImpl"></bean>
 	<bean id="noticeDao" class="com.auction.dao.NoticeDaoImpl"/>
 	<bean id="chatRoom" class="com.auction.handler.ChatRoomRepository"/>
+	<bean id="naverLoginBo" class="com.auction.api.NaverLoginBo"/>
+	<bean id="paymentCheck" class="com.auction.api.PaymentCheck"/>
 	<context:component-scan base-package="com.auction.service" />
 </beans>
