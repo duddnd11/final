@@ -38,7 +38,7 @@ function searchPostcode(){
 
     new daum.Postcode({
       oncomplete: function(data) {
-      	$("input[name='zonecode']").val(data.zonecode);
+        $("input[name='zonecode']").val(data.zonecode);
         $("input[name='addr']").val(data.address);
       }
     }).open();

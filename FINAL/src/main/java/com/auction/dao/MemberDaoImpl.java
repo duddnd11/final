@@ -66,4 +66,10 @@ public class MemberDaoImpl implements MemberDao {
 	public void newPW(MemberVo vo) {
 		sqlSession.update("com.auction.mapper.SignUpMapper.newPW", vo);
 	}
+	
+	@Override
+	public MemberVo sameID(String ID) {
+		return sqlSession.selectOne("com.auction.mapper.SignUpMapper.sameId", ID);
+		
+	}
 }

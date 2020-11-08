@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.auction.service.AdminService;
 import com.auction.service.CommentService;
+import com.auction.service.MemberService;
 import com.auction.sha256.VerifyRecaptcha;
 import com.auction.vo.CommentVo;
+import com.auction.vo.MemberVo;
 import com.auction.vo.ProductVo;
 
 @RestController
@@ -27,6 +29,8 @@ public class MyRestController {
 	CommentService commentService;
 	@Autowired
 	AdminService adminService;
+	@Autowired
+	MemberService memberservice;
 	
 	@RequestMapping(value="/writecomment")
 	@ResponseBody
@@ -147,6 +151,18 @@ public class MyRestController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value = "/Idcheck")
+	public int Idcheck(@RequestBody Map<String , String > param) {
+		String ID = param.get("ID");
+		MemberVo vo = memberservice.sameID(ID);
+		
+		int result = 0;
+		if(vo != null) {
+			result = 1;
+		}
+		return result;
+	}	
+
 	@RequestMapping(value = "/VerifyRecaptcha", method = RequestMethod.POST)
 	public int VerifyRecaptcha(HttpServletRequest request) {
 	    VerifyRecaptcha.setSecretKey("6LeALOAZAAAAANet7YyaKnKojTqlbeqjmfmdp_oh");

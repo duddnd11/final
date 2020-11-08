@@ -59,5 +59,6 @@
 	<bean id="chatRoom" class="com.auction.handler.ChatRoomRepository"/>
 	<bean id="naverLoginBo" class="com.auction.api.NaverLoginBo"/>
 	<bean id="paymentCheck" class="com.auction.api.PaymentCheck"/>
+	<bean id="kakaoApi" class="com.auction.api.KakaoApi"/>
 	<context:component-scan base-package="com.auction.service" />
 </beans>

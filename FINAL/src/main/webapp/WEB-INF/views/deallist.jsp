@@ -8,11 +8,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <title>거래내역</title>
 </head>
 <body>
 	<div id="container" style="margin-top: 200px; margin-left: 40%;">
-	<button onclick="location.href='myPage'">뒤로가기</button>
+	<button onclick="location.href='myPage'" class="btn btn-link">뒤로가기</button>
 <h2>판매</h2><br/>
 		<table id="salestable">
 			<tr>
@@ -53,17 +57,17 @@
 				<c:choose>
 				<c:when test="${sales.admin == 1 }">
 					<c:if test="${sales.deal == 1 }">
-						<button>판매중</button>
+						<button class="btn btn-primary">판매중</button>
 					</c:if>
 					<c:if test="${sales.deal == 2 }">
-						<button>마감됨</button>
+						<button class="btn btn-danger">마감됨</button>
 					</c:if>
 				</c:when>
 				<c:when test="${sales.admin ==2 }">
-					<button>거부됨</button>
+					<button class="btn btn-outline-danger">거부됨</button>
 				</c:when>
 				<c:otherwise>
-					<button>승인중</button>
+					<button class="btn btn-link">승인중</button>
 				</c:otherwise>
 				</c:choose>
 				</td>
@@ -109,13 +113,13 @@
 				<c:if test="${purchase.deal == 2 }">
 				<c:choose>
 				<c:when test="${purchase.payment == 0 && purchase.getcustomer eq id }">
-					<button style="margin: 10px;" onclick="location.href='payment?pno=${purchase.pno}'">결제</button>
+					<button style="margin: 10px;" class="btn btn-danger" onclick="location.href='payment?pno=${purchase.pno}'">결제</button>
 				</c:when>
 				<c:when test="${purchase.payment == 0 && purchase.getcustomer ne id }">
-					<button>낙찰 실패</button>
+					<button class="btn btn-warning">낙찰 실패</button>
 				</c:when>
 				<c:when test="${purchase.payment ==1 }">
-					<button>결제완료</button>
+					<button class="btn btn-secondary">결제완료</button>
 				</c:when>
 				</c:choose>
 				</c:if>

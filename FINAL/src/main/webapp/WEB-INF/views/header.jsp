@@ -61,6 +61,7 @@ $(function(){
    $("#exit").click(function(){
        onClose();
    });
+
 });
 
 //sock.onclose = onClose;
@@ -95,12 +96,16 @@ function onMessage(evt){
    if(check==1){
      if(userRoomId==roomId){
          if(sessionid == userid){
-               $("#data").append("나:"+message+"\n");
+               $("#data").append("<span class='chat'><b>나</b></span><br/>");
+               $("#data").append("<span class='chat'>"+message+"</span><br/>");
+               $("#data").scrollTop($("#data")[0].scrollHeight);
          }else{
             if(message!=undefined){
-               $("#data").append(sessionid+":"+message+"\n");
+               $("#data").append("<b>"+sessionid+"</b><br/>");
+               $("#data").append(message+"<br/>");
+               $("#data").scrollTop($("#data")[0].scrollHeight);
                }else{
-               $("#data").append(sessionid+"\n");
+               $("#data").append(sessionid+"<br/>");
                   }
              }
       }else{
@@ -313,9 +318,8 @@ hr {
                   </li>
                   <li>|</li>
                   <li class="topMenuLi">
-                     <a class="menuLink" href="http://localhost:9090/final/showBiddingAuction">서비스 소개</a>
-                  </li>
-                  </li>
+						<a class="menuLink" href="http://localhost:9090/final/showBiddingAuction">서비스 소개</a>	
+				  </li>
                   <li>|</li>
                   <li class="topMenuLi"><a class="menuLink" href="notice?offset=0">고객센터</a>
                      <ul class="submenu">
@@ -339,11 +343,20 @@ hr {
                                     <a href="admin" style="margin-left: 20px;">관리자 페이지</a>
                               </c:when>
                               <c:otherwise>
+                              <c:choose>
+                              	<c:when test="${member.api eq 'home' }">
                               		${member.ID }님 <br/>
                                     <a href="logout">로그아웃</a>
                                     <a href="myPage" style="margin-left: 20px;">마이페이지</a>
+                              	</c:when>
+                              	<c:otherwise>
+                              		${member.name }님 <br/>
+                                    <a href="logout">로그아웃</a>
+                                    <a href="myPage" style="margin-left: 20px;">마이페이지</a>
+                              	</c:otherwise>
+                              </c:choose>
                               </c:otherwise>
-                        </c:choose>
+		                  </c:choose>
                      </div>
                </ul>
             </nav>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.auction.api.KakaoApi;
 import com.auction.api.NaverLoginBo;
 import com.auction.service.AdminService;
 import com.auction.service.MemberService;
@@ -49,11 +50,14 @@ public class MemberHomeController {
 //		
 //		return "home";
 //	}
+	
 	@RequestMapping(value = "/login")	//로그인
 	public String login(Locale locale, Model model,HttpSession session) {
 		String naverAuthUrl = naverLoginBo.getAuthorizationUrl(session);
+		String kakaoAuthUrl = KakaoApi.getAuthorizationUrl(session);
 		System.out.println(naverAuthUrl);
 		model.addAttribute("url", naverAuthUrl);
+		model.addAttribute("kakaoUrl", kakaoAuthUrl);
 		return "login";
 	}
 	
@@ -76,6 +80,10 @@ public class MemberHomeController {
 	
 	@RequestMapping(value = "/logout")		//로그아웃
 	public String logout(HttpSession session) {
+		KakaoApi.kakaoLogout((String)session.getAttribute("access_Token"));
+		System.out.println(session.getAttribute("accessToken"));
+		session.removeAttribute("accessToken");
+		System.out.println(session.getAttribute("accessToken"));
 		session.invalidate();
 		return "logout";
 	}

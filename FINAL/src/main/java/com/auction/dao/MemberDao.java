@@ -18,4 +18,6 @@ public interface MemberDao {
 	MemberVo PwCheck(MemberVo vo);	//비밀번호 찾기
 	
 	void newPW(MemberVo vo);
+	
+	MemberVo sameID(String ID);	//아이디 중복 체크
 }

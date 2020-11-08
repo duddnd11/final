@@ -51,4 +51,9 @@ public class MemberServiceImpl implements MemberService {
 	public void newPW(MemberVo vo) {
 		dao.newPW(vo);
 	}
+	
+	@Override
+	public MemberVo sameID(String ID) {
+		return dao.sameID(ID);
+	}
 }
