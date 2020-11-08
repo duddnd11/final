@@ -313,9 +313,8 @@ hr {
                   </li>
                   <li>|</li>
                   <li class="topMenuLi">
-							<a class="menuLink" href="http://localhost:9090/final/showBiddingAuction">서비스 소개</a>
-							
-						</li>
+							<a class="menuLink" href="http://localhost:9090/final/showBiddingAuction">서비스 소개</a>	
+				  </li>
                   <li>|</li>
                   <li class="topMenuLi"><a class="menuLink" href="notice?offset=0">고객센터</a>
                      <ul class="submenu">
