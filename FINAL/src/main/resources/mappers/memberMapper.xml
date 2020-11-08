@@ -38,4 +38,8 @@
 	<update id = "newPW">
 		UPDATE member SET pw = #{pw} WHERE ID = #{ID}
 	</update>
+	
+	<select id="sameId" resultType = "com.auction.vo.MemberVo">
+		SELECT * FROM member WHERE ID = #{ID}
+	</select>
 </mapper>

@@ -14,49 +14,94 @@
 <script src='https://www.google.com/recaptcha/api.js'></script>
   <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <title>회원가입 페이지</title>
-  <script>
-  $(function() {
-  $("form").submit(function() {
-  		var captcha = 1;
-  		$.ajax({
-              url: 'http://localhost:9090/final/rest/VerifyRecaptcha',
-              type: 'post',
-              data: {
-                  recaptcha: $("#g-recaptcha-response").val()
-              },
-              success: function(data) {
-                  switch (data) {
-                      case 0:
-                          console.log("자동 가입 방지 봇 통과");
-                          captcha = 0;
-                  		break;
-                      case 1:
-                          alert("로봇이 아님을 증명하시오.");
-                          break;
-                      default:
-                          alert("자동 가입 방지 봇을 실행 하던 중 오류가 발생 했습니다. [Error bot Code : " + Number(data) + "]");
-                     		break;
-                  }
-              }
-          });
-  		if(captcha != 0) {
-  			return false;
-  		} 
-  });
-  });
-  </script>
+<script>
+$(function(){	/* 비밀번호 같은지 확인 */
+	$('#pw2').blur(function(){
+		if($('#pw').val() != $('#pw2').val()){
+			if($('#pw2').val()!=''){
+				alert("비밀번호가 일치하지 않습니다.");
+				$('#pw2').val('');
+				$('#pw2').focus();
+				}
+			}
+		})
+});
+/* 
+$(function(){
+	$('#ID').blur(function(){
+		$.ajax({
+			type : 'POST',
+			url : '/rest/Idcheck';
+			data : {
+					"ID":$('#ID').val()
+				},
+				success:function(data){
+					if($.trim(data)=="YES"){
+						if($('#ID').val()!=''){
+							alert("사용 가능한 아이디 입니다.");
+							}
+						}else {
+						if($('#ID').val()!=''){
+							alert("중복된 아이디 입니다.");
+							$('#ID').val('');
+							$('#ID').focus();
+							}
+						}
+					}
+			})
+		})
+});  */
+
+$(function() {
+	  $("form").submit(function() {
+	  		var captcha = 1;
+	  		$.ajax({
+	              url: 'http://localhost:9090/final/rest/VerifyRecaptcha',
+	              type: 'post',
+	              data: {
+	                  recaptcha: $("#g-recaptcha-response").val()
+	              },
+	              success: function(data) {
+	                  switch (data) {
+	                      case 0:
+	                          console.log("자동 가입 방지 봇 통과");
+	                          captcha = 0;
+	                  		break;
+	                      case 1:
+	                          alert("로봇이 아님을 증명하시오.");
+	                          break;
+	                      default:
+	                          alert("자동 가입 방지 봇을 실행 하던 중 오류가 발생 했습니다. [Error bot Code : " + Number(data) + "]");
+	                     		break;
+	                  }
+	              }
+	          });
+	  		if(captcha != 0) {
+	  			return false;
+	  		} 
+	  });
+	  });
+
+</script>
+
 </head>
 <body>
   <div id="container">
-  <form action="signupaction" method="post" style="height: 850px;">
+  <form action="signupaction" method="post" style="height: 100%;">
     <table id="signup-table" style="margin-top: 20px;">
         <tr>
           <th>아이디</th>
-          <td><input type="text" name="ID" placeholder="사용할 아이디"/></td>
+          <td><input type="text" id = "ID" name="ID" placeholder="사용할 아이디"/></td>
+            
         </tr>
         <tr>
           <th>비밀번호</th>
-          <td><input type="password" name="pw" placeholder="비밀번호"/></td>
+          <td><input type="password" id = "pw" name="pw" placeholder="비밀번호"/></td>
+        </tr>
+        <tr>
+        <tr>
+          <th>비밀번호 확인</th>
+          <td><input type="password" id ="pw2" placeholder="비밀번호확인"/></td>
         </tr>
         <tr>
           <th>이름</th>
@@ -109,6 +154,7 @@
       <input title="가입하기" type="submit" id="btn_join" class="btn ui-button ui-corner-all ui-widget" 
       value="가입" role="button" style="margin-left: 100px;">
       <input title="처음 상태로" type="reset" id="btn_cancel" class="btn" value="리셋">
+    <button type="button" class="idCheck" style="/* margin-left: -50px; */position: absolute;top: 90px;right: 480px;">아이디확인</button>
     </div>
     </form>
   </div>
@@ -117,4 +163,30 @@
   <script src="resources/js/jquery-custom-ui.js"></script>
   <script src="resources/js/main.js"></script>
 </body>
+<script>
+$(function(){
+	
+$(".idCheck").click(function(){
+	var query = {ID : $("#ID").val()};
+
+	$.ajax({
+		url : "rest/Idcheck",
+		type : "POST",
+		data : JSON.stringify(query),
+		contentType :'application/json',
+		success : function(data){
+			if(data == 1){
+				alert("사용 불가능합니다. 다른 아이디를 입력하세요.");
+				$('#ID').val('');
+				$('#ID').focus();
+			}else {
+				alert("사용 가능한 아이디 입니다.");
+			}
+		}	
+	}); 
+	
+});
+});
+
+</script>
 </html>

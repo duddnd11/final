@@ -111,7 +111,7 @@ $(document).ready(function(){
 						<button type="button" class="sp-sub-minus" onclick="optnQtyMinus($(this));" style="width: 40px; height: 32px;">
 							<b>-</b>
 						</button>
-							<input style=" width: 220px;margin-left: 0px;" type="tel" class="num" placeholder="0" value="" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
+							<input style="font-weight: 100; width: 220px;margin-left: 0px;" type="tel" class="num" placeholder="0" value="" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
 							<button type="button" class="sp-sub-plus" onclick="optnQtyPlus($(this), '3091');" style="width: 40px; height: 32px;">
 								<b>+</b>
 							</button>
@@ -133,7 +133,7 @@ $(document).ready(function(){
 			</td>
 	</tr>
 		</table>
-		<input id="apply" type="submit" value="승인 요청" style="width: 260px;height: 60px;margin-top: 20px;margin-left: 180px;">
+		<input title="수정/철회 불가" id="apply" type="submit" value="승인 요청" style="width: 260px;height: 60px;margin-top: 20px;margin-left: 180px;">
 	</form>
 </div>
 </body>
@@ -156,6 +156,7 @@ $(document).ready(function(){
 					$(".sptable").show();
 				}
 	});
+	$(document).tooltip();
 });
 	
 
