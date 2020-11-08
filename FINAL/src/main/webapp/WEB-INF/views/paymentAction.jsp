@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,21 +10,23 @@
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
 <script>
-	$(function(){
-		{
-		  "code": 0,
-		  "message": null,
-		  "response": {
-		    "access_token": "7d563ca940828bd762a3c503895c710f481a8798",
-		    "now": 1604642565,
-		    "expired_at": 1604644365
-		  }
-		    console.log("response");
-		}
-		});
 </script>
+
 <body>
 <p>
 </p>
+	<h>결제완료<h><br/>
+	
+	<td><img src="${vo.image}"/></td>
+	
+	가격:${map.amount}<br/>
+	결제코드:${map.apply_num}<br/>
+	이메일:${map.buyer_email}<br/>
+	이름:	${map.buyer_name}<br/>
+	우편번호:${map.buyer_postcode}<br/>
+	주소:${map.buyer_addr}<br/>
+	전화번호:${map.buyer_tel}<br/>
+	카드:${map.card_name}<br/>
+	${map.card_number}<br/>
 </body>
 </html>

@@ -57,6 +57,18 @@
 		margin-top: 50px;
 	}
 </style>
+<script>
+$(document).ready(function(){
+	   $("input[name=auctionmenu]").change(function() {
+	      var radioValue = $(this).val();
+	      if(radioValue == "블라인드"){
+	            $(".sptable").hide();
+	         } else if(radioValue == "일반"){
+	               $(".sptable").show();
+	            }
+	   });
+	});
+</script>
 </head>
 <body>
 <div id="container" style="margin-top: 200px;"">
@@ -92,7 +104,7 @@
 					<input type="radio" name="auctionmenu" value="블라인드" style="width: 15px; height: 15px;">블라인드경매
 			</td>
 	</tr>
-	<tr>
+	<tr class="sptable">
 		<th>응찰 단위</th>  
 			<td>	
 				<div class="spinner" style="margin-left: 30px; margin-top: 0px;">
@@ -108,7 +120,7 @@
 	</tr>	<!-- 플러그인 같은 걸로 가격 조정 -->
 	<tr>
 		<th>마감날</th> 
-			<td> <input type="text" name="deadlinedate"/>	<!-- 달력 --></td>
+			<td> <input type="text" name="deadlinedate" autocomplete="off"/>	<!-- 달력 --></td>
 	</tr>
 	<tr>
 		<th>카테고리</th> 
@@ -135,6 +147,17 @@ function setThumbnail(event) {
 		}; 
 		reader.readAsDataURL(event.target.files[0]); 
 	}
+$(document).ready(function(){
+	$("input[name=auctionmenu]").change(function() {
+		var radioValue = $(this).val();
+		if(radioValue == "블라인드"){
+				$(".sptable").hide();
+			} else if(radioValue == "일반"){
+					$(".sptable").show();
+				}
+	});
+});
+	
 
 
 </script>

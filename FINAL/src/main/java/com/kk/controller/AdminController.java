@@ -82,7 +82,7 @@ public class AdminController {
 			endPage=pageSize;
 		}
 		for(ProductVo vo : list) {
-			System.out.println(vo.getID()+","+vo.getPname()+","+vo.getGrade());
+//			System.out.println(vo.getID()+","+vo.getPname()+","+vo.getGrade());
 			switch(vo.getGrade()) {
 				case "a":
 					vo.setGrade("vvip");

@@ -446,12 +446,12 @@ h4.line_header .btn_blueLine .arrow:after {
 	   <aside>
 	   		<div class="block">
 	   			<h4 class="selected">
-	   				<a href="경매 응찰">경매 응찰</a>
+	   				
 	   			</h4>
 	   		</div>
 	   		<div class="block">
 	   			<h4 class="selected">
-	   				<a href="작품 위탁">작품 위탁</a>
+	   				
 	   			</h4>
 	   		</div>
 	   </aside>

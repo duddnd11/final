@@ -148,8 +148,8 @@ li {
 					   		<c:set var="name" value="${vo.pname }"/>
 								<p>
 									<a href="showDetail?pno=${vo.pno }"> <c:choose>
-											<c:when test="${fn:length(name) gt 13}">
-												<c:out value="${fn:substring(name, 0, 12)}..."></c:out>
+											<c:when test="${fn:length(name) gt 17}">
+												<c:out value="${fn:substring(name, 0, 16)}..."></c:out>
 											</c:when>
 											<c:otherwise>
 												<c:out value="${vo.pname }"></c:out>

@@ -177,4 +177,9 @@ public class ProductDaoImpl implements ProductDao {
 	public void payment(int pno) {
 		sqlSession.update("com.auction.mapper.ProductMapper.payment",pno);
 	}
+
+	@Override
+	public List<ProductVo> selectSales(String ID) {
+		return sqlSession.selectList("com.auction.mapper.ProductMapper.selectSales", ID);
+	}
 }

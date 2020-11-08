@@ -28,4 +28,5 @@ public interface ProductDao {
 	int rejectBlind(String id, int pno);
 	
 	public void payment(int pno);
+	List<ProductVo> selectSales(String ID);
 }
