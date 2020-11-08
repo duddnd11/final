@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">	
+<meta charset="UTF-8">   
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="resources/js/jquery-3.5.1.min.js"></script>
   <script src="resources/js/jquery-ui.min.js"></script>
@@ -43,15 +43,15 @@
       searchPostcode();
    </script>
 <style>
-	th{
-		padding: 10px;
-		font-size: 20px;
-	}
-	input{
-		width: 300px;
-		height: 30px;
-	}
-	
+   th{
+      padding: 10px;
+      font-size: 20px;
+   }
+   input{
+      width: 300px;
+      height: 30px;
+   }
+   
 </style>
 <body>
    <form action = "memberaction" style="margin-left: 500px; margin-top: 200px;">
@@ -63,7 +63,7 @@
                <td><input class="form-control" type="text" id="ID" name="ID" value="${member.ID}" readonly="readonly"/></td>
       </div>  
     <tr>
-    	
+       
             <div class="form-group has-feedback">
                <th><label class="control-label" for="pw">패스워드</label></th>
              <td> <input class="form-control" type="password" id="pw" name="pw" /></td>
@@ -77,8 +77,20 @@
     </tr>
     <tr>
             <div class="form-group has-feedback">
+               <th><label class="control-label" for="zonecode">우편번호</label></th>
+               <td><input class="form-control" type="text" id="zonecode" name="zonecode" value="${member.zonecode}"/></td>
+            </div>
+    </tr>
+    <tr>
+            <div class="form-group has-feedback">
                <th><label class="control-label" for="addr">주소</label></th>
                <td><input class="form-control" type="text" id="addr" name="addr" value="${member.addr}"/></td>
+            </div>
+    </tr>
+    <tr>
+            <div class="form-group has-feedback">
+               <th><label class="control-label" for="addrdetail">상세주소</label></th>
+               <td><input class="form-control" type="text" id="addrdetail" name="addrdetail" value="${member.addrdetail}"/></td>
             </div>
     </tr>
     <tr>
