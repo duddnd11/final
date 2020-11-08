@@ -80,7 +80,9 @@ public class MemberHomeController {
 	
 	@RequestMapping(value = "/logout")		//로그아웃
 	public String logout(HttpSession session) {
-		KakaoApi.kakaoLogout((String)session.getAttribute("access_Token"));
+		if(session.getAttribute("accessToken")!=null) {
+			KakaoApi.kakaoLogout(session.getAttribute("accessToken").toString());
+		}
 		System.out.println(session.getAttribute("accessToken"));
 		session.removeAttribute("accessToken");
 		System.out.println(session.getAttribute("accessToken"));
