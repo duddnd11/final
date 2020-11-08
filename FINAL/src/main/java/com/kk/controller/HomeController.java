@@ -121,8 +121,7 @@ public class HomeController {
 //		
 //		return "idcheck";
 //	}
-
-
+	
 	@RequestMapping(value = "/admin/chat")
 	public String chat() {
 		

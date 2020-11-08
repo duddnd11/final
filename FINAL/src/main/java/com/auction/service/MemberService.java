@@ -20,5 +20,5 @@ public interface MemberService {
 	
 	void newPW(MemberVo vo);	//새 비밀번호 설정
 	
-	int sameID(MemberVo vo);	//아이디 중복 체크
+	MemberVo sameID(String ID);	//아이디 중복 체크
 }

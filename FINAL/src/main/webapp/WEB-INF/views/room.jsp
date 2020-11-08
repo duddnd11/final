@@ -113,6 +113,9 @@ a{
     border-top: 1px solid #ddd;
     line-height: 50px;
 }
+textarea{
+	
+}
 </style>
 </head>
 <div style="margin-top: 250px; margin-bottom: 200px;">

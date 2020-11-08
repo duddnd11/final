@@ -53,7 +53,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int sameID(MemberVo vo) {
-		return dao.sameID(vo);
+	public MemberVo sameID(String ID) {
+		return dao.sameID(ID);
 	}
 }

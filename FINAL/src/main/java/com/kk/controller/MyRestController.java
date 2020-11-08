@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -146,16 +148,16 @@ public class MyRestController {
 		return map;
 	}
 	
-	@RequestMapping(value = "/Idcheck")
 	@ResponseBody
-	public String Idcheck(MemberVo vo) {
-		String str = "";
-		int idCheck = memberservice.sameID(vo);
-		if(idCheck == 1) {	//이미 존재하는 아이디
-			str = "NO";
-		}else {	//존재하지 않아서 사용 가능한 아이디
-			str = "YES";
+	@RequestMapping(value = "/Idcheck")
+	public int Idcheck(@RequestBody Map<String , String > param) {
+		String ID = param.get("ID");
+		MemberVo vo = memberservice.sameID(ID);
+		
+		int result = 0;
+		if(vo != null) {
+			result = 1;
 		}
-		return str;
+		return result;
 	}
 }

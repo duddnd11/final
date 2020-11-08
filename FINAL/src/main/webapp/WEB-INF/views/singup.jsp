@@ -27,11 +27,11 @@ $(function(){	/* 비밀번호 같은지 확인 */
 		})
 });
 /* 
-$(fuction(){
+$(function(){
 	$('#ID').blur(function(){
 		$.ajax({
 			type : 'POST',
-			url : 'rest/Idcheck';
+			url : '/rest/Idcheck';
 			data : {
 					"ID":$('#ID').val()
 				},
@@ -50,18 +50,19 @@ $(fuction(){
 					}
 			})
 		})
-}); */
+});  */
 
 </script>
 </head>
 <body>
   <div id="container">
-  <form action="signupaction" method="post" style="height: 700px;">
+  <form action="signupaction" method="post" style="height: 800px;">
  
     <table id="signup-table" style="margin-top: 20px;">
         <tr>
           <th>아이디</th>
-          <td><input type="text" name="ID" placeholder="사용할 아이디"/></td>
+          <td><input type="text" id = "ID" name="ID" placeholder="사용할 아이디"/></td>
+            
         </tr>
         <tr>
           <th>비밀번호</th>
@@ -85,7 +86,7 @@ $(fuction(){
         <tr>
           <th>주소</th>
           <td>
-            <input type="text" name="addr" placeholder="주소"/>
+            <input type="text" name="addr" placeholder="주소" />
           </td>
         </tr>
         <tr>
@@ -103,13 +104,13 @@ $(fuction(){
         <tr>
           <th>이메일</th>
           <td>
-            <input title="정확한 메일 주소를 작성해주세요" type="email" name="email">
+            <input title="정확한 메일 주소를 작성해주세요" type="email" name="email" placeholder="이메일">
           </td>
         </tr>
         <tr>
           <th>생년월일</th>
           <td>
-            <input type="text" name="birth" placeholder="생년월일"/>
+            <input type="text" name="birth" placeholder="생년월일" autocomplete="off"/>
           </td>
         </tr>
         <tr>
@@ -119,6 +120,7 @@ $(fuction(){
       <input title="가입하기" type="submit" id="btn_join" class="btn ui-button ui-corner-all ui-widget" 
       value="가입" role="button" style="margin-left: 100px;">
       <input title="처음 상태로" type="reset" id="btn_cancel" class="btn" value="리셋">
+     <button type ="button" class = "idCheck" style="margin-left: -50px;">아이디확인</button>
     </div>
     </form>
   </div>
@@ -127,4 +129,30 @@ $(fuction(){
   <script src="resources/js/jquery-custom-ui.js"></script>
   <script src="resources/js/main.js"></script>
 </body>
+<script>
+$(function(){
+	
+$(".idCheck").click(function(){
+	var query = {ID : $("#ID").val()};
+
+	$.ajax({
+		url : "rest/Idcheck",
+		type : "POST",
+		data : JSON.stringify(query),
+		contentType :'application/json',
+		success : function(data){
+			if(data == 1){
+				alert("사용 불가능합니다. 다른 아이디를 입력하세요.");
+				$('#ID').val('');
+				$('#ID').focus();
+			}else {
+				alert("사용 가능한 아이디 입니다.");
+			}
+		}	
+	}); 
+	
+});
+});
+
+</script>
 </html>

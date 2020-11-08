@@ -68,8 +68,8 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
-	public int sameID(MemberVo vo) {
-		int result = sqlSession.selectOne("com.auction.mapper.SignUpMapper.sameId", vo);
-		return result;
+	public MemberVo sameID(String ID) {
+		return sqlSession.selectOne("com.auction.mapper.SignUpMapper.sameId", ID);
+		
 	}
 }
