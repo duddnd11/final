@@ -39,11 +39,7 @@
       text-align: left;
    }
    .bx-next{
-<<<<<<< HEAD
-         margin-left: 330px;
-=======
          margin-left:330px;
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
    }
 </style>
 <script>
@@ -181,7 +177,7 @@ $(document).ready(function(){
          </c:when>
          
          <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer}">
-            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
+            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="rejectLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>
          
@@ -341,8 +337,4 @@ $(document).ready(function(){
 </script>
 </body>
 </html>
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
    <%@ include file="footer.jsp" %>

@@ -5,7 +5,7 @@
   
 <mapper namespace = "com.auction.mapper.SignUpMapper">
 	<insert id = "insert"><!-- 회원가입 -->
-		INSERT INTO member(ID, pw, name, addr, phonenum, email, birth) VALUES(#{ID},#{pw}, #{name}, #{addr}, #{phonenum}, #{email}, #{birth})
+		INSERT INTO member(ID, pw, name, zonecode, addr, addrdetail, phonenum, email, birth) VALUES(#{ID},#{pw}, #{name}, #{zonecode}, #{addr}, #{addrdetail}, #{phonenum}, #{email}, #{birth})
 	</insert>
 	
 	<select id="login" resultType = "com.auction.vo.MemberVo"><!-- 로그인 -->
@@ -38,4 +38,8 @@
 	<update id = "newPW">
 		UPDATE member SET pw = #{pw} WHERE ID = #{ID}
 	</update>
+	
+	<select id="sameId" resultType = "com.auction.vo.MemberVo">
+		SELECT * FROM member WHERE ID = #{ID}
+	</select>
 </mapper>

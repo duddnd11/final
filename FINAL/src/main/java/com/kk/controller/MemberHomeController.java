@@ -34,8 +34,6 @@ public class MemberHomeController {
 	@Autowired
 	ProductService pService;
 	@Autowired
-	AdminService adminService;
-	@Autowired
 	QnaBoardService qnaService;
 	
 	private NaverLoginBo naverLoginBo;
@@ -107,7 +105,7 @@ public class MemberHomeController {
 	//	model.addAttribute("mvo", vo);
 	//	redirectattributes.addFlashAttribute("msg", "regSuccess");
 		vo.setPw(util(vo.getPw()));
-		
+//		System.out.println(vo.getName()+", "+vo.getZonecode()+", "+vo.getAddrdetail());
 		service.writeSignUp(vo);
 		return "redirect:/main";
 	}
@@ -124,7 +122,7 @@ public class MemberHomeController {
 		
 		return "redirect:/main";
 	}
-	
+
 	public void setImg(List<ProductVo> list) {
 		for(ProductVo vo : list) {
 			if(vo.getFilenames()==null || vo.getFilenames().equals("")) {
@@ -146,7 +144,7 @@ public class MemberHomeController {
 		for(int i=0; i<=pno.length-1; i++) { //2
 			if(!(pno[i].equals(""))) {
 				ProductVo vo = pService.selectOne(Integer.parseInt(pno[i]));
-				System.out.println(vo);
+//				System.out.println(vo);
 				list1.add(vo);
 			}
 	      }
@@ -167,9 +165,10 @@ public class MemberHomeController {
 		for(Integer pno : pnoList) {
 			auctionList.add(pService.maxPrice(pno,id));
 		}
-		List<AuctionVo> salesList = adminService.saleItem(id);
+		List<ProductVo> salesList = pService.selectSales(id);
 		model.addAttribute("sales", salesList);
-		model.addAttribute("purchase",auctionList);
+		model.addAttribute("purchase", auctionList);
+		model.addAttribute("id", id);
 		return "deallist";
 	}
 	
@@ -234,6 +233,7 @@ public class MemberHomeController {
 		session.invalidate();
 		return "redirect:/main";
 	}
+	
 	
 }
 

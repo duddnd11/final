@@ -50,8 +50,8 @@ $("#check_module").click(function () {
    buyer_email: '${member.email}',
    buyer_name: '${member.name}',
    buyer_tel: '${member.phonenum}',
-   buyer_addr: "${member.addr}",
-   //buyer_postcode: "11",
+   buyer_addr: "${member.addr}"+" ${member.addrdetail}",
+   buyer_postcode: "${member.zonecode}",
    //m_redirect_url: 'paymentAction?pno=${vo.pno}'  모바일url
    /*
    모바일 결제시,
@@ -124,7 +124,9 @@ $("#check_module").click(function () {
       height: 50px;
       margin-bottom: 3%;
    }
-  </style>
+</style>
+</head>
+<body>
    <table>
    <tr>
    
@@ -142,15 +144,15 @@ $("#check_module").click(function () {
    <tr>
    <th>받는사람</th> <td><input type="text" value="${member.name }"/></td>
    </tr>
-   <%-- <tr>
+   <tr>
    <th>우편번호</th> <td><input type="text" value="${member.zonecode}"/></td>
-   </tr> --%>
+   </tr> 
    <tr>
    <th>주소</th> <td><input type="text" value="${member.addr}"/></td>
    </tr>
-   <%-- <tr>
+   <tr>
    <th>상세주소</th> <td><input type="text" value="${member.addrdetail}"/></td>
-   </tr> --%>
+   </tr>
    <tr>
    <th>전화번호</th><td><input type="text" value="${member.phonenum}"/></td>
    </tr>

@@ -107,4 +107,9 @@ public class ProductServiceImpl implements ProductService {
 		dao.payment(pno);
 	}
 
+	@Override
+	public List<ProductVo> selectSales(String ID) {
+		return dao.selectSales(ID);
+	}
+
 }

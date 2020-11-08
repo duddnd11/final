@@ -77,8 +77,20 @@
     </tr>
     <tr>
             <div class="form-group has-feedback">
+               <th><label class="control-label" for="zonecode">우편번호</label></th>
+               <td><input class="form-control" type="text" id="zonecode" name="zonecode" value="${member.zonecode}"/></td>
+            </div>
+    </tr>
+    <tr>
+            <div class="form-group has-feedback">
                <th><label class="control-label" for="addr">주소</label></th>
                <td><input class="form-control" type="text" id="addr" name="addr" value="${member.addr}"/></td>
+            </div>
+    </tr>
+    <tr>
+            <div class="form-group has-feedback">
+               <th><label class="control-label" for="addrdetail">상세주소</label></th>
+               <td><input class="form-control" type="text" id="addrdetail" name="addrdetail" value="${member.addrdetail}"/></td>
             </div>
     </tr>
     <tr>

@@ -5,14 +5,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.auction.service.AdminService;
 import com.auction.service.CommentService;
+import com.auction.service.MemberService;
+import com.auction.sha256.VerifyRecaptcha;
 import com.auction.vo.CommentVo;
 import com.auction.vo.MemberVo;
 import com.auction.vo.ProductVo;
@@ -24,6 +29,8 @@ public class MyRestController {
 	CommentService commentService;
 	@Autowired
 	AdminService adminService;
+	@Autowired
+	MemberService memberservice;
 	
 	@RequestMapping(value="/writecomment")
 	@ResponseBody
@@ -141,6 +148,33 @@ public class MyRestController {
 		map.put("pageSize", pageSize);
 		map.put("admin", admin);
 		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/Idcheck")
+	public int Idcheck(@RequestBody Map<String , String > param) {
+		String ID = param.get("ID");
+		MemberVo vo = memberservice.sameID(ID);
+		
+		int result = 0;
+		if(vo != null) {
+			result = 1;
+		}
+		return result;
+	}	
+
+	@RequestMapping(value = "/VerifyRecaptcha", method = RequestMethod.POST)
+	public int VerifyRecaptcha(HttpServletRequest request) {
+	    VerifyRecaptcha.setSecretKey("6LeALOAZAAAAANet7YyaKnKojTqlbeqjmfmdp_oh");
+	    String gRecaptchaResponse = request.getParameter("recaptcha");
+	    try {
+	       if(VerifyRecaptcha.verify(gRecaptchaResponse))
+	          return 0; // 성공
+	       else return 1; // 실패
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return -1; //에러
+	    }
 	}
 	
 	@RequestMapping(value="/complete")

@@ -299,62 +299,61 @@ hr {
 </style>
 </head>
 <body>
-	<header class="header">
-		<section class="nav_wrap">
-			<div class="inner_wrap">
-				<nav id="topMenu">
-					<ul>
-						<div class="logo">
-							<a href="main">
-								<img class="logo_img" src="https://cdn.clien.net/web/api/file/F01/9396867/5ccb776a9703.jpg">
-							</a>
-						</div>
-						<li class="topMenuLi">
-							<a class="menuLink" href="showAuctionNormal">경매</a>
-							<ul class="submenu">
-								<li><a href="showAuctionNormal" class="submenuLink longLink">온라인 경매</a></li>
-								<li><a href="showAuctionBlind" class="submenuLink longLink">블라인드 경매</a></li>
-							</ul>
-						</li>
-						<li>|</li>
-						<li class="topMenuLi">
-							<a class="menuLink" href="http://localhost:9090/final/showBiddingAuction">서비스 소개</a>
-							
-						</li>
-						<li>|</li>
-						<li class="topMenuLi"><a class="menuLink" href="notice?offset=0">고객센터</a>
-							<ul class="submenu">
-								<li><a href="notice?offset=0" class="submenuLink">공지사항</a></li>
-								<li><a href="qnaBoard?offset=0" class="submenuLink">문의 게시판</a></li>
-								<li><a href="new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="submenuLink">1:1 문의</a></li>
-							</ul>
-						</li>
-						<div class="search">
-							 <a href="Search">
-								<img class="search_img" src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw=">
-							</a>
-						</div>
-						<div class="login">
-				            <c:choose>
-				                  <c:when test="${member.grade eq null }">
-				                        <a href="javascript:popup()">로그인</a>
-				                  </c:when>
-				                  <c:when test="${member.grade eq 'z' }">
-				                        <a href="logout">로그아웃</a>
-				                        <a href="admin" style="margin-left: 20px;">관리자 페이지</a>
-				                  </c:when>
-				                  <c:otherwise>
-				                        <a href="logout">로그아웃</a>
-				                        <a href="myPage" style="margin-left: 20px;">마이페이지</a>
-				                  </c:otherwise>
-				            </c:choose>
-			            </div>
-					</ul>
-				</nav>
-			</div>
-		</section>
-	</header>
-	<hr>
-
+   <header class="header">
+      <section class="nav_wrap">
+         <div class="inner_wrap">
+            <nav id="topMenu">
+               <ul>
+                  <div class="logo">
+                     <a href="main">
+                        <img class="logo_img" src="https://cdn.clien.net/web/api/file/F01/9396867/5ccb776a9703.jpg">
+                     </a>
+                  </div>
+                  <li class="topMenuLi">
+                     <a class="menuLink" href="showAuctionNormal">경매</a>
+                     <ul class="submenu">
+                        <li><a href="showAuctionNormal" class="submenuLink longLink">온라인 경매</a></li>
+                        <li><a href="showAuctionBlind" class="submenuLink longLink">블라인드 경매</a></li>
+                     </ul>
+                  </li>
+                  <li>|</li>
+                  <li class="topMenuLi">
+							<a class="menuLink" href="http://localhost:9090/final/showBiddingAuction">서비스 소개</a>	
+				  </li>
+                  <li>|</li>
+                  <li class="topMenuLi"><a class="menuLink" href="notice?offset=0">고객센터</a>
+                     <ul class="submenu">
+                        <li><a href="notice?offset=0" class="submenuLink">공지사항</a></li>
+                        <li><a href="qnaBoard?offset=0" class="submenuLink">문의 게시판</a></li>
+                        <li><a href="new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="submenuLink">1:1 문의</a></li>
+                     </ul>
+                  </li>
+                  <div class="search">
+                      <a href="Search">
+                        <img class="search_img" src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw=">
+                     </a>
+                  </div>
+                  <div class="login">
+                        <c:choose>
+                              <c:when test="${member.grade eq null }">
+                                    <a href="javascript:popup()">로그인</a>
+                              </c:when>
+                              <c:when test="${member.grade eq 'z' }">
+                                    <a href="logout">로그아웃</a>
+                                    <a href="admin" style="margin-left: 20px;">관리자 페이지</a>
+                              </c:when>
+                              <c:otherwise>
+                              		${member.ID }님 <br/>
+                                    <a href="logout">로그아웃</a>
+                                    <a href="myPage" style="margin-left: 20px;">마이페이지</a>
+                              </c:otherwise>
+                        </c:choose>
+                     </div>
+               </ul>
+            </nav>
+         </div>
+      </section>
+   </header>
+   <hr>
 </body>
 </html>
