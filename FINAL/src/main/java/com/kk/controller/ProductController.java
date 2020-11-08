@@ -125,7 +125,8 @@ public class ProductController {
 		}
 		setImg(list);
 		setImg(listCategory);
-		model.addAttribute("category", categoryMenu);
+		model.addAttribute("category", category);
+		model.addAttribute("categoryMenu", categoryMenu);
 		if(category==null) {
 			model.addAttribute("list", list);
 		}else {
@@ -155,7 +156,8 @@ public class ProductController {
 		setImg(listShowBlind);
 		setImg(listCategory);
 		
-		model.addAttribute("category", categoryMenu);
+		model.addAttribute("category", category);
+		model.addAttribute("categoryMenu", categoryMenu);
 		if(category==null) {
 			model.addAttribute("voListShowBlind", listShowBlind);
 		}else {
