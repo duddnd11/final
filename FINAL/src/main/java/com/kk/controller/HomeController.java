@@ -1,5 +1,6 @@
 package com.kk.controller;
 
+import java.io.IOException;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.auction.service.MemberService;
 import com.auction.vo.MemberVo;
@@ -61,6 +63,8 @@ public class HomeController {
 //		return "login";
 //	}
 //	
+	
+
 	@RequestMapping(value = "/googleLogin", method = RequestMethod.POST)
 	public String doGoogleSignInActionPage(HttpServletResponse response, Model model) throws Exception{
 	  OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
@@ -70,7 +74,17 @@ public class HomeController {
 	  return "login/googleLogin";
 
 	}
-	@RequestMapping(value = "/googleSignInCallback", method = RequestMethod.GET)
+	
+//	  // 구글 Callback호출 메소드
+//	  @RequestMapping(value = "/oauth2callback", method = { RequestMethod.GET, RequestMethod.POST })
+//	  public String googleCallback(Model model, @RequestParam String code) throws IOException {
+//	    System.out.println("Google login success");
+//
+//	    //저는 성공하면 메인페이지로 리다이렉트합니다.
+//	    return "mainpage";
+//	  }
+	  
+	@RequestMapping(value = "/oauth2callback", method = RequestMethod.GET)
 	public String doSessionAssignActionPage(HttpServletRequest request)throws Exception{
 	  System.out.println("/member/googleSignInCallback");
 	  String code = request.getParameter("code");
@@ -101,7 +115,7 @@ public class HomeController {
 	  HttpSession session = request.getSession();
 	  vo = service.loginCheck(vo);
 	  
-//	  session.setAttribute("login", vo);
+//	  session.setAttribute("member", vo);
 
 
 	  return "redirect:/";

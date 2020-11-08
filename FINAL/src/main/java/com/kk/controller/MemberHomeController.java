@@ -1,5 +1,6 @@
 package com.kk.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -8,10 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.google.connect.GoogleConnectionFactory;
+import org.springframework.social.oauth2.GrantType;
+import org.springframework.social.oauth2.OAuth2Operations;
+import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.auction.api.KakaoApi;
@@ -36,6 +42,12 @@ public class MemberHomeController {
 	@Autowired
 	QnaBoardService qnaService;
 	
+	@Autowired
+	GoogleConnectionFactory googleConnectionFactory;
+	@Autowired
+	OAuth2Parameters googleOAuth2Parameters;
+	
+	
 	private NaverLoginBo naverLoginBo;
 	private String apiResult= null;
 	
@@ -56,10 +68,19 @@ public class MemberHomeController {
 		String naverAuthUrl = naverLoginBo.getAuthorizationUrl(session);
 		String kakaoAuthUrl = KakaoApi.getAuthorizationUrl(session);
 		System.out.println(naverAuthUrl);
+
+//	  	/* 구글code 발행 */
+//	  	OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
+//	    /* 로그인페이지 이동 url생성 */
+//	  	String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
+//
+//	  	model.addAttribute("google_url", url);
 		model.addAttribute("url", naverAuthUrl);
 		model.addAttribute("kakaoUrl", kakaoAuthUrl);
 		return "login";
 	}
+	
+
 	
 	@RequestMapping(value = "/login/loginaction")
 	public String LoginCheck(MemberVo vo, HttpServletRequest req, HttpSession session, RedirectAttributes redirectattributes) throws Exception {

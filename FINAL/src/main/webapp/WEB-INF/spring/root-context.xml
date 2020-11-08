@@ -47,7 +47,7 @@
 	  <property name="scope"
 	    value="https://www.googleapis.com/auth/plus.login" />
 	  <property name="redirectUri"
-	    value="http://localhost/user/googleSignInCallback" />
+	    value="http://localhost:9090/final/oauth2callback" />
 	</bean>
 	
 	<bean id="qnaBoardDao" class="com.auction.dao.QnaBoardDaoImpl"></bean>
