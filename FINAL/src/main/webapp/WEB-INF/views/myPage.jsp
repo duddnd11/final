@@ -146,10 +146,6 @@
 			<button style="float: right;width: 50px;hegiht: 40px;margin-right: -250px;"><a href="http://localhost:9090/final/applyProduct">등록</a></button>				
 		</div>
 		</div>
-<<<<<<< HEAD
-</div>
-=======
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 </body>
 </html>
 <%@ include file="footer.jsp" %>

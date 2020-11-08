@@ -71,9 +71,10 @@
           }
    }
    */
+   /*
    $('#data')
    .stop()
-   .animate({ scrollTop: $('#data')[0].scrollHeight }, 1000);
+   .animate({ scrollTop: $('#data')[0].scrollHeight }, 1000);*/
 </script>
 
 <style>

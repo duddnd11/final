@@ -111,8 +111,9 @@
         	<li style="border-left: 1px solid #cccccc"><a href="javascript:moveClose2()">비밀번호 찾기</a></li>
         	<li style="border-left: 1px solid #cccccc"><a href="javascript:moveClose3()">회원가입</a></li>
         </ul>
+        
         <div id="kakao_id_login" style="margin-left: 50px; margin-top: 30px;">
-        <a id="custom-login-btn" href="javascript:loginWithKakao()">
+        <a id="custom-login-btn" href="${kakaoUrl}">
 	  	<img
 	    src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
 	    width="277px;" height="60px;"/>
