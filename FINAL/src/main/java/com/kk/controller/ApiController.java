@@ -84,6 +84,8 @@ public class ApiController {
 		JSONParser jsonParse = new JSONParser(); //JSONParse에 json데이터를 넣어 파싱한 다음 JSONObject로 변환한다. 
 		JSONObject jsonObj = (JSONObject) jsonParse.parse(apiResult);
 		JSONObject jsonResponse = (JSONObject)jsonObj.get("response");
+		System.out.println("1:"+jsonObj);
+		System.out.println("2:"+jsonResponse);
 		String id = (String) jsonResponse.get("id");
 		String name=(String) jsonResponse.get("name");
 		String email =(String) jsonResponse.get("email");
