@@ -13,7 +13,7 @@
 	</select>
 	
 	<update id="memberUpdate">
-		UPDATE member SET pw = #{pw}, name = #{name}, addr = #{addr}, phonenum = #{phonenum}, email = #{email} WHERE ID = #{ID}
+		UPDATE member SET pw = #{pw}, name = #{name}, zonecode = #{zonecode}, addr = #{addr}, addrdetail = #{addrdetail}, phonenum = #{phonenum}, email = #{email} WHERE ID = #{ID}
 	</update>
 	
 	<select id="apiLogin" resultType="int">

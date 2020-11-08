@@ -318,7 +318,7 @@ hr {
                   </li>
                   <li>|</li>
                   <li class="topMenuLi">
-							<a class="menuLink" href="http://localhost:9090/final/showBiddingAuction">서비스 소개</a>	
+						<a class="menuLink" href="http://localhost:9090/final/showBiddingAuction">서비스 소개</a>	
 				  </li>
                   <li>|</li>
                   <li class="topMenuLi"><a class="menuLink" href="notice?offset=0">고객센터</a>
@@ -343,11 +343,20 @@ hr {
                                     <a href="admin" style="margin-left: 20px;">관리자 페이지</a>
                               </c:when>
                               <c:otherwise>
+                              <c:choose>
+                              	<c:when test="${member.api eq 'home' }">
                               		${member.ID }님 <br/>
                                     <a href="logout">로그아웃</a>
                                     <a href="myPage" style="margin-left: 20px;">마이페이지</a>
+                              	</c:when>
+                              	<c:otherwise>
+                              		${member.name }님 <br/>
+                                    <a href="logout">로그아웃</a>
+                                    <a href="myPage" style="margin-left: 20px;">마이페이지</a>
+                              	</c:otherwise>
+                              </c:choose>
                               </c:otherwise>
-                        </c:choose>
+		                  </c:choose>
                      </div>
                </ul>
             </nav>

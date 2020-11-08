@@ -121,7 +121,6 @@ public class MemberHomeController {
 		vo.setPw(util(vo.getPw()));
 		service.memberUpdate(vo);
 		session.invalidate();
-		
 		return "redirect:/main";
 	}
 
@@ -155,6 +154,7 @@ public class MemberHomeController {
 		List<QnaBoardVo> list2 =qnaService.selectFromId(id);
 		model.addAttribute("list1", list1);
 		model.addAttribute("list2", list2);
+//		System.out.println("list1: "+list1.isEmpty());
 		return "myPage";
 	}
 	
