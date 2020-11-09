@@ -279,17 +279,17 @@ $(document).on("click","#btn5",function(){
 					
 				<c:choose>
 					<c:when test="${list.admin == 1 && list.deal == 1 }">
-						<td><button id="admin" class="admin" style="margin: 10px;" class="btn btn-dark">경매중</button></td>
+						<td><button id="admin" style="margin: 10px;" class="btn btn-dark">경매중</button></td>
 					</c:when>
 					<c:when test="${list.admin == 1 && list.deal ==2 }">
-						<td><button id="admin" class="admin" style="margin: 10px;" class="btn btn-danger">마감됨</button></td>
+						<td><button id="admin" style="margin: 10px;" class="btn btn-danger">마감됨</button></td>
 					</c:when>
 					<c:when test="${list.admin == 2 }">
-						<td><button id="admin" class="admin" style="margin: 10px;" class="btn btn-outline-danger">거절됨</button></td>
+						<td><button id="admin" style="margin: 10px;" class="btn btn-outline-danger">거절됨</button></td>
 					</c:when>
 					<c:otherwise>
 						<td>
-							<button id="admin" class="admin" style="margin: 10px;" class="btn btn-primary" onclick="location.href='approveItem?pno=${list.pno}'" >승인</button>
+							<button id="admin" style="margin: 10px;" class="btn btn-primary" onclick="location.href='approveItem?pno=${list.pno}'" >승인</button>
 							<button onclick="location.href='rejectItem?pno=${list.pno}'" class="btn btn-danger">거절</button>
 						</td>
 					</c:otherwise>
