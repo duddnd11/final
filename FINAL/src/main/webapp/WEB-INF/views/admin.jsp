@@ -21,7 +21,7 @@
 		<div style="height: 100px; margin-right: 20px;">
 
 
-			<a href="http://localhost:9090/final/main"><button id="btn" style="height: 50px;" class="btn btn-secondary">메인화면</button></a>
+			<a href="main"><button id="btn" style="height: 50px;" class="btn btn-secondary">메인화면</button></a>
 
 		</div>	
 			<div style="display: flex; margin-top: 200px; margin-left: 250px;">
@@ -37,7 +37,7 @@
 				</div>
 				<div style="width: 200px; height: 200px; margin-left: 250px;">
 					<h2 style="font-size: 35px;">1대1 문의</h2>
-					<a href="http://localhost:9090/final/rooms"><button style=" width: 70px; height: 40px; font-size: 18px;
+					<a href="rooms"><button style=" width: 70px; height: 40px; font-size: 18px;
 					font-weight: 900; margin-left: 35px; margin-top: 50px;" class="btn btn-dark">이동</button></a>
 				</div>
 		    </div>

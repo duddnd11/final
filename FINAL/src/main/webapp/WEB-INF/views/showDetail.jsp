@@ -176,7 +176,7 @@ $(document).ready(function(){
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;"  onclick="deadline()">마감</button>
          </c:when>
          
-         <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer}">
+         <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer || check == 1}">
             <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="rejectLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>
@@ -228,7 +228,7 @@ $(document).ready(function(){
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;"  onclick="deadline()">마감</button>
          </c:when>
          
-         <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer || rejectBlind >= 1}">
+         <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer || rejectBlind >= 1 || check == 1}">
             <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" onclick="rejectLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>

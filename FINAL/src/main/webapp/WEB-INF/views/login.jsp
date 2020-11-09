@@ -62,19 +62,19 @@
     <script>
     
 	    function moveClose() {
-	      opener.location.href="http://localhost:9090/final/idcheck";
+	      opener.location.href="../idcheck";
 	      self.close();
 	    }
 	    function moveClose2() {
-		      opener.location.href="http://localhost:9090/final/pwcheck";
+		      opener.location.href="../pwcheck";
 		      self.close();
 		    }
 	    function moveClose3() {
-		      opener.location.href="http://localhost:9090/final/singup";
+		      opener.location.href="../singup";
 		      self.close();
 		    }
 	    function moveClose4() {
-		      opener.location.href="http://localhost:9090/final/main";
+		      opener.location.href="main";
 		      self.close();
 		    }
     </script>

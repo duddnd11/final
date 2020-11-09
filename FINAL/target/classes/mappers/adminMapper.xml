@@ -6,7 +6,7 @@
 <mapper namespace="com.auction.mapper.AdminMapper">
 	<!-- member -->
 	<select id="showMember" resultType="com.auction.vo.MemberVo">
-		SELECT * FROM member order by grade asc;
+		SELECT * FROM member order by grade asc, api asc;
 	</select>
 	<select id="saleItem" resultType="com.auction.vo.AuctionVo">
 		SELECT a.*, p.pname, p.bestmoney, p.admin, p.deal FROM product p left outer join auction a on a.pno=p.pno where p.ID=#{ID} and a.pno=p.pno order by buydate desc;
