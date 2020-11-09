@@ -6,13 +6,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- https://code.jquery.com/ui/ -->
-  <script src="resources/js/jquery-3.5.1.min.js"></script>
-  <script src="resources/js/jquery-ui.min.js"></script>
-  <link href="resources/css/jquery-ui-sunny.css" rel="stylesheet" type="text/css">
-  <link href="resources/css/singup.css" rel="stylesheet" type="text/css">
+  <script src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
+  <link href="${pageContext.request.contextPath}/resources/css/jquery-ui-sunny.css" rel="stylesheet" type="text/css">
+  <link href="${pageContext.request.contextPath}/resources/css/singup.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
   <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/data.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/utilities.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery-custom-ui.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
   <title>회원가입 페이지</title>
 <script>
 $(function(){	/* 비밀번호 같은지 확인 */
@@ -154,18 +158,17 @@ $(function() {
       <input title="가입하기" type="submit" id="btn_join" class="btn ui-button ui-corner-all ui-widget" 
       value="가입" role="button" style="margin-left: 100px;">
       <input title="처음 상태로" type="reset" id="btn_cancel" class="btn" value="리셋">
+    <!-- 
     <button type="button" class="idCheck" style="/* margin-left: -50px; */position: absolute;top: 90px;right: 680px;">아이디확인</button>
+     -->
     </div>
     </form>
   </div>
-  <script src="resources/js/data.js"></script>
-  <script src="resources/js/utilities.js"></script>
-  <script src="resources/js/jquery-custom-ui.js"></script>
-  <script src="resources/js/main.js"></script>
+
 </body>
 <script>
 $(function(){
-	
+	/*
 $(".idCheck").click(function(){
 	var query = {ID : $("#ID").val()};
 
@@ -185,7 +188,7 @@ $(".idCheck").click(function(){
 		}	
 	}); 
 	
-});
+}); */
 });
 
 </script>

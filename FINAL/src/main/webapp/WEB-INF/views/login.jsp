@@ -14,7 +14,7 @@
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="resources/js/jquery-3.5.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
   <script>
         // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
         //Kakao.init('37ce67905ce0fd50ce6c67104e979081');
@@ -97,6 +97,7 @@
       	text-decoration: none;
       	color: black;
       }
+      
     </style>
 </head>
 <body>
@@ -138,12 +139,12 @@
 	  <div id="naver_id_login" style="margin-left:50px; margin-top: 10px;"><a href="${url}"><img width="277" src="http://static.nid.naver.com/oauth/big_w.PNG"/></a></div>
     </form>
     
-    <div class="g-signin2" data-theme="dark" style="margin-left: 50px; margin-top: 7px; width: 277px; height: 60px;">
-    <a href="${googleUrl}">dfd</a></div>
+    
     <!--  data-onsuccess="onSignIn"-->
    
      <div id="google_id_login" style="margin-left: 50px; margin-top: 7px; width: 277px; height: 60px;">
-	    <a href="${googleUrl}">구글 로그인</a>
+	    <a href="${googleUrl}"><img src="${pageContext.request.contextPath}/resources/img/google1.png"
+	    style="width: 277px; height: 60px;"/></a>
 	  </div>
     <script>
     /*
