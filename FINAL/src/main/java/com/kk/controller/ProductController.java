@@ -251,13 +251,14 @@ public class ProductController {
 	}*/
 	
 	@RequestMapping(value="/addLike")
-	public String addLike(int pno, HttpSession session, HttpServletResponse response) {
+	public String addLike(int pno, HttpSession session, HttpServletResponse response, Model model) {
 		MemberVo member =  (MemberVo) session.getAttribute("member");
 		String str = pno+"_!_";	//1137_!_
 		String ID = member.getID();
 		/*
 		String likeArr[]=service.selectLike(ID).split("_!_");
 		int check=0;
+		
 		for(int i=0; i<likeArr.length ;i++) {
 //			System.out.println(likeArr[i]+"="+pno);
 			if(likeArr[i].equals(String.valueOf(pno))) {
@@ -266,12 +267,25 @@ public class ProductController {
 				break;
 			}
 		}
+<<<<<<< HEAD
+		int result=0;
+		if(check ==0) {
+			result = service.addLike(str, ID);
+=======
 		*/
 		//if(check ==0) {
 			int result = service.addLike(str, ID);
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 			System.out.println("관심상품: "+result);
+<<<<<<< HEAD
+		}
+		//model.addAttribute("check", check);
+		
+		return "redirect:/showDetail?pno="+pno+"&check="+check;
+=======
 //		}
 		return "redirect:/showDetail?pno="+pno;
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 	}
 
 	@RequestMapping(value="payment")
