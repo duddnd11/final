@@ -70,7 +70,7 @@
 		      self.close();
 		    }
 	    function moveClose3() {
-		      opener.location.href="singup";
+		      opener.location.href="../singup";
 		      self.close();
 		    }
 	    function moveClose4() {

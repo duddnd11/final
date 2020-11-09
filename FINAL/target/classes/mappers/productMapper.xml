@@ -12,19 +12,19 @@
 	
 	<!-- 전체 -->
 	<select id="selectAuction" resultType="com.auction.vo.ProductVo">
-		select * from product where auctionmenu='일반' and deal=1 order by uploaddate desc;
+		select * from product where auctionmenu='일반' and deal=1 and admin=1 order by uploaddate desc;
 	</select>
 
 	<select id="selectAuctionBlind" resultType="com.auction.vo.ProductVo">
-		select * from product where auctionmenu='블라인드' and deal=1 order by uploaddate desc;
+		select * from product where auctionmenu='블라인드' and deal=1 and admin=1 order by uploaddate desc;
 	</select>
 		
 	<select id="selectPop" resultType="com.auction.vo.ProductVo">
-		SELECT * FROM product where deal=1 order by hitcount desc;
+		SELECT * FROM product where deal=1 and admin=1 order by hitcount desc;
 	</select>
 
 	<select id="selectHurry" resultType="com.auction.vo.ProductVo">
-		SELECT * from product where deal=1 order by (TIMESTAMPDIFF(day, NOW(), deadlinedate)+1) asc;
+		SELECT * from product where deal=1 and admin=1 order by (TIMESTAMPDIFF(day, NOW(), deadlinedate)+1) asc;
 	</select>
 	
 	<!-- 상세 -->
@@ -57,10 +57,10 @@
 
 	<!-- 카테고리 -->
 	<select id="normalCategory" resultType="com.auction.vo.ProductVo">
-		select * from product where category=#{category} and auctionmenu='일반' and deal=1 order by uploaddate desc;
+		select * from product where category=#{category} and auctionmenu='일반' and deal=1 and admin=1 order by uploaddate desc;
 	</select>
 	<select id="blindCategory" resultType="com.auction.vo.ProductVo">
-		SELECT * FROM product WHERE category=#{category} and auctionmenu='블라인드' and deal=1 ORDER BY uploaddate DESC;
+		SELECT * FROM product WHERE category=#{category} and auctionmenu='블라인드' and deal=1 and admin=1 ORDER BY uploaddate DESC;
 	</select>
 	
 	<!-- 마감 -->
