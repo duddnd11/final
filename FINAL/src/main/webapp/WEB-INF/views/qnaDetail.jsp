@@ -209,7 +209,6 @@
                            <span style="margin-left: 20px;">${reComment.userid}</span><br/>
                            <span style="font-size: 12px; color: #cccccc; margin-left: 20px;">${reComment.date}</span><br/>
                            <span style="margin-left: 20px;">${reComment.comment}</span>
-                           
                            </div><br/>
                         </c:if>
                      </c:forEach>

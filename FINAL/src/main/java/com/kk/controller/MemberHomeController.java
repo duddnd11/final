@@ -1,10 +1,10 @@
 package com.kk.controller;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,8 +79,11 @@ public class MemberHomeController {
 		return "login";
 	}
 	
+
+	
 	@RequestMapping(value = "/login/loginaction")
 	public String LoginCheck(MemberVo vo, HttpServletRequest req, HttpSession session, RedirectAttributes redirectattributes) throws Exception {
+	//	PrintWriter out=response.getWriter();
 		session = req.getSession();
 		//System.out.println(dto.getID());
 		vo.setPw(util(vo.getPw()));
@@ -88,12 +91,13 @@ public class MemberHomeController {
 		if(memberdto == null) {
 			session.setAttribute("member", null);
 			redirectattributes.addFlashAttribute("msg", memberdto);
-			
+//			out.print("<script> alert('dd'); location.href='/final/login';</script>");
+//			out.flush();
 		}else {
 			session.setAttribute("member", memberdto);
 			return "loginaction";
 		}
-		return "redirect:/singup";
+		return "failurelogin";
 	}
 	
 	@RequestMapping(value = "/logout")		//로그아웃
