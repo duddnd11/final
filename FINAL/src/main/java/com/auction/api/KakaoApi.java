@@ -24,7 +24,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 public class KakaoApi {
 	private final static String K_CLIENT_ID = "f39b69e28f5123ba3e2579bd141bc7bc"; //이런식으로 REDIRECT_URI를 써넣는다. // // 
-	private final static String K_REDIRECT_URI = "http://localhost:9090/final/kakaoResult"; 
+	private final static String K_REDIRECT_URI = "http://14.38.136.211:9090/final/kakaoResult"; 
 	
 	public static String getAuthorizationUrl(HttpSession session) { 
 		String kakaoUrl = "https://kauth.kakao.com/oauth/authorize?" + "client_id=" 
