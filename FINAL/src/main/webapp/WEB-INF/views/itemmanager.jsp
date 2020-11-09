@@ -11,6 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
 	th{
 		border: 1px solid #cccccc;
@@ -22,7 +23,7 @@
 	table{
 		width: 1200px;
 		margin-top: 150px;
-		margin-left: 18%;
+		margin-left: 22.5%;
 		font-size: 18px;
 		text-align: center;
 	}
@@ -226,12 +227,12 @@ $(document).on("click","#btn5",function(){
 </head>
 <body>
 		
-		<button id="btn1" onclick="location.href='item?offset=0&admin=0&deal=-1'">승인요청</button>	<!-- => 옵션으루  0.0 -->
-		<button id="btn2" onclick="location.href='item?offset=0&admin=1&deal=-1'">승인</button>		<!-- 1.0 -->
-		<button id="btn3" onclick="location.href='item?offset=0&admin=2&deal=-1'">거부</button>	<!-- 2.0 -->
+		<button id="btn1" onclick="location.href='item?offset=0&admin=0&deal=-1'" class="btn btn-outline-dark">승인요청</button>	<!-- => 옵션으루  0.0 -->
+		<button id="btn2" onclick="location.href='item?offset=0&admin=1&deal=-1'" class="btn btn-outline-primary">승인</button>		<!-- 1.0 -->
+		<button id="btn3" onclick="location.href='item?offset=0&admin=2&deal=-1'" class="btn btn-outline-warning">거부</button>	<!-- 2.0 -->
 <br/>
-		<button id="btn4" onclick="location.href='item?offset=0&admin=1&deal=1'">경매중</button>	<!-- 1.1 -->
-		<button id="btn5"onclick="location.href='item?offset=0&admin=1&deal=2'">마감</button>	<!-- 1.2 -->
+		<button id="btn4" onclick="location.href='item?offset=0&admin=1&deal=1'" class="btn btn-outline-success">경매중</button>	<!-- 1.1 -->
+		<button id="btn5"onclick="location.href='item?offset=0&admin=1&deal=2'" class="btn btn-outline-danger">마감</button>	<!-- 1.2 -->
 		<button id="menuBtn" style="float: right;"onclick="location.href='../admin'">메뉴로</button>
 	<c:choose>
 		<c:when test="${admin eq 0 }">
@@ -278,18 +279,18 @@ $(document).on("click","#btn5",function(){
 					
 				<c:choose>
 					<c:when test="${list.admin == 1 && list.deal == 1 }">
-						<td><button id="admin" class="admin" style="margin: 10px;">경매중</button></td>
+						<td><button id="admin" class="admin" style="margin: 10px;" class="btn btn-dark">경매중</button></td>
 					</c:when>
 					<c:when test="${list.admin == 1 && list.deal ==2 }">
-						<td><button id="admin" class="admin" style="margin: 10px;">마감됨</button></td>
+						<td><button id="admin" class="admin" style="margin: 10px;" class="btn btn-danger">마감됨</button></td>
 					</c:when>
 					<c:when test="${list.admin == 2 }">
-						<td><button id="admin" class="admin" style="margin: 10px;">거절됨</button></td>
+						<td><button id="admin" class="admin" style="margin: 10px;" class="btn btn-outline-danger">거절됨</button></td>
 					</c:when>
 					<c:otherwise>
 						<td>
-							<button id="admin" class="admin" style="margin: 10px;" onclick="location.href='approveItem?pno=${list.pno}'">승인</button>
-							<button onclick="location.href='rejectItem?pno=${list.pno}'">거절</button>
+							<button id="admin" class="admin" style="margin: 10px;" class="btn btn-primary" onclick="location.href='approveItem?pno=${list.pno}'" >승인</button>
+							<button onclick="location.href='rejectItem?pno=${list.pno}'" class="btn btn-danger">거절</button>
 						</td>
 					</c:otherwise>
 				</c:choose>

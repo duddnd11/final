@@ -50,9 +50,9 @@ $("#check_module").click(function () {
    buyer_email: '${member.email}',
    buyer_name: '${member.name}',
    buyer_tel: '${member.phonenum}',
-   buyer_addr: "${member.addr}",
-   buyer_postcode: '123-456',
-   m_redirect_url: 'paymentAction?pno=${vo.pno}'
+   buyer_addr: "${member.addr}"+" ${member.addrdetail}",
+   buyer_postcode: "${member.zonecode}",
+   //m_redirect_url: 'paymentAction?pno=${vo.pno}'  모바일url
    /*
    모바일 결제시,
    결제가 끝나고 랜딩되는 URL을 지정
@@ -61,13 +61,28 @@ $("#check_module").click(function () {
    }, function (rsp) {
       console.log(rsp);
    if (rsp.success) {
+	   /*
       var msg = '결제가 완료되었습니다.';
       msg += '고유ID : ' + rsp.imp_uid;
       msg += '상점 거래ID : ' + rsp.merchant_uid;
       msg += '결제 금액 : ' + rsp.paid_amount;
       msg += '카드 승인번호 : ' + rsp.apply_num;
-      alert(msg);
-      location.href="paymentAction?pno=${vo.pno}";
+      alert(msg);*/
+      location.href="paymentResult?imp_uid="+rsp.imp_uid+"&mid="+rsp.merchant_uid+"&pno=${vo.pno}"; //?pno=${vo.pno}&imp_uid="+rsp.imp_uid
+      /*
+      jQuery.ajax({
+          url: "rest/complete", // 가맹점 서버
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          data: {
+              imp_uid: rsp.imp_uid,
+              merchant_uid: rsp.merchant_uid
+          }
+      }).done(function (data) {
+          alert(data);
+        // 가맹점 서버 결제 API 성공시 로직
+      })
+          */
    } else {
       var msg = '결제에 실패하였습니다.';
       msg += '에러내용 : ' + rsp.error_msg;
@@ -79,7 +94,6 @@ $("#check_module").click(function () {
 })
 </script>
 <style>
-<<<<<<< HEAD
    img{
       width: 150px;
       height: 200px;
@@ -105,48 +119,14 @@ $("#check_module").click(function () {
       text-align-last: center;
    }
    #check_module{
-      margin-left:44.3%;
+      margin-left:45.5%;
       margin-top: 2%;
       height: 50px;
       margin-bottom: 3%;
    }
-=======
-	img{
-		width: 150px;
-		height: 200px;
-	}
-	table{
-		margin-left: 35%;
-		margin-top: 10%;
-		text-align: center;
-	}
-	td{
-		padding: 10px;
-		font-size: 20px;
-	}
-	input{
-		width: 300px;
-		height: 30px;
-		text-align: center;
-	}
-	select{
-		width: 310px;
-		height: 35px;
-		font-size: 16px;
-		text-align-last: center;
-	}
-	#check_module{
-		margin-left:44.3%;
-		margin-top: 2%;
-		height: 50px;
-		margin-bottom: 3%;
-	}
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 </style>
 </head>
 <body>
-<<<<<<< HEAD
-   
    <table>
    <tr>
    
@@ -160,12 +140,18 @@ $("#check_module").click(function () {
    </c:forEach>
    </table>
    <div style="border-top: 1px solid #cccccc;">
-   <table style=" margin-left: 35%; margin-top: 2%;">
+   <table style=" margin-left: 38%; margin-top: 2%;">
    <tr>
    <th>받는사람</th> <td><input type="text" value="${member.name }"/></td>
    </tr>
    <tr>
+   <th>우편번호</th> <td><input type="text" value="${member.zonecode}"/></td>
+   </tr> 
+   <tr>
    <th>주소</th> <td><input type="text" value="${member.addr}"/></td>
+   </tr>
+   <tr>
+   <th>상세주소</th> <td><input type="text" value="${member.addrdetail}"/></td>
    </tr>
    <tr>
    <th>전화번호</th><td><input type="text" value="${member.phonenum}"/></td>
@@ -188,49 +174,5 @@ $("#check_module").click(function () {
    
    <input type="hidden" value="${vo.pno}"/>
    <input type="submit" value="결제" id="check_module"/>
-=======
-	
-	<table>
-	<tr>
-	
-	<th colspan="2">상품명</th>	
-	<th>결제금액</th>
-	</tr>
-	<c:forEach items="${vo}" var="vo">
-		<td><img src="${vo.image}"/></td>
-		<td>${vo.pname}</td>
-		<td style="width: 30%;">${vo.bestmoney}</td>
-	</c:forEach>
-	</table>
-	<div style="border-top: 1px solid #cccccc;">
-	<table style=" margin-left: 35%; margin-top: 2%;">
-	<tr>
-	<th>받는사람</th> <td><input type="text" value="${member.name }"/></td>
-	</tr>
-	<tr>
-	<th>주소</th> <td><input type="text" value="${member.addr}"/></td>
-	</tr>
-	<tr>
-	<th>전화번호</th><td><input type="text" value="${member.phonenum}"/></td>
-	</tr>
-	<tr>
-	<th>배송시 요청사항</th> 
-	<td>
-		<select>
-              <option value="">배송 전 연락바랍니다.</option>
-              <option value="">부재 시 문앞에 놔주세요</option>
-              <option value="">무인택배햠에 넣어주세요</option>
-              <option value="">경비실에 맡겨주세요</option>
-              <option value="">부재 시 연락주세요</option>
-        </select>
-	</td>
-	</tr>
-	
-	</table>
-	</div>
-	
-	<input type="hidden" value="${vo.pno}"/>
-	<input type="submit" value="결제" id="check_module"/>
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 </body>
 </html>

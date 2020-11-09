@@ -57,6 +57,18 @@
 		margin-top: 50px;
 	}
 </style>
+<script>
+$(document).ready(function(){
+	   $("input[name=auctionmenu]").change(function() {
+	      var radioValue = $(this).val();
+	      if(radioValue == "블라인드"){
+	            $(".sptable").hide();
+	         } else if(radioValue == "일반"){
+	               $(".sptable").show();
+	            }
+	   });
+	});
+</script>
 </head>
 <body>
 <div id="container" style="margin-top: 200px;"">
@@ -92,14 +104,14 @@
 					<input type="radio" name="auctionmenu" value="블라인드" style="width: 15px; height: 15px;">블라인드경매
 			</td>
 	</tr>
-	<tr>
+	<tr class="sptable">
 		<th>응찰 단위</th>  
 			<td>	
 				<div class="spinner" style="margin-left: 30px; margin-top: 0px;">
 						<button type="button" class="sp-sub-minus" onclick="optnQtyMinus($(this));" style="width: 40px; height: 32px;">
 							<b>-</b>
 						</button>
-							<input style=" width: 220px;margin-left: 0px;" type="tel" class="num" placeholder="0" value="" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
+							<input style="font-weight: 100; width: 220px;margin-left: 0px;" type="tel" class="num" placeholder="0" value="" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
 							<button type="button" class="sp-sub-plus" onclick="optnQtyPlus($(this), '3091');" style="width: 40px; height: 32px;">
 								<b>+</b>
 							</button>
@@ -108,7 +120,7 @@
 	</tr>	<!-- 플러그인 같은 걸로 가격 조정 -->
 	<tr>
 		<th>마감날</th> 
-			<td> <input type="text" name="deadlinedate"/>	<!-- 달력 --></td>
+			<td> <input type="text" name="deadlinedate" autocomplete="off"/>	<!-- 달력 --></td>
 	</tr>
 	<tr>
 		<th>카테고리</th> 
@@ -121,7 +133,7 @@
 			</td>
 	</tr>
 		</table>
-		<input id="apply" type="submit" value="승인 요청" style="width: 260px;height: 60px;margin-top: 20px;margin-left: 180px;">
+		<input title="수정/철회 불가" id="apply" type="submit" value="승인 요청" style="width: 260px;height: 60px;margin-top: 20px;margin-left: 180px;">
 	</form>
 </div>
 </body>
@@ -135,6 +147,18 @@ function setThumbnail(event) {
 		}; 
 		reader.readAsDataURL(event.target.files[0]); 
 	}
+$(document).ready(function(){
+	$("input[name=auctionmenu]").change(function() {
+		var radioValue = $(this).val();
+		if(radioValue == "블라인드"){
+				$(".sptable").hide();
+			} else if(radioValue == "일반"){
+					$(".sptable").show();
+				}
+	});
+	$(document).tooltip();
+});
+	
 
 
 </script>

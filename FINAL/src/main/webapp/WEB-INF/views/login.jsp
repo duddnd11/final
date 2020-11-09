@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <meta charset="UTF-8">  
   <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="1001790183901-cb9d2bt84dqu3v7e0gfsg6rtjrpapdd7.apps.googleusercontent.com">
@@ -111,8 +112,9 @@
         	<li style="border-left: 1px solid #cccccc"><a href="javascript:moveClose2()">비밀번호 찾기</a></li>
         	<li style="border-left: 1px solid #cccccc"><a href="javascript:moveClose3()">회원가입</a></li>
         </ul>
+        
         <div id="kakao_id_login" style="margin-left: 50px; margin-top: 30px;">
-        <a id="custom-login-btn" href="javascript:loginWithKakao()">
+        <a id="custom-login-btn" href="${kakaoUrl}">
 	  	<img
 	    src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
 	    width="277px;" height="60px;"/>
@@ -120,9 +122,9 @@
 		
 		
 		</div>
-	    <!-- 네이버아이디로로그인 버튼 노출 영역 -->
-	  <div id="naver_id_login" style="margin-left: 50px; margin-top: 10px;">
-	  <!-- //네이버아이디로로그인 버튼 노출 영역 -->
+	    <!-- 네이버아이디로로그인 버튼 노출 영역 
+	  <div id="naver_id_login" style="margin-left: 50px; margin-top: 10px;">-->
+	  <!-- //네이버아이디로로그인 버튼 노출 영역 
 	  <script type="text/javascript">
 	  	var naver_id_login = new naver_id_login("2ti48YANpdiJUdiguK3P", "http://localhost:9090/final/result/");
 	  	var state = naver_id_login.getUniqState();
@@ -131,12 +133,20 @@
 	  	naver_id_login.setState(state);
 	  	naver_id_login.init_naver_id_login();
 	  </script>
+	  </div>-->
 	  
-	  </div>
+	  <div id="naver_id_login" style="margin-left:50px; margin-top: 10px;"><a href="${url}"><img width="277" src="http://static.nid.naver.com/oauth/big_w.PNG"/></a></div>
     </form>
     
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style=" margin-left: 50px; margin-top: 7px; width: 277px; height: 60px;">dfd</div>
+    <div class="g-signin2" data-theme="dark" style="margin-left: 50px; margin-top: 7px; width: 277px; height: 60px;">
+    <a href="${googleUrl}">dfd</a></div>
+    <!--  data-onsuccess="onSignIn"-->
+   
+     <div id="google_id_login" style="margin-left: 50px; margin-top: 7px; width: 277px; height: 60px;">
+    <a href="${googleUrl}">구글 로그인</a>
+  </div>
     <script>
+    /*
         function onSignIn(googleUser) {
             // Useful data for your client-side scripts:
             var profile = googleUser.getBasicProfile();
@@ -150,6 +160,7 @@
             var id_token = googleUser.getAuthResponse().id_token;
             console.log("ID Token: " + id_token);
         };
+        */
     </script>
   </div>
 </body>

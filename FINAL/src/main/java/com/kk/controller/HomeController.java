@@ -2,26 +2,19 @@ package com.kk.controller;
 
 import java.util.Locale;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.social.connect.Connection;
-import org.springframework.social.google.api.Google;
-import org.springframework.social.google.api.impl.GoogleTemplate;
-import org.springframework.social.google.api.plus.Person;
-import org.springframework.social.google.api.plus.PlusOperations;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
-import org.springframework.social.oauth2.AccessGrant;
-import org.springframework.social.oauth2.GrantType;
-import org.springframework.social.oauth2.OAuth2Operations;
 import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.auction.api.GoogleApi;
 import com.auction.service.MemberService;
 import com.auction.vo.MemberVo;
 
@@ -36,7 +29,8 @@ public class HomeController {
 	GoogleConnectionFactory googleConnectionFactory;
 	@Autowired
 	OAuth2Parameters googleOAuth2Parameters;
-	
+	@Autowired
+	MemberService mService;
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		return "home";
@@ -61,6 +55,7 @@ public class HomeController {
 //		return "login";
 //	}
 //	
+	/*
 	@RequestMapping(value = "/googleLogin", method = RequestMethod.POST)
 	public String doGoogleSignInActionPage(HttpServletResponse response, Model model) throws Exception{
 	  OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
@@ -70,47 +65,44 @@ public class HomeController {
 	  return "login/googleLogin";
 
 	}
-	@RequestMapping(value = "/googleSignInCallback", method = RequestMethod.GET)
-	public String doSessionAssignActionPage(HttpServletRequest request)throws Exception{
-	  System.out.println("/member/googleSignInCallback");
-	  String code = request.getParameter("code");
+	*/
+	@RequestMapping(value = "/oauth2callback", method = RequestMethod.GET)
+	public String doSessionAssignActionPage(@RequestParam("code") String code, HttpSession session, Model model)throws Exception{
+		  // 코드 확인
+        System.out.println("code : " + code);
+        
+        // Access Token 발급
+        JsonNode jsonToken = GoogleApi.getAccessToken(code);
+        String accessToken = jsonToken.get("access_token").toString();
+        String refreshToken = "";
+        System.out.println(jsonToken.get("refresh_token"));
+        /*
+        if(jsonToken.("refresh_token")) {
+            refreshToken = jsonToken.get("refresh_token").toString();
+        }
+        String expiresTime = jsonToken.get("expires_in").toString();
+ 		*/
+        // Access Token으로 사용자 정보 반환
+        JsonNode userInfo = GoogleApi.getGoogleUserInfo(accessToken);
+        System.out.println(userInfo.toString());
+        String id = userInfo.get("id").getValueAsText();
+        String name= userInfo.get("name").getValueAsText();
+        String email = userInfo.get("email").getValueAsText();
+        MemberVo vo = new MemberVo(id, "qd12", name, "", "", email, "", "e");
+        vo.setApi("google");
+        int apiCheck=mService.apiLogin(id, "google");
+		if(apiCheck==0) {
+			mService.insertApi(vo);
+		}
+		session.setAttribute("member", vo);
 
-	  OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
-	  AccessGrant accessGrant = oauthOperations.exchangeForAccess(code , googleOAuth2Parameters.getRedirectUri(),
-	      null);
-
-	  String accessToken = accessGrant.getAccessToken();
-	  Long expireTime = accessGrant.getExpireTime();
-	  if (expireTime != null && expireTime < System.currentTimeMillis()) {
-	    accessToken = accessGrant.getRefreshToken();
-	    System.out.printf("accessToken is expired. refresh token = {}", accessToken);
-	  }
-	  Connection<Google> connection = googleConnectionFactory.createConnection(accessGrant);
-	  Google google = connection == null ? new GoogleTemplate(accessToken) : connection.getApi();
-
-	  PlusOperations plusOperations = google.plusOperations();
-	  Person profile = plusOperations.getGoogleProfile();
-	  MemberVo vo = new MemberVo();
-	  System.out.println(profile.getDisplayName());
-	  
-	  vo.setEmail(profile.getAccountEmail());
-	  vo.setName(profile.getDisplayName());
-	  vo.setID(profile.getId());
-	  vo.setBirth(profile.getBirthday().toString());
-	  
-	  HttpSession session = request.getSession();
-	  vo = service.loginCheck(vo);
-	  
-//	  session.setAttribute("login", vo);
-
-
-	  return "redirect:/";
+	  return "loginaction";
 	}
 	
-	@RequestMapping(value = "/result")
-	public String result() {
-		return "result";
-	}
+//	@RequestMapping(value = "/result")
+//	public String result() {
+//		return "result";
+//	}
 //	@RequestMapping(value = "/signup")
 //	public String singup() {
 //		
@@ -121,8 +113,7 @@ public class HomeController {
 //		
 //		return "idcheck";
 //	}
-
-
+	
 	@RequestMapping(value = "/admin/chat")
 	public String chat() {
 		
@@ -132,17 +123,6 @@ public class HomeController {
 	public String test() {
 		
 		return "test";
-	}
-	@RequestMapping(value = "/auction")
-	public String auction() {
-		
-		return "showAuctionNormal";
-	}
-	
-	@RequestMapping(value = "/Search")
-	public String search() {
-		
-		return "Search";
 	}
 	
 }

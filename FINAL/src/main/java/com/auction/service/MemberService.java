@@ -19,4 +19,6 @@ public interface MemberService {
 	MemberVo PwCheck(MemberVo vo) throws Exception;	//비밀번호 찾기
 	
 	void newPW(MemberVo vo);	//새 비밀번호 설정
+	
+	MemberVo sameID(String ID);	//아이디 중복 체크
 }

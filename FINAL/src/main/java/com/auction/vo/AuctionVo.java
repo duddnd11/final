@@ -9,6 +9,9 @@ public class AuctionVo {
 	private String pname;
 	private String bestmoney;
 	private int payment;
+	private String getcustomer;
+	private String admin;
+	private String deal;
 	
 	public AuctionVo() {}
 
@@ -26,6 +29,30 @@ public class AuctionVo {
 		this.pno = pno;
 		this.myprice = myprice;
 		this.buydate = buydate;
+	}
+
+	public String getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(String admin) {
+		this.admin = admin;
+	}
+
+	public String getDeal() {
+		return deal;
+	}
+
+	public void setDeal(String deal) {
+		this.deal = deal;
+	}
+
+	public String getGetcustomer() {
+		return getcustomer;
+	}
+
+	public void setGetcustomer(String getcustomer) {
+		this.getcustomer = getcustomer;
 	}
 
 	public int getPayment() {

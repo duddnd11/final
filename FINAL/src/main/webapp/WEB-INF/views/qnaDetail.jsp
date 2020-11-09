@@ -52,9 +52,9 @@
                $(".topUl").append(str);
             }else if(response.level==1){
                var str="<div class='reComment'>"
-              		str+="<span style='margin-left: 20px;'>"+response.userid+"</span></div>";
+              		str+="<span style='margin-left: 20px;'>"+response.userid+"</span>";
                    str+="<span style='font-size: 12px; color: #cccccc; margin-left: 20px;'>"+response.date+"</span><br/>";
-              		str+="<span style='margin-left: 20px;'>"+response.comment+"</span></div>";
+              		str+="<span style='margin-left: 20px;'>"+response.comment+"</span></div><br/>";
                $(".reCommentMenu"+response.ref).append(str);
             }
          },
@@ -106,7 +106,7 @@
          var   step= $(this).parent().find("input#step").val();
          var comment = $(this).parent().find("textarea#comment").val();
          ajax_write(ref,level,step,comment,userid);
-         $('#comment').val('');
+         $('.comment').val('');
    });
     $(document).on("keydown","textarea.comment",function(key){
        if (key.keyCode == 13) {
@@ -140,7 +140,7 @@
       display : none;
    }
    table{
-      margin-left: 300px;
+      margin-left: 25%;
       margin-top: 200px;
       width: 1000px;
       padding: 10px;
@@ -172,14 +172,14 @@
       <td style="">조회수 : ${detail.hitcount}</td>
       </tr>
    </table>
-   <div style="float: right;  margin-right: 300px;">
+   <div style="float: right;  margin-right: 25%;">
       <input type="button" value="삭제" onclick="location.href='deleteBoard?qbno=${detail.qbno}&id=${member.ID}'"/>
       <input type="button" value="수정" onclick="location.href='modifyBoard?qbno=${detail.qbno}&id=${member.ID}'"/>
       <input type="button" value="목록" id="board" onclick="location.href='qnaBoard?offset=0'"/>
       </div>
    <br/>
    
-   <div class='dd' style="margin-left: 370px; margin-top: 50px;">
+   <div class='dd' style="margin-left: 30%; margin-top: 5%;">
       <textarea rows="5" cols="50" id="comment" class="comment" style="width: 800px; height: 50px;
       vertical-align: middle;"></textarea>
       <input type="button" value="등록" id="commentBtn" class="commentBtn"/>   <!-- level=0 -->
@@ -189,7 +189,7 @@
       
    </div>
    
-   <ul class="topUl">
+   <ul class="topUl" style="margin-left: 12%;">
       <c:forEach items="${comment}" var="comment">
          <li class="topLi">
             <c:if test="${comment.level eq 0 }">

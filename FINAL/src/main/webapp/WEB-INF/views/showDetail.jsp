@@ -39,7 +39,7 @@
       text-align: left;
    }
    .bx-next{
-         margin-left: 330px;
+         margin-left:330px;
    }
 </style>
 <script>
@@ -177,7 +177,7 @@ $(document).ready(function(){
          </c:when>
          
          <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer}">
-            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
+            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="rejectLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>
          
@@ -217,7 +217,7 @@ $(document).ready(function(){
       <button type="button" class="sp-sub-minus"  style="width: 40px; height: 32px;">
          <b>-</b>
       </button>
-         <input style=" width: 200px; height: 30px;margin-left: 0px;" type="tel" class="num" value="" placeholder="0" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
+         <input style=" width: 200px; height: 30px;margin-left: 0px;" type="tel" class="num" value="0" name="moneyup" id="btnQtyC3_1000020518522" data-max-qty="1000000" stoc-qty="3091">
          <button type="button" class="sp-sub-plus" style="width: 40px; height: 32px;">
             <b>+</b>
          </button><br/>
@@ -337,5 +337,4 @@ $(document).ready(function(){
 </script>
 </body>
 </html>
-
    <%@ include file="footer.jsp" %>

@@ -8,13 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.google.connect.GoogleConnectionFactory;
+import org.springframework.social.oauth2.GrantType;
+import org.springframework.social.oauth2.OAuth2Operations;
+import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.auction.service.AdminService;
+import com.auction.api.KakaoApi;
+import com.auction.api.NaverLoginBo;
 import com.auction.service.MemberService;
 import com.auction.service.ProductService;
 import com.auction.service.QnaBoardService;
@@ -32,9 +37,19 @@ public class MemberHomeController {
 	@Autowired
 	ProductService pService;
 	@Autowired
-	AdminService adminService;
-	@Autowired
 	QnaBoardService qnaService;
+	@Autowired
+	GoogleConnectionFactory googleConnectionFactory;
+	@Autowired
+	OAuth2Parameters googleOAuth2Parameters;
+	
+	private NaverLoginBo naverLoginBo;
+	private String apiResult= null;
+	
+	@Autowired
+	private void setNaverLoginBo(NaverLoginBo naverLoginBo) {
+		this.naverLoginBo = naverLoginBo;
+	}
 	
 //	@RequestMapping(value = "/", method = RequestMethod.GET)
 //	public String home(Locale locale, Model model) {
@@ -42,8 +57,25 @@ public class MemberHomeController {
 //		
 //		return "home";
 //	}
-	@RequestMapping(value = "/login", method = RequestMethod.GET)	//로그인
-	public String login(Locale locale, Model model) {
+	
+	@RequestMapping(value = "/login")	//로그인
+	public String login(Locale locale, Model model,HttpSession session) {
+		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
+		String googleUrl = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
+		System.out.println("/member/googleSignIn, url : " + googleUrl);
+		String googleUrl2 = "https://accounts.google.com/o/oauth2/v2/auth?" 
+                + "scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile" 
+                + "&response_type=code" 
+                + "&state=security_token%3D138r5719ru3e1%26url%3Dhttps://oauth2.example.com/token" 
+                + "&client_id=" + "1001790183901-cb9d2bt84dqu3v7e0gfsg6rtjrpapdd7.apps.googleusercontent.com"
+                + "&redirect_uri=" + "http://localhost:9090/final/oauth2callback"
+                + "&access_type=offline";
+		
+		String naverAuthUrl = naverLoginBo.getAuthorizationUrl(session);
+		String kakaoAuthUrl = KakaoApi.getAuthorizationUrl(session);
+		model.addAttribute("url", naverAuthUrl);
+		model.addAttribute("googleUrl",googleUrl2);
+		model.addAttribute("kakaoUrl", kakaoAuthUrl);
 		return "login";
 	}
 	
@@ -66,6 +98,10 @@ public class MemberHomeController {
 	
 	@RequestMapping(value = "/logout")		//로그아웃
 	public String logout(HttpSession session) {
+		if(session.getAttribute("accessToken")!=null) {
+			KakaoApi.kakaoLogout(session.getAttribute("accessToken").toString());
+		}
+		session.removeAttribute("accessToken");
 		session.invalidate();
 		return "logout";
 	}
@@ -87,7 +123,7 @@ public class MemberHomeController {
 	//	model.addAttribute("mvo", vo);
 	//	redirectattributes.addFlashAttribute("msg", "regSuccess");
 		vo.setPw(util(vo.getPw()));
-		
+//		System.out.println(vo.getName()+", "+vo.getZonecode()+", "+vo.getAddrdetail());
 		service.writeSignUp(vo);
 		return "redirect:/main";
 	}
@@ -101,10 +137,9 @@ public class MemberHomeController {
 		vo.setPw(util(vo.getPw()));
 		service.memberUpdate(vo);
 		session.invalidate();
-		
 		return "redirect:/main";
 	}
-	
+
 	public void setImg(List<ProductVo> list) {
 		for(ProductVo vo : list) {
 			if(vo.getFilenames()==null || vo.getFilenames().equals("")) {
@@ -126,7 +161,7 @@ public class MemberHomeController {
 		for(int i=0; i<=pno.length-1; i++) { //2
 			if(!(pno[i].equals(""))) {
 				ProductVo vo = pService.selectOne(Integer.parseInt(pno[i]));
-				System.out.println(vo);
+//				System.out.println(vo);
 				list1.add(vo);
 			}
 	      }
@@ -135,6 +170,7 @@ public class MemberHomeController {
 		List<QnaBoardVo> list2 =qnaService.selectFromId(id);
 		model.addAttribute("list1", list1);
 		model.addAttribute("list2", list2);
+//		System.out.println("list1: "+list1.isEmpty());
 		return "myPage";
 	}
 	
@@ -147,26 +183,27 @@ public class MemberHomeController {
 		for(Integer pno : pnoList) {
 			auctionList.add(pService.maxPrice(pno,id));
 		}
-		List<AuctionVo> salesList = adminService.saleItem(id);
+		List<ProductVo> salesList = pService.selectSales(id);
 		model.addAttribute("sales", salesList);
-		model.addAttribute("purchase",auctionList);
+		model.addAttribute("purchase", auctionList);
+		model.addAttribute("id", id);
 		return "deallist";
 	}
 	
-	@RequestMapping(value="/result/naverLogin")
-	public String naverLogin(String id,String name, String email,String birthday,String api,HttpSession session) {
-		MemberVo vo = new MemberVo(id, "111", name, "주소", "11111", email, birthday, "c");
-		vo.setApi(api);
-		int apiCheck=service.apiLogin(id, api);
-		System.out.println("api중복체크:"+apiCheck);
-		System.out.println(id);
-		System.out.println(api);
-		if(apiCheck==0) {
-			service.insertApi(vo);
-		}
-		session.setAttribute("member", vo);
-		return "loginaction";
-	}
+//	@RequestMapping(value="/result/naverLogin")
+//	public String naverLogin(String id,String name, String email,String birthday,String api,HttpSession session) {
+//		MemberVo vo = new MemberVo(id, "111", name, "주소", "11111", email, birthday, "c");
+//		vo.setApi(api);
+//		int apiCheck=service.apiLogin(id, api);
+//		System.out.println("api중복체크:"+apiCheck);
+//		System.out.println(id);
+//		System.out.println(api);
+//		if(apiCheck==0) {
+//			service.insertApi(vo);
+//		}
+//		session.setAttribute("member", vo);
+//		return "loginaction";
+//	}
 	
 	@RequestMapping(value = "/idcheck")
 	public String idfind(){
@@ -214,6 +251,7 @@ public class MemberHomeController {
 		session.invalidate();
 		return "redirect:/main";
 	}
+	
 	
 }
 

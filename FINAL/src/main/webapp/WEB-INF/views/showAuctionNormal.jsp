@@ -13,17 +13,17 @@
 </head>
 <style>
 img {
-	width: 300px;
-	height: 300px;
+   width: 300px;
+   height: 300px;
 }
 
 li {
-	display: inline-block;
-	list-style: none;
+   display: inline-block;
+   list-style: none;
 }
 
 .pname a {
-	color: #000;
+   color: #000;
     cursor: pointer;
     font-size: 20px;
     display: block;
@@ -31,27 +31,27 @@ li {
 }
 
 .pname a:hover {
-	text-decoration:underline;
+   text-decoration:underline;
 }
 
 .pname {
-	margin-top:40px;
-	margin-bottom:20px;
-	width :300px; 
-	height :22px;
+   margin-top:40px;
+   margin-bottom:20px;
+   width :300px; 
+   height :22px;
 }
 
 .desc {
-	color: #666;
+   color: #666;
     font-size: 13px;
     font-family: Roboto,"Malgun Gothic",sans-serif;
     margin: 2px 10px 2px 0;
 }
 
 #container>h2 {
-	text-align:center;
-	margin-top:40px;
-	color: #000;
+   text-align:center;
+   margin-top:40px;
+   color: #000;
     font-family: Futura,"Trebuchet MS",Arial,sans-serif;
     font-size: 23px;
     font-weight: 500;
@@ -59,16 +59,16 @@ li {
 }
 
 .list {
-	width: 1100px; 
-	margin: 0 auto;
+   width: 1100px; 
+   margin: 0 auto;
     display: table-cell;
     position: relative;
 }
 
 .product_list {
-	margin:70px;
-	width: 200px; 
-	display: block;
+   margin:70px;
+   width: 200px; 
+   display: block;
 }
 
 #container aside {
@@ -80,7 +80,7 @@ li {
 }
 
 #container aside fieldset {
-	border:0px;
+   border:0px;
 }
 
 #container aside fieldset legend {
@@ -105,6 +105,15 @@ li {
     margin-left:20px;
 }
 </style>
+<script>
+$(function(){
+	  $("input[class=kraken]").change(function() {
+	      var radioValue = $(this).val();
+	      location.href ="showAuctionNormal?category="+radioValue;
+	   });
+	});
+
+</script>
 <body>
 	<div id="container">
 	   <h2>온라인 경매</h2>
@@ -113,11 +122,18 @@ li {
 		   	   	   <legend>Category</legend>
 		   	   	   <ul>
 		   	   	   	   <li>
-		   	   	   	   	   <input type="radio" id="kraken" name="monster">
-    					   <label for="kraken">Krakedddn</label><br/>
-						   <c:forEach var="category" items="${category}">
-						      <a href="showAuctionNormal?category=${category}">${category}</a>
-						      <br/>
+		   	   	   	   	  <c:forEach var="categoryMenu" items="${categoryMenu}">
+						   <c:choose>
+						   <c:when test="${categoryMenu eq category }">
+		   	   	   	   	   <input type="radio" checked="checked" value="${categoryMenu}" id="kraken" name="monster" class="kraken">
+						   </c:when>
+						   <c:otherwise>
+		   	   	   	   	   <input type="radio" value="${categoryMenu}" id="kraken" name="monster" class="kraken">
+						   </c:otherwise>
+						   </c:choose>
+    					   <label for="kraken" value="${categoryMenu}" id="category">${categoryMenu}</label><br/>
+						      <!-- <a href="showAuctionBlind?category=${category}">${category}</a>
+						      <br/>-->
 						   </c:forEach>
 					   </li>
 				   </ul>
@@ -149,8 +165,8 @@ li {
 						    <p>
 							    	<a href="showDetail?pno=${vo.pno }">
 								      	<c:choose>
-							          		<c:when test="${fn:length(name) gt 13}">
-							              		<c:out value="${fn:substring(name, 0, 12)}..."></c:out>
+							          		<c:when test="${fn:length(name) gt 17}">
+							              		<c:out value="${fn:substring(name, 0, 16)}..."></c:out>
 							           		</c:when>
 								           	<c:otherwise>
 								            	<c:out value="${vo.pname }"></c:out>
@@ -170,7 +186,7 @@ li {
 			   </c:forEach>
 		   </ul>
 	   </div>
-</div>
+	 </div>
 </body>
 </html>
 <%@ include file="footer.jsp" %>   

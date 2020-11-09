@@ -38,7 +38,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/applyProductAction", method = RequestMethod.POST)
-	public String applyProductAction(ProductVo vo, Model model, HttpSession session) throws Exception{
+	public String applyProductAction(ProductVo vo, HttpSession session, HttpServletResponse response) throws Exception{
 		//String filePath = session.getServletContext().getRealPath("/resources/images/");
 		// request.getSession().getServletContext().getRealPath("/");  
 		String filePath = session.getServletContext().getRealPath("/")+"resources/images/";
@@ -62,14 +62,20 @@ public class ProductController {
 		vo.setFilenames(str);
 		}
 		
+
+		PrintWriter out =response.getWriter();
+		response.setContentType("text/html; charset=UTF-8");
+		
 		int result = service.insertProduct(vo);
 		if(result == 1) {
 			System.out.println("등록됨!!!!");
+			out.println("<script>alert('등록됨!!!!'); location.href='deallist';</script>");
+			out.flush();
+			return "deallist";
 		}else {
-			System.out.println("등록...안됨..");
+			System.out.println("등록...안됨ㅜㅜ");
 		}
-		model.addAttribute("result", result);
-		return "myPage";
+		return "deallist";
 		
 	}
 	
@@ -119,7 +125,8 @@ public class ProductController {
 		}
 		setImg(list);
 		setImg(listCategory);
-		model.addAttribute("category", categoryMenu);
+		model.addAttribute("category", category);
+		model.addAttribute("categoryMenu", categoryMenu);
 		if(category==null) {
 			model.addAttribute("list", list);
 		}else {
@@ -149,7 +156,8 @@ public class ProductController {
 		setImg(listShowBlind);
 		setImg(listCategory);
 		
-		model.addAttribute("category", categoryMenu);
+		model.addAttribute("category", category);
+		model.addAttribute("categoryMenu", categoryMenu);
 		if(category==null) {
 			model.addAttribute("voListShowBlind", listShowBlind);
 		}else {
@@ -227,14 +235,14 @@ public class ProductController {
 	}*/
 	
 	@RequestMapping(value="/addLike")
-	public String addLike(int pno, HttpSession session) {
+	public String addLike(int pno, HttpSession session, HttpServletResponse response) {
 		MemberVo member =  (MemberVo) session.getAttribute("member");
 		String ID = member.getID();
 		String str = pno+"_!_";	//1137_!_
 		String likeArr[]=service.selectLike(ID).split("_!_");
 		int check=0;
 		for(int i=0; i<likeArr.length ;i++) {
-			System.out.println(likeArr[i]+"="+pno);
+//			System.out.println(likeArr[i]+"="+pno);
 			if(likeArr[i].equals(String.valueOf(pno))) {
 				check=1;
 				System.out.println("비교문: "+check);
@@ -247,6 +255,7 @@ public class ProductController {
 		}
 		return "redirect:/showDetail?pno="+pno;
 	}
+
 	@RequestMapping(value="payment")
 	public String payment(HttpSession session,int pno,Model model) {
 		MemberVo member =  (MemberVo) session.getAttribute("member");
@@ -258,8 +267,23 @@ public class ProductController {
 	@RequestMapping(value="paymentAction")
 	public String paymentAction(int pno,Model model) {
 		System.out.println("결제완료 확인");
-		service.payment(pno);
+		//service.payment(pno);
 		return "paymentAction";
+	}
+	
+	@RequestMapping(value = "/Search")	//검색
+	public String search(Model model,String keyword) {
+		List<ProductVo> list = service.searchProduct(keyword);
+
+		model.addAttribute("list", list);
+		model.addAttribute("keyword", keyword);
+		return "Search";
+	}
+	@RequestMapping(value = "/showBiddingAuction")	//검색
+	public String showBiddingAuction() {
+		
+
+		return "showBiddingAuction";
 	}
 }
 
