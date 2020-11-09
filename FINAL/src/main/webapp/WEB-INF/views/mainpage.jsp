@@ -22,46 +22,47 @@
 }
 
 .swiper1 {
-   width:900px;
-   height:800px;
+   margin-top:30px;
+   width: 900px;
+   height: 750px;
 }
 
 #content {
-   margin:0 80px 80px 80px;
+   margin: 0 80px 80px 80px;
 }
 
 h2, small {
-   display:inline-block;
+   display: inline-block;
 }
 
 h2 {
-    color: #000;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 1;
-    vertical-align: middle;
-    font-family: "Nanum Barun Gothic", sans-serif;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-top:80px;
-    margin-bottom:50px;
+   color: #000;
+   font-size: 20px;
+   font-weight: 700;
+   line-height: 1;
+   vertical-align: middle;
+   font-family: "Nanum Barun Gothic", sans-serif;
+   letter-spacing: 1px;
+   text-transform: uppercase;
+   margin-top: 80px;
+   margin-bottom: 50px;
 }
 
 small {
    color: gray;
-    font-size: 15px;
-    line-height: 1;
-    vertical-align: middle;
-    font-family: "Nanum Barun Gothic", sans-serif;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin:80px 0 50px 30px;
+   font-size: 15px;
+   line-height: 1;
+   vertical-align: middle;
+   font-family: "Nanum Barun Gothic", sans-serif;
+   letter-spacing: 1px;
+   text-transform: uppercase;
+   margin: 80px 0 50px 30px;
 }
-   img {
-      width: 200px;
-       height: 200px;
-   }
 
+img {
+   width: 200px;
+   height: 200px;
+}
 </style>
 <script>
 $(document).ready(function(){
@@ -192,7 +193,7 @@ function msg_time() {
                   <c:if test="${showHurry.image ne null }">
                      <a href="showDetail?pno=${showHurry.pno }"><img src="${showHurry.image }"/></a>   
                   </c:if>
-                  <c:if test="${showHurry.image eq null }">
+                  <c:if test="${showHurry.image eq null }">`
                   <c:choose>
                   <c:when test="${showHurry.img1 ne '(이름없음)' }">
                      <a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img1 }"/></a> <br/>
@@ -202,8 +203,10 @@ function msg_time() {
                   </c:otherwise>
                   </c:choose>
                   </c:if>
-               <br/> D-day: <br/>
-               <span id="spanDday<c:out value='${status.index}'/>"></span> 
+                  <div>
+	                	<span>D-day</span> 
+	               		<span id="spanDday<c:out value='${status.index}'/>"></span> 
+	               </div>
                <%--
                <c:choose>
                   <c:when test="${showHurry.timeout >1}">

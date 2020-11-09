@@ -105,6 +105,16 @@ li {
     margin-left:20px;
 }
 </style>
+<script type="text/javascript">
+	$(function(){
+		  $("input[class=kraken]").change(function() {
+		      var radioValue = $(this).val();
+		      location.href ="showAuctionBlind?category="+radioValue;
+		   });
+		});
+	
+
+</script>
 <body>
 	<div id="container">
 	   <h2>블라인드 경매</h2>
@@ -113,11 +123,18 @@ li {
 		   	   	   <legend>Category</legend>
 		   	   	   <ul>
 		   	   	   	   <li>
-		   	   	   	   	   <input type="radio" id="kraken" name="monster">
-    					   <label for="kraken">Krakendd</label><br/>
-						   <c:forEach var="category" items="${category}">
-						      <a href="showAuctionNormal?category=${category}">${category}</a>
-						      <br/>
+						   <c:forEach var="categoryMenu" items="${categoryMenu}">
+						   <c:choose>
+						   <c:when test="${categoryMenu eq category }">
+		   	   	   	   	   <input type="radio" checked="checked" value="${categoryMenu}" id="kraken" name="monster" class="kraken">
+						   </c:when>
+						   <c:otherwise>
+		   	   	   	   	   <input type="radio" value="${categoryMenu}" id="kraken" name="monster" class="kraken">
+						   </c:otherwise>
+						   </c:choose>
+    					   <label for="kraken" value="${categoryMenu}" id="category">${categoryMenu}</label><br/>
+						      <!-- <a href="showAuctionBlind?category=${category}">${category}</a>
+						      <br/>-->
 						   </c:forEach>
 					   </li>
 				   </ul>

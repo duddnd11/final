@@ -8,14 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.google.connect.GoogleConnectionFactory;
+import org.springframework.social.oauth2.GrantType;
+import org.springframework.social.oauth2.OAuth2Operations;
+import org.springframework.social.oauth2.OAuth2Parameters;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.auction.api.KakaoApi;
 import com.auction.api.NaverLoginBo;
-import com.auction.service.AdminService;
 import com.auction.service.MemberService;
 import com.auction.service.ProductService;
 import com.auction.service.QnaBoardService;
@@ -34,6 +38,10 @@ public class MemberHomeController {
 	ProductService pService;
 	@Autowired
 	QnaBoardService qnaService;
+	@Autowired
+	GoogleConnectionFactory googleConnectionFactory;
+	@Autowired
+	OAuth2Parameters googleOAuth2Parameters;
 	
 	private NaverLoginBo naverLoginBo;
 	private String apiResult= null;
@@ -49,11 +57,25 @@ public class MemberHomeController {
 //		
 //		return "home";
 //	}
+	
 	@RequestMapping(value = "/login")	//로그인
 	public String login(Locale locale, Model model,HttpSession session) {
+		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
+		String googleUrl = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
+		System.out.println("/member/googleSignIn, url : " + googleUrl);
+		String googleUrl2 = "https://accounts.google.com/o/oauth2/v2/auth?" 
+                + "scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile" 
+                + "&response_type=code" 
+                + "&state=security_token%3D138r5719ru3e1%26url%3Dhttps://oauth2.example.com/token" 
+                + "&client_id=" + "1001790183901-cb9d2bt84dqu3v7e0gfsg6rtjrpapdd7.apps.googleusercontent.com"
+                + "&redirect_uri=" + "http://localhost:9090/final/oauth2callback"
+                + "&access_type=offline";
+		
 		String naverAuthUrl = naverLoginBo.getAuthorizationUrl(session);
-		System.out.println(naverAuthUrl);
+		String kakaoAuthUrl = KakaoApi.getAuthorizationUrl(session);
 		model.addAttribute("url", naverAuthUrl);
+		model.addAttribute("googleUrl",googleUrl2);
+		model.addAttribute("kakaoUrl", kakaoAuthUrl);
 		return "login";
 	}
 	
@@ -76,6 +98,10 @@ public class MemberHomeController {
 	
 	@RequestMapping(value = "/logout")		//로그아웃
 	public String logout(HttpSession session) {
+		if(session.getAttribute("accessToken")!=null) {
+			KakaoApi.kakaoLogout(session.getAttribute("accessToken").toString());
+		}
+		session.removeAttribute("accessToken");
 		session.invalidate();
 		return "logout";
 	}
@@ -111,7 +137,6 @@ public class MemberHomeController {
 		vo.setPw(util(vo.getPw()));
 		service.memberUpdate(vo);
 		session.invalidate();
-		
 		return "redirect:/main";
 	}
 
@@ -145,6 +170,7 @@ public class MemberHomeController {
 		List<QnaBoardVo> list2 =qnaService.selectFromId(id);
 		model.addAttribute("list1", list1);
 		model.addAttribute("list2", list2);
+//		System.out.println("list1: "+list1.isEmpty());
 		return "myPage";
 	}
 	

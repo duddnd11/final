@@ -1,3 +1,12 @@
+function checkUserId(ID) {
+
+  var idRegExp = /^[a-zA-z0-9]{4,10}$/; 
+  if (!idRegExp.test(ID)) {
+      alert("아이디는 영문 대소문자와 숫자 4~10자리로 입력해야합니다!");
+      return false;
+  }	
+  return true;
+}
 
 function checkPassword(pw) {
 
@@ -38,7 +47,7 @@ function searchPostcode(){
 
     new daum.Postcode({
       oncomplete: function(data) {
-        $("input[name='zonecode']").val(data.zonecode);
+      	$("input[name='zonecode']").val(data.zonecode);
         $("input[name='addr']").val(data.address);
       }
     }).open();

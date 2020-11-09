@@ -50,8 +50,8 @@ $("#check_module").click(function () {
    buyer_email: '${member.email}',
    buyer_name: '${member.name}',
    buyer_tel: '${member.phonenum}',
-   buyer_addr: "${member.addr}",
-   //buyer_postcode: "11",
+   buyer_addr: "${member.addr}"+" ${member.addrdetail}",
+   buyer_postcode: "${member.zonecode}",
    //m_redirect_url: 'paymentAction?pno=${vo.pno}'  모바일url
    /*
    모바일 결제시,

@@ -87,7 +87,7 @@ $(function() {
 </head>
 <body>
   <div id="container">
-  <form action="signupaction" method="post" style="height: 850px;">
+  <form action="signupaction" method="post" style="height: 100%;">
     <table id="signup-table" style="margin-top: 20px;">
         <tr>
           <th>아이디</th>
