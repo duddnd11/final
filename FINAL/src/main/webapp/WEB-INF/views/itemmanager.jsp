@@ -23,7 +23,7 @@
 	table{
 		width: 1200px;
 		margin-top: 150px;
-		margin-left: 18%;
+		margin-left: 22.5%;
 		font-size: 18px;
 		text-align: center;
 	}

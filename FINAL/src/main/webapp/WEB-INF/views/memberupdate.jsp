@@ -60,7 +60,7 @@
 <body>
 
 	<button onclick="location.href='myPage'" class="btn btn-link">뒤로가기</button>
-   <form action = "memberaction" style="margin-left: 500px; margin-top: 200px;">
+   <form action = "memberaction" style="margin-left: 43%; margin-top: 200px;">
    <table>
   
       <div class="form-group has-feedback">
@@ -114,8 +114,8 @@
     </table>
             <div class="form-group has-feedback">
                <button class="btn btn-success" type="submit" id="submit" 
-               style=" margin-top: 10px; margin-left: 110px; width: 140px; height: 50px;">회원정보수정</button>
-               <button class="cencle btn btn-danger" type="button" style=" margin-left: 10px; width: 140px; height: 50px;">취소</button>
+               style=" margin-top: 10px; margin-left: 10px; width: 140px; height: 50px;">회원정보수정</button>
+               <button class="cencle btn btn-danger" type="button" style=" margin-top: 10px; margin-left: 10px; width: 140px; height: 50px;">취소</button>
             </div>
     
        

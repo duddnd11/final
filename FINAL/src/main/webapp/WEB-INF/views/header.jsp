@@ -318,8 +318,14 @@ hr {
                   </li>
                   <li>|</li>
                   <li class="topMenuLi">
-						<a class="menuLink" href="http://localhost:9090/final/showBiddingAuction">서비스 소개</a>	
-				  </li>
+                     <li class="topMenuLi">
+                     <a class="menuLink" href="http://localhost:9090/final/showBiddingAuction">서비스 소개</a>
+                     
+                  </li>
+                     <ul class="submenu">
+                        <li><a href="showAuctionNormal" class="submenuLink longLink">경매 응찰</a></li>
+                        <li><a href="showAuctionBlind" class="submenuLink longLink">작품 위탁</a></li>
+                     </ul>
                   <li>|</li>
                   <li class="topMenuLi"><a class="menuLink" href="notice?offset=0">고객센터</a>
                      <ul class="submenu">
@@ -328,11 +334,7 @@ hr {
                         <li><a href="new?userId=${member.ID}&user=${member.name}&name=${member.ID}의 채팅방" class="submenuLink">1:1 문의</a></li>
                      </ul>
                   </li>
-                  <div class="search">
-                      <a href="Search">
-                        <img class="search_img" src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw=">
-                     </a>
-                  </div>
+                  
                   <div class="login">
                         <c:choose>
                               <c:when test="${member.grade eq null }">
@@ -358,6 +360,11 @@ hr {
                               </c:otherwise>
 		                  </c:choose>
                      </div>
+                     <div class="search" style="position: absolute; right: -80px; top: 0;">
+                      <a href="Search">
+                        <img class="search_img" src="https://media.istockphoto.com/vectors/basic-app-magnifier-icon-vector-id800313034?k=6&m=800313034&s=170667a&w=0&h=uvpZQHYd9nB6yyL3bnogFSF1XC_cewQ3I6kUItSVTIw=">
+                     </a>
+                  </div>
                </ul>
             </nav>
          </div>

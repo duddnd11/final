@@ -119,7 +119,7 @@ $("#check_module").click(function () {
       text-align-last: center;
    }
    #check_module{
-      margin-left:44.3%;
+      margin-left:45.5%;
       margin-top: 2%;
       height: 50px;
       margin-bottom: 3%;
@@ -140,7 +140,7 @@ $("#check_module").click(function () {
    </c:forEach>
    </table>
    <div style="border-top: 1px solid #cccccc;">
-   <table style=" margin-left: 35%; margin-top: 2%;">
+   <table style=" margin-left: 38%; margin-top: 2%;">
    <tr>
    <th>받는사람</th> <td><input type="text" value="${member.name }"/></td>
    </tr>

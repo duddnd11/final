@@ -22,7 +22,7 @@
 </style>
 </head>
 <body>
-	<div id="chatRooms" style="margin-left: 400px; margin-top: 200px;">
+	<div id="chatRooms" style="margin-left: 33%; margin-top: 200px;">
 	<table style="width: 700px;">
 			<tr>
 				<th style="width: 150px;">방제목</th>
