@@ -5,12 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>로그아웃</title>
+<title>없는 아이디</title>
 </head>
 <body>
 	<script>
-		alert("로그아웃 되셨습니다.");	
-		document.location.href="login";
+		alert("없는 계정입니다. 다시 로그인 해주세요.");	
+		//document.location.href="main";
+		history.back();
 	</script>
 </body>
 </html>
