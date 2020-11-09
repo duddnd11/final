@@ -170,20 +170,22 @@ public class ProductController {
 	public String showDetail(Model model, int pno, HttpSession session) {
 //		session.setAttribute("member", "admin");				//수정
 		MemberVo ID =  (MemberVo) session.getAttribute("member");
-		String userId = ID.getID();
-		String str = pno+"_!_";	//1137_!_
-		String likeArr[]=service.selectLike(userId).split("_!_");
 		int check=0;
-		
-		for(int i=0; i<likeArr.length ;i++) {
-//			System.out.println(likeArr[i]+"="+pno);
-			if(likeArr[i].equals(String.valueOf(pno))) {
-				check=1;
-				System.out.println("비교문: "+check);
-				break;
+		if(ID!=null) {
+			String userId = ID.getID();
+			String str = pno+"_!_";	//1137_!_
+	
+			String likeArr[]=service.selectLike(userId).split("_!_");
+			
+			for(int i=0; i<likeArr.length ;i++) {
+	//			System.out.println(likeArr[i]+"="+pno);
+				if(likeArr[i].equals(String.valueOf(pno))) {
+					check=1;
+					System.out.println("비교문: "+check);
+					break;
+				}
 			}
 		}
-		
 		////////////////////////////////////////////////
 		service.hitcountUp(pno);
 		ProductVo vo = service.selectOne(pno);
@@ -267,11 +269,6 @@ public class ProductController {
 				break;
 			}
 		}
-<<<<<<< HEAD
-		int result=0;
-		if(check ==0) {
-			result = service.addLike(str, ID);
-=======
 		*/
 //		if(check ==0) {
 			int result = service.addLike(str, ID);
