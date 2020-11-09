@@ -69,6 +69,7 @@ $(function() {
 	                  		break;
 	                      case 1:
 	                          alert("로봇이 아님을 증명하시오.");
+	                          console.log(data);
 	                          break;
 	                      default:
 	                          alert("자동 가입 방지 봇을 실행 하던 중 오류가 발생 했습니다. [Error bot Code : " + Number(data) + "]");
@@ -165,7 +166,7 @@ $(function() {
 </body>
 <script>
 $(function(){
-	
+	var check=0;
 $(".idCheck").click(function(){
 	var query = {ID : $("#ID").val()};
 
@@ -175,17 +176,25 @@ $(".idCheck").click(function(){
 		data : JSON.stringify(query),
 		contentType :'application/json',
 		success : function(data){
-			if(data == 1){
+			if(data == 1 || query == ''){
 				alert("사용 불가능합니다. 다른 아이디를 입력하세요.");
 				$('#ID').val('');
 				$('#ID').focus();
-			}else {
+			}
+
+			if(data == 0){
 				alert("사용 가능한 아이디 입니다.");
+				check=1;
 			}
 		}	
 	}); 
 	
 });
+$('.btn ui-button ui-corner-all ui-widget').click(function(){
+	if(check==0){
+		alert("중복체크 하세요.");
+		}
+	})
 });
 
 </script>

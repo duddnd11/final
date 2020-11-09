@@ -155,7 +155,7 @@ public class MyRestController {
 	public int Idcheck(@RequestBody Map<String , String > param) {
 		String ID = param.get("ID");
 		MemberVo vo = memberservice.sameID(ID);
-		
+		System.out.println(vo);
 		int result = 0;
 		if(vo != null) {
 			result = 1;
@@ -167,6 +167,7 @@ public class MyRestController {
 	public int VerifyRecaptcha(HttpServletRequest request) {
 	    VerifyRecaptcha.setSecretKey("6LeALOAZAAAAANet7YyaKnKojTqlbeqjmfmdp_oh");
 	    String gRecaptchaResponse = request.getParameter("recaptcha");
+	    System.out.println("dddd:"+gRecaptchaResponse);
 	    try {
 	       if(VerifyRecaptcha.verify(gRecaptchaResponse))
 	          return 0; // 성공
