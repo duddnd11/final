@@ -15,7 +15,7 @@
 function popup(){
       var url = "login/";
       var name = "login popup";
-      var option = "width = 550, height = 500, top = 100, left = 200, location = no"
+      var option = "width = 550, height = 636, top = 100, left = 200, location = no"
       window.open(url, name, option);
  }
 var check =0;
