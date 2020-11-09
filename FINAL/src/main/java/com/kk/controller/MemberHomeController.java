@@ -22,7 +22,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.auction.api.KakaoApi;
 import com.auction.api.NaverLoginBo;
-import com.auction.service.AdminService;
 import com.auction.service.MemberService;
 import com.auction.service.ProductService;
 import com.auction.service.QnaBoardService;
@@ -41,12 +40,10 @@ public class MemberHomeController {
 	ProductService pService;
 	@Autowired
 	QnaBoardService qnaService;
-	
 	@Autowired
 	GoogleConnectionFactory googleConnectionFactory;
 	@Autowired
 	OAuth2Parameters googleOAuth2Parameters;
-	
 	
 	private NaverLoginBo naverLoginBo;
 	private String apiResult= null;
@@ -65,17 +62,21 @@ public class MemberHomeController {
 	
 	@RequestMapping(value = "/login")	//로그인
 	public String login(Locale locale, Model model,HttpSession session) {
+		OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
+		String googleUrl = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
+		System.out.println("/member/googleSignIn, url : " + googleUrl);
+		String googleUrl2 = "https://accounts.google.com/o/oauth2/v2/auth?" 
+                + "scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile" 
+                + "&response_type=code" 
+                + "&state=security_token%3D138r5719ru3e1%26url%3Dhttps://oauth2.example.com/token" 
+                + "&client_id=" + "1001790183901-cb9d2bt84dqu3v7e0gfsg6rtjrpapdd7.apps.googleusercontent.com"
+                + "&redirect_uri=" + "http://localhost:9090/final/oauth2callback"
+                + "&access_type=offline";
+		
 		String naverAuthUrl = naverLoginBo.getAuthorizationUrl(session);
 		String kakaoAuthUrl = KakaoApi.getAuthorizationUrl(session);
-		System.out.println(naverAuthUrl);
-
-//	  	/* 구글code 발행 */
-//	  	OAuth2Operations oauthOperations = googleConnectionFactory.getOAuthOperations();
-//	    /* 로그인페이지 이동 url생성 */
-//	  	String url = oauthOperations.buildAuthorizeUrl(GrantType.AUTHORIZATION_CODE, googleOAuth2Parameters);
-//
-//	  	model.addAttribute("google_url", url);
 		model.addAttribute("url", naverAuthUrl);
+		model.addAttribute("googleUrl",googleUrl2);
 		model.addAttribute("kakaoUrl", kakaoAuthUrl);
 		return "login";
 	}
@@ -104,9 +105,7 @@ public class MemberHomeController {
 		if(session.getAttribute("accessToken")!=null) {
 			KakaoApi.kakaoLogout(session.getAttribute("accessToken").toString());
 		}
-		System.out.println(session.getAttribute("accessToken"));
 		session.removeAttribute("accessToken");
-		System.out.println(session.getAttribute("accessToken"));
 		session.invalidate();
 		return "logout";
 	}

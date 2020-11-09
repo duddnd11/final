@@ -54,7 +54,7 @@
                var str="<div class='reComment'>"
               		str+="<span style='margin-left: 20px;'>"+response.userid+"</span></div>";
                    str+="<span style='font-size: 12px; color: #cccccc; margin-left: 20px;'>"+response.date+"</span><br/>";
-              		str+="<span style='margin-left: 20px;'>"+response.comment+"</span></div>";
+              		str+="<span style='margin-left: 20px;'>"+response.comment+"</span></div><br/>";
                $(".reCommentMenu"+response.ref).append(str);
             }
          },
@@ -106,7 +106,7 @@
          var   step= $(this).parent().find("input#step").val();
          var comment = $(this).parent().find("textarea#comment").val();
          ajax_write(ref,level,step,comment,userid);
-         $('#comment').val('');
+         $('.comment').val('');
    });
     $(document).on("keydown","textarea.comment",function(key){
        if (key.keyCode == 13) {
@@ -209,7 +209,6 @@
                            <span style="margin-left: 20px;">${reComment.userid}</span><br/>
                            <span style="font-size: 12px; color: #cccccc; margin-left: 20px;">${reComment.date}</span><br/>
                            <span style="margin-left: 20px;">${reComment.comment}</span>
-                           
                            </div><br/>
                         </c:if>
                      </c:forEach>

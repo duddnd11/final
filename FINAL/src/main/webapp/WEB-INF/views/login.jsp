@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <meta charset="UTF-8">  
   <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="1001790183901-cb9d2bt84dqu3v7e0gfsg6rtjrpapdd7.apps.googleusercontent.com">
@@ -137,13 +138,15 @@
 	  <div id="naver_id_login" style="margin-left:50px; margin-top: 10px;"><a href="${url}"><img width="277" src="http://static.nid.naver.com/oauth/big_w.PNG"/></a></div>
     </form>
     
-    
-<!-- 구글 로그인 화면으로 이동 시키는 URL -->
-<!-- 구글 로그인 화면에서 ID, PW를 올바르게 입력하면 oauth2callback 메소드 실행 요청
-<div id="google_id_login" style="text-align:center"><a href="${google_url}"><img width="230" src="${pageContext.request.contextPath}/resources/img/btn_google_signin_dark_normal_web@2x.png"/></a></div>
--->
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style=" margin-left: 50px; margin-top: 7px; width: 277px; height: 60px;">dfd</div>
+    <div class="g-signin2" data-theme="dark" style="margin-left: 50px; margin-top: 7px; width: 277px; height: 60px;">
+    <a href="${googleUrl}">dfd</a></div>
+    <!--  data-onsuccess="onSignIn"-->
+   
+     <div id="google_id_login" style="margin-left: 50px; margin-top: 7px; width: 277px; height: 60px;">
+	    <a href="${googleUrl}">구글 로그인</a>
+	  </div>
     <script>
+    /*
         function onSignIn(googleUser) {
             // Useful data for your client-side scripts:
             var profile = googleUser.getBasicProfile();
@@ -157,6 +160,7 @@
             var id_token = googleUser.getAuthResponse().id_token;
             console.log("ID Token: " + id_token);
         };
+        */
     </script>
   </div>
 </body>
