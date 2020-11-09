@@ -5,6 +5,7 @@ function handleData(){
 
     const ID = $('form')[0].ID.value
     const pw = $('form')[0].pw.value
+    const pw2 = $('form')[0].pw2.value
     const name = $('form')[0].name.value
     const phonenum = $('form')[0].phonenum.value
     const zonecode = $('form)[0].zonecode.value
@@ -19,6 +20,7 @@ function handleData(){
     const userObj = {
       ID: ID,
       pw: pw,
+      pw2:pw2,
       name : name,
       phonenum : phonenum,
       zonecode : zonecode,
