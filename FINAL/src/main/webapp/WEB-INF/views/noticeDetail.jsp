@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <style>
 	table{
-		margin-left: 300px;
+		margin-left: 25%;
 		margin-top: 200px;
 		width: 1000px;
 		padding: 10px;
@@ -49,7 +49,7 @@
 	<br/>
 	
 	<input type="button" value="목록" id="board" onclick="location.href='notice?offset=0'"
-	style="float: right; margin-right: 250px;"/>
+	style="float: right; margin-right: 440px;"/>
 </body>
 <%@ include file="footer.jsp" %>
 </html>

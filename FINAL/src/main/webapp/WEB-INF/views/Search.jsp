@@ -22,15 +22,15 @@
 </style>
 <body>
 <div id="container" style="width: -webkit-fill-available; margin-top:200px">
-	<form action="Search">
-		<input name="keyword" value="${keyword}" />
-		<input type="submit" value="조회" />
+	<form action="Search" style="margin-left: 35%;">
+		<input name="keyword" value="${keyword}" style="width: 500px; height: 30px;"/>
+		<input type="submit" value="조회" style="height: 30px; margin: 2px;"/>
 	</form>
 	<div style="width: 300px; height: 1000px; position: fixed;">
 	<c:forEach var="category" items="${category}">
 		<a href="showAuctionNormal?category=${category}">${category}</a><br/>
 	</c:forEach>
-	카테고리 --왼쪽에
+	
 	</div>
 	<div style="width: 1100px; margin: 0 auto; ">
 	<ul>

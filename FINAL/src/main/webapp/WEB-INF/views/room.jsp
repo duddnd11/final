@@ -76,9 +76,6 @@
    .stop()
 <<<<<<< HEAD
    .animate({ scrollTop: $('#data')[0].scrollHeight }, 1000);*/
-=======
-   .animate({ scrollTop: $('#data')[0].scrollHeight }, 1000);	
->>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 </script>
 
 <style>
@@ -146,7 +143,7 @@ textarea{
 				</div>
 			</div>
 		</div>
-<div style="margin-left: 600px;">
+<div style="margin-left: 40%;">
 	<input type="hidden" value="${room.roomId}"/ style="position: absolute; top: 350px; left: 700px; width: 302px; height: 50px;"><br/>
 	<input type="hidden" value="${room.name}" style="position: absolute; top: 350px; width: 100px; height: 50px;"/><br/>
 	<div rows="10" cols="50" readonly="readonly" id="data" 
@@ -158,12 +155,11 @@ textarea{
 	style="width: 60px; height: 68px; margin-left: 4px; background-color: #CECEF6; color: white; 
 	font-weight: 700; font-size: 16px; border: none; border-radius: 2px 2px 2px 2px;"/>
 	</div>
-	<input type="button" value="채팅참여" id="chatting" 
-	style="position: absolute; top: 393px; width: 100px; height: 50px;"/>
+	<input type="button" value="채팅참여" id="chatting" style="position: absolute;top: 386px;width: 100px;height: 50px;">
 	<input type="button" value="퇴장" id="exit"
-	style="position: absolute; top: 393px; left: 700px; width: 100px; height: 50px;"/>
+	style="position: absolute; top: 386px; left: 861px; width: 100px; height: 50px;"/>
 	<input type="text" value="${member.ID}" id="userId"
-	style="position: absolute; top: 393px; left: 800px; width: 200px; height: 50px; text-align: center;"/>
+	style="position: absolute; top: 386px; left: 961px; width: 200px; height: 50px; text-align: center;"/>
       </div>
 </div>
 </body>

@@ -21,7 +21,7 @@
 </style>
 <body>
 <button id="menuBtn" onclick="location.href='./main'">메인화면</button>
-<div style="margin-top: 10%; margin-left: 37%; display: flex; width: 1300px;">
+<div style="margin-top: 10%; margin-left: 35%; display: flex; width: 1300px;">
 	
 	<div style="width: 450px;">
 	<h1 style="width: 450px;">결제완료가 완료되었습니다.</h1>

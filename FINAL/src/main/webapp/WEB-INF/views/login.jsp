@@ -143,8 +143,8 @@
     <!--  data-onsuccess="onSignIn"-->
    
      <div id="google_id_login" style="margin-left: 50px; margin-top: 7px; width: 277px; height: 60px;">
-    <a href="${googleUrl}">구글 로그인</a>
-  </div>
+	    <a href="${googleUrl}">구글 로그인</a>
+	  </div>
     <script>
     /*
         function onSignIn(googleUser) {

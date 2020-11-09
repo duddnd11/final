@@ -13,9 +13,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <title>거래내역</title>
+<style>
+	td{
+		padding: 10px;
+	}
+	table{
+		width:1100px;
+		text-align: center;
+	}
+</style>
 </head>
 <body>
-	<div id="container" style="margin-top: 200px; margin-left: 40%;">
+	<div id="container" style="margin-top: 200px; margin-left: 27%;">
 	<button onclick="location.href='myPage'" class="btn btn-link">뒤로가기</button>
 <h2>판매</h2><br/>
 		<table id="salestable">

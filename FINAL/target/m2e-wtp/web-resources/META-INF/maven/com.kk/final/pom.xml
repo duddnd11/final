@@ -166,7 +166,7 @@
 		    <artifactId>commons-io</artifactId>
 		    <version>2.4</version>
 		</dependency>
-		       
+		       <!-- 구글 로그인 -->
 		<dependency>
 		  <groupId>org.springframework.social</groupId>
 		  <artifactId>spring-social-google</artifactId>

@@ -1,6 +1,4 @@
 package com.kk.controller;
-
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -81,9 +79,11 @@ public class MemberHomeController {
 		return "login";
 	}
 	
+
+	
 	@RequestMapping(value = "/login/loginaction")
-	public String LoginCheck(MemberVo vo, HttpServletResponse response,HttpServletRequest req, HttpSession session, RedirectAttributes redirectattributes) throws Exception {
-		PrintWriter out=response.getWriter();
+	public String LoginCheck(MemberVo vo, HttpServletRequest req, HttpSession session, RedirectAttributes redirectattributes) throws Exception {
+	//	PrintWriter out=response.getWriter();
 		session = req.getSession();
 		//System.out.println(dto.getID());
 		vo.setPw(util(vo.getPw()));

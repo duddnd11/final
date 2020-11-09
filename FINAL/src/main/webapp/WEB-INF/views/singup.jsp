@@ -154,7 +154,7 @@ $(function() {
       <input title="가입하기" type="submit" id="btn_join" class="btn ui-button ui-corner-all ui-widget" 
       value="가입" role="button" style="margin-left: 100px;">
       <input title="처음 상태로" type="reset" id="btn_cancel" class="btn" value="리셋">
-    <button type="button" class="idCheck" style="/* margin-left: -50px; */position: absolute;top: 90px;right: 750px;">아이디확인</button>
+    <button type="button" class="idCheck" style="/* margin-left: -50px; */position: absolute;top: 90px;right: 680px;">아이디확인</button>
     </div>
     </form>
   </div>

@@ -1,5 +1,6 @@
 package com.kk.controller;
 
+import java.io.IOException;
 import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
@@ -33,7 +34,7 @@ public class HomeController {
 	MemberService mService;
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		return "home";
+		return "test22";
 	}
 //	@RequestMapping(value = "/mainpage")
 //	public String maainpage() {
@@ -65,7 +66,24 @@ public class HomeController {
 	  return "login/googleLogin";
 
 	}
+<<<<<<< HEAD
+	
+//	  // 구글 Callback호출 메소드
+//	  @RequestMapping(value = "/oauth2callback", method = { RequestMethod.GET, RequestMethod.POST })
+//	  public String googleCallback(Model model, @RequestParam String code) throws IOException {
+//	    System.out.println("Google login success");
+//
+//	    //저는 성공하면 메인페이지로 리다이렉트합니다.
+//	    return "mainpage";
+//	  }
+	  
+	@RequestMapping(value = "/oauth2callback", method = RequestMethod.GET)
+	public String doSessionAssignActionPage(HttpServletRequest request)throws Exception{
+	  System.out.println("/member/googleSignInCallback");
+	  String code = request.getParameter("code");
+=======
 	*/
+	
 	@RequestMapping(value = "/oauth2callback", method = RequestMethod.GET)
 	public String doSessionAssignActionPage(@RequestParam("code") String code, HttpSession session, Model model)throws Exception{
 		  // 코드 확인
@@ -95,7 +113,6 @@ public class HomeController {
 			mService.insertApi(vo);
 		}
 		session.setAttribute("member", vo);
-
 	  return "loginaction";
 	}
 	

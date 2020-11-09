@@ -63,6 +63,10 @@ img {
    width: 200px;
    height: 200px;
 }
+
+.swiper-button-next, .swiper-button-prev {
+    top: 40%;
+    }
 </style>
 <script>
 $(document).ready(function(){
@@ -94,7 +98,7 @@ function show_time(index) {
    //console.log("["+index+"] RemainDate = ... : " + RemainDate);
    // 86400000 ==>24시간
    //if(index<3) console.log("#spanDday"+index+",str:"+make_time_str(index, RemainDate));
-   $("#spanDday"+index).text(make_time_str(index, RemainDate));
+   $(".spanDday"+index).text(make_time_str(index, RemainDate));
 }
 
 function make_time_str(index, Remain) {
@@ -186,26 +190,26 @@ function msg_time() {
       </div>
       <h2>촉박 경매</h2>
       <small>옥션이 선정한 경매 작품들을 소개합니다.</small>
-      <div class="swiper-container swiper2">
+      <div class="swiper-container swiper2" style="height: 220px;">
          <div class="swiper-wrapper">
             <c:forEach var="showHurry" varStatus="status" items="${showHurry }">
-            <div id="slide<c:out value='${status.index}'/>" class="swiper-slide">
+            <div style="display:block;"id="slide<c:out value='${status.index}'/>" class="swiper-slide">
                   <c:if test="${showHurry.image ne null }">
-                     <a href="showDetail?pno=${showHurry.pno }"><img src="${showHurry.image }"/></a>   
+                     <a href="showDetail?pno=${showHurry.pno }"><img style="width: 150px; height: 150px;" src="${showHurry.image }"/></a>   
                   </c:if>
                   <c:if test="${showHurry.image eq null }">`
                   <c:choose>
                   <c:when test="${showHurry.img1 ne '(이름없음)' }">
-                     <a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img1 }"/></a> <br/>
+                     <a href="showDetail?pno=${showHurry.pno }"><img  style="width: 150px; height: 150px;" src="resources/images/${showHurry.img1 }"/></a> <br/>
                   </c:when>
                   <c:otherwise>
-                     <a href="showDetail?pno=${showHurry.pno }"><img src="resources/images/${showHurry.img2 }"/></a> <br/>
+                     <a href="showDetail?pno=${showHurry.pno }"><img  style="width: 150px; height: 150px;" src="resources/images/${showHurry.img2 }"/></a> <br/>
                   </c:otherwise>
                   </c:choose>
                   </c:if>
                   <div>
 	                	<span>D-day</span> 
-	               		<span id="spanDday<c:out value='${status.index}'/>"></span> 
+	               		<span class="spanDday<c:out value='${status.index}'/>"></span> 
 	               </div>
                <%--
                <c:choose>
