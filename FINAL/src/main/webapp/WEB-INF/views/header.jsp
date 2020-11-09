@@ -319,7 +319,7 @@ hr {
                   <li>|</li>
                   <li class="topMenuLi">
                      <li class="topMenuLi">
-                     <a class="menuLink" href="http://localhost:9090/final/showBiddingAuction">서비스 소개</a>
+                     <a class="menuLink" href="showBiddingAuction">서비스 소개</a>
                      
                   </li>
                      <ul class="submenu">

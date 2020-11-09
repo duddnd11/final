@@ -20,7 +20,7 @@ function handleData(){
     const userObj = {
       ID: ID,
       pw: pw,
-      pw2: pw2,
+      pw2:pw2,
       name : name,
       phonenum : phonenum,
       zonecode : zonecode,

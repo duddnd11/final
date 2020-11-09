@@ -32,7 +32,7 @@ return true; //확인이 완료되었을 때
 function checkAll() {
 if (!checkUserId($('form')[0].ID.value)) {
     return false;
-} else if (!checkPassword($('form')[0].pw.value, $('form')[0].confirmpw.value)) {
+} else if (!checkPassword($('form')[0].pw.value, $('form')[0].pw2.value)) {
     return false;
 } else if (!checkMail($('form')[0].email.value)) {
     return false;
