@@ -155,11 +155,11 @@ textarea{
 	style="width: 60px; height: 68px; margin-left: 4px; background-color: #CECEF6; color: white; 
 	font-weight: 700; font-size: 16px; border: none; border-radius: 2px 2px 2px 2px;"/>
 	</div>
-	<input type="button" value="채팅참여" id="chatting" style="position: absolute;top: 386px;width: 100px;height: 50px;">
+	<input type="button" value="채팅참여" id="chatting" style="position: absolute;top: 45.9%;width: 100px;height: 50px;">
 	<input type="button" value="퇴장" id="exit"
-	style="position: absolute; top: 386px; left: 861px; width: 100px; height: 50px;"/>
+	style="position: absolute; top: 45.9%; left: 45.75%; width: 100px; height: 50px;"/>
 	<input type="text" value="${member.ID}" id="userId"
-	style="position: absolute; top: 386px; left: 961px; width: 200px; height: 50px; text-align: center;"/>
+	style="position: absolute; top: 45.9%; left: 51.55%; width: 200px; height: 50px; text-align: center;"/>
       </div>
 </div>
 </body>

@@ -60,8 +60,8 @@ small {
 }
 
 img {
-   width: 200px;
-   height: 200px;
+   width: 400px;
+   height: 400px;
 }
 
 .swiper-button-next, .swiper-button-prev {
@@ -161,7 +161,7 @@ function msg_time() {
       <div class="swiper-container swiper1">
          <div class="swiper-wrapper">
             <c:forEach begin="0" end="4" var="showPop" items="${showPop }">
-            <div class="swiper-slide" id="pop">
+            <div style="display:block;  margin-top: 100px; " class="swiper-slide" id="pop">
                   <c:if test="${showPop.image ne null }">
                      <a href="showDetail?pno=${showPop.pno }"><img src="${showPop.image }"/></a>   
                   </c:if>
@@ -175,6 +175,9 @@ function msg_time() {
                   </c:otherwise>
                      </c:choose>
                   </c:if>
+                  <div>
+		            <a>${showPop.pname }</a>
+		            </div>
             </div>
             </c:forEach>
          </div>

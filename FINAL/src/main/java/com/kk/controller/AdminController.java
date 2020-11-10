@@ -119,7 +119,7 @@ public class AdminController {
 			System.out.println("승인함.");
 		}
 		model.addAttribute("result", result);
-		return "redirect:/admin/item?offset=0&admin=1&deal=-1";
+		return "redirect:/admin/item?offset=0&admin=0&deal=-1";
 	}
 	
 	@RequestMapping(value="/admin/rejectItem")
@@ -130,7 +130,7 @@ public class AdminController {
 			System.out.println("거부 완료.");
 		}
 		model.addAttribute("result", result);
-		return "redirect:/admin/item?offset=0&admin=2&deal=-1";
+		return "redirect:/admin/item?offset=0&admin=0&deal=-1";
 	}
 	
 //	@RequestMapping(value = "/admin/chart")

@@ -170,6 +170,23 @@ public class ProductController {
 	public String showDetail(Model model, int pno, HttpSession session) {
 //		session.setAttribute("member", "admin");				//수정
 		MemberVo ID =  (MemberVo) session.getAttribute("member");
+		int check=0;
+		if(ID!=null) {
+			String userId = ID.getID();
+			String str = pno+"_!_";	//1137_!_
+	
+			String likeArr[]=service.selectLike(userId).split("_!_");
+			
+			for(int i=0; i<likeArr.length ;i++) {
+	//			System.out.println(likeArr[i]+"="+pno);
+				if(likeArr[i].equals(String.valueOf(pno))) {
+					check=1;
+					System.out.println("비교문: "+check);
+					break;
+				}
+			}
+		}
+		////////////////////////////////////////////////
 		service.hitcountUp(pno);
 		ProductVo vo = service.selectOne(pno);
 		List<AuctionVo> list = adminService.chart(pno);	
@@ -181,6 +198,7 @@ public class ProductController {
 			vo.setImg2(vo.getFilenames().split("_!_")[1]);
 			vo.setImage(null);
 		}
+		/*
 		if(vo.getBestmoney() >= vo.getLastmoney()) {
 			if(service.dealChage(pno)==1) {
 				vo.setDeal(2);
@@ -188,10 +206,12 @@ public class ProductController {
 				
 			}
 		}
+		*/
 		int rejectBlind=0;
 		if(ID!=null) {
 			rejectBlind = service.rejectBlind(ID.getID(), pno);
 		}
+		model.addAttribute("check", check);
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
 		model.addAttribute("ID", ID);
@@ -202,6 +222,7 @@ public class ProductController {
 	@RequestMapping(value="/insertAuction")
 	public String insertAuction(HttpSession session, HttpServletResponse res, Model model, int pno, int myprice, int moneyup,String auctionmenu) {
 		MemberVo ID =  (MemberVo) session.getAttribute("member");
+		System.out.println("가격:"+myprice);
 		ProductVo pVo  = service.selectOne(pno);
 		int diff=0, myDiff=0;
 		if(ID==null) {
@@ -235,12 +256,14 @@ public class ProductController {
 	}*/
 	
 	@RequestMapping(value="/addLike")
-	public String addLike(int pno, HttpSession session, HttpServletResponse response) {
+	public String addLike(int pno, HttpSession session, HttpServletResponse response, Model model) {
 		MemberVo member =  (MemberVo) session.getAttribute("member");
-		String ID = member.getID();
 		String str = pno+"_!_";	//1137_!_
+		String ID = member.getID();
+		/*
 		String likeArr[]=service.selectLike(ID).split("_!_");
 		int check=0;
+		
 		for(int i=0; i<likeArr.length ;i++) {
 //			System.out.println(likeArr[i]+"="+pno);
 			if(likeArr[i].equals(String.valueOf(pno))) {
@@ -249,10 +272,11 @@ public class ProductController {
 				break;
 			}
 		}
-		if(check ==0) {
+		*/
+//		if(check ==0) {
 			int result = service.addLike(str, ID);
 			System.out.println("관심상품: "+result);
-		}
+//		}
 		return "redirect:/showDetail?pno="+pno;
 	}
 

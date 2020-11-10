@@ -15,7 +15,7 @@
 function popup(){
       var url = "login/";
       var name = "login popup";
-      var option = "width = 550, height = 500, top = 100, left = 200, location = no"
+      var option = "width = 550, height = 636, top = 100, left = 200, location = no"
       window.open(url, name, option);
  }
 var check =0;
@@ -236,7 +236,7 @@ html, body {
 }
 
 a {
-   text-decoration: none;
+   text-decoration : none;
 	color: black;
 }
 
@@ -247,9 +247,12 @@ a {
 ul, li {
    list-style: none;
 }
-
+.logo{
+   width:440px;
+   height:80px;
+}
 .logo_img {
-   width:400px;
+   width:200px;
    height:80px;
    margin-top: -30px;
    margin-left:50px;
@@ -296,6 +299,10 @@ hr {
 .chat{
 	float: right;
 }
+.topMenuLi > a{
+	text-decoration: none;
+	color: black;
+}
 </style>
 </head>
 <body>
@@ -306,7 +313,7 @@ hr {
                <ul>
                   <div class="logo">
                      <a href="main">
-                        <img class="logo_img" src="https://cdn.clien.net/web/api/file/F01/9396867/5ccb776a9703.jpg">
+                        <img class="logo_img" src="${pageContext.request.contextPath}/resources/img/로고.png">
                      </a>
                   </div>
                   <li class="topMenuLi">
@@ -318,14 +325,8 @@ hr {
                   </li>
                   <li>|</li>
                   <li class="topMenuLi">
-                     <li class="topMenuLi">
                      <a class="menuLink" href="showBiddingAuction">서비스 소개</a>
-                     
                   </li>
-                     <ul class="submenu">
-                        <li><a href="showAuctionNormal" class="submenuLink longLink">경매 응찰</a></li>
-                        <li><a href="showAuctionBlind" class="submenuLink longLink">작품 위탁</a></li>
-                     </ul>
                   <li>|</li>
                   <li class="topMenuLi"><a class="menuLink" href="notice?offset=0">고객센터</a>
                      <ul class="submenu">

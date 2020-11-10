@@ -129,15 +129,15 @@ $(document).ready(function(){
    <c:set var="up" value="${vo.uploaddate }"/>
    <c:set var="dead" value="${vo.deadlinedate }"/>
    <c:if test="${vo.auctionmenu eq '일반' }">
-   <table style="margin-left: 500px; margin-top: -350px;">
+   <table style="margin-left: 500px; margin-top: -435px;">
       <tr>
-         <th>D-day </th> 
+         <th><h1>D-day</h1></th> 
          <c:choose>
          <c:when test="${vo.timeout >1}">
-            <td>${vo.timeout }</td>
+            <td><h1>${vo.timeout }</h1></td>
          </c:when>
          <c:otherwise>
-            <td><span id="timer"></span></td>
+            <td><h1><span id="timer"></span></h1></td>
          </c:otherwise>
          </c:choose>
       </tr>
@@ -175,8 +175,7 @@ $(document).ready(function(){
             <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;" onclick="deadline()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;"  onclick="deadline()">마감</button>
          </c:when>
-         
-         <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer}">
+         <c:when test="${check == 1 || ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer}">
             <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="rejectLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>
@@ -191,15 +190,15 @@ $(document).ready(function(){
    </c:if>
    
    <c:if test="${vo.auctionmenu eq '블라인드' }">
-   <table style="margin-left: 500px; margin-top: -350px;">
+   <table style="margin-left: 500px; margin-top: -435px;">
       <tr>
-         <th>D-day </th> 
+         <th><h1>D-day</h1></th> 
          <c:choose>
          <c:when test="${vo.timeout >1}">
-            <td>${vo.timeout }</td>
+            <td><h1>${vo.timeout }</h1></td>
          </c:when>
          <c:otherwise>
-            <td><span id="timer"></span></td>
+            <td><h1><span id="timer"></span></h1></td>
          </c:otherwise>
          </c:choose>
       </tr>
@@ -227,8 +226,7 @@ $(document).ready(function(){
             <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;" onclick="deadline()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px; background-color: lightgray;"  onclick="deadline()">마감</button>
          </c:when>
-         
-         <c:when test="${ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer || rejectBlind >= 1}">
+         <c:when test="${check == 1 ||ID.ID eq null || ID.ID eq vo.ID || ID.ID eq vo.getcustomer || rejectBlind >= 1}">
             <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" onclick="rejectLike()">관심상품</button>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="rejectAlert()">입찰</button>
          </c:when>
