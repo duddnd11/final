@@ -222,7 +222,6 @@ public class ProductController {
 	@RequestMapping(value="/insertAuction")
 	public String insertAuction(HttpSession session, HttpServletResponse res, Model model, int pno, int myprice, int moneyup,String auctionmenu) {
 		MemberVo ID =  (MemberVo) session.getAttribute("member");
-		System.out.println("가격:"+myprice);
 		ProductVo pVo  = service.selectOne(pno);
 		int diff=0, myDiff=0;
 		if(ID==null) {
