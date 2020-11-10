@@ -156,6 +156,7 @@ textarea{
 	font-weight: 700; font-size: 16px; border: none; border-radius: 2px 2px 2px 2px;"/>
 	</div>
 	<div style="position: absolute;top: 392px;">
+<<<<<<< HEAD
    <input type="button" value="채팅참여" id="chatting" style="width: 100px;height: 50px;">
    <input type="button" value="퇴장" id="exit"
    style="width: 100px; height: 50px; margin-left: -7px;"/>
@@ -163,6 +164,15 @@ textarea{
    style="width: 200px; height: 50px; text-align: center; margin-left: -5px"/>
    </div>
      </div>
+=======
+	<input type="button" value="채팅참여" id="chatting" style="width: 100px;height: 50px;">
+	<input type="button" value="퇴장" id="exit"
+	style="width: 100px; height: 50px; margin-left: -7px;"/>
+	<input type="text" value="${member.ID}" id="userId"
+	style="width: 200px; height: 50px; text-align: center; margin-left: -5px"/>
+	</div>
+      </div>
+>>>>>>> branch 'main' of https://github.com/duddnd11/final.git
 </div>
 </body>
 </html>
