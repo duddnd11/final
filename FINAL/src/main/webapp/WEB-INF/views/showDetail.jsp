@@ -245,7 +245,7 @@ $(document).ready(function(){
             <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" onclick="rejectLike()">관심상품</button>
          	</c:when>
          	<c:otherwise>
-            <button style="margin-left: 500px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
+            <button style="margin-left: 0px; width: 200px; height: 40px; margin-top: 20px;" onclick="addLike()">관심상품</button>
          	</c:otherwise>
          	</c:choose>
             <button style="margin-left: 20px; width: 200px; height: 40px; margin-top: 20px;"  onclick="alertMsgBlind()">입찰</button>
