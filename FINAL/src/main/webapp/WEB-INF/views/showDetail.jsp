@@ -257,7 +257,7 @@ $(document).ready(function(){
 </div>
 
    <c:if test="${ID.ID eq 'admin' }">
-      <div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: 25%;">   
+     <div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: 25%;">   
       <canvas id="myChart"></canvas>
       </div>
    </c:if>
@@ -305,7 +305,8 @@ function alertMsgBlind(){
         // 확인 버튼 클릭 시 동작
         if($("#btnQtyC3_1000020518522").val() == 0){
          alert("가격을 입력하세요!!");
-        }else{
+        }
+        else{
             location.href='insertAuction?pno=${vo.pno}&myprice='+$("#btnQtyC3_1000020518522").val()+'&moneyup=0&auctionmenu=${vo.auctionmenu}';
         }
     } else {
@@ -314,10 +315,24 @@ function alertMsgBlind(){
 }
 
    var data1 = new Array();
+   var data2 = new Array();
+   var max1;
+   var step1;
+   var min1;
+   if('${vo.auctionmenu}'=='일반'){
+		max1 = ${vo.bestmoney};
+		step1 = ${vo.moneyup};
+		min1 = ${vo.startmoney};
+	}else{
+		max1 = ${max};
+		min1 = ${min};
+		step1 = (${max}-${min})/10;
+	}
    var labels1 = new Array();
    var backColor = new Array();
 <c:forEach var="list" items="${list}">
    data1.push(${list.getMyprice()});
+   data2.push(${vo.price});
    labels1.push('${list.getBuydate()}');
    backColor.push('#6B66FF');
 </c:forEach>
@@ -325,6 +340,38 @@ function alertMsgBlind(){
    
 $(document).ready(function(){
    const ctx = $('#myChart');
+	   /*
+   $(document).ready(function(){
+		const ctx = $('#myChart')
+		//첫번째 인자는 내 태그(선택자), 두번째 인자는 옵션
+		const myChart = new Chart(ctx, {
+			type: 'bar',
+			data : {
+				datasets : [{
+					label : "Line Dataset", 
+					backgroundColor : ['#6B66FF','#FFBB00','#6B66FF','#FFBB00'],
+					data : [10, 20,30,40],
+				}, {
+					 label: "Line Dataset",
+			            data: [50, 40,60,70],
+
+			         // Changes this dataset to become a line
+			            type: 'line',	     
+			            fill : false,
+					}],
+					labels: ['e', 'f', 'g', 'h'],
+					
+			},
+			options :{
+				scales :{
+					yAxes: [{
+						 ticks :  {max: max1, stepSize: step1, min:min1 },	// 차트의 최대치와 최소치
+					}]
+				}
+			}
+		})
+	});
+*/
    //첫번째 인자는 내 태그(선택자), 두번째 인자는 옵션
    const myChart = new Chart(ctx, {
       type: 'line',
@@ -335,13 +382,21 @@ $(document).ready(function(){
             borderColor : ['#FF0000'],
             data : data1,
             fill : false,
-         }],
+         }, {
+            label : "기준가", 
+            backgroundColor : backColor,   
+            borderColor : ['#6B66FF'],
+            data : data2,
+            fill : false,
+            linestyle: 'dashed',
+            borderDash: [5,5],
+        }],
          labels: labels1
       },
       options :{
          scales :{
             yAxes: [{
-                ticks : { max: 15000000, stepSize: 1000000, min:0 },   // 차트의 최대치와 최소치
+                ticks : {max: max1, stepSize: step1, min:min1 },   // 차트의 최대치와 최소치
             }]
          }
       }

@@ -190,6 +190,21 @@ public class ProductController {
 		service.hitcountUp(pno);
 		ProductVo vo = service.selectOne(pno);
 		List<AuctionVo> list = adminService.chart(pno);	
+		int max = 0;
+		int min = 0;
+		if(!(list.isEmpty())) {
+		for(int i =0; i<list.size();i++) {
+			int price = list.get(i).getMyprice();
+			if(price>max) {
+				max=price;
+			}else if(price<min) {
+				min=price;
+			}
+		}
+		}
+		model.addAttribute("max", max);
+		model.addAttribute("min", min);
+
 		if(vo.getFilenames()==null || vo.getFilenames().equals("")) {
 			vo.setImg1(null);
 			vo.setImg2(null);
