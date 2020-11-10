@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -132,12 +133,24 @@ $("#check_module").click(function () {
    
    <th colspan="2">상품명</th>   
    <th>결제금액</th>
-   </tr>
-   <c:forEach items="${vo}" var="vo">
-      <td><img src="${vo.image}"/></td>
-      <td>${vo.pname}</td>
-      <td style="width: 30%;">${vo.bestmoney}</td>
-   </c:forEach>
+  </tr>
+  <tr>
+   		   <c:if test="${vo.image ne null}">
+		   		<td><img src="${vo.image}"/></td> 
+		   </c:if>
+		   <c:if test="${vo.image eq null }">
+			        <c:choose>
+			            <c:when test="${vo.img1 ne '(이름없음)' }">
+			            	<td><img src="resources/images/${vo.img1 }"/></td>
+			            </c:when>
+			            <c:otherwise>
+			            	<td><img src="resources/images/${vo.img2 }"/></td>
+			            </c:otherwise>
+			        </c:choose>
+		        <br/>
+		   </c:if>
+    <td>${vo.pname}</td>
+      <td style="width: 30%;">${vo.bestmoney}</td></tr>
    </table>
    <div style="border-top: 1px solid #cccccc;">
    <table style=" margin-left: 38%; margin-top: 2%;">

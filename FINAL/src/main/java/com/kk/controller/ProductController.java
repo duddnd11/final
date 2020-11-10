@@ -284,6 +284,14 @@ public class ProductController {
 		MemberVo member =  (MemberVo) session.getAttribute("member");
 		String ID = member.getID();
 		ProductVo vo =service.selectOne(pno);
+		if(vo.getFilenames()==null || vo.getFilenames().equals("")) {
+			vo.setImg1(null);
+			vo.setImg2(null);
+		} else {
+			vo.setImg1(vo.getFilenames().split("_!_")[0]);
+			vo.setImg2(vo.getFilenames().split("_!_")[1]);
+			vo.setImage(null);
+		}
 		model.addAttribute("vo", vo);
 		return "payment";
 	}
