@@ -25,7 +25,23 @@
 	
 	<div style="width: 450px;">
 	<h1 style="width: 450px;">결제완료가 완료되었습니다.</h1>
-	<h2 style="width: 300px; height: 250px;"><img src="${vo.image}" style="width: 300px; height: 400px;"/></h2>
+	<h2 style="width: 300px; height: 250px;">
+		  <c:if test="${vo.image ne null}">
+		   		<img src="${vo.image}" style="width: 300px; height: 400px;"/>
+		   </c:if>
+		   <c:if test="${vo.image eq null }">
+			        <c:choose>
+			            <c:when test="${vo.img1 ne '(이름없음)' }">
+			            	<img src="resources/images/${vo.img1 }"  style="width: 300px; height: 400px;"/>
+			            </c:when>
+			            <c:otherwise>
+			            	<img src="resources/images/${vo.img2 }"  style="width: 300px; height: 400px;"/>
+			            </c:otherwise>
+			        </c:choose>
+		        <br/>
+		   </c:if>
+	
+	</h2>
 	</div>
 	<div>
 	<table style=" text-align: center; margin-top: 100px;">

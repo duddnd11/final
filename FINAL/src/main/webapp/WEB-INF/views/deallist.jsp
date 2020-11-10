@@ -99,7 +99,7 @@
 		<c:forEach var="purchase" items="${purchase }">
 			<tr>
 				<td>${purchase.idx }</td>
-				<td>${purchase.pname }</td>
+				<td><a href="showDetail?pno=${purchase.pno }">${purchase.pname }</a></td>
 				<td>${purchase.ID }</td>
 				<td>${purchase.myprice }</td>
 				<td>${purchase.buydate }</td>
