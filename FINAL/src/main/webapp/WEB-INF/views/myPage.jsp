@@ -74,7 +74,7 @@
       
       <div style=" width: 900px; margin-left: 30%;  margin-top: 100px; width: 600px; display: block;">
          <h2 style="font-weight: 700; font-size: 35px;">거래내역</h2>
-         <a href="deallist"><button style="float: right; hegiht: 40px;margin-right: -250px; margin-top: -60px;" class="btn btn-link">이동</button></a>            
+         <a href="deallist"><button style="float: right; hegiht: 40px;margin-right: -250px; margin-top: -40px;" class="btn btn-link">이동</button></a>            
       </div>
       <div style=" width: 600px; margin-left: 30%;  margin-top: 100px; width: 600px; display: block;">
          <h2 style="font-weight: 700; font-size: 35px;" class="myQnaButton">문의내역</h2>
