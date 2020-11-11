@@ -86,7 +86,9 @@ h4 {
     margin-inline-end: 0px;
     font-weight: bold;
 }
-
+.submenuLink{
+	text-dect
+}
 .content aside .block h4.selected a {
     border-bottom: 1px solid #000;
     padding-bottom: 1px;
@@ -209,7 +211,10 @@ ul {
     margin-inline-end: 0px;
     padding-inline-start: 40px;
 }
-
+.topMenuLi > a{
+	text-decoration: none;
+	color: black;
+}
 li {
     display: list-item;
     text-align: -webkit-match-parent;
@@ -438,6 +443,11 @@ h4.line_header .btn_blueLine .arrow:after {
     padding: 10px 0 0 22px;
     line-height: 20px;
 }
+.submenu > .submenuLink{
+	color: gray;
+	text-decoration : none;
+}
+
 </style>
 </head>
 <body id="customer_support" class="index">

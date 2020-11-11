@@ -190,6 +190,21 @@ public class ProductController {
 		service.hitcountUp(pno);
 		ProductVo vo = service.selectOne(pno);
 		List<AuctionVo> list = adminService.chart(pno);	
+		if(!(list.isEmpty())) {
+			int max = list.get(0).getMyprice();
+			int min = list.get(0).getMyprice();
+		for(int i =0; i<list.size();i++) {
+			int price = list.get(i).getMyprice();
+			if(price>max) {
+				max=price;
+			}else if(price<min) {
+				min=price;
+			}
+		}
+		model.addAttribute("max", max);
+		model.addAttribute("min", min);
+		}
+
 		if(vo.getFilenames()==null || vo.getFilenames().equals("")) {
 			vo.setImg1(null);
 			vo.setImg2(null);
@@ -222,7 +237,6 @@ public class ProductController {
 	@RequestMapping(value="/insertAuction")
 	public String insertAuction(HttpSession session, HttpServletResponse res, Model model, int pno, int myprice, int moneyup,String auctionmenu) {
 		MemberVo ID =  (MemberVo) session.getAttribute("member");
-		System.out.println("가격:"+myprice);
 		ProductVo pVo  = service.selectOne(pno);
 		int diff=0, myDiff=0;
 		if(ID==null) {
@@ -285,6 +299,14 @@ public class ProductController {
 		MemberVo member =  (MemberVo) session.getAttribute("member");
 		String ID = member.getID();
 		ProductVo vo =service.selectOne(pno);
+		if(vo.getFilenames()==null || vo.getFilenames().equals("")) {
+			vo.setImg1(null);
+			vo.setImg2(null);
+		} else {
+			vo.setImg1(vo.getFilenames().split("_!_")[0]);
+			vo.setImg2(vo.getFilenames().split("_!_")[1]);
+			vo.setImage(null);
+		}
 		model.addAttribute("vo", vo);
 		return "payment";
 	}

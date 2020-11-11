@@ -24,13 +24,13 @@
 </style>
 </head>
 <body>
-	<div id="container" style="margin-top: 200px; margin-left: 27%;">
 	<button onclick="location.href='myPage'" class="btn btn-link">뒤로가기</button>
+	<div id="container" style="margin-top: 200px; margin-left: 27%;">
 <h2>판매</h2><br/>
 		<table id="salestable">
 			<tr>
-				<th>번호</th>
-				<th>상품이름</th>
+				<th>상품번호</th>
+				<th>상품명</th>
 				<th>입찰자</th>
 				<th>기준가</th>
 				<th>마감</th>
@@ -88,17 +88,17 @@
 <br/>
 		<table id="purchasetable">
 			<tr>
-				<th>번호</th>
-				<th>상품이름</th>
+				<th>상품번호</th>
+				<th>상품명</th>
 				<th>판매자</th>
-				<th>내 가격</th>
+				<th>내 입찰가</th>
 				<th>날짜</th>
 				<th>경매결과</th>
 				<th>결제</th>
 			</tr>
 		<c:forEach var="purchase" items="${purchase }">
 			<tr>
-				<td>${purchase.idx }</td>
+				<td>${purchase.pno }</td>
 				<td>${purchase.pname }</td>
 				<td>${purchase.ID }</td>
 				<td>${purchase.myprice }</td>

@@ -16,10 +16,16 @@
 	</div>
 <script>
 	var data1 = new Array();
+	var max1 = new Array();
+	var step1 = new Array();
+	var min1 = new Array();
 	var labels1 = new Array();
 	var backColor = new Array();
 <c:forEach var="list" items="${list}">
 	data1.push(${list.getMyprice()});
+	max1.push(${list.getBestmoney()});
+	step1.push(${list.getMoneyup()});
+	min1.push(${list.getStartmoney()});
 	labels1.push('${list.getBuydate()}');
 	backColor.push('#6B66FF');
 </c:forEach>
@@ -43,7 +49,7 @@ $(document).ready(function(){
 		options :{
 			scales :{
 				yAxes: [{
-					 ticks : { max: 10000000, stepSize: 500000, min:0 },	// 차트의 최대치와 최소치
+					 ticks : { max: max1, stepSize: step1, min:min1 },	// 차트의 최대치와 최소치
 				}]
 			}
 		}

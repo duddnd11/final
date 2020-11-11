@@ -112,6 +112,14 @@ public class ApiController {
 		String ID = member.getID();
 		ProductVo vo =pService.selectOne(pno);
 		pService.payment(pno);
+		if(vo.getFilenames()==null || vo.getFilenames().equals("")) {
+			vo.setImg1(null);
+			vo.setImg2(null);
+		} else {
+			vo.setImg1(vo.getFilenames().split("_!_")[0]);
+			vo.setImg2(vo.getFilenames().split("_!_")[1]);
+			vo.setImage(null);
+		}
 		model.addAttribute("vo", vo);
 		model.addAttribute("map", map);
 		return "paymentAction";
