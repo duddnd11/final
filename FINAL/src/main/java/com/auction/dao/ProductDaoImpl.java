@@ -95,20 +95,38 @@ public class ProductDaoImpl implements ProductDao {
 		map2.put("pno", vo.getPno());
 		map2.put("bestmoney", vo.getMyprice());
 		int select = sqlSession.selectOne("com.auction.mapper.ProductMapper.showAuction", vo.getPno());
-		if(select>0) {
-			if(auctionmenu.equals("일반")) {
+//		if(select>0) {
+//			if(auctionmenu.equals("일반")) {
+//				result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
+//				result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoney", map);
+//			}else {
+//				result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
+//				if(myDiff<diff) {
+//					sqlSession.update("com.auction.mapper.ProductMapper.updateCustomer", map2);
+//				}
+//			}
+//		}else if(auctionmenu.equals("일반")){
+//			result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
+//			result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoneyFirst", map);
+//		}
+		
+		if(auctionmenu.equals("일반")) {
+			if(select>0) {
 				result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
 				result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoney", map);
 			}else {
 				result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
-				if(myDiff<diff) {
-					sqlSession.update("com.auction.mapper.ProductMapper.updateCustomer", map2);
-				}
+				result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoneyFirst", map);
+				
 			}
 		}else {
 			result = sqlSession.insert("com.auction.mapper.ProductMapper.insertAuction", vo);
-			result += sqlSession.update("com.auction.mapper.ProductMapper.updateMoneyFirst", map);
+			if(myDiff<diff) {
+				sqlSession.update("com.auction.mapper.ProductMapper.updateCustomer", map2);
+			}
+			
 		}
+		
 		return result;
 	}
 
