@@ -197,6 +197,8 @@ html, body {
 
 .longLink { /* 좀 더 긴 메뉴 스타일 설정 */
    width: 190px;
+   color: gray;
+   text-decoration: none;
 }
 
 .submenuLink { /* 하위 메뉴의 a 태그 스타일 설정 */
@@ -302,6 +304,10 @@ hr {
 .topMenuLi > a{
 	text-decoration: none;
 	color: black;
+}
+.submenu > .submenuLink{
+	color: gray;
+	text-decoration : none;
 }
 </style>
 </head>

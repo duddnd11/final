@@ -22,7 +22,7 @@
 	.ui-datepicker{ font-size: 15px; width: 400px; height: 300px;}
 	
 	form {
-    margin-left: 450px;
+    margin-left: 30%;
     margin-top: 20px;
     height: 700px;
 }
@@ -133,7 +133,7 @@ $(document).ready(function(){
 			</td>
 	</tr>
 		</table>
-		<input title="수정/철회 불가" id="apply" type="submit" value="승인 요청" style="width: 260px;height: 60px;margin-top: 20px;margin-left: 22.5%;">
+		<input title="수정/철회 불가" id="apply" type="submit" value="승인 요청" style="width: 260px;height: 60px;margin-top: 20px;margin-left: 22%;">
 	</form>
 </div>
 </body>

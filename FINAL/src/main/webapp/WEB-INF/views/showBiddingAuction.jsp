@@ -443,6 +443,11 @@ h4.line_header .btn_blueLine .arrow:after {
     padding: 10px 0 0 22px;
     line-height: 20px;
 }
+.submenu > .submenuLink{
+	color: gray;
+	text-decoration : none;
+}
+
 </style>
 </head>
 <body id="customer_support" class="index">
