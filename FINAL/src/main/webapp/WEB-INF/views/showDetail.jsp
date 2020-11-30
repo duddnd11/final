@@ -68,15 +68,16 @@ function msg_time() {
    }
   m = hours + ":" +  miniutes + ":" + seconds ; 
   document.all.timer.innerHTML = m;   
-  
+
   if (RemainDate <= 0) {      //시간 종료
-	  /*
-     if(${vo.auctionmenu == "일반"}){
-       location.href="showAuctionNormal";
-        }else{
-       location.href="showAuctionBlind";
-           }
-      */
+    // if(${vo.auctionmenu == "일반"}){
+     //  location.href="showAuctionNormal";
+   //     }else{
+ //      location.href="showAuctionBlind";
+//           }
+  	if(seconds=="0-1"){
+  		location.reload();
+  	}
     clearInterval(tid);   // 타이머 해제
   }else{
     RemainDate = RemainDate - 1000; // 남은시간 -1초
@@ -258,7 +259,7 @@ $(document).ready(function(){
 
 </div>
 
-   <c:if test="${ID.ID eq 'admin' }">
+   <c:if test="${ID.grade eq 'z' }">
      <div style="width: 1000px; height: 1000px; margin-top: 200px; margin-left: 25%;">   
       <canvas id="myChart"></canvas>
       </div>
