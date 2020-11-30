@@ -55,6 +55,9 @@
 		select count(*) from auction a left outer join product p on a.pno=p.pno where a.ID=#{ID} and p.auctionmenu='블라인드' and a.pno=#{pno};
 	</select>
 
+	<update id="updateCount">
+		update product set count =count+1 where pno=#{pno};
+	</update>
 	<!-- 카테고리 -->
 	<select id="normalCategory" resultType="com.auction.vo.ProductVo">
 		select * from product where category=#{category} and auctionmenu='일반' and deal=1 and admin=1 order by uploaddate desc;
@@ -74,7 +77,7 @@
 	</select>
 	 -->
 	<update id="updateCustomer">
-		UPDATE product SET count =count+1, getcustomer=#{getcustomer} , bestmoney=#{bestmoney} WHERE pno =#{pno};
+		UPDATE product SET getcustomer=#{getcustomer} , bestmoney=#{bestmoney} WHERE pno =#{pno};
 	</update>
 	
 	<!-- 관심상품 -->
@@ -100,7 +103,7 @@
 	<update id="payment">
 		UPDATE product SET payment=1 WHERE pno=#{pno};
 	</update>
-	
+
 	<!-- 판매 -->
 	<select id="selectSales" resultType="com.auction.vo.ProductVo">
 		SELECT * FROM final.product where ID=#{ID} order by uploaddate desc;

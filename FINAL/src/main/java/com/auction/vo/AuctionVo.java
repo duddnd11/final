@@ -8,6 +8,8 @@ public class AuctionVo {
 	private String buydate;
 	private String pname;
 	private String bestmoney;
+	private String startmoney;
+	private String moneyup;
 	private int payment;
 	private String getcustomer;
 	private String admin;
@@ -29,6 +31,24 @@ public class AuctionVo {
 		this.pno = pno;
 		this.myprice = myprice;
 		this.buydate = buydate;
+	}
+
+	
+	
+	public String getStartmoney() {
+		return startmoney;
+	}
+
+	public void setStartmoney(String startmoney) {
+		this.startmoney = startmoney;
+	}
+
+	public String getMoneyup() {
+		return moneyup;
+	}
+
+	public void setMoneyup(String moneyup) {
+		this.moneyup = moneyup;
 	}
 
 	public String getAdmin() {
