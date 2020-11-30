@@ -327,6 +327,7 @@ function alertMsgBlind(){
 		step1 = ${vo.moneyup};
 		min1 = ${vo.startmoney};
 	}else{
+		
 		max1 = ${max};
 		min1 = ${min};
 		step1 = (${max}-${min})/10;
