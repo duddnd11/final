@@ -47,7 +47,7 @@
 	  <property name="scope"
 	    value="https://www.googleapis.com/auth/plus.login" />
 	  <property name="redirectUri"
-	    value="http://192.168.6.154:9090/final/oauth2callback" />
+	    value="http://yejin0682.cafe24.com/oauth2callback" />
 	</bean>
 	
 	<bean id="qnaBoardDao" class="com.auction.dao.QnaBoardDaoImpl"></bean>

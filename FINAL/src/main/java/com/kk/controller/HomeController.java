@@ -32,9 +32,10 @@ public class HomeController {
 	OAuth2Parameters googleOAuth2Parameters;
 	@Autowired
 	MemberService mService;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		return "test22";
+		return "redirect:/main";
 	}
 //	@RequestMapping(value = "/mainpage")
 //	public String maainpage() {

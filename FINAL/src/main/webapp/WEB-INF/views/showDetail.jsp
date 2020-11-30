@@ -70,11 +70,13 @@ function msg_time() {
   document.all.timer.innerHTML = m;   
   
   if (RemainDate <= 0) {      //시간 종료
+	  /*
      if(${vo.auctionmenu == "일반"}){
        location.href="showAuctionNormal";
         }else{
        location.href="showAuctionBlind";
            }
+      */
     clearInterval(tid);   // 타이머 해제
   }else{
     RemainDate = RemainDate - 1000; // 남은시간 -1초
