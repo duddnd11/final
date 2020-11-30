@@ -106,7 +106,7 @@
 
 	<!-- 판매 -->
 	<select id="selectSales" resultType="com.auction.vo.ProductVo">
-		SELECT * FROM final.product where ID=#{ID} order by uploaddate desc;
+		SELECT * FROM product where ID=#{ID} order by uploaddate desc;
 	</select>
 </mapper>
 
