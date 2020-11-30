@@ -74,7 +74,7 @@ $(document).ready(function(){
 <div id="container" style="margin-top: 200px;"">
 	<h2 style="text-align: center;">상품등록</h2>
 	<form action="applyProductAction" method="post" enctype="multipart/form-data">
-	<table>
+	<table style="margin-left: 8%;">
 	<tr>
 		<th>이름</th> 
 		<td><input type="text"	name="pname"/ style=""></td>	
@@ -133,7 +133,7 @@ $(document).ready(function(){
 			</td>
 	</tr>
 		</table>
-		<input title="수정/철회 불가" id="apply" type="submit" value="승인 요청" style="width: 260px;height: 60px;margin-top: 20px;margin-left: 180px;">
+		<input title="수정/철회 불가" id="apply" type="submit" value="승인 요청" style="width: 260px;height: 60px;margin-top: 20px;margin-left: 22.5%;">
 	</form>
 </div>
 </body>

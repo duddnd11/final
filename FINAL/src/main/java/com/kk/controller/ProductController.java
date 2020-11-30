@@ -198,6 +198,7 @@ public class ProductController {
 			vo.setImg2(vo.getFilenames().split("_!_")[1]);
 			vo.setImage(null);
 		}
+		/*
 		if(vo.getBestmoney() >= vo.getLastmoney()) {
 			if(service.dealChage(pno)==1) {
 				vo.setDeal(2);
@@ -205,6 +206,7 @@ public class ProductController {
 				
 			}
 		}
+		*/
 		int rejectBlind=0;
 		if(ID!=null) {
 			rejectBlind = service.rejectBlind(ID.getID(), pno);
@@ -270,7 +272,7 @@ public class ProductController {
 			}
 		}
 		*/
-		//if(check ==0) {
+//		if(check ==0) {
 			int result = service.addLike(str, ID);
 			System.out.println("관심상품: "+result);
 //		}
@@ -282,6 +284,14 @@ public class ProductController {
 		MemberVo member =  (MemberVo) session.getAttribute("member");
 		String ID = member.getID();
 		ProductVo vo =service.selectOne(pno);
+		if(vo.getFilenames()==null || vo.getFilenames().equals("")) {
+			vo.setImg1(null);
+			vo.setImg2(null);
+		} else {
+			vo.setImg1(vo.getFilenames().split("_!_")[0]);
+			vo.setImg2(vo.getFilenames().split("_!_")[1]);
+			vo.setImage(null);
+		}
 		model.addAttribute("vo", vo);
 		return "payment";
 	}

@@ -236,7 +236,7 @@ html, body {
 }
 
 a {
-   text-decoration: none;
+   text-decoration : none;
 	color: black;
 }
 
@@ -298,6 +298,10 @@ hr {
 }
 .chat{
 	float: right;
+}
+.topMenuLi > a{
+	text-decoration: none;
+	color: black;
 }
 </style>
 </head>
