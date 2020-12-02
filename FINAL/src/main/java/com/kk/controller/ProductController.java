@@ -46,10 +46,6 @@ public class ProductController {
 		MultipartFile[] arrMultipart = vo.getMultiparts();
 		String[] arrFilename = new String[arrMultipart.length];
 		String str = "";
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/main
 		System.out.println("머니업:"+vo.getMoneyup());
 		for (int i = 0; i <= arrMultipart.length - 1; i++) {
 			MultipartFile multipart = arrMultipart[i];
